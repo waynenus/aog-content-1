@@ -51,7 +51,7 @@
 
 *选择 Linux 虚拟机镜像并创建 Linux 虚机：
 
-	PS C:\> $imagename='f1179221e23b4dbb89e39d70e5bc9e72__OpenLogic-CentOS-65-20140121'	
+	PS C:\> $imagename='f1179221e23b4dbb89e39d70e5bc9e72__OpenLogic-CentOS-72-20160617'	
 	PS C:\> $vm1=New-AzureVMConfig -Name 'test12' -ImageName $imagename -InstanceSize Small |Add-AzureProvisioningConfig -Linux -LinuxUser 'crane' -Password '*****'; Set-AzureSubnet -VM $vm1 -SubnetNames 'testtest1'; Set-AzureStaticVNetIP -IPAddress 10.0.1.10 -VM $vm1; New-AzureVM -ServiceName 'test11' -vm $vm1 -VNetName 'test001'
 
 *选择 Windows 虚拟机镜像并创建 Windows 虚机：
