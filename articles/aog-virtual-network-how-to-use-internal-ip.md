@@ -34,7 +34,7 @@
 ## <a id="cancle"></a>取消对已有虚机设置的静态 Internal IP 
 
 	PS C:\> $VM2=Get-AzureVM -ServiceName 'dnstest01' -name 'test12'
-	PS C:\> Remove-AzureStaticVNetIP $vm2 |Update-AzureVM
+	PS C:\> Remove-AzureStaticVNetIP -vm $vm2 |Update-AzureVM
  
 ## <a id="create"></a>创建静态 Internal IP 的虚机
 
