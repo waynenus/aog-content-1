@@ -37,6 +37,7 @@
 	IPV6INIT=no
 
 修改后，在界面上关机后再开机，虚拟机会无法ssh登陆。（针对固定IP的情况，如果配置文件中写入的IP与虚拟机启动后DHCP获取到的IP恰巧一致，这种情况下可以链接，但是如果再次重启的时候，DHCP获取到的IP可能会变化，所以仍然存在风险）
+注：本场景测试环境为CentOS 6.5, 如果您当前使用的非该版本, 请注意版本的差异性。
  
 ##<a id="scenario02"></a>场景2 
 错误地修改服务的配置文件/etc/ssh/sshd_config（语法错误或者配置错误），导致sshd服务无法启动失败：
@@ -48,6 +49,7 @@
 结果sshd服务就无法正常启动了：
 
  ![](./media/aog-virtual-machines-linux-scenarios-unable-to-remote/scenario-02-02.png) 
+ 注：本场景测试环境为CentOS 6.5, 如果您当前使用的非该版本, 请注意版本的差异性。
  
 ##<a id="scenario03"></a>场景3
 错误地配置了虚拟机的防火墙（firewalld），iptables等等：
@@ -63,6 +65,7 @@
   ![](./media/aog-virtual-machines-linux-scenarios-unable-to-remote/scenario-04-02.png) 
  
 因此如果将虚拟机的系统盘挂载到用相同平台映像创建其他机器上作为数据盘，不要使用UUID挂载（可以使用device名称来挂载），否则可能因为UUID相同导致挂载错误的系统盘引起启动失败，导致无法连接（如果这种情况发生，分离磁盘可能会将正常的系统盘分离下来）。
+注：本场景测试环境为CentOS 6.5, 如果您当前使用的非该版本, 请注意版本的差异性。
  
 ##<a id="scenario05"></a>场景5 
 虚拟机做软raid后，使用device名称挂载而非UUID挂载，重启后软raid的device名称发生变化，导致无法正常挂载，虚拟机启动失败从而无法正常ssh：
@@ -79,6 +82,7 @@
   ![](./media/aog-virtual-machines-linux-scenarios-unable-to-remote/scenario-05-01.png) 
 
 如果在fstab文件中使用device名称进行挂载，会导致重启后，系统找不到/dev/md0，/dev/md1，/dev/md2，从而挂载失败无法启动。所以建议使用UUID进行挂载。
+注：本场景测试环境为CentOS 6.5, 如果您当前使用的非该版本, 请注意版本的差异性。
  
 ##<a id="scenario06"></a>场景6
 使用fio测试磁盘性能的时候，切勿使用filename参数测试已经完成格式化的磁盘，否则可能导致文件系统损坏，如果是针对系统盘测试，文件系统损坏后，可能无法正常启动系统导致无法使用：
@@ -116,5 +120,6 @@ fio使用大致步骤：
 filename参数指定某个要测试的裸设备（硬盘或分区），切勿在系统分区做测试，会破坏系统分区，而导致系统崩溃。若一定要测试系统分区较为安全的方法是：在根目录下创建一个空目录，在测试命令中使用directory参数指定该目录，而不使用filename参数
 
 关于fio 测试iops的更多详细内容，请阅读[这篇文章](http://blog.csdn.net/commsea/article/details/11797011)
+注：本场景测试环境为CentOS 6.5, 如果您当前使用的非该版本, 请注意版本的差异性。
  
 
