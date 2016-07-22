@@ -73,7 +73,7 @@ Azure SDK提供多种认证方式，以下主要提供两种认证方式，publi
 	    private static String storageAccountName="appendstore";                 //存储账户名称，这里我们使用现有的存储账户
 	    private static String storageContainer = "vhd-store";                   //容器名称，可以自定义
 	    protected static String vmLocation = "China North";                     //数据中心：China North或China East
-	    private static String hostedServiceName="georges01";                    --云服务的名称：可以代码创建也可以使用现有的，如果代码创建，请取消createHostedService()注释
+	    private static String hostedServiceName="georges01";                    //云服务的名称：可以代码创建也可以使用现有的，如果代码创建，请取消createHostedService()注释
 	    private static String deploymentName = testVMPrefix + "deploy1";    
 	    private static String virtualMachineName = testVMPrefix + "vm1"; 
 	    private static String hostedServiceLabel = testVMPrefix + "HostedServiceLabel1";
