@@ -36,7 +36,7 @@ Azure SDK提供多种认证方式，以下主要提供两种认证方式，publi
 
     **示例代码**
 
-	Configuration config = PublishSettingsLoader.createManagementConfiguration("<publishsettings file path>", "Sub Id"); <br>
+	Configuration config = PublishSettingsLoader.createManagementConfiguration("&lt;publishsettings file path&gt;", "&lt;Sub Id&gt;"); <br>
     ComputeManagementClient computeManagementClient = ComputeManagementService.create(config);<br>
     VirtualMachineOperations vmop = computeManagementClient.getVirtualMachinesOperations();
 
@@ -53,7 +53,7 @@ Azure SDK提供多种认证方式，以下主要提供两种认证方式，publi
     
     **示例代码**
     
-    Configuration config = Configuration.configure(new URI("https://management.core.chinacloudapi.cn"), <sub Id\>, <cert location\>, <cert password\>);<br>
+    Configuration config = Configuration.configure(new URI("https://management.core.chinacloudapi.cn"), &lt;sub Id&gt;, &lt;cert location&gt;, &lt;cert password&gt;);<br>
 	ComputeManagementClient computeManagementClient = ComputeManagementService.create(config);
     VirtualMachineOperations vmop = computeManagementClient.getVirtualMachinesOperations();
     
