@@ -17,7 +17,7 @@
 - [场景3 - 误设置防火墙规则](#scenario03)
 - [场景4 - 挂载UUID相同的系统盘](#scenario04)
 - [场景5 - 使用device名称挂载软raid的device，名称发生变化引起启动失败](#scenario05)
-- [场景6 - fio测试磁盘性能使用filename参数测试已经完成格式化的磁盘](#scenario06)
+
 
 
 ##<a id="scenario01"></a>场景1 
@@ -88,43 +88,6 @@
 
 注：本场景测试环境为CentOS 6.5, 如果您当前使用的非该版本, 请注意版本的差异性。
  
-##<a id="scenario06"></a>场景6
-使用fio测试磁盘性能的时候，切勿使用filename参数测试已经完成格式化的磁盘，否则可能导致文件系统损坏，如果是针对系统盘测试，文件系统损坏后，可能无法正常启动系统导致无法使用：
-fio使用大致步骤：
-更新源：
 
-	rpm -ivh http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
-
-安装：
-
-	yum -y install fio
- 
-安装完成后，假设挂载点为/mnt/sdc，使用下面的命令测试：
-
-`fio -directory=/data -name=tempfile.dat -direct=1 -rw=randwrite -bs=8k -size=2G -numjobs=16 -time_based -runtime=100 -group_reporting`
- 
-测试的输出结果大致如下，从高亮的地方可以看到IOPS的数值：
-
-	tempfile.dat: (g=0): rw=randwrite, bs=4K-4K/4K-4K/4K-4K, ioengine=sync, iodepth=1
-	...
-	fio-2.1.10
-	Starting 16 processes
-	tempfile.dat: Laying out IO file(s) (1 file(s) / 2048MB)
-	tempfile.dat: Laying out IO file(s) (1 file(s) / 2048MB)
-	tempfile.dat: Laying out IO file(s) (1 file(s) / 2048MB)
-	……
-	Jobs: 16 (f=16): [wwwwwwwwwwwwwwww] [100.0% done] [0KB/20413KB/0KB /s] [0/5103/0 iops] [eta 00m:00s]
-	tempfile.dat: (groupid=0, jobs=16): err= 0: pid=11310: Wed Oct 28 08:38:20 2015
-	  write: io=1991.6MB, bw=20393KB/s, iops=5098, runt=100002msec
-	    clat (msec): min=1, max=142, avg= 3.13, stdev= 3.86
-	     lat (msec): min=1, max=142, avg= 3.13, stdev= 3.86
-	……
-
->**注意:**
-filename参数指定某个要测试的裸设备（硬盘或分区），切勿在系统分区做测试，会破坏系统分区，而导致系统崩溃。若一定要测试系统分区较为安全的方法是：在根目录下创建一个空目录，在测试命令中使用directory参数指定该目录，而不使用filename参数
-
-关于fio 测试iops的更多详细内容，请阅读[这篇文章](http://blog.csdn.net/commsea/article/details/11797011)
-
-注：本场景测试环境为CentOS 6.5, 如果您当前使用的非该版本, 请注意版本的差异性。
  
 
