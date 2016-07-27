@@ -4,6 +4,10 @@ Used from SMEs to review conntent which will be put under AOG on A.CN
 
 #计算
 
+##[Azure Linux 虚拟机常见导致无法远程的操作](./articles/aog-virtual-machines-linux-scenarios-unable-to-remote.md)
+
+##[Azure Windows 虚拟机常见导致无法远程的操作](./articles/aog-virtual-machines-windows-scenarios-unable-to-remote.md)
+
 ##[如何为虚拟机附加磁盘](./articles/aog-virtual-machines-attach-vhd.md)
 
 ##[通过 PowerShell 的方式增加虚拟机终结点](./articles/aog-virtual-machines-ps-add-endpoint.md)
@@ -18,9 +22,9 @@ Used from SMEs to review conntent which will be put under AOG on A.CN
 
 ##[对 Linux Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](./articles/virtual-machines-troubleshoot-ssh-connections.md)
 
-##[对 Windows Azure 虚拟机的远程桌面连接进行基本故障排除](./articles/virtual-machines-rdp-detailed-troubleshoot.md)
+##[对 Windows Azure 虚拟机的远程桌面连接进行详细故障排除](./articles/virtual-machines-rdp-detailed-troubleshoot.md)
 
-##[对 Windows Azure 虚拟机的远程桌面连接进行详细故障排除](./articles/virtual-machines-troubleshoot-remote-desktop-connections.md)
+##[对运行 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](./articles/virtual-machines-troubleshoot-remote-desktop-connections.md)
 
 ##[云服务 Web 角色/辅助角色的默认 TEMP 文件夹大小太小](./articles/cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md)
 
