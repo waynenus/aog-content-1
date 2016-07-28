@@ -171,10 +171,10 @@
 
 如果使用的是证书身份验证，则需验证你是否具有这些权限以访问主目录中的 .ssh 文件夹：
 
-- Chmod 700 ~/.ssh
-- Chmod 644 ~/.ssh/*.pub
-- Chmod 600 ~/.ssh/id\_rsa（或存储私钥的其他任何文件）
-- Chmod 644 ~/.ssh/known\_hosts（包含已通过 SSH 连接到的主机）
+- chmod 700 ~/.ssh
+- chmod 644 ~/.ssh/*.pub
+- chmod 600 ~/.ssh/id\_rsa（或存储私钥的其他任何文件）
+- chmod 644 ~/.ssh/known\_hosts（包含已通过 SSH 连接到的主机）
 
 #### 来源 2：组织边缘设备
 
