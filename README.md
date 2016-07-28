@@ -22,7 +22,7 @@ Used from SMEs to review conntent which will be put under AOG on A.CN
 
 ##[对 Linux Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](./articles/virtual-machines-troubleshoot-ssh-connections.md)
 
-##[对 Windows Azure 虚拟机的远程桌面连接进行详细故障排除](./articles/virtual-machines-rdp-detailed-troubleshoot.md)
+##[对在 Azure 虚拟机上运行的应用程序的访问进行故障排除](./articles/virtual-machines-rdp-detailed-troubleshoot.md)
 
 ##[对运行 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](./articles/virtual-machines-troubleshoot-remote-desktop-connections.md)
 
