@@ -71,3 +71,6 @@ Used from SMEs to review conntent which will be put under AOG on A.CN
 #计费
 
 ##[释放虚拟磁盘未使用空间来减少计费容量](./articles/aog-billing-delete-unused-vhd-to-reduce-cost.md)
+
+#示例代码
+##[使用 Azure Java SDK 管理 VM](./articles/aog-azure-java-manage-vm.md)
