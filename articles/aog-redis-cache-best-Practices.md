@@ -1,6 +1,6 @@
-#Azure Redis最佳实践
+﻿#Azure Redis最佳实践
 
-下面我会给大家分享一些在使用Azure Redis过程中的最佳实践。。 这些信息是基于我数以百计的Azure Redis的客户，在他们使用StackExchange.Redis的时候研究他们所看到的各种各样的错误所总结的。
+下面我会给大家分享一些在使用Azure Redis过程中的最佳实践。 这些信息是基于我数以百计的Azure Redis的客户，在他们使用StackExchange.Redis的时候研究他们所看到的各种各样的错误所总结的。
 ##StackExchange.Redis
 
 1.	设置AbortConnect 为false，然后让ConnectionMultiplexer自动重新连接， [点击这里](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md)查看详细内容。
