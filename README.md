@@ -44,6 +44,8 @@ Used from SMEs to review conntent which will be put under AOG on A.CN
 
 #网络
 
+##[排查应用程序网关中的网关无效错误](./articles/application-gateway-troubleshooting-502.md)
+
 ##[使用管理门户配置与 VNet 的点到站点 VPN 连接](./articles/vpn-gateway-point-to-site-create.md)
 
 ##[使用 Azure 管理门户创建具有站点到站点 VPN 连接的虚拟网络](./articles/vpn-gateway-site-to-site-create.md)
