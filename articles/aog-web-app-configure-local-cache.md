@@ -1,4 +1,4 @@
-#为azure web应用配置本地缓存
+#Azure Web应用配置本地缓存
 
 ##Azure Web应用内容的存储方式
 
@@ -31,8 +31,6 @@ Azure web 应用内容（包括代码文件，资源文件等）默认并不是�
 
 1.	登录Portal，进入web应用的配置界面，为应用设置添加如下参数:
 
-	WEBSITE_LOCAL_CACHE_OPTION = Always<br>
-	WEBSITE_LOCAL_CACHE_SIZEINMB = 1024
 
  	![](./media/aog-web-app-configure-local-cache/portal.png)
 
@@ -46,7 +44,7 @@ Azure web 应用内容（包括代码文件，资源文件等）默认并不是�
 
 1.	登录web应用的SCM站点：https://yourwebsitename.scm.chinacloudsites.cn
 2.	进入Process explorer 面板
-3.	 
+ 
 	![](./media/aog-web-app-configure-local-cache/kudu.png)
 
 
