@@ -6,7 +6,7 @@
 	authors=""
 	manager="" 
 	editor=""/>
-<tags ms.service="automation-aog" ms.date="" wacn.date="08/22/2016"/>
+<tags ms.service="aog-concept" ms.date="" wacn.date="08/22/2016"/>
 
 # Azure网络相关名词解释
 * [5-tuples，5元组](#tuples)
