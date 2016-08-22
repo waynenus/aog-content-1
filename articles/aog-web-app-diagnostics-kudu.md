@@ -10,6 +10,7 @@
 - [进程管理器](#process)
 - [其它在线工具](#tool)
 - [Web应用扩展](#ext)
+
 ## <a id="login"></a>登陆Azure Kudu站点
 在浏览器中输入[https://{sitename}.scm.chinacloudsites.cn](#),在弹出的认证窗口中输入web应用的部署账号和密码（关于如何访问KUDU请阅读[这篇文章](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service)），验证成功后进入Kudu首页，首页包含Kudu当前的版本信息以及Kudu REST API接口信息，如下图:
 
