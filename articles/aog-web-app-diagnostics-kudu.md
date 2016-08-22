@@ -1,27 +1,27 @@
 # Kudu管理和诊断azure web应用
 
 
-[Azure Kudu](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession)是GitHub上的一个开源项目，Kudu站点 (也称为网站控制管理 SCM) 提供了一系列的在线工具，可以帮助用户查看web应用的设置，诊断web应用，以及安装web应用扩展。下面会针对一些主题来讨论。
+[Azure Kudu](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession)是GitHub上的一个开源项目，Kudu站点 (也称为网站控制管理 SCM) 提供了一系列的在线工具，可以帮助用户查看web应用的设置，诊断web应用，以及安装web应用扩展。本文包含以下内容：
 
-- 登陆Azure Kudu站点
-- 查看web应用环境
-- 调试控制台
-- 场景举例
-- 进程管理器
-- 其它在线工具
-
-## 登陆Azure Kudu站点
+- [登陆Azure Kudu站点](#login)
+- [查看web应用环境](#env)
+- [调试控制台](#console)
+- [场景举例](#scenario)
+- [进程管理器](#process)
+- [其它在线工具](#tool)
+- [Web应用扩展](#ext)
+## <a id="login"></a>登陆Azure Kudu站点
 在浏览器中输入[https://{sitename}.scm.chinacloudsites.cn](#),在弹出的认证窗口中输入web应用的部署账号和密码（关于如何访问KUDU请阅读[这篇文章](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service)），验证成功后进入Kudu首页，首页包含Kudu当前的版本信息以及Kudu REST API接口信息，如下图:
 
 ![Kudu REST API接口信息](media/aog-web-app-diagnostics-kudu/kudu-rest-api.png)
 
-## 查看web应用环境
+## <a id="env"></a>查看web应用环境
 
 进入Environment页面，用户可以查看web应用的运行环境，包括系统信息，应用程序设置，连接设置，环境变量，运行时路径，服务器HTTP headers配置以及服务器变量。
 
 ![Environment](media/aog-web-app-diagnostics-kudu/environment.png)
 
-## 调试控制台
+## <a id="console"></a>调试控制台
 
 提供文件管理器和远程终端两大核心功能。
 
@@ -30,7 +30,7 @@
 	![Debug Console](media/aog-web-app-diagnostics-kudu/debug-console.png)
 * 提供远程终端Power Shell和 cmd窗口，用户可以远程在web应用实例上执行命令。
 
-## 场景举例
+## <a id="scenario"></a>场景举例
 
 当web应用出现性能问题，可以通过控制台 抓取web 应用的工作进程（w3wp.exe）的hang dump用于后续分析。
 
@@ -48,7 +48,7 @@
 
 4. 下载生成的dump文件，用windows调试工具如windbg进行后续分析。
 
-## 进程管理器
+## <a id="process"></a>进程管理器
 
 用户可以通过进程管理器查看web应用实例上运行的进程的信息：
 
@@ -57,7 +57,7 @@
 点击Properties按钮可以查看进程的具体信息
 点击Start Profiling 开始监控进程CPU使用情况，监控结束后自动生成报表。
 
-## 其它在线工具
+## <a id="tool"></a>其它在线工具
 Tools选项卡下面提供了一些其他在线工具：
 
 * Diagnostic Dump：
@@ -86,7 +86,7 @@ Tools选项卡下面提供了一些其他在线工具：
   
 	如果web应用是通过Git部署，用户点击此按钮可以下载部署脚本。
 
-## Web应用扩展：
+## <a id="ext"></a>Web应用扩展
 
 Kudu站点提供了web应用扩展界面，用户可以查看已经安装的扩展或者安装新的扩展。
 
