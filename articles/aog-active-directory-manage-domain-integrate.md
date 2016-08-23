@@ -73,6 +73,6 @@ PowerShell将在本地域的ADFS服务中注册Azure AD的依赖方(Relying Part
 
 ## 更多信息
 
-- 将自定义域名添加到 Azure Active Directory
-- 将本地标识与 Azure Active Directory 集成
+- [将自定义域名添加到 Azure Active Directory](https://www.azure.cn/documentation/articles/active-directory-add-domain/)
+- [将本地标识与 Azure Active Directory 集成](https://www.azure.cn/documentation/articles/active-directory-aadconnect/#install-azure-ad-connect)
 
