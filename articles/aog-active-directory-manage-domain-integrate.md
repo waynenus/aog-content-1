@@ -9,8 +9,8 @@
 ##前提条件
 
 - 有效的Azure或Office 365订阅
-- Azure AD或Office 365订阅中已被验证的自定义域名
-- 本地域内已安装并部署完成的Azure AD Connect集成工具
+- Azure AD或Office 365订阅中[已被验证的自定义域名](https://www.azure.cn/documentation/articles/active-directory-add-domain/)
+- 本地域内已安装并部署完成的[Azure AD Connect集成工具](https://www.azure.cn/documentation/articles/active-directory-aadconnect/)
 - 本地域内已安装并部署完成的ADFS联合身份验证服务
 - 本地域的域管理员账号
 - 加入本地域，并拥有internet连接的电脑
