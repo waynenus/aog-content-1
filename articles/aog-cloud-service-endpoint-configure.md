@@ -32,7 +32,7 @@
 
 ![](media/aog-cloud-service-endpoint-configure/vm-config-https.png)
 
->**注意:**在创建虚拟机的向导中，不要修改自动添加的终结点（Windows的Remote Desktop和PowerShell， Linux的SSH）的协议和私有端口。这些是系统默认使用的协议和端口。若被在此时被修改，会导致新创建的虚拟机对应的服务无法连接。待虚拟机部署完成后，可以根据实际的需求再做修改。
+>**注意:**在创建虚拟机的向导中，不要修改自动添加的终结点（Windows的Remote Desktop和PowerShell， Linux的SSH）的协议和私有端口。这些是系统默认使用的协议和端口。若在此时被修改，会导致新创建的虚拟机对应的服务无法连接。待虚拟机部署完成后，可以根据实际的需求再做修改。
 
 ### <a id="existVM"></a>已部署的虚拟机终结点设置
 
