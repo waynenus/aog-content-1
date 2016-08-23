@@ -23,28 +23,28 @@ Azure AD模块支持安装了默认版本的微软.Net Framework与Windows Power
 ## 连接至Azure AD
 
 以管理员模式运行桌面的Windows Azure Active Directory Module for Windows PowerShell快捷方式，或在普通PowerShell窗口中输入`Import-Module MSOnline`以加载模块指令。
-在运行本文介绍的PowerShell指令之前，你必须使用`Connect-MsolService`命令连接至Azure AD，然后输入你的账户与密码（例如：example@domain.partner.onmschina.cn)。你也可以使用以下命令提前输入账户凭据并连接：
+在运行本文介绍的PowerShell指令之前，您必须使用`Connect-MsolService`命令连接至Azure AD，然后输入您的账户与密码（例如：example@domain.partner.onmschina.cn)。您也可以使用以下命令提前输入账户凭据并连接：
 
 	$msolcred = get-credential
 	connect-msolservice -credential $msolcred
 
 ## 查看Azure AD中域的联合设置
 
-在连接至Azure AD之后，你可以使用以下命令得到当前域名的联合设置信息(将domain.com替换成你的订阅中已被验证的自定义域名)：
+在连接至Azure AD之后，您可以使用以下命令得到当前域名的联合设置信息(将domain.com替换成您的订阅中已被验证的自定义域名)：
 
 	Get-MsolDomain
 	Get-MsolDomainFederationSettings -DomainName (domain.com)
 
 ## 连接至本地域内的ADFS联合身份验证服务
 
-在连接至Azure AD之后，你需要使用以下命令来使PowerShell能够连接至本地域内的ADFS服务，使得PowerShell能够读取或更改ADFS服务的信息(将adfs.domain.com替换成你的本地域中ADFS服务器的机器名)：
+在连接至Azure AD之后，您需要使用以下命令来使PowerShell能够连接至本地域内的ADFS服务，使得PowerShell能够读取或更改ADFS服务的信息(将adfs.domain.com替换成您的本地域中ADFS服务器的机器名)：
 
 	Set-MsolAdfsContext -Computer (adfs.domain.com)
 
 ## 将Azure AD中的域从联合登陆模式转换至密码同步登陆模式
 
 当Azure AD里域的用户使用联合登陆时，他/她使用本地域的用户凭据登陆Azure/Office 365，Azure AD本身不会存有用户的密码哈希。
-在域从联合登陆转换模式至密码同步登陆模式时，PowerShell会删除ADFS服务中关于Azure AD的依赖方(Relying Party)设置，并给该域内的每个被同步的用户提供一个临时的密码。以下是转换命令(将domain.com替换成你的订阅中已被验证的自定义域名)：
+在域从联合登陆转换模式至密码同步登陆模式时，PowerShell会删除ADFS服务中关于Azure AD的依赖方(Relying Party)设置，并给该域内的每个被同步的用户提供一个临时的密码。以下是转换命令(将domain.com替换成您的订阅中已被验证的自定义域名)：
 
 	Convert-MsolDomainToStandard -DomainName (domain.com) -PasswordFile C:\password.txt -SkipUserConversion $false
 
@@ -53,7 +53,7 @@ Azure AD模块支持安装了默认版本的微软.Net Framework与Windows Power
 
 ## 将Azure AD中的域从密码同步登陆模式转换至联合登陆模式
 
-你可以使用以下命令将Azure AD的域从密码同步登陆模式转换至联合登陆模式(将domain.com替换成你的订阅中已被验证的自定义域名)：
+您可以使用以下命令将Azure AD的域从密码同步登陆模式转换至联合登陆模式(将domain.com替换成您的订阅中已被验证的自定义域名)：
 
 	Convert-MsolDomainToFederated -DomainName (domain.com) -SupportMultipleDomain
 
@@ -61,13 +61,13 @@ PowerShell将在本地域的ADFS服务中注册Azure AD的依赖方(Relying Part
 
 ## 更新Azure AD中域的联合登陆配置信息
 
-在某些情况下，你需要更新域的联合登陆配置信息，例如：
+在某些情况下，您需要更新域的联合登陆配置信息，例如：
 
 - 本地域中ADFS服务的签名证书被更新
 - 本地域中ADFS服务中Azure AD的依赖方设置(Relying Party)被误改或误删
 - Azure AD的签名证书被更新等
 
-使用以下命令来更新域的联合登陆配置信息(将domain.com替换成你的订阅中已被验证的自定义域名)：
+使用以下命令来更新域的联合登陆配置信息(将domain.com替换成您的订阅中已被验证的自定义域名)：
 
 	Update-MsolFederatedDomain -DomainName (domain.com) -SupportMultipleDomain
 
