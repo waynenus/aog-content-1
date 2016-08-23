@@ -7,18 +7,25 @@
 
 用户新建、修改已经部署的虚拟机终结点、或设置负载平衡集时，Azure经典门户中都有设置终结点的相关步骤。除了Azure经典门户，用户也可以通过Windows PowerShell来添加、修改、删除终结点。
 
-## Azure经典门户设置终结点
+## 本文包含以下内容
 
-- [新建虚拟机的终结点的设置](#newVM)
-- [已部署的虚拟机终结点设置](#existVM)
-- [添加终结点](#add)
-- [编辑终结点](#modify)
-- [删除终结点](#delete)
-- [管理ACL](#acl)
-- [创建负载平衡集](#balance)
+- [新建虚拟机终结点设置](#newVM)
+- [在Azure经典门户管理终结点](#portal)
+	- [添加终结点](#portaladd)
+	- [编辑终结点](#portaledit)
+	- [删除终结点](#portaledit)
+- [在Azure经典门户管理ACL](#acl)
+- [创建/配置负载平衡集](#balance)
+- [使用PowerShell设置终结点](#powershell)
+	- [获取终结点](#powershellget)
+	- [添加终结点](#powershelladd)
+	- [编辑终结点](#powershelledit)
+	- [删除终结点](#powershelledit)
+- [终结点在资源管理器（Azure Resource Manager）中的变化](#change)
 
 
-### <a id="newVM"></a>新建虚拟机的终结点的设置
+
+## <a id="newVM"></a>新建虚拟机终结点设置
 
 在Azure经典门户中，当用户选择从库中创建虚拟机时，创建向导的第三步包含了终结点的相关设置。若用户选择的是Windows的映像，这里会自动添加用于Remote Desktop和PowerShell的终结点。Remote Desktop的终结点使用TCP协议，公共端口会自动分配，私有端口使用Windows默认的3389。PowerShell同样使用TCP协议，公共端口和私有端口同为5986。
 
@@ -34,7 +41,7 @@
 
 >**注意:**在创建虚拟机的向导中，不要修改自动添加的终结点（Windows的Remote Desktop和PowerShell， Linux的SSH）的协议和私有端口。这些是系统默认使用的协议和端口。若在此时被修改，会导致新创建的虚拟机对应的服务无法连接。待虚拟机部署完成后，可以根据实际的需求再做修改。
 
-### <a id="existVM"></a>已部署的虚拟机终结点设置
+## <a id="existVM"></a>在Azure经典门户管理终结点
 
 虚拟机创建过程中，Azure自动添加的终结点仅用于与虚拟机建立连接。如果在虚拟机创建过程中没有添加自定义的终结点，用户也可以在Azure经典门户中为创建好的虚拟机添加终结点，或者修改已有的终结点。在Azure经典门户中选择需要修改终结点的虚拟机，然后点击终结点选项卡。
 
@@ -42,7 +49,7 @@
 
 用户可以在这里添加新的终结点，编辑或删除已有的终结点。针对已有的终结点，用户还可以配置访问控制列表（Access Control List，ACL）。
 
-#### <a id="add"></a>添加终结点
+#### <a id="portaladd"></a>添加终结点
 
 点击“添加”后，选择“添加独立终结点”，然后点击“下一步”。
 
@@ -54,7 +61,7 @@
 
 Azure需要几秒钟更新配置来使新的终结点生效。
 
-#### <a id="modify"></a>编辑终结点
+#### <a id="portaledit"></a>编辑终结点
 
 选择需要编辑的终结点，然后点击页面下方的“编辑”。打开的页面中可以修改终结点名称、协议、公共端口和私有端口，也可以在这里创建负载平衡集。但编辑终结点不可以修改服务器返回属性。
 
@@ -62,13 +69,13 @@ Azure需要几秒钟更新配置来使新的终结点生效。
 
 编辑完成后点击“√”保存修改。
 
-#### <a id="delete"></a>删除终结点
+#### <a id="portaledit"></a>删除终结点
 
 选中要删除的终结点，然后点击页面下方的“删除”。页面将二次确认是否要删除终结点。点击“是”确认，或者点击“否”取消删除。
 
 ![](media/aog-cloud-service-endpoint-configure/endpoint-delete.png)
 
-#### <a id="acl"></a>管理ACL
+## <a id="acl"></a>管理ACL
 
 Azure经典门户允许对每个终结点单独设置访问控制列表（ACL）。通过ACL，能够限制具体某个网段或网络地址（以CIDR： /32表示）对终结点的访问权限（允许或禁止）。需要注意的是，当终结点没有配置ACL的时候，它默认允许被任何地址访问。一旦设置了ACL，所有被允许的ACL条目以外的访问都将被拒绝。
 
@@ -78,7 +85,7 @@ Azure经典门户允许对每个终结点单独设置访问控制列表（ACL）
 
 ![](media/aog-cloud-service-endpoint-configure/acl.png)
 
-#### <a id="balance"></a>创建负载平衡集
+## <a id="balance"></a>创建负载平衡集
 
 Azure经典门户中的负载平衡集基于Azure负载平衡器来实现。它是一种工作在传输层（OSI的第4层）类型的负载平衡器。它可以将传入的TCP、UDP流量分发到云服务中正常运行的服务实例上，或者分发到负载平衡器集内所定义的虚拟机上。Azure负载平衡器使用的分发算法=是对5元组（或2元组，3元组）进行哈希运算。通过对运算结果的比较，负载平衡器将流量映射到对应的可用服务上。负载平衡集的配置通过对终结点的编辑来完成。在将加入负载平衡集的第一台虚拟机的终结点配置页面下，点击“添加”（或者选中将加入负载平衡集的终结点，然后点击“编辑”）。输入名称、协议、公共端口和私有端口后，勾选“创建负载平衡集”，然后点击下一步。
 
@@ -110,11 +117,11 @@ Azure页面上会显示正在进行更新，大约半分钟后更新完成。
 
 若要添加第三台，甚至更多的虚拟机到这个负载平衡集，用户需要重复第二台的步骤来完成。
 
-## 使用PowerShell设置终结点
+## <a id="powershell"></a>使用PowerShell设置终结点
 
 除了使用Azure经典门户，用户还可以使用PowerShell设置终结点。若要使用PowerShell来管理用户在Azure上的环境，需要安装PowerShell并且下载Azure订阅文件。关于如何使用Windows Azure PowerShell，请浏览[这篇文章](https://www.azure.cn/zh-cn/manage/linux/how-to-guides/powershell-cmdlets/)。
 
-### 获取终结点信息
+### <a id="powershellget"></a>获取终结点信息
 
 PowerShell连接Azure后，使用Get-AzureVM命令列出所有虚拟机，然后将需要设置终结点的虚拟机赋给变量$vm。
 
@@ -157,7 +164,7 @@ PowerShell连接Azure后，使用Get-AzureVM命令列出所有虚拟机，然后
 
 Get-AzureEndpoint命令的详细说明请参考[这篇文章（英文）](https://msdn.microsoft.com/en-us/library/azure/dn495158.aspx)
 
-### 添加终结点
+### <a id="powershelladd"></a>添加终结点
 
 首先用Get-AzureVM将需要添加终结点的虚拟机赋给变量$vm。
 	
@@ -244,7 +251,7 @@ Get-AzureEndpoint命令的详细说明请参考[这篇文章（英文）](https:
 
 Add-AzureEndpoint命令的参数和使用方法还有很多，例如前文提到的创建负载平衡集也可以使用PowerShell通过Add-AzureEndpoint命令来实现。详细说明请参考[这篇文章（英文）](https://msdn.microsoft.com/en-us/library/azure/dn495300.aspx)
 
-### 编辑终结点
+### <a id="powershelledit"></a>编辑终结点
 
 编辑终结点主要使用Set-AzureEndpoint命令。下面的例子中，通过该命令，将前一步创建的FTP终结点的公共端口和私有端口都修改为10021。编辑完成后使用Update-AzureVM命令将终结点更新到Azure中。
 
@@ -293,7 +300,7 @@ Add-AzureEndpoint命令的参数和使用方法还有很多，例如前文提到
 
 Set-AzureEndpoint命令的详细说明请参考（英文）：[https://msdn.microsoft.com/en-us/library/azure/dn495219.aspx](https://msdn.microsoft.com/en-us/library/azure/dn495219.aspx)  
 
-### 删除终结点
+### <a id="powershelldelete"></a>删除终结点
 
 删除终结点主要使用Remove-AzureEndpoint命令。其参数只需要终结点的名字即可。下面的例子删除了之前创建的终结点FTP。删除完成后使用Update-AzureVM命令将终结点更新到Azure中。
 
@@ -345,7 +352,7 @@ Set-AzureEndpoint命令的详细说明请参考（英文）：[https://msdn.micr
 
 Remove-AzureEndpoint命令的详细说明请参考[这篇文章（英文）](https://msdn.microsoft.com/en-us/library/mt589109.aspx)。
 
-## 终结点在资源管理器（Azure Resource Manager）中的变化
+## <a id="change"></a> 终结点在资源管理器（Azure Resource Manager）中的变化
 
 目前，Azure同时存在资源管理器和经典两种部署模型。对于大多数新的部署，Azure推荐使用资源管理器模型。[Azure门户预览](https://portal.azure.cn/)同时支持两种部署模型。[Azure经典门户](https://manage.windowsazure.cn/)仅支持经典部署模型。在资源管理器部署模型中，终结点是使用“网络安全组（NSG）”配置的。
 
