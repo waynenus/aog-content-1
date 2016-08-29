@@ -73,7 +73,7 @@
 
 1.	使用redis时推荐用大量的小数据，而不是少量的大数据，因此我们建议客户将大数据分割成小数据使用，更多的一些关于为什么要使用小数据的资料可以参考[链接](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)。
 2.	通过提高虚拟机型号(client端和redis server端)来增加带宽容量，这样可以减少在传输大数据时候的传送时间。需要注意的一点是，只增加client端或者server端一端的带宽是不够的，因此客户需要评估自己的带宽使用量，然后保证与客户的虚拟机带宽容量匹配。
-3.	增加对象ConnectionMultiplexer的数量和轮询请求数量。如果选择这样做，客户需要注意到的是确保不要为每个request都创建一个新的ConnectionMultiplexer，因为这样会大大的消耗能的机器性能。
+3.	增加对象ConnectionMultiplexer的数量和轮询请求数量。如果选择这样做，客户需要注意到的是确保不要为每个request都创建一个新的ConnectionMultiplexer，因为这样会大大的消耗机器性能。
 
 
 ## Server端常见问题
@@ -98,7 +98,7 @@
 	
 ### 高cpu/server负载大
 
-**问题描述：**高cpu使用率意味着，即使在redis server端可以很快的发送响应请求的条件下，client端也没办法及时的处理从redis server端发送过来的响应请求。  
+**问题描述：**高cpu使用率意味着，即使在redis server端可以很快的发送响应请求的条件下，server端也没办法及时的处理从redis client端发送过来的响应请求。  
 
 **监控该问题：**通过azure管理门户或者其他的一些性能计数器来监控整个系统的cpu使用率。需要注意的一点的尽量避免监控某个进程的cpu，因为可能某个单一的进程cpu利用率很低，但是整体系统的cpu利用率却很高。同时也需要注意在发生超时时观察cpu是否也出现了利用率的峰值情况。
 
