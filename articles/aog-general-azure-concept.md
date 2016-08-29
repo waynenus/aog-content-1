@@ -46,7 +46,7 @@ Azure负载平衡器使用的分发算法是对5元组（或2元组，3元组）
 ## <a id="dip"></a>DIP/Dynamic IP address/动态IP
 DIP是虚拟机在部署时，Azure通过DHCP分配给虚拟机的内部IP地址。只要虚拟机没有被停机或删除，DIP将一直分配在这台虚拟机上。但是，如果虚拟机被停机或删除，DIP将被释放，并分配给新部署的虚拟机。若虚拟机部署在虚拟网络的子网中，DIP将从虚拟机所在的子网中分配。如果你需要虚拟机使用固定的内部IP，则需要为其设置静态内部专用IP。
 
-[如何设置静态内部专用 IP请阅读](https://www.azure.cn/documentation/articles/virtual-networks-reserved-private-ip/)
+[如何设置静态内部专用IP](https://www.azure.cn/documentation/articles/virtual-networks-reserved-private-ip/)
 
 ## <a id="endpoint"></a>Endpoint/终结点
 终结点包含IP协议和对应的端口。每个终结点都有一个公用端口和一个专用端口。Azure负载平衡器使用公用端口侦听从Internet传入的虚拟机流量。虚拟机使用专用端口侦听通常发送到虚拟机上运行的应用程序或服务的传入流量。
