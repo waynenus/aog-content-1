@@ -1,13 +1,13 @@
-﻿#Azure Redis最佳实践
+#Azure Redis最佳实践
 
 下面我会给大家分享一些在使用Azure Redis过程中的最佳实践。 这些信息是基于我数以百计的Azure Redis的客户，在他们使用StackExchange.Redis的时候研究他们所看到的各种各样的错误所总结的。
 ##StackExchange.Redis
 
 1.	设置AbortConnect 为false，然后让ConnectionMultiplexer自动重新连接， [点击这里](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md)查看详细内容。
 2.	重复使用ConnectionMultiplexer – 不要在每次请求的时候创建。另外我们强烈推荐您使用[Lazy&lt;ConnectionMultiplexer&gt;模式](https://www.azure.cn/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#connect-to-the-cache)。 
-3.	Redis最适合较小的数据，所以请考虑把更大的数据切成多个密钥存储。在这个有关Redis的讨论中，100KB被认为是“大的数据”。这篇文章列出了Redis在存取大的数据时会引发的问题。
+3.	Redis最适合较小的数据，所以请考虑把更大的数据切成多个键值存储。在这个有关Redis的讨论中，100KB被认为是“大的数据”。这篇文章列出了Redis在存取大的数据时会引发的问题。
 4.	配置[ThreadPool设置](https://gist.github.com/JonCole/e65411214030f0d823cb)来避免超时。
-5.	至少使用默认连接超时时间为5秒。这样StackExchange.Redis才会在网络不佳的情况下有足够的时间来重新建立连接。
+5.	将默认连接超时时间至少设为5秒。这样StackExchange.Redis才会在网络不佳的情况下有足够的时间来重新建立连接。
 6.	注意与您正在运行的不同操作关联的性能成本。比如“KEYS”命令的时间复杂度为O(n), 我们应当尽量避免去使用它。在[redis.io 网站](http://redis.io/commands/)上有对于每一种操作的时间复杂度的详细介绍。
 
 ##配置和概念
@@ -23,7 +23,7 @@
 3.	我们建议使用Dv2系列虚拟机作为你的客户端，因为这个系列的虚拟机拥有更好的配置，这样我们能获得最佳的测试结果。
 4.	确认您选择的用来测试客户端虚拟机在计算能力和带宽性能方面要优于你要测试的Redis缓存。
 5.	如果您使用的是Windows，需要开启VRSS选项。[点击这里](https://technet.microsoft.com/zh-cn/library/dn383582%28v=ws.11%29.aspx)查看详细信息。
-6.	高级级别的Redis实例拥有更好的网络延迟和更高吞吐量，因为它们运行在更高配置的硬件上，比如CPU和网络。
+6.	高级级别的Redis实例拥有更低的网络延时和更高吞吐量，因为它们运行在更高配置的硬件上，比如CPU和网络。
 
 ##Redis-Benchmark示例
 
