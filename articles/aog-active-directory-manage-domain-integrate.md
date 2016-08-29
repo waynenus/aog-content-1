@@ -18,7 +18,7 @@
 ## 安装PowerShell 模块
 
 Azure AD模块支持安装了默认版本的微软.Net Framework与Windows PowerShell工具的以下操作系统：Windows 8.1，Windows 8，Windows 7，Windows Server 2012 R2，Windows Server 2012或Windows Server 2008 R2。
-以域管理员账号登陆电脑，下载并安装[适用于 IT 专业人员 RTW 的 Microsoft Online Services 登录助手](https://www.microsoft.com/zh-cn/download/details.aspx?id=41950)，然后下载并安装[Windows PowerShell Azure AD模块（x64版本）](https://msdn.microsoft.com/zh-cn/library/azure/dn495300.aspx)。
+以域管理员账号登陆电脑，下载并安装[适用于 IT 专业人员 RTW 的 Microsoft Online Services 登录助手](https://www.microsoft.com/zh-cn/download/details.aspx?id=41950)，然后下载并安装[Windows PowerShell Azure AD模块（x64版本）](http://go.microsoft.com/fwlink/p/?linkid=236297)。
 
 ## 连接至Azure AD
 
