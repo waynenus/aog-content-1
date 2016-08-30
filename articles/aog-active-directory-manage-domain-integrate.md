@@ -28,12 +28,20 @@ Azure AD模块支持安装了默认版本的微软.Net Framework与Windows Power
 	$msolcred = get-credential
 	connect-msolservice -credential $msolcred
 
+![](media/aog-active-directory-manage-domain-integrate/connect-msolService.png)
+
 ## 查看Azure AD中域的联合设置
 
 在连接至Azure AD之后，您可以使用以下命令得到当前域名的联合设置信息(将domain.com替换成您的订阅中已被验证的自定义域名)：
 
 	Get-MsolDomain
 	Get-MsolDomainFederationSettings -DomainName (domain.com)
+
+![](media/aog-active-directory-manage-domain-integrate/get-moldomain.png)
+
+![](media/aog-active-directory-manage-domain-integrate/get-federation.png)
+
+
 
 ## 连接至本地域内的ADFS联合身份验证服务
 
@@ -48,6 +56,8 @@ Azure AD模块支持安装了默认版本的微软.Net Framework与Windows Power
 
 	Convert-MsolDomainToStandard -DomainName (domain.com) -PasswordFile C:\password.txt -SkipUserConversion $false
 
+![](media/aog-active-directory-manage-domain-integrate/convert.png)
+
 临时密码会被储存在C:\password.txt文件中，管理员需要将临时密码分配给每个用户，以便他们登陆Azure/Office 365。
 如果管理员希望用户可以沿用之前的密码，可以用Azure AD Connect工具触发一次密码全同步操作，该操作会将被同步用户的密码哈希同步至Azure AD中。关于如何触发密码全同步，请参阅[使用 Azure AD Connect 同步实现密码同步](https://www.azure.cn/documentation/articles/active-directory-aadconnectsync-implement-password-synchronization/)。
 
@@ -56,6 +66,8 @@ Azure AD模块支持安装了默认版本的微软.Net Framework与Windows Power
 您可以使用以下命令将Azure AD的域从密码同步登陆模式转换至联合登陆模式(将domain.com替换成您的订阅中已被验证的自定义域名)：
 
 	Convert-MsolDomainToFederated -DomainName (domain.com) -SupportMultipleDomain
+
+![](media/aog-active-directory-manage-domain-integrate/Convert-MsolDomainToFederated.png)
 
 PowerShell将在本地域的ADFS服务中注册Azure AD的依赖方(Relying Party)设置，并在Azure AD中更新域的联合登陆设置。
 
@@ -70,6 +82,8 @@ PowerShell将在本地域的ADFS服务中注册Azure AD的依赖方(Relying Part
 使用以下命令来更新域的联合登陆配置信息(将domain.com替换成您的订阅中已被验证的自定义域名)：
 
 	Update-MsolFederatedDomain -DomainName (domain.com) -SupportMultipleDomain
+
+![](media/aog-active-directory-manage-domain-integrate/update.png)
 
 ## 更多信息
 
