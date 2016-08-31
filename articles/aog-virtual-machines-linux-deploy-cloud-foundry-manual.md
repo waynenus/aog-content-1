@@ -9,7 +9,7 @@
  
 任何PaaS都必须依附于底层的IaaS环境，这里我们使用Azure云平台。下图中显示了CF与IaaS，及其管理软件的关系。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/foundation.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/foundation.png)
 
 而我们安装CF的步骤，将从左至右进行。主要分为以下步骤：
 
@@ -32,34 +32,34 @@
 
 	azure config mode arm
  
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/config-arm.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/config-arm.png)
 
 登录Azure:
 
 	azure login -e AzureChinaCloud
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/CLI-login.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/CLI-login.png)
 
 根据开启浏览器，输入URL，填写代码。代码匹配成功后，将会转到Azure 认证界面，请输入订阅的服务管理员和密码。验证成功后，命令行界面将会出现登录成功信息。之后，可安全关闭浏览器，浏览器操作部分如下图。
 
 输入CLI中的Code：
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/device-login.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/device-login.png)
  
 输入账号密码登陆：
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/portal-login.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/portal-login.png) 
 
 接下来使用命令查询账号的基本信息，如果一个账号下有多个订阅，使用account set命令选中其中一个。
 
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/account-list.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/account-list.png)
  
 查询该订阅的详细信息，并用变量记录下订阅号和租户号，后续命令中会使用。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/account-list-result.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/account-list-result.png)
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/account-select.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/account-select.png)
  
  
 ###<a id="prepare_bosh"></a>  为bosh准备服务主体
@@ -68,33 +68,33 @@
 
 	azure ad app create --name lqicfad01 --password Lq1cfAD01 --home-page "https://lqicf01" --identifier-uris "https://lqicf01"
  
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/create-ad-app.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/create-ad-app.png)
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/set-clientid.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/set-clientid.png)
 
  
 为该账号创建服务主体。
 
 	azure ad sp create -a %Client_ID%
  
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/azure-ad-sp.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/azure-ad-sp.png)
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/echo-spn.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/echo-spn.png)
  
 并赋予其对应权限，使其拥有在Azure平台上对授权的订阅有进行资源创建管理的权限，如创建或删除虚拟机，创建或删除网卡等。
 
 	azure role assignment create --spn %SPN% --roleName "Virtual Machine Contributor" --subscription %Sub_ID%
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/role-assign.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/role-assign.png)
 
 
 	azure role assignment create --spn %SPN% --roleName "Network Contributor" --subscription %Sub_ID%
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/role-assign2.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/role-assign2.png)
  
 查看以确认授权成功。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/role-assign-list.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/role-assign-list.png)
  
 ###<a id="prepare-ready"></a>  Bosh和CF所需资源准备
 
@@ -112,21 +112,21 @@
 
 	azure group create --name lqicfrg01 --location "China East"
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/azure-group-create.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/azure-group-create.png)
  
 ####<a id="ready_account"></a> 存储账号
 
 	azure storage account create --location "China East" --type GRS --resource-group lqicfrg01 lqicfsa01
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/azure-storage-create.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/azure-storage-create.png)
  
 创建完成后，可以查看存储账号信息。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/azure-storage-show.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/azure-storage-show.png)
  
 将存储账号的密钥保存下来，以备后续使用。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/azure-storage-key-list.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/azure-storage-key-list.png)
  
 接下里要在存储里创建两个容器，bosh和stemcell。Bosh用于存放bosh director虚拟机的磁盘等数据；stemcell用于存放下载的stemcell镜像文件。这两个容器名字不能更改。
 
@@ -134,7 +134,7 @@
 
 	azure storage container create --account-name lqicfsa01 --account-key %Storage_Key% permission Blob --container stemcell
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/azure-storage-container-create.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/azure-storage-container-create.png)
 
 ####<a id="ready_ip"></a> CF公网IP
 
@@ -142,7 +142,7 @@ CF公网IP是最后一步中部署CF环境中需要使用的。需要给CF分配
 
 	azure network create --resource-group lqicfrg01 --location "China East" --allocation-meth Static --name lqicfip01-cf
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/network-public-ip-create.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/network-public-ip-create.png)
  
 
 ####<a id="ready_vnet"></a> 虚拟网络及其子网
@@ -151,13 +151,13 @@ CF公网IP是最后一步中部署CF环境中需要使用的。需要给CF分配
 
 	azure network vnet create --resource-group lqicfrg01 --name lqicfvnet01 --location "china East" --address-prefixes 10.0.0.0/16
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/vnet-create.png)	 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/vnet-create.png)	 
 
 	azure network vnet subnet create --resource-group lqicfrg01 --vnet-name lqicfvnet01 --name lqicfvnet01-bosh --address-prefixes 10.0.1.0/24
 	azure network vnet subnet create --resource-group lqicfrg01 --vnet-name lqicfvnet01 --name lqicfvnet01-cf --address-prefix 10.0.2.0/24
 	azure network vnet subnet create --resource-group lqicfrg01 --vnet-name lqicfvnet01 --name lqicfvnet01-diego --address-prefix 10.0.3.0/24
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/vnet-subnet-create.png)	 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/vnet-subnet-create.png)	 
  
 ####<a id="ready_subvnet"></a> 网络安全组
 
@@ -166,7 +166,7 @@ CF公网IP是最后一步中部署CF环境中需要使用的。需要给CF分配
 	azure network nsg create --resource-group lqicfrg01 --location "China East" --name lqicfnsg01-bosh
 	azure network nsg create --resource-group lqicfrg01 --location "China East" --name lqicfnsg01-cf
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/network-nsg-create.png)	 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/network-nsg-create.png)	 
  
 为不同安全组设置规则。
 	
@@ -177,7 +177,7 @@ CF公网IP是最后一步中部署CF环境中需要使用的。需要给CF分配
 	azure network nsg rule create --resource-group lqicfrg01 --nsg-name lqicfnsg01-cf --access Allow --protocol Tcp --direction Inbound --priority 201 source-address-prefix Internet --source-port-range * --destination-address-prefix * --name cf-https --destination-port-range 443
 	azure network nsg rule create --resource-group lqicfrg01 --nsg-name lqicfnsg01-cf --access Allow --protocol Tcp --direction Inbound --priority 202 source-address-prefix Internet --source-port-range * --destination-address-prefix * --name cf-log --destination-port-range 4443
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/network-nsg-rule.png)	
+![](media/aog-virtual-machines-linuxlinux-deploy-cloud-foundry-manual/network-nsg-rule.png)	
 
 ####<a id="ready_nic"></a> bosh跳板机
 
@@ -188,9 +188,9 @@ CF公网IP是最后一步中部署CF环境中需要使用的。需要给CF分配
 	azure network public-ip create --resource-group lqicfrg01 --location "china east" --allocation-method Dynamic --name lqicfip01-bosh
 	azure network nic create --resource-group lqicfrg01 --location "china East" --name lqicfnic01-bosh --public-ip-name lqicfip01-bosh --private-ip-address 10.0.1.10 --subnet-vnet-name lqicfvnet01 --subnet-name lqicfvnet01-bosh
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/network-public-ip-create.png)	 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/network-public-ip-create.png)	 
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/network-nic-create.png)	
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/network-nic-create.png)	
  
 查询并选择需要的镜像文件用于创建VM:
 
@@ -201,7 +201,7 @@ CF公网IP是最后一步中部署CF环境中需要使用的。需要给CF分配
 
 	azure vm create --resource-group lqicfrg01 --name lqicfvm01-bosh --location "China East" --os-type linux --nic-name lqicfnic01-bosh --vnet-name lqicfvnet01 --vnet-subnet-name lqicfvnet01-bosh --storage-account-name lqicfsa01 --image-urn canonical:UbuntuServer:14.04.3-LTS:14.04.201606270 --ssh-publickey-file C:\Test\lqicfvm01-bosh.pub --admin-username boshuser
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/vm-create.png)	
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/vm-create.png)	
 	 
 创建完成后，用户将可以使用ssh密钥通过putty登录到跳板机上。
 
@@ -209,33 +209,33 @@ CF公网IP是最后一步中部署CF环境中需要使用的。需要给CF分配
 
 通过putty导入ssh 密钥，输入用户名，就可以成功登录到跳板机。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/putty-login.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/putty-login.png)
  
 更新OS到最新版本。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/update-os.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/update-os.png)
 
  
 安装Bosh和CF需要的软件包。
 
 	sudo apt-get install -y build-essential ruby2.0 ruby2.0-dev libxml2-dev libsqlite3-dev libxslt1-dev libpq-dev libmysqlclient-dev zlibc zlib1g-dev openssl libxstl-dev libssl-dev libreadline6 libreadline6-dev libyam                                                                                                                                                             l-dev sqlite3 libffi-dev
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/install-bosh.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/install-bosh.png)
 	 
 将命令指向最新的软件版本。
 
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/update-software.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/update-software.png)
  
 配置使用于中国区域的gem。Gem是用于管理ruby开发环境的。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/config-gem.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/config-gem.png)
  
 通过gem更新ruby环境。
  
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/update-gem.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/update-gem.png)
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/update-gem2.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/update-gem2.png)
 
 
 
@@ -244,17 +244,17 @@ CF公网IP是最后一步中部署CF环境中需要使用的。需要给CF分配
 
 	wget -O bosh-init https://s3.amazonaws.com/bosh-init-artifacts/bosh-init-0.0.51-linux-amd64
  
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/install-bosh-init.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/install-bosh-init.png)
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/install-bosh-init2.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/install-bosh-init2.png)
 
 ## 使用bosh-init安装bosh 
 
 为了解bosh-init在安装bosh过程中，IaaS层的作用，建议将现有的资源组中的资源及其状态都记录下来。你可以看到的是，网络安全组尚未关联任何网络或虚拟机；cf的公网IP没有分配给任何虚拟机；资源组中只有一台虚拟机；存储账户中，stemcell和bosh容器下没有任何内容。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/portal-bosh.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/portal-bosh.png)
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/portal-bosh2.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/portal-bosh2.png)
  
 首先，我们要创建一堆ssh密钥对，用于bosh跳板机与即将创建的bosh director之间的登录认证。公钥放在配置文件bosh.yml中，私钥放在当前目录下，命名为bosh（也可以命名为其他名字，但需要同时在bosh.yml中更改）。具体方式可以参见本文“[为跳板虚拟机准备ssh-key](#prepare_ssh)”这一节.
  
@@ -274,35 +274,35 @@ CF公网IP是最后一步中部署CF环境中需要使用的。需要给CF分配
 
 设置安装日志存储位置
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/loginfo-bosh.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/loginfo-bosh.png)
  
 安装bosh
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/start-install-bosh.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/start-install-bosh.png)
  
 安装完成后，使用bosh cli命令查看bosh状态:
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/bosh-state.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/bosh-state.png)
  
 上图显示bosh目前没有关联到任何director；.bosh_config中为没有任何内容。使用bosh target命令为当前会话指定bosh director。Target 后跟的IP为bosh.yml中定义的director IP。指定target后，.bosh_config中会记录下当前target的详细信息。Status显示也有所不同。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/bosh-config.png)
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/bosh-config.png)
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/bosh-state2.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/bosh-state2.png) 
  
 可以使用releases 查看是否有上传的release；deployments查看该director下的部署。因为是新环境，所以没有任何release和部署。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/bosh-release.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/bosh-release.png) 
  
 同时，你也可以登录到bosh director上去查看信息。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/bosh-director.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/bosh-director.png) 
  
 在azure portal中，你也能看到变化。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/portal-change.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/portal-change.png) 
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/portal-list-change.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/portal-list-change.png) 
  
 
 ##<a id="concept"></a> 部署CF
@@ -322,11 +322,11 @@ CF公网IP是最后一步中部署CF环境中需要使用的。需要给CF分配
 
 创建一个deployment的manifest，说明该deployment需要什么stemcell来创建VM，使用哪些releases来进行VM上的配置，并列出要安装的应用或软件，使用的网络，VM大小等资源，需要创建的用户名密码等等等等详尽的信息。Manifest可以自己手动创建，也可以从github上下载现成的模板再进行自定义。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/bosh-target.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/bosh-target.png) 
  
 从github上下载对应的cf manifest文件，并将里面的变量设置成自定义的值。
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/github-download.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/github-download.png) 
  
 ###<a id="upload"></a> 上传stemcell和release
 
@@ -334,35 +334,35 @@ CF公网IP是最后一步中部署CF环境中需要使用的。需要给CF分配
 
 1. 在director上为每个resource pool指定一个stemcell,下面为manifest文件的部分截屏，显示的是stemcell的信息。
 
-	![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/stemcel.png) 
+	![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/stemcel.png) 
  
 	将stemcell从网站上下载下来，并上传到bosh director指定的存储账号中，这里是我们之前创建的容器stemcell。
 
-	![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/upload-stemcell.png) 
+	![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/upload-stemcell.png) 
 
  
 2. 将该deployment需要的所有release上传到director。需要的release已经定义在manifest文件中，请确保所有release已经传到director。
 
-	![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/single-vm-cf.png) 
+	![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/single-vm-cf.png) 
  
 > 两种方式：URL或者本地。如果网络不好，URL方式有可能会上传失败，因此可以通过先下载到本地再上传的方式。
  
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/bosh-upload-release.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/bosh-upload-release.png) 
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/wget.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/wget.png) 
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/wget-2.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/wget-2.png) 
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/bosh-release-cf-release.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/bosh-release-cf-release.png) 
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/bosh-upload-cf-release2.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/bosh-upload-cf-release2.png) 
  
  
  
  
 ###<a id="specific_deploy"></a> 指定当前部署
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/prepare-deploy.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/prepare-deploy.png) 
  
 如果yml文件格式有误，将会提示错误，请根据错误修正文件。
 
@@ -372,15 +372,15 @@ CF公网IP是最后一步中部署CF环境中需要使用的。需要给CF分配
 
 部署过程中可能出现错误，可以通过bosh task <task id> --debug查看具体信息，再进行修复。
  
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/deploy-cf.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/deploy-cf.png) 
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/deploy-cf2.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/deploy-cf2.png) 
 
 如此，CF搭建完成。你可以在Azure 新portal上看到该资源组中会新增几台虚拟机等资源。使用CF需要安装Cloud Foundry CLI。使用wget下载（该命令可能会失败，请再次运行）。
 
 	wget -O cf.deb http://go-cli.s3-website-us-east-1.amazonaws.com/releases/v6.14.1/cf-cli-installer_6.14.1_x86-64.deb
 
-![](media/aog-virtual-machine-mooncake-deploy-cloud-foundry-manual/install-cf-cli.png) 
+![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/install-cf-cli.png) 
  
 如此，CF环境搭建成功。使用cf --help命令可以查看cf的操作有哪些。
 首先找到配置好的CF的公网IP。在该家目录下的setting文件中，记录了BOSH环境的相关信息，可以在此查到cf的IP地址。
