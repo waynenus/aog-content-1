@@ -100,13 +100,13 @@
 
 接下来，我们要为bosh和CF准备一个IaaS平台。包括：
 
-1. [ARM模式下的一个资源组](#ready_arm)。
-2. [一个存储账号。该账号下包含两个容器，分别用于存放bosh虚拟机和stemcell镜像文件](#ready_account)。
-3. [一个静态公网IP，在部署Cloud Foundry将会使用](#ready_ip)。
-4. [一个虚拟网络。该网络下属三个子网，分别用于bosh，cf和diego](#ready_vnet)。
-5. [两个网络安全组。分别用于限制bosh和cf子网的网络端口](#ready_subvnet)。
-6. [一台虚拟机，及其对应的网卡和公网IP。该虚拟机将作为用户的跳板机](#ready_nic)。
-7. [配置跳板机。在进项bosh安装前，需要更新虚拟机到最新版本，并安装bosh-init，bosh cli等工具。通过这些工具才能安装bosh director及其他bosh组件。Bosh安装好之后，用户也会使用这台机器与bosh director通行，来部署和管理Cloud Foundry](#ready_config)。
+1. ARM模式下的[一个资源组](#ready_arm)。
+2. [一个存储账号](#ready_account)。该账号下包含两个容器，分别用于存放bosh虚拟机和stemcell镜像文件。
+3. [一个静态公网IP](#ready_ip)，在部署Cloud Foundry将会使用。
+4. [一个虚拟网络](#ready_vnet)。该网络下属三个子网，分别用于bosh，cf和diego。
+5. [两个网络安全组](#ready_subvnet)。分别用于限制bosh和cf子网的网络端口。
+6. [一台虚拟机，及其对应的网卡和公网IP](#ready_nic)。该虚拟机将作为用户的跳板机。
+7. [配置跳板机](#ready_config)。在进项bosh安装前，需要更新虚拟机到最新版本，并安装bosh-init，bosh cli等工具。通过这些工具才能安装bosh director及其他bosh组件。Bosh安装好之后，用户也会使用这台机器与bosh director通行，来部署和管理Cloud Foundry。
 
 ####<a id="ready_arm"></a> 资源组
 
