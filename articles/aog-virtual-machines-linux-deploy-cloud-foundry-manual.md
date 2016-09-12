@@ -383,6 +383,5 @@ CF公网IP是最后一步中部署CF环境中需要使用的。需要给CF分配
 ![](media/aog-virtual-machines-linux-deploy-cloud-foundry-manual/install-cf-cli.png) 
  
 如此，CF环境搭建成功。使用cf --help命令可以查看cf的操作有哪些。
-首先找到配置好的CF的公网IP。在该家目录下的setting文件中，记录了BOSH环境的相关信息，可以在此查到cf的IP地址。
-接下来，用户可以使用该环境进行应用的管理了。
+首先找到配置好的CF的公网IP。通过bosh vms命令查询CF的IP。接下来，用户可以使用该环境进行应用的管理了。
 
