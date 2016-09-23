@@ -7,37 +7,31 @@ Wirecast 无法连接直播频道的 ingest URL，出现 -4018 错误:
 ![wirecast-error](media/aog-media-service-troubleshoot-faq/wirecast-error.png "Wirecast-4018错误提示")
 
 ###解决方法:
-<<<<<<< HEAD
-1. 登录azure portal，检查频道是否在运行状态。
-2. 如果频道已经运行，检查ingest URL的域名是否可以在Wirecast工作站解析，如果无法解析，找到一台可以正常解析ingest url域名的电脑，运行ping命令获取IP地址:
 
-	![ping-ip](media/aog-media-service-troubleshoot-faq/ping-ip.png "通过ping获取IP地址")  
- 在Wirecast的输出设置中，用获取的IP地址 替换ingest URL的域名:  
-
-	![ingestURL-domain](media/aog-media-service-troubleshoot-faq/ingestURL-domain.png "IP地址替换ingest URL域名")
-  
->**注：当频道重启后，IP地址会发生变化，需要重新获取。**
-=======
 1. 登录 azure portal，检查频道是否在运行状态。
 2. 如果频道已经运行，检查 ingest URL 的域名是否可以在 Wirecast 工作站解析，如果无法解析，找到一台可以正常解析 ingest url 域名的电脑，运行 ping 命令获取 IP 地址:
- ![ping-ip](media/aog-media-service-troubleshoot-faq/ping-ip.png "通过ping获取IP地址")  
+
+	![ping-ip](media/aog-media-service-troubleshoot-faq/ping-ip.png "通过ping获取IP地址")  
  在 Wirecast 的输出设置中，用获取的 IP 地址 替换 ingest URL 的域名:  
  ![ingestURL-domain](media/aog-media-service-troubleshoot-faq/ingestURL-domain.png "IP地址替换ingest URL域名")
   
-**注：当频道重启后，IP 地址会发生变化，需要重新获取。**
->>>>>>> origin/master
+	>注：当频道重启后，IP 地址会发生变化，需要重新获取。**
+
 
 ###场景二: 
+
 直播无法预览，提示下载 manifest 文件出错: 
 
 ![manifest-error](media/aog-media-service-troubleshoot-faq/manifest-error.png "下载manifest文件出错提示")
   
 ###解决方法:
+
 1. 将 preview URL 复制到浏览器，看是否可以下载 manifest 文件，如果同样无法下载，需要等待 1 到 2 分钟，直到浏览器可以下载 manifest 后，返回 azure portal，重新尝试预览。  
 [http://{channel}-{accountname}.channel.mediaservices.chinacloudapi.cn/preview.isml/manifest](http://{channel}-{accountname}.channel.mediaservices.chinacloudapi.cn/preview.isml/manifest)
 2. 如果还是无法预览，请在 azure portal 上重置频道。
 
 ###场景三:
+
 直播预览成功，但是无法观看节目，如在 Media Service Player 出现下面错误:
 
 ![player-error1](media/aog-media-service-troubleshoot-faq/player-error1.png "MeidaServicePalyer出现0x30200000错误")
@@ -54,13 +48,11 @@ Wirecast 无法连接直播频道的 ingest URL，出现 -4018 错误:
 
 ![azure](media/aog-media-service-troubleshoot-faq/azure.png "azure")
 
-<<<<<<< HEAD
-####解决方法:
-通常是由于Wirecast上传信号出现问题，建议首先排查Wirecast工作站:  
-=======
+
 ###解决方法:
+
 通常是由于 Wirecast 上传信号出现问题，建议首先排查 Wirecast 工作站:  
->>>>>>> origin/master
+
 
 1. 查看工作站上行网络情况，确保上行宽带足够支撑媒体流的传输，并查看是否有多路同时传输导致网络带宽不够，另外可以考虑在 Wirecast 中设置一个较低的码率上传。
 2. 查看工作站 CPU 情况，如过 CPU 占用超过 90%，建议切换到性能更强的工作站，并且升级最新版本的 Wirecast。

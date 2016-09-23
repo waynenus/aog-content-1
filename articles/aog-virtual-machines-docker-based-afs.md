@@ -1,31 +1,21 @@
-<<<<<<< HEAD
-# 创建基于AFS的Docker容器卷
 
-标准的Docker容器卷一般是位于Docker主机上的一个本地目录。在这样的配置下，容器必须依赖于一台特定的主机，因此使得容器的迁移和扩展变得困难。通过使用容器卷插件，能让容器访问独立于主机的存储，使得迁移或者共享变得简单。
+# 创建基于 AFS 的 Docker 容器卷
 
-Docker Volume Plugin for Azure File Storage 是Microsoft提供的容器共享存储解决方案。使用该插件，通过SMB3.0协议将AFS挂载到本地，Docker就能够使用通过该插件驱动创建Docker 容器卷。
 
-目前Docker Volume Plugin for Azure File Storage仅支持Ubuntu。更多信息和更新，请参见 [https://github.com/Azure/azurefile-dockervolumedriver](https://github.com/Azure/azurefile-dockervolumedriver) 。在开始前，请确认您已经拥有一个共享出来的AFS和一个已经搭建好的docker 虚拟机。登录到该虚拟机，切换到root账号。
-确认cifs-utils已经安装。
-=======
->标准的 Docker 容器卷一般是位于 Docker 主机上的一个本地目录。在这样的配置下，容器必须依赖于一台特定的主机，因此使得容器的迁移和扩展变得困难。通过使用容器卷插件，能让容器访问独立于主机的存储，使得迁移或者共享变得简单。
+标准的 Docker 容器卷一般是位于 Docker 主机上的一个本地目录。在这样的配置下，容器必须依赖于一台特定的主机，因此使得容器的迁移和扩展变得困难。通过使用容器卷插件，能让容器访问独立于主机的存储，使得迁移或者共享变得简单。
 
->Docker Volume Plugin for Azure File Storage 是 Microsoft 提供的容器共享存储解决方案。使用该插件，通过 SMB3.0 协议将 AFS 挂载到本地，Docker 就能够使用通过该插件驱动创建 Docker 容器卷。
+Docker Volume Plugin for Azure File Storage 是 Microsoft 提供的容器共享存储解决方案。使用该插件，通过 SMB3.0 协议将 AFS 挂载到本地，Docker 就能够使用通过该插件驱动创建 Docker 容器卷。
 
 目前 Docker Volume Plugin for Azure File Storage 仅支持 Ubuntu。更多信息和更新，请参见 [https://github.com/Azure/azurefile-dockervolumedriver](https://github.com/Azure/azurefile-dockervolumedriver) 。
 
-在开始前，请确认您已经拥有一个共享出来的 AFS 和一个已经搭建好的 docker 虚拟机。
+在开始前，请确认您已经拥有一个共享出来的 AFS 和一个已经搭建好的 docker 虚拟机。登录到该虚拟机，切换到 root 账号。确认 cifs-utils 已经安装。
 
-登录到该虚拟机，切换到 root 账号。
-
-确认 cifs-utils 已经安装。
->>>>>>> origin/master
 
 	# apt-get install cifs-utils
 
 根据 Ubuntu 系统版本不同，配置方式稍有区别。Ubuntu14 及以下版本使用 upstart 模式；Ubuntu15 及以上版本使用 systemd 模式。
 
-##<font color=darkblue>Upstart 模式下的配置</font>
+## Upstart 模式下的配置
 	
 	#wget -O azurefile-dockervolumedriver.conf https://raw.githubusercontent.com/Azure/azurefile-dockervolumedriver/master/contrib/init/upstart/azurefile-dockervolumedriver.conf
 	#wget -O azurefile-dockervolumedriver.default https://raw.githubusercontent.com/Azure/azurefile-dockervolumedriver/master/contrib/init/upstart/azurefile-dockervolumedriver.default
@@ -67,12 +57,9 @@ Docker Volume Plugin for Azure File Storage 是Microsoft提供的容器共享存
 	# initctl start azurefile-dockervolumedriver  
 	# initctl status azurefile-dockervolumedriver  
  
-<<<<<<< HEAD
-##<font color=darkblue>Systemd模式下的配置</font>
 
-=======
 ##<font color=darkblue>Systemd 模式下的配置</font>
->>>>>>> origin/master
+
 ###下载配置文件
 	#wget -O azurefile-dockervolumedriver.default https://raw.githubusercontent.com/Azure/azurefile-dockervolumedriver/master/contrib/init/systemd/azurefile-dockervolumedriver.default
 	

@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-# 如何创建事务复制将本地数据同步到SQL Azure #
 
-Azure SQL DB可以被配置成为SQL Server事务复制的一个订阅者（subscriber）。
-=======
 # 如何创建事务复制将本地数据同步到 SQL Azure #
+
 Azure SQL DB 可以被配置成为 SQL Server 事务复制的一个订阅者( subscriber )。
->>>>>>> origin/master
+
 
 主要应用场景有两种：
 
