@@ -1,11 +1,19 @@
-#如何在Proxy环境下正确使用PowerShell工具发送web http请求
+#如何在 Proxy 环境下正确使用 PowerShell 工具发送 web http 请求
 
+<<<<<<< HEAD
 PowerShell是一款非常实用的命令行界面和脚本编辑工具，同时我们也可以通过该工具来管理几乎所有azure上的资源。它可以被用来执行各种任务，其中包括脚本程序执行和命令提示行交互。
+=======
+>PowerShell 是一款非常实用的命令行界面和脚本编辑工具，同时我们也可以通过该工具来管理几乎所有 azure 上的资源。它可以被用来执行各种任务，其中包括脚本程序执行和命令提示行交互。
+>>>>>>> origin/master
 
-然而在一定的特殊条件下，比如一些客户是在有代理(Proxy)的环境下工作，而这些代理需要一些基本的验证，当这些客户使用PowerShell时可能会遇到一些问题导致无法正常使用PowerShell工具。这篇文档就是讨论这种情况下，我们应该做哪些配置的调整，从而使得我们可以成功的使用PowerShell工具。
+然而在一定的特殊条件下，比如一些客户是在有代理( Proxy )的环境下工作，而这些代理需要一些基本的验证，当这些客户使用 PowerShell 时可能会遇到一些问题导致无法正常使用 PowerShell 工具。这篇文档就是讨论这种情况下，我们应该做哪些配置的调整，从而使得我们可以成功的使用 PowerShell 工具。
 
 ##问题症状：
+<<<<<<< HEAD
 当我们在代理(Proxy)的环境下使用PowerShell执行一些不涉及到http请求的命令时正常，比如`get-azureaccount`；然而涉及到http请求的命令会报错，比如：
+=======
+当我们在代理( Proxy )的环境下使用 PowerShell 执行一些不涉及到 http 请求的命令时正常，比如 get-azurezccount；然而涉及到 http 请求的命令会报错，比如：
+>>>>>>> origin/master
 
 	get-azureVM/get-osversions -subscriptionId **** -certificate (get-item cert:\CurrentUser\MY\******)。
 
@@ -26,10 +34,14 @@ PowerShell是一款非常实用的命令行界面和脚本编辑工具，同时�
 	Microsoft.Samples.AzureManagementTools.PowerShell.HostedS ervices.GetOSVersionsCommand
 
 ##问题排查：
+<<<<<<< HEAD
 
 从上面的报错信息来看，有些报错信息指向性比较模糊（`get-azureVM`），有一些则非常明确可以看到跟代理相关（`get-osversions`）。通常这种情况下，我们可以通过安装[fiddler](http://www.telerik.com/fiddler)工具来抓trace，进一步查看该问题。
+=======
+从上面的报错信息来看，有些报错信息指向性比较模糊（ get-azureVM ），有一些则非常明确可以看到跟代理相关（ get-osversions ）。通常这种情况下，我们可以通过安装 [fiddler](http://www.telerik.com/fiddler) 工具来抓 trace，进一步查看该问题。
+>>>>>>> origin/master
 
-抓取fiddler trace示例如下：
+抓取 fiddler trace 示例如下：
 
 	<HTML>
 	<HEAD>
@@ -62,18 +74,18 @@ PowerShell是一款非常实用的命令行界面和脚本编辑工具，同时�
 	<BR>
 	<br>
 
- 通过该trace可以发现是由于Proxy认证失败导致PowerShell无法发送http请求。这是由于PowerShell工具无法获取到Proxy的认证信息，从而连接失败。对于需要认证信息的代理，PowerShell是不支持的，需要我们做一些特殊的配置，让PowerShell能够成功获取到该认证信息。
+ 通过该 trace 可以发现是由于 Proxy 认证失败导致 PowerShell 无法发送 http 请求。这是由于 PowerShell 工具无法获取到 Proxy 的认证信息，从而连接失败。对于需要认证信息的代理，PowerShell 是不支持的，需要我们做一些特殊的配置，让 PowerShell 能够成功获取到该认证信息。
  
 ##解决方法：
-通常的Http请求都是通过获取在浏览器IE中设置代理配置信息完成请求，但是如果您的代理环境是会提示您输入用户名密码的环境，这样简单的在IE中做配置是无法使得PowerShell成功发送http请求的。
+通常的 Http 请求都是通过获取在浏览器 IE 中设置代理配置信息完成请求，但是如果您的代理环境是会提示您输入用户名密码的环境，这样简单的在 IE 中做配置是无法使得 PowerShell 成功发送 http 请求的。
 
-但是，您可以自己实现一个简单的Proxy handler（包含代理的用户名和密码信息），并且将其导入到您的PowerShell应用程序对应路径下，这样就可以使得PowerShell成功发送http请求了。
+但是，您可以自己实现一个简单的 Proxy handler（包含代理的用户名和密码信息），并且将其导入到您的 PowerShell 应用程序对应路径下，这样就可以使得 PowerShell 成功发送 http 请求了。
 
 **具体方法如下：**
 
-1. 创建一个assembly，主要用来声明代理的认证信息。  
-例如： SomeAssembly.dll（可以通过Visual Studio创建project以及class，通过build该project获得该.dll文件）  
-Class示例：
+1. 创建一个 assembly，主要用来声明代理的认证信息。  
+例如： SomeAssembly.dll（可以通过 Visual Studio 创建 project 以及 class，通过 build 该 project 获得该.dll 文件）  
+Class 示例：
   
 		namespace SomeNameSpace
 		{
@@ -97,6 +109,7 @@ Class示例：
 		        }
 		    }
 		}   
+<<<<<<< HEAD
 	>**注意：需要将对应的Proxy认证信息用真实环境信息代替。**
 
 2. 将该.dll文件放在PowerShell对应路径下：  
@@ -104,13 +117,26 @@ Class示例：
 64位PowerShell路径：C:\Windows\SysWOW64\WindowsPowerShell\v1.0   
 3. 创建一个powershell.exe.config文件，该文件用来声明Powershell不使用默认代理设置，而是使用刚才创建好的.dll中声明的代理。  
 powershell.exe.config示例：  
+=======
+ **注意：需要将对应的 Proxy 认证信息用真实环境信息代替。**
+2. 将该.dll 文件放在 PowerShell 对应路径下：  
+32 位 PowerShell 路径：C:\Windows\System32\WindowsPowerShell\v1.0.  
+64 位 PowerShell 路径：C:\Windows\SysWOW64\WindowsPowerShell\v1.0   
+3. 创建一个 powershell.exe.config 文件，该文件用来声明 Powershell 不使用默认代理设置，而是使用刚才创建好的.dll 中声明的代理。  
+powershell.exe.config 示例：  
+>>>>>>> origin/master
 
 		<defaultProxy enabled="true" useDefaultCredentials="false">
 		  <module type = "SomeNameSpace.MyProxy, SomeAssembly" />
 		</defaultProxy>
+<<<<<<< HEAD
 
 	>**注意：该config文件中高亮部分需要跟生成的.dll文件名称一致才能正确识别代理信息。**
 	
 4. 将刚才创建好的powershell.exe.config放在PowerShell对应路径下，方法同2，这相当于向PowerShell导入一个代理信息。
+=======
+**注意：该 config 文件中高亮部分需要跟生成的.dll 文件名称一致才能正确识别代理信息。**
+4. 将刚才创建好的 powershell.exe.config 放在 PowerShell 对应路径下，方法同 2，这相当于向 PowerShell 导入一个代理信息。
+>>>>>>> origin/master
 
 
