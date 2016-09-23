@@ -12,20 +12,20 @@
 3. [排除故障场景 1 – 角色回收](https://blogs.msdn.microsoft.com/kwill/2013/08/20/troubleshooting-scenario-1-role-recycling/) 
 	- 使用任务管理器去确定哪个进程失败，首先需要看哪个日志。
 	- Windows Azure 事件日志
-4. 排除故障场景 2 – 在成功运行2周后角色回收 
+4. [排除故障场景 2 – 在成功运行2周后角色回收](https://blogs.msdn.microsoft.com/kwill/2013/08/26/troubleshooting-scenario-2-role-recycling-after-running-fine-for-2-weeks/) 
 	- WaHostBootstrapper.log
 	- startup 任务失败
 	- 系统重启
-5. 排除故障场景3 – 角色一直是Busy状态
+5. [排除故障场景3 – 角色一直是Busy状态](https://blogs.msdn.microsoft.com/kwill/2013/09/06/troubleshooting-scenario-3-role-stuck-in-busy/)
 	- WaHostBootstrapper.log
 	- startup 任务失败
 	- 修改一个正在运行的服务
-6. 排除故障场景 5 – Internal Server Error 500 in WebRole 
+6. [排除故障场景 5 – Internal Server Error 500 in WebRole](https://blogs.msdn.microsoft.com/kwill/2013/09/19/troubleshooting-scenario-5-internal-server-error-500-in-webrole/)
 	- 使用DIP浏览IIS
-7. 排除故障场景 6 – 角色在运行一段时间后被回收 
+7. [排除故障场景 6 – 角色在运行一段时间后被回收](https://blogs.msdn.microsoft.com/kwill/2013/09/23/troubleshooting-scenario-6-role-recycling-after-running-for-some-time/)
 	- Deep dive on WindowsAzureGuestAgent.exe logs (AppAgentRuntime.log and WaAppAgent.log)
 	- DiagnosticStore LocalStorage resource
-8. 排除故障场景 7 – 角色回收 
+8. [排除故障场景 7 – 角色回收](https://blogs.msdn.microsoft.com/kwill/2013/10/03/troubleshooting-scenario-7-role-recycling/) 
 	- 简单浏览 WaHostBootstrapper 和 WindowsAzureGuestAgent 日志
 	- AzureTools
 	- WinDBG
