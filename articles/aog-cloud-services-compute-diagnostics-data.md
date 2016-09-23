@@ -131,7 +131,7 @@ Windows Azure开发支持团队已经创建了一个SDP(Support Diagnostics Plat
 * 执行AzurePaaSLogs.DiagCab
 * 在组件执行完毕之后通过资源管理器打开包含CAB文件目录
 
-### 为Windows Azure Guest OS Family 1获取 SDP 组件
+### 为 Windows Azure Guest OS Family 1获取 SDP 组件
 
 如果你在使用Windows Azure Guest OS Family 1而且你不希望直接在Azure虚拟机中下载和运行文件，你可以把对应的文件下载到本地机器上并且在你需要使用它的时候将它拷贝到Azure虚拟机中。(在你的本地机器和Azure虚拟机的RDP会话中使用标准的复制/黏贴[ctrl+c, ctrl+v]).
 
@@ -146,11 +146,10 @@ SDP 组件将为您提供一个带有下一步/取消按钮的标准向导。
 5. 这里还有一个要点是**CAT文件在'%LocalAppData%\ElevatedDiagnostics'文件夹中可用**. 你会在这个文件夹中看到'latest.cab'文件，并且还有一个或多个子文件夹。 这些子文件夹中包含你每次运行SDP组件的时间戳结果， 'latest.cab'文件包含最最近一次执行SDP组件的结果。
 6. 你现在可以从你的虚拟机中复制'latest.cab'文件到你的本机用来做存储或离线分析。
 
-![Windows Azure PaaS VM logs](media/aog-cloud-service-compute-diagnostics-data/windows_azure_paas_vm_logs_1.png "Windows Azure PaaS VM logs")
+![Windows Azure PaaS VM logs](media/aog-cloud-services-compute-diagnostics-data/windows_azure_paas_vm_logs_1.png "Windows Azure PaaS VM logs")
 
-![Windows Azure PaaS VM logs](media/aog-cloud-service-compute-diagnostics-data/windows_azure_paas_vm_logs_2.png "Windows Azure PaaS VM logs")
+![Windows Azure PaaS VM logs](media/aog-cloud-services-compute-diagnostics-data/windows_azure_paas_vm_logs_2.png "Windows Azure PaaS VM logs")
 
-![Windows Azure PaaS VM logs](media/aog-cloud-service-compute-diagnostics-data/windows_azure_paas_vm_logs_3.png "Windows Azure PaaS VM logs")
+![Windows Azure PaaS VM logs](media/aog-cloud-services-compute-diagnostics-data/windows_azure_paas_vm_logs_3.png "Windows Azure PaaS VM logs")
 
-![Windows Azure PaaS VM logs](media/aog-cloud-service-compute-diagnostics-data/windows_azure_paas_vm_logs_4.png "Windows Azure PaaS VM logs")
-
+![Windows Azure PaaS VM logs](media/aog-cloud-services-compute-diagnostics-data/windows_azure_paas_vm_logs_4.png "Windows Azure PaaS VM logs")

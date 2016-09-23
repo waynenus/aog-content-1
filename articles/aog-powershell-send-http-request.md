@@ -1,17 +1,12 @@
 #如何在 Proxy 环境下正确使用 PowerShell 工具发送 web http 请求
 
-
-
 PowerShell 是一款非常实用的命令行界面和脚本编辑工具，同时我们也可以通过该工具来管理几乎所有 azure 上的资源。它可以被用来执行各种任务，其中包括脚本程序执行和命令提示行交互。
-
 
 然而在一定的特殊条件下，比如一些客户是在有代理( Proxy )的环境下工作，而这些代理需要一些基本的验证，当这些客户使用 PowerShell 时可能会遇到一些问题导致无法正常使用 PowerShell 工具。这篇文档就是讨论这种情况下，我们应该做哪些配置的调整，从而使得我们可以成功的使用 PowerShell 工具。
 
 ##问题症状：
 
-
 当我们在代理( Proxy )的环境下使用 PowerShell 执行一些不涉及到 http 请求的命令时正常，比如 get-azureaccount；然而涉及到 http 请求的命令会报错，比如：
-
 
 	get-azureVM/get-osversions -subscriptionId **** -certificate (get-item cert:\CurrentUser\MY\******)。
 
@@ -33,9 +28,7 @@ PowerShell 是一款非常实用的命令行界面和脚本编辑工具，同时
 
 ##问题排查：
 
-
 从上面的报错信息来看，有些报错信息指向性比较模糊（`get-azureVM`），有一些则非常明确可以看到跟代理相关（`get-osversions`）。通常这种情况下，我们可以通过安装[fiddler](http://www.telerik.com/fiddler)工具来抓trace，进一步查看该问题。
-
 
 抓取 fiddler trace 示例如下：
 
@@ -108,7 +101,6 @@ Class 示例：
 
 	>**注意：需要将对应的Proxy认证信息用真实环境信息代替。**
 
-
 2. 将该.dll 文件放在 PowerShell 对应路径下：  
 32 位 PowerShell 路径：C:\Windows\System32\WindowsPowerShell\v1.0.  
 64 位 PowerShell 路径：C:\Windows\SysWOW64\WindowsPowerShell\v1.0   
@@ -122,6 +114,3 @@ powershell.exe.config 示例：
 
 	>**注意：该 config 文件中高亮部分需要跟生成的.dll 文件名称一致才能正确识别代理信息。**
 4. 将刚才创建好的 powershell.exe.config 放在 PowerShell 对应路径下，方法同 2，这相当于向 PowerShell 导入一个代理信息。
-
-
-
