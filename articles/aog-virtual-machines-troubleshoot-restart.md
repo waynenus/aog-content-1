@@ -76,6 +76,6 @@
  11. 以管理员身份登录虚拟机 A.
  12. 执行以下命令, 进行文件系统修复:  
  
- 	 	# fsck -yM &lt;file system&gt;
+ 	 	# fsck -yM <file system>;
 
  13. 文件系统修复完毕以后, 恢复 /etc/fstab 被注释的对应条目, 重启虚拟机.
