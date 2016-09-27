@@ -55,7 +55,7 @@ Wirecast 无法连接直播频道的 ingest URL，出现 -4018 错误:
 
 
 1. 查看工作站上行网络情况，确保上行宽带足够支撑媒体流的传输，并查看是否有多路同时传输导致网络带宽不够，另外可以考虑在 Wirecast 中设置一个较低的码率上传。
-2. 查看工作站 CPU 情况，如过 CPU 占用超过 90%，建议切换到性能更强的工作站，并且升级最新版本的 Wirecast。
+2. 查看工作站 CPU 情况，如果 CPU 占用超过 90%，建议切换到性能更强的工作站，并且升级最新版本的 Wirecast。
 3. 同时查看 Wirecast 的各项配置，建议使用 H.264 编解码器，如果每秒帧数默认是 30，那么关键帧间隔建议设置成 60 帧。具体配置请查看文档[使用 Wirecast 编码器发送单比特率实时流](https://www.azure.cn/documentation/articles/media-services-configure-wirecast-live-encoder/)
 
 ###场景五:
