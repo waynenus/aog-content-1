@@ -140,3 +140,4 @@ Docker Volume Plugin for Azure File Storage 是 Microsoft 提供的容器共享�
 ![modify-Quota](media/aog-virtual-machines-docker-based-afs/modify-Quota.png "修改 AzurePortal 中的 Quota 值.png")
 
 
+
