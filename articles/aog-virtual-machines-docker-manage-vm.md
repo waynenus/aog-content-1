@@ -18,7 +18,7 @@ Azure 驱动版本随着 Docker-machine 的版本一同更新。参见下面链�
 
 [https://github.com/docker/machine/releases ](https://github.com/docker/machine/releases  "https://github.com/docker/machine/releases ")
 
-根据 docker-machine 版本的不同，参数可能不同。参见下面链接查看最新的Azure驱动支持的参数选项及其默认值。
+ 根据 docker-machine 版本的不同，参数可能不同。参见下面链接查看最新的Azure驱动支持的参数选项及其默认值。
 
 [https://docs.docker.com/machine/drivers/azure/](https://docs.docker.com/machine/drivers/azure/ "https://docs.docker.com/machine/drivers/azure/") 
 
@@ -82,7 +82,7 @@ ssh 登录虚拟机
 
 **故障排查：**
 
-1. Docker-machine v.0.7.0 对 CentOS 的支持有一定问题。通过该版本配置的 docker 服务无法正常启动。建议到 github（https://github.com/docker/machine）上查询最新版本信息，以及已知 bug。
+1. Docker-machine v.0.7.0 对 CentOS 的支持有一定问题。通过该版本配置的 docker 服务无法正常启动。建议到 github（https://github.com/docker/machine） 上查询最新版本信息，以及已知 bug。
 2. 下面错误一般是因为 docker vm 上的证书与本地的证书不匹配造成的；使用 regenerate-certs 可以重置证书。
 
 	![regenerate-certs](media/aog-virtual-machines-docker-manage-vm/regenerate-certs.png "regenerate-certs")
