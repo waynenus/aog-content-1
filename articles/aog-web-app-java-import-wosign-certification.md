@@ -1,3 +1,18 @@
+<properties
+	pageTitle="如何在 JAVA 中导入 Wosign 证书"
+	description="介绍如何在 JAVA 中导入 Wosign 证书。"
+	services="web-app"
+	documentationCenter=""
+	authors=""
+	manager=""
+	editor=""
+	tags="Java,Wosign 证书"/>
+
+<tags
+	ms.service="web-app"
+	ms.date="10/126/2016"
+	wacn.date="10/126/2016"/>
+
 # 如何在 JAVA 中导入 Wosign 证书 #
 
 **问题：** JAVA 在调用 Azure 的 HTTPS 的 REST API 时，会经常报证书问题。错误如下：
