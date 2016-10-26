@@ -54,7 +54,7 @@ Azure 提供了标准存储和高级存储两种存储服务。针对于生产�
 - 处理单个大文件的拷贝，性能上升到 40MB/s 以上，但是即便是对单个文件，拷贝性能也不稳定。
 - 处理 200000 个 3KB 大小的小文件时，拷贝性能急剧下降到 500KB/s 左右。
 
-如果我们多次重复文件的拷贝过程，随着文件系统碎片状态的变化，服务器 Cache 的使用情况变化等等，同样的文件拷贝性能的差异性很大。
+ 如果我们多次重复文件的拷贝过程，随着文件系统碎片状态的变化，服务器 Cache 的使用情况变化等等，同样的文件拷贝性能的差异性很大。
 
 ![copy-file-2](media/aog-virtual-machines-disk-performace/copy-file-2.png "copy-file-2")
 
@@ -103,4 +103,4 @@ Azure 提供了标准存储和高级存储两种存储服务。针对于生产�
 4. 使用 Microsoft Automated Troubleshooting Services, [https://support.microsoft.com/en-us/kb/2598970](https://support.microsoft.com/en-us/kb/2598970 "https://support.microsoft.com/en-us/kb/2598970")，来快速自动排查虚拟机内部可能影响磁盘性能的问题
 5. 检查存储账户容量，虚拟大小等配置信息，避免由于并发 IO 或是容量配置导致的问题。
 
-如果以上步骤没有发现明显问题，但是压力测试得到的磁盘数据比本文中的数据相差明显，建议您可以联系 Azure 支持部门，我们很愿意协助您快速定位问题。
+如果以上步骤没有发现明显问题，但是压力测试得到的磁盘数据比本文中的数据相差明显，建议您可以联系 Azure 支持部门 (https://www.azure.cn/support/contact/)，我们很愿意协助您快速定位问题。
