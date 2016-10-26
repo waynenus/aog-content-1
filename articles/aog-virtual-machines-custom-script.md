@@ -1,3 +1,19 @@
+<properties
+	pageTitle="自定义脚本使用示例"
+	description="关于一些自定义脚本的使用场景。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors=""
+	manager=""
+	editor=""
+	tags="wget,blob文件,断点续传"/>
+
+<tags
+	ms.service="storage"
+	ms.date="10/126/2016"
+	wacn.date="10/126/2016"/>
+
+
 #自定义脚本使用示例
 
 
