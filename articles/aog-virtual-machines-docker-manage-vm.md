@@ -21,7 +21,6 @@ Azure 驱动版本随着 Docker-machine 的版本一同更新。参见下面链�
 根据 docker-machine 版本的不同，参数可能不同。参见下面链接查看最新的Azure驱动支持的参数选项及其默认值。
 
 [https://docs.docker.com/machine/drivers/azure/](https://docs.docker.com/machine/drivers/azure/ "https://docs.docker.com/machine/drivers/azure/") 
-
 除了必须指定订阅号，其他必须参数都包含了默认值；您也可以根据需求自定义各参数值。下面是一个示例（使用 docker-machine 0.8.2 ）：
 
 	docker-machine.exe create --driver azure \
@@ -64,7 +63,7 @@ id_rsa* 是 ssh 连接的密钥和公钥；如果遗失，可通过 portal 重�
 
 **管理**
 
-通过 docker-machine –help 可以查看 docker-machine 支持的命令和操作。
+通过 docker-machine -help 可以查看 docker-machine 支持的命令和操作。
 
 如 ls 查看虚拟机及基本状态：
 
