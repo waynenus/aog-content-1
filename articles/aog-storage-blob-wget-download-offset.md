@@ -1,3 +1,19 @@
+<properties
+	pageTitle="关于 wget 下载 Blob 文件如何断点续传"
+	description="关于 wget 下载 Blob 文件如何断点续传。"
+	services="storage"
+	documentationCenter=""
+	authors=""
+	manager=""
+	editor=""
+	tags="wget,blob文件,断点续传"/>
+
+<tags
+	ms.service="storage"
+	ms.date="10/126/2016"
+	wacn.date="10/126/2016"/>
+
+
 # 关于 wget 下载 Blob 文件如何断点续传 #
 
 **问题：**
