@@ -1,6 +1,6 @@
 <properties
-    pageTitle="如何使用azure storage在浏览器中实现对媒体文件拖拽点播"
-    description="如何使用azure storage在浏览器中实现对媒体文件拖拽点播。"
+    pageTitle="如何使用azure blob storage在浏览器中实现对媒体文件拖拽点播"
+    description="如何使用azure blob storage在浏览器中实现对媒体文件拖拽点播。"
     services="storage"
     documentationCenter=""
     authors=""
@@ -14,7 +14,7 @@
     wacn.date="10/27/2016"/>
 
 
-#如何使用 azure storage 在浏览器中实现对媒体文件拖拽点播
+#如何使用 azure blob storage 在浏览器中实现对媒体文件拖拽点播
 
 Azure blob storage 是 azure 提供的一种服务，blob 存储可以用来存储一些松散结构的数据，例如各类文本文件数据或者二进制数据（各类型格式文件、媒体文件以及应用安装文件）。
 
@@ -70,7 +70,7 @@ Un-versioned 访问截图
 
 ###解决方案：
 
-了解清楚无法通过 Azure storage 实现媒体文件的点播是因为使用 Progressive Download 点播方式默认使用的是最原始的版本 2009-09-19，而该低版本的协议是不支持“字节范围检索（byte ranges seek），接下来我们需要考虑如何更改默认版本为可以支持点播方式的版本。
+了解清楚无法通过 Azure blob storage 实现媒体文件的点播是因为使用 Progressive Download 点播方式默认使用的是最原始的版本 2009-09-19，而该低版本的协议是不支持“字节范围检索（byte ranges seek），接下来我们需要考虑如何更改默认版本为可以支持点播方式的版本。
 
 根据[官方说明](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/09/15/windows-azure-blobs-improved-http-headers-for-resume-on-download-and-a-change-in-if-match-conditions/)， 对于大部分浏览器，没有 accept-ranges 头就无法达到点播效果，而这一项是在2011-08-18版本后才加入的。因此，解决方案参考以下内容：
 
