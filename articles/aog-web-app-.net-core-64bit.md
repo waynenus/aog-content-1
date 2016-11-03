@@ -17,7 +17,7 @@
 
 作为微软下一代的开源的跨平台的开发框架， Asp.net core正在吸引越来越多的开发者基于其构建现代 web 应用。 
 
-目前，Microsoft Azure App Service 也实现了对 asp.net core 的支持。 用户所开发的开发的 ASP.NET Core Web 应用， 以与通常 Asp.net Web 应用同样的方式部署到云端后，便可以被顺利执行。
+目前，Microsoft Azure App Service 也实现了对 asp.net core 的支持。 用户所开发的 ASP.NET Core Web 应用， 以与通常 Asp.net Web 应用同样的方式部署到云端后，便可以被顺利执行。
 
 但是，目前 Azure App Service 尚只支持32位的 Asp.net Core 运行时，即用户的 Asp.net Core 应用在云端是以一个32位进程来运行。 在大多数情况下，它可以支持用户的 web 应用正常运行，但是，在某些场景下，用户会有使用64位 Asp.net Core 运行时的需求，例如应用需使用超过2GB的用户态虚拟内存空间，或应用需要加载64位的本地代码，等等。 在这种情况下，我们可以考虑使用自定义上传的 Asp.net Core 运行环境。 
 
