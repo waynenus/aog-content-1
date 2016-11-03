@@ -22,7 +22,6 @@
 
 假如某个用户所使用的浏览器在之前的一段时间使用过 azure 的 SSO 功能或者登录过 office365 并且最后没有成功注销，并且相当长的一段时间这个浏览器没有再与 azure 交互过的话那么再次使用 SAML SSO 登录这个应用会报错，错误信息如下：
 
-	d
 	2016-11-05 16:47:05,653 ERROR [http-nio-443-exec-20] [bitium.saml.servlet.SsoLoginServlet] redirectToLoginWithSAMLError saml plugin error + Response doesn't have any valid assertion which would pass subject validation
 
 通常遇到这个报错的解决办法为将浏览器 COOKIES 全部删除，然后就可以恢复正常了，这篇文章主要对该问题进行深入分析，从而得到更为彻底的解决方法。
