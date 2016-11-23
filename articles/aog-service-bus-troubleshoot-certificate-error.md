@@ -59,6 +59,6 @@
 
 我们推荐在代码中强制使用 HTTPS 模式连接 service bus 服务，HTTPS 模式有不同的设计，因此会很大程度上避免上述错误发生
 
-	ServiceBusEnvrionment.SystemConnectivity.Mode=ConnectivityMode.Https
+	ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.Https
 
 > **注:**此设置是基于 app domain 层面的全局设置，如果访问 service bus 的代码都在同一个 app domain，那么只需要设置一次就可以。如果还有其他 app domain 中的代码访问 service bus 服务，则需要为各自的 app domain 分别调用上面的代码设置 HTTPS 模式。
