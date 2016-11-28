@@ -6,7 +6,7 @@ Resource Group 所有者可以在新版portal创建经典模式的虚拟机，�
 
 ### 问题现象 ###
 
-环境中有个相对权限比较高的 account，比如 account admin，用这个账号创建一个 resource group 和对应的 owner。
+环境中有个相对权限比较高的 account，比如 account admin （以下简称为 AA），这个账号创建一个 resource group 和对应的 owner。
 
 如果用这个 resource group 的 owner 登陆 azure，会出现这个问题：只能创建经典模式的虚拟机，但无法创建 ARM 模式的虚拟机。
 
