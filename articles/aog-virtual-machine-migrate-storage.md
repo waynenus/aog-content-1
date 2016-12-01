@@ -76,15 +76,15 @@ Azure 存储服务提供了将 Blob 从一个存储账户移动到另一个的�
 
 }
 
-当完成 blob 复制操作后，该状态将变为“成功”。更详细的 VHD 拷贝操作示例可以参考  “[Azure 虚拟机: 跨存储账户拷贝 VHDS](https://docs.microsoft.com/en-us/azure/storage/storage-use-azcopy)” 。
+当完成 blob 复制操作后，该状态将变为“成功”。更详细的 VHD 拷贝操作示例可以参考  “[Azure 虚拟机: 跨存储账户拷贝 VHDS](https://gallery.technet.microsoft.com/scriptcenter/Azure-Virtual-Machine-Copy-1041199c)” 。
 
 ## 使用 AzCopy 复制 blob ##
 
 另一种方式可以使用 AzCopy 工具（[下载地址](http://aka.ms/downloadazcopy)）,下面同样是存储账户间 blob 复制的命令：
 
-	mycontainer1 https://destaccount.blob.core.windows.net/mycontainer2 /sourcekey:key1 /destkey:key2 abc.txt
+	AzCopy https://sourceaccount.blob.core.windows.net/mycontainer1 https://destaccount.blob.core.windows.net/mycontainer2 /sourcekey:key1 /destkey:key2 abc.txt
 
-关于如何在不同场景使用 AzCopy 工具更详细的信息，请查看“[使用 AzCopy 命令行工具入门](https://docs.microsoft.com/zh-cn/azure/storage/storage-use-azcopy)”。
+关于如何在不同场景使用 AzCopy 工具更详细的信息，请查看“[使用 AzCopy 命令行工具入门](https://www.azure.cn/documentation/articles/storage-use-azcopy/)”。
 
 ## 创建虚拟机磁盘 ##
 
