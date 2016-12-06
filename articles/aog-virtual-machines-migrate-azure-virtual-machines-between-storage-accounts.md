@@ -82,7 +82,7 @@ Azure 存储服务提供了将 Blob 从一个存储账户移动到另一个的�
 
 	AzCopy https://sourceaccount.blob.core.windows.net/mycontainer1 https://destaccount.blob.core.windows.net/mycontainer2 /sourcekey:key1 /destkey:key2 abc.txt
 
-关于如何在不同场景使用 AzCopy 工具更详细的信息，请查看“[使用 AzCopy 命令行工具入门](https://www.azure.cn/documentation/articles/storage-use-azcopy/)”。
+关于如何在不同场景使用 AzCopy 工具更详细的信息，请查看“[使用 AzCopy 命令行工具入门](/documentation/articles/storage-use-azcopy/)”。
 
 ## 创建虚拟机磁盘 ##
 
