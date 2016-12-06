@@ -2,7 +2,7 @@
 
 Azure 中一个常见的任务就是将虚拟机从一个存储账号转移到另一个。在我们深入了解这些步骤之前，简要的回顾一下 Azure 虚拟机是如何被创建的。当您在创建一台 Azure 虚拟机时，有两个服务会协同工作来创建该虚拟机：计算和存储。在存储方面，Azure 存储服务会在您的一个账户中创建一个 VHD。该 VHD 的物理节点是存储在您指定用于放置虚拟机的区域。在计算方面，我们在第二个群集中找到一个物理节点用于放置您的虚拟机。当 VM 在该群集中启动时，它会和存储服务创建连接并且从该 VHD 启动。当创建一个虚拟机时，我们要求您创建该 VM 时的 VHD 所位于的存储账户在同一区域，这是为了确保当虚拟机和存储账户通讯时能够保持性能一致性。
 
-![region](./media/aog-virtual-machine-migrate-storage/region.png)
+![region](./media/aog-virtual-machines-migrate-azure-virtual-machines-between-storage-accounts/region.png)
 
 有了这个背景之后，让我们通过以下步骤将虚拟机从一个区域转移到另一个：
 
@@ -16,7 +16,7 @@ Azure 中一个常见的任务就是将虚拟机从一个存储账号转移到�
 
 在管理门户界面，选择您需要转移的虚拟机，在控制菜单中选择 关闭。
 
-![ShutdownVm](./media/aog-virtual-machine-migrate-storage/ShutdownVm.png)
+![ShutdownVm](./media/aog-virtual-machines-migrate-azure-virtual-machines-between-storage-accounts/ShutdownVm.png)
 
 或者使用 Azure PowerShell cmdlet 来完成相同的操作：
 
@@ -74,8 +74,6 @@ Azure 存储服务提供了将 Blob 从一个存储账户移动到另一个的�
 	    $blobCopy | Get-AzureStorageBlobCopyState
 	}
 
-}
-
 当完成 blob 复制操作后，该状态将变为“成功”。更详细的 VHD 拷贝操作示例可以参考  “[Azure 虚拟机: 跨存储账户拷贝 VHDS](https://gallery.technet.microsoft.com/scriptcenter/Azure-Virtual-Machine-Copy-1041199c)” 。
 
 ## 使用 AzCopy 复制 blob ##
@@ -93,15 +91,15 @@ Azure 存储服务提供了将 Blob 从一个存储账户移动到另一个的�
 >注意：以上指令是特定的用于专用的 VMs，如您想要使该 VHD 作为映像来加载，您需要重启 VM， 使用 sysperp 工具一般化处理，复制 blob，然后作为映像添加（而非磁盘）。
 
 
-![VirtualMachineDisks](./media/aog-virtual-machine-migrate-storage/VirtualMachineDisks.png)
+![VirtualMachineDisks](./media/aog-virtual-machines-migrate-azure-virtual-machines-between-storage-accounts/VirtualMachineDisks.png)
 
 在 VHD URL 选项处选择目标容器中复制的 blob，勾选选项“ VHD 包含操作系统”，这向 Azure 表明您所创建的磁盘对象是用作 OS 磁盘使用的，而非作为数据磁盘使用。
 
-![CreateVHD](./media/aog-virtual-machine-migrate-storage/CreateVHD.png)
+![CreateVHD](./media/aog-virtual-machines-migrate-azure-virtual-machines-between-storage-accounts/CreateVHD.png)
 
 >注意：如果遇到该错误提示“ Blob 发生租约冲突….”，返回上一步确认该 blob 复制操作已经完成。
 
-![LeaseCOnflict](./media/aog-virtual-machine-migrate-storage/LeaseCOnflict.png)
+![LeaseCOnflict](./media/aog-virtual-machines-migrate-azure-virtual-machines-between-storage-accounts/LeaseCOnflict.png)
 
 或者，您可以通过 执行 PowerShell 命令来进行相同的操作。
 
@@ -119,7 +117,7 @@ Azure 存储服务提供了将 Blob 从一个存储账户移动到另一个的�
 >注意：如果您转移的虚拟机有一个已经配置好的存储池（或者需要磁盘驱动器的字母排序保持不变），记录下 VHD 映射到源 VM 的 LUN 编号，并且确保数据磁盘在目标虚拟机上被附加到了同样的 LUN 编号上。
 
 
-![LinuxVM_thumb](./media/aog-virtual-machine-migrate-storage/LinuxVM_thumb.png)
+![LinuxVM_thumb](./media/aog-virtual-machines-migrate-azure-virtual-machines-between-storage-accounts/LinuxVM_thumb.png)
 
 现在虚拟机已经在目标存储账户中运行了。
 
