@@ -1,3 +1,18 @@
+<properties
+	pageTitle="使用 PsPing & PaPing 进行 TCP 端口连通性测试"
+	description="在 Windows 及 Linux 操作系统中分别使用 PsPing 和 PaPing 工具进行 TCP 端口连通性测试"
+	services="virtual-network"
+	documentationCenter=""
+	authors=""
+	manager=""
+	editor=""
+	tags="Azure,虚拟机,PSPing,PaPing,ping,IMCP"/>
+
+<tags
+    ms.service="virtual-network-aog"
+    ms.date="12/08/2016"
+    wacn.date="12/08/2016"/>
+
 # 使用 PsPing & PaPing 进行 TCP 端口连通性测试 #
 
 ### PsPing & PaPing 介绍 ###

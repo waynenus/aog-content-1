@@ -1,3 +1,18 @@
+<properties
+	pageTitle="创建的 WebJobs 无法按照 CRON 的设置来启动"
+	description="设置中国 UTC 时间使 WebJobs 可以按照 CRON 启动"
+	services="Web-Apps"
+	documentationCenter=""
+	authors=""
+	manager=""
+	editor=""
+	tags="Azure,Portal,Web Jobs,CRON,UTC"/>
+
+<tags
+    ms.service="Web-Apps-aog"
+    ms.date="12/08/2016"
+    wacn.date="12/08/2016"/>
+
 # 创建的 WebJobs 无法按照 CRON 的设置来启动 #
 
 ### 问题现象 ###

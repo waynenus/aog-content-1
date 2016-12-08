@@ -1,3 +1,18 @@
+<properties
+	pageTitle="含有部署槽的标准网站无法缩放到基本模式"
+	description="Web 应用删除部署槽后从标准模式缩放到基本模式"
+	services="Web-Apps"
+	documentationCenter=""
+	authors=""
+	manager=""
+	editor=""
+	tags="Azure,Web 应用,缩放,Portal"/>
+
+<tags
+    ms.service="Web-Apps-aog"
+    ms.date="12/08/2016"
+    wacn.date="12/08/2016"/>
+
 # 含有部署槽的标准网站无法缩放到基本模式 #
 
 ### 问题现象 ###

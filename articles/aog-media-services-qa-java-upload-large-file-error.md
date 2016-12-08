@@ -1,3 +1,18 @@
+<properties
+	pageTitle="通过 Java 上传大文件到媒体服务账号报错"
+	description="Java 通过分片的方式上传大文件到媒体服务账号中"
+	services="media-services"
+	documentationCenter=""
+	authors=""
+	manager=""
+	editor=""
+	tags="Azure,java,媒体服务,分片"/>
+
+<tags
+    ms.service="media-services-aog"
+    ms.date="12/08/2016"
+    wacn.date="12/08/2016"/>
+
 # 通过 Java 上传大文件到媒体服务账号报错 #
 
 ### 问题现象 ###

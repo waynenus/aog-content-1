@@ -1,6 +1,21 @@
-# 如何将现有的 Azure web 应用分离到不同的应用服务计划 #
+<properties
+	pageTitle="如何将现有的 Azure Web 应用分离到不同的应用服务计划"
+	description="通过管理门户及 PowerShell 将 Azure Web 应用分离到不同的应用服务计划"
+	services="Web-Apps"
+	documentationCenter=""
+	authors=""
+	manager=""
+	editor=""
+	tags="Azure,Web 应用,应用服务计划,PowerShell,Portal"/>
 
-用户的多个 Web 应用可能使用同一个应用服务计划，那么这些 web 应用会共享同一个应用服务计划下的资源，同时缩放应用服务计划将会影响到所有的 web 应用。当用户想将某个 web 应用分离出来进行独立管理时，可以考虑将 web 应用迁移到另一个应用服务计划中，本文详细介绍了如何迁移 web 应用到新的应用服务计划中的方法：
+<tags
+    ms.service="Web-Apps-aog"
+    ms.date="12/08/2016"
+    wacn.date="12/08/2016"/>
+
+# 如何将现有的 Azure Web 应用分离到不同的应用服务计划 #
+
+用户的多个 Web 应用可能使用同一个应用服务计划，那么这些 Web 应用会共享同一个应用服务计划下的资源，同时缩放应用服务计划将会影响到所有的 Web 应用。当用户想将某个 Web 应用分离出来进行独立管理时，可以考虑将 Web 应用迁移到另一个应用服务计划中，本文详细介绍了如何迁移 web 应用到新的应用服务计划中的方法：
 
 ### 方法一 ###
 
@@ -15,7 +30,7 @@
 
 ### 方法二 ###
 
-通过 PowerShell 命令将已有的 web 应用迁移到新的应用服务计划
+通过 PowerShell 命令将已有的 Web 应用迁移到新的应用服务计划
 
  
 1. 运行以下命令登录中国版 Azure
@@ -41,5 +56,5 @@
 	>1. 将 Properties 参数中的 `serverFarmID` 的值替换成步骤 2 中返回的 Id 值.
 	>2. 将参数<ResourceGroupName1>替换成应用服务计划所在的资源组名称，将参数<ResourceGroupName2>替换成 Web 应用所在的资源组名称
 
-4. 登录 Azure Portal 查看 web 应用是否已经迁移到新的应用服务计划中。
+4. 登录 Azure Portal 查看 Web 应用是否已经迁移到新的应用服务计划中。
 
