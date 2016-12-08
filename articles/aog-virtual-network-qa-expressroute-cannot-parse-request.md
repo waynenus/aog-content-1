@@ -6,7 +6,7 @@
 
 ### 问题现象 ###
 
-跨订阅连接VNET 到 ExpressRoute 时报错如下：
+跨订阅连接 VNET 到 ExpressRoute 时报错如下：
 
 ![powershell-link-vnet-er](./media/aog-virtual-network-qa-expressroute-cannot-parse-request/powershell-link-vnet-er.png)
 
