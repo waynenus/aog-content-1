@@ -2,11 +2,11 @@
 
 ### 问题描述 ###
 
-将不同订阅中的 VNET 连接到 ExpressRoute 线路时收到报错“Cannot parse the request” 
+将不同订阅中的 虚拟网络（VNET） 连接到 ExpressRoute 线路时收到报错“Cannot parse the request” 
 
 ### 问题现象 ###
 
-跨订阅 Link VNET 到 ER 时报错如下：
+跨订阅连接 VNET 到 ExpressRoute 时报错如下：
 
 ![powershell-link-vnet-er](./media/aog-virtual-network-qa-expressroute-cannot-parse-request/powershell-link-vnet-er.png)
 
@@ -24,7 +24,7 @@
 
 ### 解决方法 ###
 
-首先，需要了解跨订阅 Link VNET 到 ER 的操作过程：
+首先，需要了解跨订阅连接 VNET 到 ExpressRoute 的操作过程：
 
 **登录订阅**
 
