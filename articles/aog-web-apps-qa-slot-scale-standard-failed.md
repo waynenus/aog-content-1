@@ -24,7 +24,7 @@
 
 	![step-2-add-slot](./media/aog-web-apps-qa-slot-scale-standard-failed/step-2-add-slot.png)
 
-3. 在 Web 应用列表处，选中选中相应槽，点击删除；
+3. 在 Web 应用列表处，选中相应槽，点击删除；
 
 	![step-3-delete-slot](./media/aog-web-apps-qa-slot-scale-standard-failed/step-3-delete-slot.png)
 
