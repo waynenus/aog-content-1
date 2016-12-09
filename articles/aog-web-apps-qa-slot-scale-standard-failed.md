@@ -1,4 +1,4 @@
-<properties
+ <properties
 	pageTitle="含有部署槽的标准网站无法缩放到基本模式"
 	description="Web 应用删除部署槽后从标准模式缩放到基本模式"
 	services="Web-Apps"
@@ -17,7 +17,7 @@
 
 ### 问题现象 ###
 
-在缩放时，会出现如下错误“站点 ‘testforeast’ 超过了托管计划允许的最大槽数。请在缩放到另一模式前删除所有部署槽。”
+在缩放时，会出现如下错误 “站点 ‘testforeast’ 超过了托管计划允许的最大槽数。请在缩放到另一模式前删除所有部署槽。”
 
 ![site-testforeast-error](./media/aog-web-apps-qa-slot-scale-standard-failed/site-testforeast-error.png)
 
