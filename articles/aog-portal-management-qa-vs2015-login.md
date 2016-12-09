@@ -1,4 +1,4 @@
-# VS2015 直接使用账户登录 mooncacke #
+# VS2015 直接使用账户登录 mooncake #
 
 ### 问题描述 ###
 
@@ -17,6 +17,6 @@ Visual Studio 2015 的 Azure 服务资源管理器默认是连接由微软运营
 
  通过菜单【tools】-【options】，打开 vs 设置界面，如下图修改 VS 设置即可
  
- ![visual-studio-setting](./media/aog-portal-management-vs2015-login/visual-studio-setting.jpg)
+ ![visual-studio-setting](./media/aog-portal-management-qa-vs2015-login/visual-studio-setting.jpg)
  
  设置后即可通过 Azure 账号登录 VS，然后在 VS 中管理该账号下的订阅资源。

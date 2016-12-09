@@ -1,18 +1,18 @@
-# 订阅无法在 ARM 模式下创建虚拟机，只能在 ASM 模式下创建 Azure VM部署 #
+# 订阅无法在 ARM 模式下创建虚拟机，只能在 ASM 模式下创建 Azure VM 部署 #
 
 ### 问题描述 ###
 
-Resource Group 所有者可以在新版portal创建经典模式的虚拟机，但是无法创建ARM模式的虚拟机。
+资源组所有者可以在新版 portal 创建经典模式的虚拟机，但是无法创建 ARM 模式的虚拟机。
 
 ### 问题现象 ###
 
-环境中有个相对权限比较高的 account，比如 account admin，用这个账号创建一个 resource group 和对应的 owner。
+环境中有个相对权限比较高的账户，比如 account admin （以下简称为 AA），这个账号创建一个资源组和对应的 owner。
 
-如果用这个 resource group 的 owner 登陆 azure，会出现这个问题：只能创建经典模式的虚拟机，但无法创建 ARM 模式的虚拟机。
+如果用这个资源组的 owner 登陆 Azure，会出现这个问题：只能创建经典模式的虚拟机，但无法创建 ARM 模式的虚拟机。
 
 ### 问题分析 ###
 
-ARM下很多resource provider没有注册，包括ARM下的Microsoft.Compute：
+ARM 下很多资源提供程序没有注册，包括 ARM 下的 Microsoft.Compute：
 <table><tr><th> NameSpace </th><th> RegistrationState </th></tr>
 <tr><td> Microsoft.Batch </td><td> Registered</td></tr>
 <tr><td> Microsoft.ClassicCompute </td><td> Registered </td></tr>
@@ -42,14 +42,14 @@ ARM下很多resource provider没有注册，包括ARM下的Microsoft.Compute：
 <tr><td> Microsoft.ServiceBus </td><td style="background:red"> NotRegistered </td></tr>
 <tr><td> Microsoft.ServiceFabric </td><td style="background:red"> NotRegistered </td></tr>
 <tr><td> Microsoft.Storage </td><td style="background:red"> NotRegistered </td></tr></table>
-AA 创建的 resource group 的 owner 之所以没有自动注册 resource provider 是由于 AA 的权限导致的。如果 AA 没有创建过 VM，那么就没有自动注册过 resource provider，所以 AA 所创建的 resource group 的 owner 也没有这个权限。
+AA 创建的资源组的 owner 之所以没有自动注册资源提供程序是由于 AA 的权限导致的。如果 AA 没有创建过 Azure 虚拟机，那么就没有自动注册过资源提供程序，所以 AA 所创建的资源组的 owner 也没有这个权限。
 
 ### 解决方法 ###
 
 基于以上理论，解决方案有两个：
 
-1.	手动运行 PowerShell 命令注册 resource provider
-2.	用创建 resource group owner 的那个账号（AA） 先创建一个 ARM 的 VM
+1.	手动运行 PowerShell 命令注册资源提供程序；
+2.	用创建资源组 owner 的那个账号（AA） 先创建一个 ARM 的 Azure 虚拟机。
 
 
 
