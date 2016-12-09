@@ -17,13 +17,13 @@
 
 ### 问题现象 ###
 
-通过 `settings.job` 配置 WebJobs 的启动时间，发现没有在指定的时间启动，比如"`0 0 0 * * *`"并没有在每天的零点启动
+通过 `settings.job` 配置 WebJobs 的启动时间，发现没有在指定的时间启动，比如 "`0 0 0 * * *`" 并没有在每天的零点启动。
 
 ### 问题分析 ###
 
 在分析该问题之前，需要先了解下 CRON 表达式相关规则。
 
-使用 CRON 表达式创建计划的 WebJobs 可用于在基本、标准或高级模式下运行的 Web 应用，但需要应用上启用 “AlwaysOn”设置。
+使用 CRON 表达式创建计划的 WebJobs 可用于在基本、标准或高级模式下运行的 Web 应用，但需要应用上启用 “AlwaysOn” 设置。
 
 若要将按需 WebJobs 变成按计划的 WebJobs ，只需在 `WebJob.zip` 文件的根目录中包含 `settings.job` 文件。此 JSON 文件应包括 `schedule` 属性和 [CRON 表达式](https://zh.wikipedia.org/wiki/Cron)，如下例所示。
 
@@ -45,9 +45,9 @@ json
 - 每天上午 `9:30：0 30 9 * * *`
 - 各工作日的上午 `9:30：0 30 9 * * 1-5`
 
-> 注意：从 Visual Studio 部署 WebJobs 时，请确保将 `settings.job` 文件属性标记为“如果较新则复制”。
+> 注意：从 Visual Studio 部署 WebJobs 时，请确保将 `settings.job` 文件属性标记为 “如果较新则复制”。
 
-Azure 平台默认是 UTC 时间，所以如果要基于中国时间配置则需要转换：中国时间 = UTC+8
+Azure 平台默认是 UTC 时间，所以如果要基于中国时间配置则需要转换：中国时间 = UTC+8。
 
 ### 解决方法 ###
 

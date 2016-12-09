@@ -1,4 +1,4 @@
-<properties
+ <properties
 	pageTitle="含有部署槽的标准网站无法缩放到基本模式"
 	description="Web 应用删除部署槽后从标准模式缩放到基本模式"
 	services="Web-Apps"
@@ -17,7 +17,7 @@
 
 ### 问题现象 ###
 
-在缩放时，会出现如下错误“站点 ‘testforeast’ 超过了托管计划允许的最大槽数。请在缩放到另一模式前删除所有部署槽。”
+在缩放时，会出现如下错误 “站点 ‘testforeast’ 超过了托管计划允许的最大槽数。请在缩放到另一模式前删除所有部署槽。”
 
 ![site-testforeast-error](./media/aog-web-apps-qa-slot-scale-standard-failed/site-testforeast-error.png)
 
@@ -27,7 +27,7 @@
 
 由于基本模式的网站不支持部署槽功能，需要删除部署槽才能成功缩放到基本模式。
 
-> 注意：另外还需要注意存储的大小是否超过了限制
+> 注意：另外还需要注意存储的大小是否超过了限制。
 
 经典管理门户中的具体操作步骤如下（其中步骤 1、2 为重现添加部署槽，如您的应用已有部署槽，即可跳至步骤 3 开始）：
 
@@ -43,6 +43,6 @@
 
 	![step-3-delete-slot](./media/aog-web-apps-qa-slot-scale-standard-failed/step-3-delete-slot.png)
 
-4. 删除部署槽后即可成功缩放至基本模式；
+4. 删除部署槽后即可成功缩放至基本模式。
 
 	![step-4-scale-tier](./media/aog-web-apps-qa-slot-scale-standard-failed/step-4-scale-tier.png)
