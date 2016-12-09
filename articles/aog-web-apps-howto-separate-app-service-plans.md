@@ -19,36 +19,34 @@
 
 ### 方法一 ###
 
-通过 Azure 门户预览(新 portal)进行更改:
+通过 Azure 门户预览(新 portal)进行更改：
 
-1. 登录 Azure 门户预览(新 portal)
-2. 创建一个新的应用服务计划
-3. 选择要进行分离的 web 应用，在弹出的选项中点击“更改应用服务计划”
-4. 在列表中选择之前创建好的应用服务计划进行更改
-
+1. 登录 Azure 门户预览（新 portal）；
+2. 创建一个新的应用服务计划；
+3. 选择要进行分离的 web 应用，在弹出的选项中点击 “更改应用服务计划”；
+4. 在列表中选择之前创建好的应用服务计划进行更改。
 ![portal-app-service-plans](./media/aog-web-apps-howto-separate-app-service-plans/azure-portal-app-service-plans.png)
 
 ### 方法二 ###
 
-通过 PowerShell 命令将已有的 Web 应用迁移到新的应用服务计划
-
+通过 PowerShell 命令将已有的 Web 应用迁移到新的应用服务计划：
  
-1. 运行以下命令登录中国版 Azure
+1. 运行以下命令登录中国版 Azure；
 
-    	Login-AzureRmAccount -EnvironmentName "AzureChinaCloud"
+		Login-AzureRmAccount -EnvironmentName "AzureChinaCloud"
 
 	![powershell-login](./media/aog-web-apps-howto-separate-app-service-plans/powershell-login.png)
 
-2. 运行以下命令创建新的应用服务计划
+2. 运行以下命令创建新的应用服务计划；
 
-    	New-AzureRmAppServicePlan -Location ChinaEast -Name <YourAppServicePlanName> -ResourceGroupName <YourResouceGroupName> -Tier Free
+		New-AzureRmAppServicePlan -Location ChinaEast -Name <YourAppServicePlanName> -ResourceGroupName <YourResouceGroupName> -Tier Free
 
 	>注: Location 参数可以选择 ChinaEast 或者 ChinaNorth
 
 	命令运行成功后返回以下结果，请将 Id 字段对应信息复制出来以备后续使用
 	![powershell-app-service-plan-id](./media/aog-web-apps-howto-separate-app-service-plans/powershell-app-service-plan-id.png)
 
-3. 运行以下命令将网站迁移到新的应用服务计划中
+3. 运行以下命令将网站迁移到新的应用服务计划中;
 
 		Set-AzureRmResource -ResourceName <YourWebSiteName> -ResourceType Microsoft.Web/sites -Properties @{"serverFarmId"="/subscriptions/<SubscirptionID>/resourceGroups/<ResourceGroupName1>/providers/Microsoft.Web/serverfarms/TestAppServicePlan"} -ResourceGroupName <ResourceGroupName2>
 
