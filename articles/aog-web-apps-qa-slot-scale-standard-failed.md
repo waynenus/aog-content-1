@@ -21,7 +21,7 @@
 
 ![site-testforeast-error](./media/aog-web-apps-qa-slot-scale-standard-failed/site-testforeast-error.png)
 
-> 注意: 在向下缩放资源时，需要检查目前模式下的资源配置是否超过目标定价层的限制。例如：存储的大小、实例的部署槽等因素。
+>[AZURE.NOTE] 在向下缩放资源时，需要检查目前模式下的资源配置是否超过目标定价层的限制。例如：存储的大小、实例的部署槽等因素。
 
 ### 解决方法 ###
 
