@@ -1,3 +1,4 @@
+
 <properties
                 pageTitle="使用 JAVA AMQP 协议如何订阅启用分区功能的 Azure 服务总线主题的消息"
                 description="借助 Java JMS API 使用 AMQP 协议订阅启用分区的 Azure 服务总线主题的消息"
@@ -6,7 +7,7 @@
                 authors=""
                 manager=""
                 editor=""
-                tags="JAVA,AMQP,Azure 服务总线，主题，队列，分区"/>
+                tags="service bus topic/partition/subscription/AMQP"/>
 
 <tags
                 ms.service="service-bus-aog"
@@ -51,5 +52,6 @@ messageConsumer.setMessageListener(new MessageListener());
 MessageProducer messageProducer = session.createProducer(topic);
 Message message = session.createTextMessage("Hello world1213!");
 messageProducer.send(message);
+
 
 ```
