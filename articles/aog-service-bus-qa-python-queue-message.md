@@ -21,7 +21,7 @@
 
 **报错信息为：**  
 
-报错信息为 : could not convert string to float :'max-age=31536000'  
+报错信息为 : `could not convert string to float :'max-age=31536000'`。  
 
 ![error-message](./media/aog-service-bus-qa-python-queue-message/error-message.png)
 
