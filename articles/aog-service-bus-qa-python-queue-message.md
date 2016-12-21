@@ -6,7 +6,7 @@
                 authors=""
                 manager=""
                 editor=""
-                tags="服务总线,python,Service Bus SDK,Python Tools for Visual Studio"/>
+                tags="Python,service bus"/>
 
 <tags
                 ms.service="service-bus-aog"
@@ -20,6 +20,8 @@
 通过 python 获取服务总线（Azure Service Bus ）的消息时发生报错。
 
 **报错信息为：**  
+
+报错信息为 : could not convert string to float :'max-age=31536000'  
 
 ![error-message](./media/aog-service-bus-qa-python-queue-message/error-message.png)
 
