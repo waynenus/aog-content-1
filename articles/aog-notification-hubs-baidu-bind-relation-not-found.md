@@ -6,7 +6,7 @@
                 authors=""
                 manager=""
                 editor=""
-                tags="通知中心,百度推送服务,API"/>
+                tags="Notification Hubs,Baidu,Bind Relation"/>
 
 <tags
                 ms.service="notification-hubs-aog"
@@ -32,4 +32,5 @@ Azure 通知中心通过百度推送时，服务端显示如下错误信息：
 		PushManager.startWork(context, loginType, loginValue)
 
 2.	参考链接：[百度云推送服务端错误码](http://push.baidu.com/doc/restapi/error_code)。
+
 
