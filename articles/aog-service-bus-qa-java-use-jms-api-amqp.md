@@ -7,7 +7,7 @@
                 authors=""
                 manager=""
                 editor=""
-                tags="service bus topic/partition/subscription/AMQP"/>
+                tags="service bus topic,partition,subscription,AMQP"/>
 
 <tags
                 ms.service="service-bus-aog"
