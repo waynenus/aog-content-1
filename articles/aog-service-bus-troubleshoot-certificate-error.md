@@ -1,4 +1,12 @@
-
+<properties 
+	pageTitle="Azure Web 应用连接 Service Bus 出现证书错误的解决方案" 
+	description="Azure Web 应用连接 Service Bus 出现证书错误的解决方案" 
+	services="" 
+	documentationCenter="" 
+	authors=""
+	manager="" 
+	editor=""/>
+<tags ms.service="service-bus-aog" ms.date="" wacn.date="11/23/2016"/>
 # Azure Web 应用连接 Service Bus 出现证书错误的解决方案
 
 ##问题描述：
@@ -48,7 +56,7 @@
  
 ###Fiddler 日志示例:
 
-![Fiddler-log](media/aog-service-bus-troubleshoot-certificate-error/Fiddler-log.png "Fiddler-log")
+![Fiddler-log](./media/aog-service-bus-troubleshoot-certificate-error/Fiddler-log.png "Fiddler-log")
 
 当下面任何一种情况发生时，web 应用无法对 service bus 服务器证书建立信任的证书链，随后会报告上述的证书错误：
 

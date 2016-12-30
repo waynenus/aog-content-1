@@ -25,7 +25,7 @@
 
 #### 下载和安装 ####
 
-PsPing [下载地址](https://technet.microsoft.com/en-us/sysinternals/jj729731.aspx)包含了它的详细使用方法，若有需要可以查看此页面上的帮助信息。下载完后，可以单独将 psping.exe 命令解压出来放在任意路径，然后从命令提示符来运行。当然，您也可以将整个压缩包解压到指定的路径来获取压缩包内完整的 PSTools 工具套件。
+PsPing [下载地址](https://technet.microsoft.com/zh-cn/sysinternals/jj729731.aspx)包含了它的详细使用方法，若有需要可以查看此页面上的帮助信息。下载完后，可以单独将 psping.exe 命令解压出来放在任意路径，然后从命令提示符来运行。当然，您也可以将整个压缩包解压到指定的路径来获取压缩包内完整的 PSTools 工具套件。
 
 #### 使用方法 ####
 

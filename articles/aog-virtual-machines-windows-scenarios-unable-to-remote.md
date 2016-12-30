@@ -6,7 +6,7 @@
 	authors=""
 	manager="" 
 	editor=""/>
-<tags ms.service="virtual-machines-aog" ms.date="" wacn.date="07/06/2016"/>
+<tags ms.service="virtual-machines-aog" ms.date="" wacn.date="07/26/2016"/>
 
 # Azure Windows 虚拟机常见导致无法远程的操作
 

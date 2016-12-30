@@ -17,11 +17,11 @@
 
 ## 什么是 Azure Active Directory  
 
-Azure Active Directory (Azure AD) 是 Microsoft 提供的基于多租户云的目录和身份管理服务。Azure AD 包含整套身份管理功能，例如多重身份验证、设备注册、自助密码管理、自助组管理、特权帐户管理、基于角色的访问控制、应用程序使用情况监视、多样化审核以及安全监视和警报。这些功能可以帮助保护基于云的应用程序的安全，简化 IT 流程，削减成本，以及确保实现公司的合规目标。  
+Azure Active Directory (Azure AD) 是 Azure 提供的基于多租户云的目录和身份管理服务。Azure AD 包含整套身份管理功能，例如多重身份验证、设备注册、自助密码管理、自助组管理、特权帐户管理、基于角色的访问控制、应用程序使用情况监视、多样化审核以及安全监视和警报。这些功能可以帮助保护基于云的应用程序的安全，简化 IT 流程，削减成本，以及确保实现公司的合规目标。  
 
-## 什么是Azure订阅  
+## 什么是 Azure 订阅  
 
-订阅是 Azure 一个重要的概念，它能赋予 Azure 账户对 Windows Azure 服务和 Azure 传统管理门户的访问权限。订阅内含有各类可用的Azure资源，同时也是对用户收取费用的最小单位。
+订阅是 Azure 一个重要的概念，它能赋予 Azure 账户对 Azure 服务和 Azure 传统管理门户的访问权限。订阅内含有各类可用的 Azure 资源，同时也是对用户收取费用的最小单位。
 
 ## Azure AD 与 Azure 订阅的关系  
 
@@ -29,13 +29,13 @@ Azure Active Directory (Azure AD) 是 Microsoft 提供的基于多租户云的�
 
 >[AZURE.NOTE]<p>1. Azure 中国的 Azure AD 目前只支持全局管理员和用户。<p>2. Azure 中国的 Azure AD 不支持 Microsoft 账户用户。  
 
-## Azure AD管理员与Azure订阅管理员的区别  
+## Azure AD 管理员与 Azure 订阅管理员的区别  
 
 默认情况下，当您注册时，系统将为您分配服务管理员角色。如果其他人需要使用同一个订阅登录和访问服务，则您可以将他们添加为协同管理员。服务管理员和协同管理员是 Azure 订阅信任的 Azure AD 组织内部的工作或学校帐户。  
 Azure AD 提供一组不同的管理角色，用于管理目录和标识相关的功能。例如，目录的全局管理员可以将用户和组添加到目录，或者要求对用户执行多重身份验证。将为创建目录的用户分配全局管理员角色，而他们又可以向其他用户分配管理员角色。  
-但必须注意，Azure 订阅管理员和 Azure AD 目录管理员是两个不同的概念。Azure 订阅管理员可以管理 Azure 中的资源，还可以在 Azure 经典门户中查看 Active Directory 扩展（因为 Azure 经典门户是一种 Azure 资源）。Directory 管理员可以管理目录中的属性。
+但必须注意，Azure 订阅管理员和 Azure AD 目录管理员是两个不同的概念。Azure 订阅管理员可以管理 Azure 中的资源，还可以在 Azure 经典管理门户中查看 Active Directory 扩展（因为 Azure 经典管理门户是一种 Azure 资源）。Directory 管理员可以管理目录中的属性。
 
-## Azure AD在Azure中国的限制  
+## Azure AD 在Azure 中国的限制  
 
 截至目前（2016年12月）为止，Azure 中国的 Azure AD 不支持 Microsoft 账户用户，也不支持 Azure AD B2B 合作功能。由此带来的限制如下：  
 

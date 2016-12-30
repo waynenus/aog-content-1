@@ -1,9 +1,22 @@
-# 使用Azure Java SDK创建VM
+<properties 
+	pageTitle="使用 Azure Java SDK 管理 VM" 
+	description="本文介绍如何使用 Azure Java SDK 管理 VM" 
+	services="" 
+	documentationCenter="" 
+	authors=""
+	manager="" 
+	editor=""/>
+<tags 
+	ms.service="virtual-machine-aog"
+	ms.date="" 
+	wacn.date="07/29/2016"/>
+
+# 使用 Azure Java SDK 管理 VM
 
 ### 本文包以下内容
-- [Azure Java Management SDK介绍](#introduction)
-- [Azure Java SDK的认证方式](#authorization)
-- [在云服务中创建VM](#createVM)
+- [Azure Java Management SDK 介绍](#introduction)
+- [Azure Java SDK 的认证方式](#authorization)
+- [在云服务中创建 VM](#createVM)
 - [基于捕获的映像创建虚拟机](#createVM1)
 - [创建系统磁盘和数据磁盘](#createDisk)
 - [附加磁盘和分离磁盘](#attachanddelete)
@@ -11,7 +24,7 @@
 
 ## <a id="introduction"></a>Azure Java Management SDK介绍
 
-azure-svc-mgmt-compute 类包是Azure Java SDK所有关于Azure VM的操作API。我们可以从[这里](http://go.microsoft.com/fwlink/?LinkId=690320)下载最新的类包。下面是各个类包的说明：
+azure-svc-mgmt-compute 类包是 Azure Java SDK 所有关于 Azure VM 的操作 API。我们可以从[这里](http://go.microsoft.com/fwlink/?LinkId=690320)下载最新的类包。下面是各个类包的说明：
 
 - **com.microsoft.windowsazure.management.compute.HostedServiceOperations**: Hosted Service 设置相关操作
 - **com.microsoft.windowsazure.management.compute.VirtualMachineOperations**: VM 相关操作
@@ -26,41 +39,41 @@ azure-svc-mgmt-compute 类包是Azure Java SDK所有关于Azure VM的操作API�
 - **com.microsoft.windowsazure.management.compute.VirtualMachineExtensionOperations**: VM 扩展相关操作
 - **com.microsoft.windowsazure.management.compute.OperatingSystemOperations**: 操作系统相关操作
 
-## <a id="authorization"></a>Azure Java SDK的认证方式
+## <a id="authorization"></a>Azure Java SDK 的认证方式
 
-Azure SDK提供多种认证方式，以下主要提供两种认证方式，publishsetting文件认证 和 证书认证
+Azure SDK 提供多种认证方式，以下主要提供两种认证方式，publishsetting 文件认证 和 证书认证
 
-1. Publishsettings文件认证
+1. Publishsettings 文件认证
 
-    Azure Java SDK提供的认证方式主要是使用证书来认证，使用publishsetting文件也是使用证书来认证，只是SDK将认证步骤简化。在publishsetting文件中，对应的订阅的下会自动生成一个证书，并将证书的内容转换成Base64的格式保存在publishsetting中，在SDK中就是将证书的Base64的编码转换成证书，然后作为认证的凭证。我们可以从[这里](https://manage.windowsazure.cn/publishsettings)下载您的订阅对应的Publishsettings文件。
+    Azure Java SDK 提供的认证方式主要是使用证书来认证，使用 publishsetting 文件也是使用证书来认证，只是 SDK 将认证步骤简化。在publishsetting 文件中，对应的订阅的下会自动生成一个证书，并将证书的内容转换成 Base64 的格式保存在 publishsetting 中，在 SDK 中就是将证书的 Base64 的编码转换成证书，然后作为认证的凭证。我们可以从[这里](https://manage.windowsazure.cn/publishsettings)下载您的订阅对应的 Publishsettings 文件。
 
     **示例代码**
 
-	Configuration config = PublishSettingsLoader.createManagementConfiguration("&lt;publishsettings file path&gt;", "&lt;Sub Id&gt;"); <br>
-    ComputeManagementClient computeManagementClient = ComputeManagementService.create(config);<br>
-    VirtualMachineOperations vmop = computeManagementClient.getVirtualMachinesOperations();
+		Configuration config = PublishSettingsLoader.createManagementConfiguration("<publishsettings file path>", "<Sub Id>");  
+    	ComputeManagementClient computeManagementClient = ComputeManagementService.create(config);  
+    	VirtualMachineOperations vmop = computeManagementClient.getVirtualMachinesOperations();
 
     
 2. 证书认证
 
-    使用购买的证书或者自定义证书，将包含公钥的cer文件上传到Azure的管理门户中：
+    使用购买的证书或者自定义证书，将包含公钥的 cer 文件上传到 Azure 的经典管理门户中：
     
     ![](./media/aog-azure-java-manage-vm/management-cert1.jpg)
     
     ![](./media/aog-azure-java-manage-vm/management-cert2.jpg)
 
-    上传完成后，在本地使用带有公钥和私钥的证书连接Azure服务。
+    上传完成后，在本地使用带有公钥和私钥的证书连接 Azure 服务。
     
     **示例代码**
     
-    Configuration config = Configuration.configure(new URI("https://management.core.chinacloudapi.cn"), &lt;sub Id&gt;, &lt;cert location&gt;, &lt;cert password&gt;);<br>
-	ComputeManagementClient computeManagementClient = ComputeManagementService.create(config);
-    VirtualMachineOperations vmop = computeManagementClient.getVirtualMachinesOperations();
+    	Configuration config = Configuration.configure(new URI("https://management.core.chinacloudapi.cn"), <sub Id>;, <cert location>;, <cert password>;);  
+		ComputeManagementClient computeManagementClient = ComputeManagementService.create(config);  
+    	VirtualMachineOperations vmop = computeManagementClient.getVirtualMachinesOperations();
     
 
-## <a id="createVM"></a>在云服务中创建VM
+## <a id="createVM"></a>在云服务中创建 VM
 
-我们创建VM的时候，可以将VM创建到新建的云服务中或者已存在的云服务中。下面的示例代码中，是把VM创建到已经存在的云服务中，云服务的名称通过变量*hostedServiceName*指定。如果需要创建新的云服务，只需要在方法*createVMDeployment*中把*createHostedService*前面的注释打开。
+我们创建 VM 的时候，可以将 VM 创建到新建的云服务中或者已存在的云服务中。下面的示例代码中，是把 VM 创建到已经存在的云服务中，云服务的名称通过变量 *hostedServiceName* 指定。如果需要创建新的云服务，只需要在方法 *createVMDeployment* 中把 *createHostedService* 前面的注释打开。
 
 **示例代码**
 
@@ -299,25 +312,25 @@ Azure SDK提供多种认证方式，以下主要提供两种认证方式，publi
 
 ## <a id="createVM1"></a>基于捕获的映像创建虚拟机
 
-关于自定义的映像有两种类型，一种是经过Sysprep（一般化）处理的，一种是未经过处理的，两种映像的主要区别是：
+关于自定义的映像有两种类型，一种是经过 Sysprep（一般化）处理的，一种是未经过处理的，两种映像的主要区别是：
 
-1. 经Sysprep处理后的映像：这种映像移除了特定配置，比如登录的用户名、密码等信息，类似于系统镜像。基于这种镜像创建VM时，我们需要设定VM的ConfigurationSet信息
+1. 经 Sysprep 处理后的映像：这种映像移除了特定配置，比如登录的用户名、密码等信息，类似于系统镜像。基于这种镜像创建 VM 时，我们需要设定 VM 的 ConfigurationSet 信息
 
 	![](./media/aog-azure-java-manage-vm/capture-vm-with-sysprep.jpg)
 
-2. 未经Sysprep处理的映像：这种映像包含特定的配置，比如登录的用户名、密码等信息。基于这种镜像创建VM时，我们不需要设定VM的ConfigurationSet信息。
+2. 未经 Sysprep 处理的映像：这种映像包含特定的配置，比如登录的用户名、密码等信息。基于这种镜像创建VM时，我们不需要设定 VM 的 ConfigurationSet 信息。
 
 	![](./media/aog-azure-java-manage-vm/capture-vm-without-sysprep.jpg)
 
-关于Sysprep，更多详细信息请参考：[Sysprep（一般化）Windows 安装](https://msdn.microsoft.com/zh-cn/library/hh824938.aspx)
+关于 Sysprep，更多详细信息请参考：[Sysprep（一般化）Windows 安装](https://msdn.microsoft.com/zh-cn/library/hh824938.aspx)
 
 
-根据上述描述，我们分别创建了这两种类型的映像（如下图所示）。根据这两种映像创建VM的方法，请参考下面的示例代码。
+根据上述描述，我们分别创建了这两种类型的映像（如下图所示）。根据这两种映像创建 VM 的方法，请参考下面的示例代码。
 
 ![](./media/aog-azure-java-manage-vm/captured-vms.jpg)
 
 
-**使用经过Sysprep处理后的映像来创建VM的示例代码：**
+**使用经过 Sysprep 处理后的映像来创建 VM 的示例代码：**
 
 
 	public class CreateCaptureImageWithSysprep {
@@ -405,7 +418,7 @@ Azure SDK提供多种认证方式，以下主要提供两种认证方式，publi
 	}
 
 
-**使用未经过Sysprep处理后的映像来创建VM的示例代码：**
+**使用未经过 Sysprep 处理后的映像来创建 VM 的示例代码：**
 
 
 	public class CreateCaptureImageWithNoSysprep {
@@ -473,9 +486,10 @@ Azure SDK提供多种认证方式，以下主要提供两种认证方式，publi
 
 ## <a id="createDisk"></a>创建系统磁盘和数据磁盘
 
-虚拟机磁盘包含两种类型，系统磁盘和数据磁盘，从名字可以看出，系统磁盘一般用来做系统盘，而数据磁盘一般用来做数据存储盘。Azure Java SDK中有很多方法可以创建系统磁盘和数据磁盘。
-例如：**computeManagementClient.getVirtualMachineDisksOperations().createDisk**：该方法既可以创建数据磁盘，又可以创建系统磁盘，但创建时，必须指定VHD文件的位置。
-**computeManagementClient.getVirtualMachineDisksOperations().createDataDisk**：该方法 只可以创建数据磁盘，该方法不依赖于现有的VHD，可以直接向已有的VM附加新的数据磁盘
+虚拟机磁盘包含两种类型，系统磁盘和数据磁盘，从名字可以看出，系统磁盘一般用来做系统盘，而数据磁盘一般用来做数据存储盘。 Azure Java SDK 中有很多方法可以创建系统磁盘和数据磁盘。  
+
+例如：**computeManagementClient.getVirtualMachineDisksOperations().createDisk**：该方法既可以创建数据磁盘，又可以创建系统磁盘，但创建时，必须指定 VHD 文件的位置。
+**computeManagementClient.getVirtualMachineDisksOperations().createDataDisk**：该方法 只可以创建数据磁盘，该方法不依赖于现有的 VHD，可以直接向已有的 VM 附加新的数据磁盘
 
 **创建系统磁盘的示例代码**
 
@@ -509,7 +523,7 @@ Azure SDK提供多种认证方式，以下主要提供两种认证方式，publi
 
 1. 附加磁盘
     
-	附加磁盘的时候，如果你附加现有的磁盘，首先确保你附加的磁盘没有被其他VM引用。附加现有磁盘只能通过更新VM来附加，请参考以下代码：
+	附加磁盘的时候，如果你附加现有的磁盘，首先确保你附加的磁盘没有被其他 VM 引用。附加现有磁盘只能通过更新 VM 来附加，请参考以下代码：
 	   
 	
 	    VirtualMachineGetResponse virtualMachinesGetResponse = computeManagementClient.getVirtualMachinesOperations().get("kevinvm", "kevinvm", "kevinvm");
@@ -537,14 +551,14 @@ Azure SDK提供多种认证方式，以下主要提供两种认证方式，publi
 
 2. 分离磁盘
   
-	deleteDataDisk删除磁盘是可以作为分离磁盘来用的， 这个方法的最后一个参数，deleteDataDisk 如果设置为false，就是从当前VM中删除磁盘，但保留其VHD文件。请参考下面的代码：
+	deleteDataDisk 删除磁盘是可以作为分离磁盘来用的， 这个方法的最后一个参数，deleteDataDisk 如果设置为 false，就是从当前 VM 中删除磁盘，但保留其 VHD 文件。请参考下面的代码：
 	
 	    
 		computeManagementClient.getVirtualMachineDisksOperations().deleteDataDisk 
 	    
 
 ## <a id="resource"></a>相关参考资料
-- [Microsoft Azure Java SDK API](http://azure.github.io/azure-sdk-for-java/)
+- [Azure Java SDK API](http://azure.github.io/azure-sdk-for-java/)
 - [Azure Management Libraries for Java](https://github.com/Azure/azure-sdk-for-java/tree/0.9)
 - [Getting Started with Azure Management Libraries for Java](https://azure.microsoft.com/en-us/blog/getting-started-with-the-azure-java-management-libraries/)
 - [Java 开发人员中心](https://www.azure.cn/develop/java/)

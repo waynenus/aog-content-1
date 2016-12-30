@@ -1,30 +1,30 @@
 <properties
-    pageTitle="如何使用azure blob storage在浏览器中实现对媒体文件拖拽点播"
-    description="如何使用azure blob storage在浏览器中实现对媒体文件拖拽点播。"
-    services="storage"
-    documentationCenter=""
-    authors=""
-    manager=""
-    editor=""
-    tags="blob存储,媒体文件,拖拽点播,Progressive Download"/>
+	pageTitle="如何使用 Azure blob storage 在浏览器中实现对媒体文件拖拽点播"
+	description="如何使用 Azure blob storage 在浏览器中实现对媒体文件拖拽点播。"
+	services="storage"
+	documentationCenter=""
+	authors=""
+	manager=""
+	editor=""
+	tags="blob存储,媒体文件,拖拽点播,Progressive Download"/>
 
 <tags
-    ms.service="storage"
-    ms.date="10/27/2016"
-    wacn.date="10/27/2016"/>
+	ms.service="storage-aog"
+	ms.date="10/27/2016"
+	wacn.date="11/10/2016"/>
 
 
-#如何使用 azure blob storage 在浏览器中实现对媒体文件拖拽点播
+#如何使用 Azure Blob Storage 在浏览器中实现对媒体文件拖拽点播
 
-Azure blob storage 是 azure 提供的一种服务，blob 存储可以用来存储一些松散结构的数据，例如各类文本文件数据或者二进制数据（各类型格式文件、媒体文件以及应用安装文件）。
+Azure blob storage 是 Azure 提供的一种服务，blob 存储可以用来存储一些松散结构的数据，例如各类文本文件数据或者二进制数据（各类型格式文件、媒体文件以及应用安装文件）。
 
-而对于在 Azure storage 存放的 mp3 等格式的媒体文件，我们可以使用 Azure storage 提供的 url，可以通过浏览器访问的形式来播放该类媒体文件。这篇文章主要讨论在使用 azure storage 提供的 url 播放媒体文件时遇到的点播问题。需要注意的是，azure storage 主要提供的服务是存储服务，对于媒体文件的播放和编码等工作，azure 提供专业的media services，详细内容可以参考[链接](https://www.azure.cn/documentation/services/media-services/)。
+而对于在 Azure storage 存放的 mp3 等格式的媒体文件，我们可以使用 Azure storage 提供的 url，可以通过浏览器访问的形式来播放该类媒体文件。这篇文章主要讨论在使用 Azure Storage 提供的 url 播放媒体文件时遇到的点播问题。需要注意的是，Azure Storage 主要提供的服务是存储服务，对于媒体文件的播放和编码等工作，zure 提供专业的 media services，详细内容可以参考[链接](/documentation/services/media-services/)。
 
 ###问题描述：
 
-在Azure存储中存放 mp3 文件, 播放 mp3 文件时, 拖动到还没有缓存好的进度时(例如已经缓冲到10秒, 现在拖动到60秒), 不能在第60秒开始缓冲接着播放, 会跳回第10秒播放。
+在 Azure 存储中存放 mp3 文件, 播放 mp3 文件时, 拖动到还没有缓存好的进度时(例如已经缓冲到 10 秒, 现在拖动到 60 秒), 不能在第60秒开始缓冲接着播放, 会跳回第 10 秒播放。
 
-![](media/aog-storage-media-stop-resume/issue.png)
+![](./media/aog-storage-media-stop-resume/issue.png)
  
 ###问题分析：
 
@@ -61,11 +61,11 @@ Progressive Download：一种分片后的分段式下载缓冲
 
 Un-versioned 访问截图
 
-![](media/aog-storage-media-stop-resume/un-versioned.jpg)
+![](./media/aog-storage-media-stop-resume/un-versioned.jpg)
  
 设置 DefaultServiceVersion 后访问截图
 
-![](media/aog-storage-media-stop-resume/default-versioned.jpg)
+![](./media/aog-storage-media-stop-resume/default-versioned.jpg)
  
 
 ###解决方案：
@@ -85,14 +85,14 @@ Un-versioned 访问截图
 
 	示例：
 
-	![](media/aog-storage-media-stop-resume/cmd.png)
+	![](./media/aog-storage-media-stop-resume/cmd.png)
 
     >备注：默认是支持 Global Storage 服务，修改过后需要指定 AzureChinaCloud 环境。
     
 	c)       测试用例：我们测试一个视频文件，修改版本后，可以支持拖拽点播。
 
-	![](media/aog-storage-media-stop-resume/result1.png)
-	![](media/aog-storage-media-stop-resume/result2.png)
+	![](./media/aog-storage-media-stop-resume/result1.png)
+	![](./media/aog-storage-media-stop-resume/result2.png)
  
  
 2.  如果是自己 code 开发的播放客户端，可以在读取音频或者视频文件时显示的设置 API 版本为最新。

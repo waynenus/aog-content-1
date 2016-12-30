@@ -1,4 +1,12 @@
-
+<properties 
+	pageTitle="创建基于 AFS 的 Docker 容器卷" 
+	description="创建基于 AFS 的 Docker 容器卷" 
+	services="virtual machine" 
+	documentationCenter="" 
+	authors=""
+	manager="" 
+	editor=""/>
+<tags ms.service="virtual-machine-aog" ms.date="" wacn.date="09/29/2016"/>
 # 创建基于 AFS 的 Docker 容器卷
 
 
@@ -137,7 +145,7 @@ Docker Volume Plugin for Azure File Storage 是 Microsoft 提供的容器共享�
 通过该驱动创建的共享文件夹，默认 quota 是 5TB。您可能需要在 Azure portal 上去修改该 quota 值以适应您的需求。
 
 
-![modify-Quota](media/aog-virtual-machines-docker-based-afs/modify-Quota.png "修改 AzurePortal 中的 Quota 值.png")
+![modify-Quota](./media/aog-virtual-machines-docker-based-afs/modify-Quota.png "修改 AzurePortal 中的 Quota 值.png")
 
 
 

@@ -1,7 +1,7 @@
 <properties
 	pageTitle="如何在 JAVA 中导入 Wosign 证书"
 	description="介绍如何在 JAVA 中导入 Wosign 证书。"
-	services="web-app"
+	services="app-service-web-aog"
 	documentationCenter=""
 	authors=""
 	manager=""
@@ -9,9 +9,9 @@
 	tags="Java,Wosign 证书"/>
 
 <tags
-	ms.service="web-app"
-	ms.date="10/126/2016"
-	wacn.date="10/126/2016"/>
+	ms.service="app-service-web-aog"
+	ms.date="10/28/2016"
+	wacn.date="10/28/2016"/>
 
 # 如何在 JAVA 中导入 Wosign 证书 #
 
@@ -33,4 +33,4 @@
 
 3. 如果看到以下结果，则导入成功。
 
-	![certification-imoport-success](media/aog-web-app-java-import-wosign-certification/certification-import-success.png "certification-import-success")
+	![certification-imoport-success](./media/aog-web-app-java-import-wosign-certification/certification-import-success.png "certification-import-success")

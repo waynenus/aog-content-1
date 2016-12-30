@@ -1,15 +1,26 @@
-# 理解及快速测定Azure虚拟机的磁盘性能 #
+<properties 
+	pageTitle="理解及快速测定 Azure 虚拟机的磁盘性能" 
+	description="理解及快速测定 Azure 虚拟机的磁盘性能" 
+	services="virtual machine" 
+	documentationCenter="" 
+	authors=""
+	manager="" 
+	editor=""/>
+<tags ms.service="virtual-machine-aog" ms.date="" wacn.date="10/28/2016"/>
+# 理解及快速测定 Azure 虚拟机的磁盘性能 #
 
 随着越来越多的用户将生产系统迁移到 Azure 平台的虚拟机服务中，Azure 虚拟机的性能愈发被关注。传统的数据中心中，我们通常使用 CPU，内存，存储和网络的性能来衡量生产压力。特别是对于 IO 密集型工作负荷，比如虚拟机内部运行的 SQL 服务，存储系统的吞吐容量，往往成为生产系统的瓶颈所在。
 
 Azure 提供了标准存储和高级存储两种存储服务。针对于生产环境中的 IO 密集型负荷，我们推荐使用高级存储。标准存储仅推荐在开发测试环境中使用。针对于具体的高级存储的介绍，以及虚拟机存储的最佳实践等信息，建议完成以下阅读：
-- 高级存储简介：[https://www.azure.cn/documentation/articles/storage-premium-storage/](https://www.azure.cn/documentation/articles/storage-premium-storage/ "https://www.azure.cn/documentation/articles/storage-premium-storage/")
-- Azure虚拟运行SQL服务的最佳实践（英文）：[https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-sql-performance/](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-sql-performance/ "https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-sql-performance/")
-- 在SQL虚拟机中使用Azure高级存储（英文）：[https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-classic-sql-server-premium-storage/](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-classic-sql-server-premium-storage/ "https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-classic-sql-server-premium-storage/")
+
+- [高级存储简介](/documentation/articles/storage-premium-storage/ "https://www.azure.cn/documentation/articles/storage-premium-storage/")
+- [Azure 虚拟运行 SQL 服务的最佳实践](/documentation/articles/virtual-machines-windows-sql-performance/ "https://www.azure.cn/documentation/articles/virtual-machines-windows-sql-performance/")
+- [在 SQL 虚拟机中使用 Azure 高级存储](/documentation/articles/virtual-machines-windows-classic-sql-server-premium-storage/ "https://www.azure.cn/documentation/articles/virtual-machines-windows-classic-sql-server-premium-storage/")
 	
 然而在现实环境中，由于种种条件所限，很多用户暂时无法使用高级存储来达到最佳的存储性能。本文的目的在于帮助目前仍然使用标准存储的用户如何准确理解虚拟机的存储性能，从而在发生存储性能问题时快速有效的从支持部门得到帮助。
 
-首先，由于虚拟机运行在 Azure 平台，我们需要了解 Azure 标准存储的一些基本性能指标，[https://www.azure.cn/documentation/articles/storage-scalability-targets](https://www.azure.cn/documentation/articles/storage-scalability-targets "https://www.azure.cn/documentation/articles/storage-scalability-targets")：
+首先，由于虚拟机运行在 Azure 平台，我们需要了解 [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets/ "https://www.azure.cn/documentation/articles/storage-scalability-targets/")：
+
 - 单个标准存储帐户总请求率上限为 20,000 IOPS，所有虚拟机磁盘的 IOPS 总数不应超过此限制。
 - 标准层虚拟机的单个磁盘 IOPS 上限约为 500。
 - 单个标准存储帐户中用于生产应用的磁盘不应超过 40 个
@@ -48,7 +59,7 @@ Azure 提供了标准存储和高级存储两种存储服务。针对于生产�
 
 从下图中可以看到根据文件的类型不同，整个过程分为三个阶段，
 
-![copy-file-1](media/aog-virtual-machines-disk-performace/copy-file-1.png "copy-file-1")
+![copy-file-1](./media/aog-virtual-machines-disk-performace/copy-file-1.png "copy-file-1")
 
 - 系统在处理随机大小文件时，拷贝的性能在 10MB/s 到 25MB/s 之间变化。
 - 处理单个大文件的拷贝，性能上升到 40MB/s 以上，但是即便是对单个文件，拷贝性能也不稳定。
@@ -56,24 +67,26 @@ Azure 提供了标准存储和高级存储两种存储服务。针对于生产�
 
  如果我们多次重复文件的拷贝过程，随着文件系统碎片状态的变化，服务器 Cache 的使用情况变化等等，同样的文件拷贝性能的差异性很大。
 
-![copy-file-2](media/aog-virtual-machines-disk-performace/copy-file-2.png "copy-file-2")
+![copy-file-2](./media/aog-virtual-machines-disk-performace/copy-file-2.png "copy-file-2")
 
 抛开用户界面上的性能指示，当我们使用 Perfmon 来具体分析单个磁盘的性能时，很明显，无论处理那种类型的文件拷贝，磁盘仍然未处于完全忙碌的状态。而磁盘的数据吞吐量和 IOPS 都处于不稳定状态
 
-![copy-file-perfmon-analysis-1](media/aog-virtual-machines-disk-performace/copy-file-perfmon-analysis-1.png "copy-file-perfmon-analysis-1")
+![copy-file-perfmon-analysis-1](./media/aog-virtual-machines-disk-performace/copy-file-perfmon-analysis-1.png "copy-file-perfmon-analysis-1")
 
-![copy-file-perfmon-analysis-2](media/aog-virtual-machines-disk-performace/copy-file-perfmon-analysis-2.png "copy-file-perfmon-analysis-2")
+![copy-file-perfmon-analysis-2](./media/aog-virtual-machines-disk-performace/copy-file-perfmon-analysis-2.png "copy-file-perfmon-analysis-2")
 
-![copy-file-perfmon-analysis-3](media/aog-virtual-machines-disk-performace/copy-file-perfmon-analysis-3.png "copy-file-perfmon-analysis-3")
+![copy-file-perfmon-analysis-3](./media/aog-virtual-machines-disk-performace/copy-file-perfmon-analysis-3.png "copy-file-perfmon-analysis-3")
 
 根据以上的分析和测试我们可以确定，使用文件拷贝的方式无法科学地衡量磁盘的性能。
 
 在现实中，为了得到稳定的磁盘数据，通常建议使用 DiskSPD 或是 IOMeter 等工具。
+
 - DiskSPD: [https://gallery.technet.microsoft.com/DiskSpd-a-robust-storage-6cd2f223](https://gallery.technet.microsoft.com/DiskSpd-a-robust-storage-6cd2f223 "https://gallery.technet.microsoft.com/DiskSpd-a-robust-storage-6cd2f223") 
 - IOMeter: [http://www.iometer.org/](http://www.iometer.org/ "http://www.iometer.org/") 
-这些工具大多数都是使用服务器的 CPU资源产生多个工作线程，每个线程根据设定的 IO 读或写的比例，IO 请求的大小，顺序读写或随机读写等，产生大量的并发请求，直接作用于目标存储设备。
 
-以同一个测试服务器为例，通过以下命令分别对于 D,E,F 和 N 卷进行4K，8K，64K 大小的随机读写 IO 压力测试（80% 读操作，20% 写操作）
+这些工具大多数都是使用服务器的 CPU 资源产生多个工作线程，每个线程根据设定的 IO 读或写的比例，IO 请求的大小，顺序读写或随机读写等，产生大量的并发请求，直接作用于目标存储设备。
+
+以同一个测试服务器为例，通过以下命令分别对于 D,E,F 和 N 卷进行 4K，8K，64K 大小的随机读写 IO 压力测试（80% 读操作，20% 写操作）
 
 	diskspd -c50G -d300 -F16 -w20 -r -b4k -o4 [X]:\DiskSpd.dat
 	diskspd -c50G -d300 -F16 -w20 -r -b8k -o4 [X]:\DiskSpd.dat
@@ -81,7 +94,7 @@ Azure 提供了标准存储和高级存储两种存储服务。针对于生产�
 
 由于篇幅所限，仅仅将 4K 大小的结果总结如下:
 
-![4k-stress-test-result](media/aog-virtual-machines-disk-performace/4k-stress-test-result.png "4k-stress-test-result")
+![4k-stress-test-result](./media/aog-virtual-machines-disk-performace/4k-stress-test-result.png "4k-stress-test-result")
 
 同时，根据测试时生成的 Perfmon 日志，我们可以清晰地看到单个磁盘在进行测试时基本上保持在完全忙碌的状态，并体现出一致的 IO 性能指标(第一个测试为 4K 读写，第二个为 8K 读写，第三个为 64K 读写，每个测试区间前者为 E 卷，后者为 G 卷)
 - 当 IO 为 4K 时，单个磁盘吞吐量(Disk Bytes/sec)，D 卷和 G 卷在 2MB 左右，IOPS（Disk Transfer/sec）约为 480
@@ -89,18 +102,18 @@ Azure 提供了标准存储和高级存储两种存储服务。针对于生产�
 - 当 IO 为 4K 时，单个磁盘吞吐量(Disk Bytes/sec)，D 卷在 24MB 左右，G 卷约为 31MB，IOPS（Disk Transfer/sec）约为 450
 - 对于同一类测试，G 卷的性能要稍好于 E 卷。
 
-![4k-stress-test-perfmon-analysis-1](media/aog-virtual-machines-disk-performace/4k-stress-test-perfmon-analysis-1.png "4k-stress-test-perfmon-analysis-1")
+![4k-stress-test-perfmon-analysis-1](./media/aog-virtual-machines-disk-performace/4k-stress-test-perfmon-analysis-1.png "4k-stress-test-perfmon-analysis-1")
 
-![4k-stress-test-perfmon-analysis-2](media/aog-virtual-machines-disk-performace/4k-stress-test-perfmon-analysis-2.png "4k-stress-test-perfmon-analysis-2")
+![4k-stress-test-perfmon-analysis-2](./media/aog-virtual-machines-disk-performace/4k-stress-test-perfmon-analysis-2.png "4k-stress-test-perfmon-analysis-2")
 
-![4k-stress-test-perfmon-analysis-3](media/aog-virtual-machines-disk-performace/4k-stress-test-perfmon-analysis-3.png "4k-stress-test-perfmon-analysis-3")
+![4k-stress-test-perfmon-analysis-3](./media/aog-virtual-machines-disk-performace/4k-stress-test-perfmon-analysis-3.png "4k-stress-test-perfmon-analysis-3")
 
 需要指出的是，尽管 DiskSPD 和 IOMeter 等工具都可以模拟不同的类型的 IO 请求，但他们同真实的生产环境中的 IO 模型还是有一定区别的。如果可能，尽可能使用生产环境的真实 IO 来判断当前的存储系统是否满足需求。
 
 1. 如果用户环境中的虚拟机出现类似存储瓶颈的问题，建议您可以通过以下步骤快速排查：
 2. 通过 Perfmon 等性能监控工具收集生产环境下的服务器数据，包括内存，CPU，磁盘，网络等等方面。
 3. 暂停所有的生产压力，使用 DiskSPD 或 IOMeter 等工具进行单纯存储压力测试
-4. 使用 Microsoft Automated Troubleshooting Services, [https://support.microsoft.com/en-us/kb/2598970](https://support.microsoft.com/en-us/kb/2598970 "https://support.microsoft.com/en-us/kb/2598970")，来快速自动排查虚拟机内部可能影响磁盘性能的问题
+4. 使用 [Microsoft Automated Troubleshooting Services](https://support.microsoft.com/zh-cn/kb/2598970 "https://support.microsoft.com/zh-cn/kb/2598970")，来快速自动排查虚拟机内部可能影响磁盘性能的问题
 5. 检查存储账户容量，虚拟大小等配置信息，避免由于并发 IO 或是容量配置导致的问题。
 
-如果以上步骤没有发现明显问题，但是压力测试得到的磁盘数据比本文中的数据相差明显，建议您可以联系 Azure 支持部门 (https://www.azure.cn/support/contact/)，我们很愿意协助您快速定位问题。
+如果以上步骤没有发现明显问题，但是压力测试得到的磁盘数据比本文中的数据相差明显，建议您可以联系 [Azure 支持部门](/support/contact/)，我们很愿意协助您快速定位问题。

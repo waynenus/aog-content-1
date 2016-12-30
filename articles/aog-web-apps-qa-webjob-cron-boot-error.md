@@ -1,7 +1,7 @@
 <properties
 	pageTitle="创建的 WebJobs 无法按照 CRON 的设置来启动"
 	description="设置中国 UTC 时间使 WebJobs 可以按照 CRON 启动"
-	services="Web-Apps"
+	services="app-service-web"
 	documentationCenter=""
 	authors=""
 	manager=""
@@ -9,7 +9,7 @@
 	tags="Azure,Portal,Web Jobs,CRON,UTC"/>
 
 <tags
-    ms.service="Web-Apps-aog"
+    ms.service="app-service-web-aog"
     ms.date="12/08/2016"
     wacn.date="12/08/2016"/>
 
@@ -23,7 +23,7 @@
 
 在分析该问题之前，需要先了解下 CRON 表达式相关规则。
 
-使用 CRON 表达式创建计划的 WebJobs 可用于在基本、标准或高级模式下运行的 Web 应用，但需要应用上启用 “AlwaysOn” 设置。
+使用 CRON 表达式创建计划的 WebJobs 可用于在基本、标准或高级模式下运行的 Web 应用，但需要应用上启用 “AlwaysOn”设置。
 
 若要将按需 WebJobs 变成按计划的 WebJobs ，只需在 `WebJob.zip` 文件的根目录中包含 `settings.job` 文件。此 JSON 文件应包括 `schedule` 属性和 [CRON 表达式](https://zh.wikipedia.org/wiki/Cron)，如下例所示。
 

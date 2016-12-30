@@ -1,3 +1,13 @@
+<properties 
+	pageTitle="使用 docker-machine 管理 Azure 容器虚拟机" 
+	description="如何使用 docker-machine 管理 Azure 容器虚拟机" 
+	services="virtual machine" 
+	documentationCenter="" 
+	authors=""
+	manager="" 
+	editor=""/>
+<tags ms.service="virtual-machine-aog" ms.date="" wacn.date="10/28/2016"/>
+
 # 使用 docker-machine 管理 Azure 容器虚拟机 #
 
 安装 docker-machine 请参见该链接（[https://docs.docker.com/machine/install-machine](https://docs.docker.com/machine/install-machine "https://docs.docker.com/machine/install-machine")）本例中，先安装了 git bash 工具，再通过 git bash 安装 docker-machine. 
@@ -49,11 +59,11 @@ Azure 驱动版本随着 Docker-machine 的版本一同更新。参见下面链�
 
 `--azure-environment "AzureChinaCloud" dockervm01`
 
-![environment](media/aog-virtual-machines-docker-manage-vm/azure-environment.png "environment")
+![environment](./media/aog-virtual-machines-docker-manage-vm/azure-environment.png "environment")
 
 创建成功后，本地文件夹 C:\Users\<user>\.docker\machine\machines\ 下会产生一个以虚拟机命名命名的文件夹，该文件夹中包含的文件有：
 
-![local-folder](media/aog-virtual-machines-docker-manage-vm/local-folder.png "local-folder")
+![local-folder](./media/aog-virtual-machines-docker-manage-vm/local-folder.png "local-folder")
 
 其中，config.json 文件保存了关于该虚拟机的一些配置信息：虚拟机的配置和连接信息；docker 证书信息等。如果遗失，需要手动创建，其中关于虚拟机的信息可以通过 portal 或者 powershell 获取。
 
@@ -67,15 +77,15 @@ id_rsa* 是 ssh 连接的密钥和公钥；如果遗失，可通过 portal 重�
 
 如 ls 查看虚拟机及基本状态：
 
-![docker-machine-help](media/aog-virtual-machines-docker-manage-vm/docker-machine-help.png "docker-machine-help")
+![docker-machine-help](./media/aog-virtual-machines-docker-manage-vm/docker-machine-help.png "docker-machine-help")
 
 env 查看某台 VM 的配置环境
 
-![env-vm-enviroment](media/aog-virtual-machines-docker-manage-vm/env-vm-enviroment.png "env-vm-enviroment")
+![env-vm-enviroment](./media/aog-virtual-machines-docker-manage-vm/env-vm-enviroment.png "env-vm-enviroment")
 
 ssh 登录虚拟机
 
-![ssh-login-vm](media/aog-virtual-machines-docker-manage-vm/ssh-login-vm.png "ssh-login-vm")
+![ssh-login-vm](./media/aog-virtual-machines-docker-manage-vm/ssh-login-vm.png "ssh-login-vm")
 
 使用 docker-machine 创建的虚拟机，和通过其他方式如 portal，powershell 创建的虚拟机没有本质上的区别，用户可以使用 portal 或者 powershell 等命令行进行如开关机，resize，设置 DNS 等管理。
 
@@ -84,4 +94,4 @@ ssh 登录虚拟机
 1. Docker-machine v.0.7.0 对 CentOS 的支持有一定问题。通过该版本配置的 docker 服务无法正常启动。建议到 github（https://github.com/docker/machine） 上查询最新版本信息，以及已知 bug。
 2. 下面错误一般是因为 docker vm 上的证书与本地的证书不匹配造成的；使用 regenerate-certs 可以重置证书。
 
-	![regenerate-certs](media/aog-virtual-machines-docker-manage-vm/regenerate-certs.png "regenerate-certs")
+	![regenerate-certs](./media/aog-virtual-machines-docker-manage-vm/regenerate-certs.png "regenerate-certs")

@@ -1,4 +1,15 @@
-
+<properties 
+	pageTitle="如何在 web role 中抓取 IIS dump 文件置" 
+	description="如何在 web role 中抓取 IIS dump 文件" 
+	services="cloud-service" 
+	documentationCenter="" 
+	authors=""
+	manager="" 
+	editor=""/>
+<tags 
+	ms.service="cloud-service-aog"
+	ms.date="" 
+	wacn.date="09/29/2016"/>
 # 如何在 web role 中抓取 IIS dump 文件
 
 Azure 云服务中的 role 可以理解为一种部署方式，而我们要运行的程序，都是要运行在进程上的。 Azure 云服务中有两种 role，分别是 web role 和 worker role，这两种 role 的主要区别在于，web role 上的项目是被部署在 IIS 服务上，而 worker role 上的项目被部署在独立的进程上。因此，我们一般都使用 web role 来部署一些对外公开访问的网站或者服务。
@@ -61,17 +72,17 @@ C:\Resources\Directory\{DeploymentID}.{Rolename}.DiagnosticStore\LogFiles\Web �
 	    </system.webServer>
 	    </configuration>
 
-	>**注意：**failureDefinitions部分可以设置生成 dump 的触发条件，我们这边是以 IIS 处理请求超过 40s 则生成 dump 为例，您可以根据自己的需求做一些改动。`C:\dump\IISdump`为生成 dump 的存放位置，您也可以根据自己的需求做修改。 
+	>**注意：**failureDefinitions 部分可以设置生成 dump 的触发条件，我们这边是以 IIS 处理请求超过 40s 则生成 dump 为例，您可以根据自己的需求做一些改动。`C:\dump\IISdump`为生成 dump 的存放位置，您也可以根据自己的需求做修改。 
 3. 修改目录 D:\Windows\System32\inetsrv\config 下的 applicationHost.config 文件  
   在 system.applicationHost 部分做如下修改，添加 customActionsEnabled="true"
 
 	     <traceFailedRequestsLogging enabled="true"  maxLogFiles="1000" customActionsEnabled="true" />
-	>**注意:** customActionsEnabled是需要添加的参数，因为我们是做 customize 的 dump 生成，如果不加，则 dump 无法自动生成。
+	>**注意:** customActionsEnabled 是需要添加的参数，因为我们是做 customize 的 dump 生成，如果不加，则 dump 无法自动生成。
 
-4. 如果您是像我的示例那样，将 dump 生成在 C 盘的某个位置，会因为要在 C 盘上写数据被 denial 掉，所以我们需要把该文件添加 everyone 权限，并且设置成 full control，但是如果您选择 dump 文件是生成在E盘或者其他非系统盘的位置，则可以不用做这一步。  
- ![fullcontrol](media/aog-cloud-services-how-to-catch-iisdump/fullcontrol.png "fullcontrol")
+4. 如果您是像我的示例那样，将 dump 生成在 C 盘的某个位置，会因为要在 C 盘上写数据被 denial 掉，所以我们需要把该文件添加 everyone 权限，并且设置成 full control，但是如果您选择 dump 文件是生成在 E 盘或者其他非系统盘的位置，则可以不用做这一步。  
+ ![fullcontrol](./media/aog-cloud-services-how-to-catch-iisdump/fullcontrol.png "fullcontrol")
 
 5. 验证该问题，可以生成 dump 文件：  
- ![iis-dump](media/aog-cloud-services-how-to-catch-iisdump/iis-dump.png "iis-dump")
+ ![iis-dump](./media/aog-cloud-services-how-to-catch-iisdump/iis-dump.png "iis-dump")
 	
 

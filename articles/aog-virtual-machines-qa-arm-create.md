@@ -1,3 +1,12 @@
+<properties 
+	pageTitle="订阅无法在 ARM 模式下创建虚拟机，只能在 ASM 模式下创建 Azure VM 部署" 
+	description="订阅无法在 ARM 模式下创建虚拟机，只能在 ASM 模式下创建 Azure VM 部署。" 
+	services="virtual machine" 
+	documentationCenter="" 
+	authors=""
+	manager="" 
+	editor=""/>
+<tags ms.service="virtual-machines-aog" ms.date="" wacn.date="12/05/2016"/>
 # 订阅无法在 ARM 模式下创建虚拟机，只能在 ASM 模式下创建 Azure VM 部署 #
 
 ### 问题描述 ###

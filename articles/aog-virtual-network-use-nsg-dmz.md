@@ -6,7 +6,7 @@
 	authors=""
 	manager="" 
 	editor=""/>
-<tags ms.service="virtual-network-aog" ms.date="" wacn.date="06/08/2016"/>
+<tags ms.service="virtual-network-aog" ms.date="" wacn.date="08/01/2016"/>
 
 #使用 NSG 实现 DMZ 区域
 

@@ -1,4 +1,12 @@
-
+<properties 
+	pageTitle="如何创建事务复制将本地数据同步到 SQL Azure" 
+	description="如何创建事务复制将本地数据同步到 SQL Azure" 
+	services="sql-database" 
+	documentationCenter="" 
+	authors=""
+	manager="" 
+	editor=""/>
+<tags ms.service="sql-database-aog" ms.date="" wacn.date="09/29/2016"/>
 # 如何创建事务复制将本地数据同步到 SQL Azure #
 
 Azure SQL DB 可以被配置成为 SQL Server 事务复制的一个订阅者( subscriber )。
@@ -24,7 +32,7 @@ Azure SQL DB 可以被配置成为 SQL Server 事务复制的一个订阅者( su
 数据的复制实际上是通过分发代理（ Distribution Agent ）完成的。  
 下面的这张表展示了整体的架构：
 
-![Distribution-Agent](media/aog-sql-service-transaction-copy/Distribution-Agent.png "Distribution Agent")
+![Distribution-Agent](./media/aog-sql-service-transaction-copy/Distribution-Agent.png "Distribution Agent")
 
 注意事项：
 
@@ -39,25 +47,25 @@ Azure SQL DB 可以被配置成为 SQL Server 事务复制的一个订阅者( su
 
 1. 创建一个新的事务复制。  
 右键 Replication 下的 Local Publication，并选择 New Publication Wizard,会调出新建复制向导。  
-    ![New-Publication-Wizard](media/aog-sql-service-transaction-copy/New-Publication-Wizard.png "New Publication Wizard")
+    ![New-Publication-Wizard](./media/aog-sql-service-transaction-copy/New-Publication-Wizard.png "New Publication Wizard")
 2. 选择 Snapshot publication 或者 Transactional publication, 本示例以 Transactional publication 为例  
-    ![Publication-Type](media/aog-sql-service-transaction-copy/Publication-Type.png "Publication Type")
+    ![Publication-Type](./media/aog-sql-service-transaction-copy/Publication-Type.png "Publication Type")
 3. 完成向导中的后续步骤，创建一个复制。  
-    ![Creating-Publication](media/aog-sql-service-transaction-copy/Creating-Publication.png "Creating Publication")
+    ![Creating-Publication](./media/aog-sql-service-transaction-copy/Creating-Publication.png "Creating Publication")
 4. 创建一个新的订阅。  
    右键刚刚创建的发布，选择 New Subscriptions,调出新建订阅向导。  
-    ![New-Subscription-Wizard](media/aog-sql-service-transaction-copy/New-Subscription-Wizard.png "New Subscription Wizard")
+    ![New-Subscription-Wizard](./media/aog-sql-service-transaction-copy/New-Subscription-Wizard.png "New Subscription Wizard")
 5. 完成向导中所需步骤，在下图 Subscribers 页面，点击 Add Subscriber -> Add SQL Server Subscriber。  
-    ![Subscribers](media/aog-sql-service-transaction-copy/Subscribers.png "Subscribers")
+    ![Subscribers](./media/aog-sql-service-transaction-copy/Subscribers.png "Subscribers")
 6. 输入所需的信息，连接到 Azure SQL DB。  
-    ![Connect-to-Server](media/aog-sql-service-transaction-copy/Connect-to-Server.png "Connect to Server")
+    ![Connect-to-Server](./media/aog-sql-service-transaction-copy/Connect-to-Server.png "Connect to Server")
 7. 选择一个 Subscription Database 来接受复制内容。  
-    ![Subscription-Database](media/aog-sql-service-transaction-copy/Subscription-Database.png "Subscription Database")
+    ![Subscription-Database](./media/aog-sql-service-transaction-copy/Subscription-Database.png "Subscription Database")
 8. 完成向导的余下部分，创建订阅。  
-    ![Creating-Subscriptions](media/aog-sql-service-transaction-copy/Creating-Subscriptions.png "Creating Subscriptions")
+    ![Creating-Subscriptions](./media/aog-sql-service-transaction-copy/Creating-Subscriptions.png "Creating Subscriptions")
 9. 创建订阅后，可以看到改订阅出现在之前创建的发布下。  
-    ![Changed-Subscription](media/aog-sql-service-transaction-copy/Changed-Subscription.png "Changed Subscription")
+    ![Changed-Subscription](./media/aog-sql-service-transaction-copy/Changed-Subscription.png "Changed Subscription")
 
 在同步完成后，我们来验证一下复制是否生效。  
 向 SQL Server 发布的这张表中插入数据后，等复制发生之后，发现插入的数据出现在了 Azure SQL DB 指定的表中。
-![Azure-SQL-DB](media/aog-sql-service-transaction-copy/Azure-SQL-DB.png "Azure SQL DB")
+![Azure-SQL-DB](./media/aog-sql-service-transaction-copy/Azure-SQL-DB.png "Azure SQL DB")

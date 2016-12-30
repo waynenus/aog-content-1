@@ -1,3 +1,12 @@
+<properties 
+	pageTitle="如何在 Proxy 环境下正确使用 PowerShell 工具发送 web http 请求" 
+	description="如何在 Proxy 环境下正确使用 PowerShell 工具发送 web http 请求" 
+	services="" 
+	documentationCenter="" 
+	authors=""
+	manager="" 
+	editor=""/>
+<tags ms.service="na-aog" ms.date="" wacn.date="09/29/2016"/>
 #如何在 Proxy 环境下正确使用 PowerShell 工具发送 web http 请求
 
 PowerShell 是一款非常实用的命令行界面和脚本编辑工具，同时我们也可以通过该工具来管理几乎所有 azure 上的资源。它可以被用来执行各种任务，其中包括脚本程序执行和命令提示行交互。
@@ -28,7 +37,7 @@ PowerShell 是一款非常实用的命令行界面和脚本编辑工具，同时
 
 ##问题排查：
 
-从上面的报错信息来看，有些报错信息指向性比较模糊（`get-azureVM`），有一些则非常明确可以看到跟代理相关（`get-osversions`）。通常这种情况下，我们可以通过安装[fiddler](http://www.telerik.com/fiddler)工具来抓trace，进一步查看该问题。
+从上面的报错信息来看，有些报错信息指向性比较模糊（`get-azureVM`），有一些则非常明确可以看到跟代理相关（`get-osversions`）。通常这种情况下，我们可以通过安装[fiddler](http://www.telerik.com/fiddler)工具来抓 trace，进一步查看该问题。
 
 抓取 fiddler trace 示例如下：
 
@@ -99,7 +108,7 @@ Class 示例：
 		    }
 		}   
 
-	>**注意：需要将对应的Proxy认证信息用真实环境信息代替。**
+	>**注意：需要将对应的 Proxy 认证信息用真实环境信息代替。**
 
 2. 将该.dll 文件放在 PowerShell 对应路径下：  
 32 位 PowerShell 路径：C:\Windows\System32\WindowsPowerShell\v1.0.  

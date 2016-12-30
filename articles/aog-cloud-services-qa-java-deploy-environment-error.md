@@ -1,3 +1,15 @@
+<properties 
+	pageTitle="关于部署在云服务下的 Java 应用程序会出现过渡环境被 “同步” 到生产环境的问题" 
+	description="关于部署在云服务下的 Java 应用程序会出现过渡环境被 “同步” 到生产环境的问题" 
+	services="cloud-service" 
+	documentationCenter="" 
+	authors=""
+	manager="" 
+	editor=""/>
+<tags 
+	ms.service="cloud-service-aog"
+	ms.date="" 
+	wacn.date="12/05/2016"/>
 # 关于部署在云服务下的 Java 应用程序会出现过渡环境被 “同步” 到生产环境的问题 #
 
 ### 问题描述 ###

@@ -1,4 +1,18 @@
-# VS2015 直接使用账户登录 mooncake #
+<properties
+	pageTitle="VS2015 直接使用账户登录 Azure"
+	description="VS2015 直接使用账户登录 Azure。"
+	services=""
+	documentationCenter=""
+	authors=""
+	manager=""
+	editor=""
+	tags=""/>
+
+<tags
+	ms.service="na-aog"
+	ms.date="12/05/2016"
+	wacn.date="12/05/2016"/>
+# VS2015 直接使用账户登录 Azure #
 
 ### 问题描述 ###
 
@@ -10,7 +24,7 @@ Visual Studio 2015 的 Azure 服务资源管理器默认是连接由微软运营
 
 - **前提**
 
-	1.	必须安装 Azure SDK for .NET，下载地址： [https://www.azure.cn/develop/net/](https://www.azure.cn/develop/net/)
+	1.	必须安装 Azure SDK for .NET，下载地址： [https://www.azure.cn/develop/net/](/develop/net/)
 	2.	VS2015 必须为 update2 之后版本
 
 - **Visual Studio设置**

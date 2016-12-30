@@ -1,3 +1,12 @@
+<properties 
+	pageTitle="文件系统损坏导致虚拟机无法正常启动的问题及解决方法" 
+	description="文件系统损坏导致虚拟机无法正常启动的问题及解决方法" 
+	services="virtual machine" 
+	documentationCenter="" 
+	authors=""
+	manager="" 
+	editor=""/>
+<tags ms.service="virtual-machine-aog" ms.date="" wacn.date="10/11/2016"/>
 # 文件系统损坏导致虚拟机无法正常启动的问题及解决方法
 
 ## 简介
@@ -8,7 +17,7 @@
 
 关于文件系统,详情参见如下:
 
-[https://zh.wikipedia.org/zh-cn/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F](https://zh.wikipedia.org/zh-cn/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F)
+[文件系统](https://zh.wikipedia.org/zh-cn/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F)
 
 >注意:本文档讨论的文件系统以 CentOS 作为范例, 其他版本的 Linux 略有不同, 请注意差别.
 
@@ -33,10 +42,10 @@
 **A = 文件系统故障所在的虚拟机**  
 **B = 临时虚拟机**
 
- 1. 在 Azure 管理门户上停止运行虚拟机 A.
+ 1. 在 Azure 经典管理门户上停止运行虚拟机 A.
  2. 在同一个 cloud service 里创建一台临时 Linux 虚拟机 B.
  3. 删除虚拟机 A, 但是选择保留磁盘.
- 4. 在 Azure 管理门户上,选择虚拟机 B -> 附加磁盘 -> 选择虚拟机 A 的系统磁盘.
+ 4. 在 Azure 经典管理门户上,选择虚拟机 B -> 附加磁盘 -> 选择虚拟机 A 的系统磁盘.
  5. 以管理员身份登陆虚拟机 B.
  6. 执行: `# fdisk -l`
  7. 确认虚拟机 A 的系统磁盘作为新的磁盘设备附加在虚拟机 B 上.假定虚拟机A的系统磁盘为 /dev/sdc, root 文件系统为 /dev/sdc1
@@ -55,10 +64,10 @@
 **A = 文件系统故障所在的虚拟机**  
 **B = 临时虚拟机**
 
- 1. 在 Azure 管理门户上停止运行虚拟机 A.
+ 1. 在 Azure 经典管理门户上停止运行虚拟机 A.
  2. 在同一个 cloud service 里创建一台临时 Linux 虚拟机 B.
  3. 删除虚拟机 A, 但是选择保留磁盘.
- 4. 在 Azure 管理门户上,选择虚拟机 B -> 附加磁盘 -> 选择虚拟机 A 的系统磁盘.
+ 4. 在 Azure 经典管理门户上,选择虚拟机 B -> 附加磁盘 -> 选择虚拟机 A 的系统磁盘.
  5. 以管理员身份登陆虚拟机 B.
  6. 执行: `# fdisk -l`
  7. 确认虚拟机 A 的系统磁盘作为新的磁盘设备附加在虚拟机 B 上.假定虚拟机 A 的系统磁盘为 /dev/sdc, root 文件系统为 /dev/sdc1
@@ -71,8 +80,8 @@
  		将文件系统损坏的条目注释掉,保存修改, 退出 vi.  
  		# umount /dev/sdc1
 
- 9. 在 Azure 管理门户上分离虚拟机 A 的系统磁盘.
- 10.  10. 在 Azure 管理门户上基于虚拟机 A 的系统磁盘, 重建虚拟机 A.
+ 9. 在 Azure 经典管理门户上分离虚拟机 A 的系统磁盘.
+ 10. 在 Azure 经典管理门户上基于虚拟机 A 的系统磁盘, 重建虚拟机 A.
  11. 以管理员身份登录虚拟机 A.
  12. 执行以下命令, 进行文件系统修复:  
  

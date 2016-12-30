@@ -1,3 +1,12 @@
+<properties 
+	pageTitle="如何为 Azure Service Bus 和 Azure IoT Hub 生成 SharedAccessSignature" 
+	description="如何为 Azure Service Bus 和 Azure IoT Hub 生成 SharedAccessSignature" 
+	services="" 
+	documentationCenter="" 
+	authors=""
+	manager="" 
+	editor=""/>
+<tags ms.service="service-bus-aog" ms.date="" wacn.date="12/05/2016"/>
 # 如何为 Azure Service Bus 和 Azure IoT Hub 生成 SharedAccessSignature #
 
 很多服务在做验证的时候都会用到 SharedAccessSignature，例如 Azure Service Bus, Azure IoT Hub 等。这篇文章主要讨论不同服务下生成的 SharedAccessSignature 的区别。
@@ -21,28 +30,28 @@
 
 如果您是使用 C# 做开发，可以通过以下方法生成 SAS Token:
 
-```C#
-class SASTokenGenerator
-{
-	public static string GetSASToken(string resourceUri, string keyName, string key, TimeSpan ttl)
-    {
-	    var expiry = GetExpiry(ttl);
-	    string stringToSign = HttpUtility.UrlEncode(resourceUri) + "\n" + expiry;
-	    // HMACSHA256 hmac = new HMACSHA256(Convert.FromBase64String(key)); for IoT Hub Service
-	    HMACSHA256 hmac = new HMACSHA256(Encoding.UTF8.GetBytes(key)); //for service bus Service
-	    var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
-	    var sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}", 
-	    HttpUtility.UrlEncode(resourceUri), HttpUtility.UrlEncode(signature), expiry, keyName);
-	    return sasToken;
-    }
 
-    private static string GetExpiry(TimeSpan ttl)
-    {
-    	TimeSpan expirySinceEpoch = DateTime.UtcNow - new DateTime(1970, 1, 1) + ttl;
-    	return Convert.ToString((int)expirySinceEpoch.TotalSeconds);
-    }
-}
-```
+	class SASTokenGenerator
+	{
+		public static string GetSASToken(string resourceUri, string keyName, string key, TimeSpan ttl)
+	    {
+		    var expiry = GetExpiry(ttl);
+		    string stringToSign = HttpUtility.UrlEncode(resourceUri) + "\n" + expiry;
+		    // HMACSHA256 hmac = new HMACSHA256(Convert.FromBase64String(key)); for IoT Hub Service
+		    HMACSHA256 hmac = new HMACSHA256(Encoding.UTF8.GetBytes(key)); //for service bus Service
+		    var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
+		    var sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}", 
+		    HttpUtility.UrlEncode(resourceUri), HttpUtility.UrlEncode(signature), expiry, keyName);
+		    return sasToken;
+	    }
+
+	    private static string GetExpiry(TimeSpan ttl)
+	    {
+	    	TimeSpan expirySinceEpoch = DateTime.UtcNow - new DateTime(1970, 1, 1) + ttl;
+	    	return Convert.ToString((int)expirySinceEpoch.TotalSeconds);
+	    }
+	}
+
 
 
 

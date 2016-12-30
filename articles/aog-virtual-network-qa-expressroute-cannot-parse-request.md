@@ -1,5 +1,5 @@
- <properties
-	pageTitle="将不同订阅中的虚拟网络连接到 ExpressRoute 线路时收到报错 'Cannot parse the request'"
+<properties
+	pageTitle="将不同订阅中的虚拟网络连接到 ExpressRoute 线路时收到报错'Cannot parse the request'"
 	description="通过 PowerShell 将不同订阅中的虚拟网络连接到 ExpressRoute"
 	services="virtual-network"
 	documentationCenter=""
@@ -11,9 +11,9 @@
 <tags
     ms.service="virtual-network-aog"
     ms.date="12/08/2016"
-    wacn.date="12/08/2016"/>
+    wacn.date="12/13/2016"/>
 
-# 将不同订阅中的虚拟网络连接到 ExpressRoute 线路时收到报错 “Cannot parse the request” #
+# 将不同订阅中的虚拟网络连接到 ExpressRoute 线路时收到报错“Cannot parse the request” #
 
 ### 问题描述 ###
 

@@ -1,3 +1,12 @@
+<properties 
+	pageTitle="手动安装 Azure for Python SDK" 
+	description="手动安装 Azure for Python SDK" 
+	services="" 
+	documentationCenter="" 
+	authors=""
+	manager="" 
+	editor=""/>
+<tags ms.service="na-aog" ms.date="" wacn.date="12/05/2016"/>
 # 手动安装 Azure for Python SDK #
 
 ### 问题描述 ###

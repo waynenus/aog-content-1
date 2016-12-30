@@ -1,17 +1,17 @@
 <properties
-    pageTitle="通过Azure AD SAML协议登录应用报错相关解决方案"
-    description="通过Azure AD SAML协议登录应用报错相关解决方案。"
-    services="active-directory"
-    documentationCenter=""
-    authors=""
-    manager=""
-    editor=""
-    tags=""/>
+	pageTitle="通过 Azure AD SAML 协议登录应用报错相关解决方案"
+	description="通过 Azure AD SAML 协议登录应用报错相关解决方案。"
+	services="active-directory"
+	documentationCenter=""
+	authors=""
+	manager=""
+	editor=""
+	tags=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.date="10/27/2016"
-    wacn.date="10/27/2016"/>
+	ms.service="active-directory-aog"
+	ms.date="10/27/2016"
+	wacn.date="11/10/2016"/>
 
 
 #通过 Azure AD SAML 协议登录应用报错相关解决方案
@@ -31,7 +31,7 @@
 首先，让我们先理解一下 SAML Web SSO 的过程：
 
 1.       用户通过浏览器访问服务提供方（SP）
-2.       SP将请求（带上相应 SAM L请求）转向配置的身份信息提供方（IP）
+2.       SP 将请求（带上相应 SAML请求）转向配置的身份信息提供方（IP）
 3.       用户提供正确的登录凭据给 IP
 4.       IP 验证成功后，通过浏览器返回 SAML 响应（包含 SAML Assertion ）给 SP，并设置浏览器端 cookie
 5.       SP 验证 SAML 响应，并额外设置浏览器端 cookie 表明已经验证成功，用户后续访问此 SP 就会带上该cookie 
@@ -40,9 +40,9 @@
 这样的工作方式使得后续用户重新访问该服务或者其他也基于该 IP 的服务就不需要再次登录，而是直接使用该 cookie。
 根据以上分析，如果是我们问题描述的场景（使用 azure AD SSO 功能），AAD 就是 IP，O365 和 Azure 以及客户自己的应用都是 SP，理论上来说，只要 Cookie 不清除，那么 IP 始终能够根据提供的 cookie 信息来返回正确的 SAML Assertion。
 
-![](media/aog-active-directory-troubleshoot-saml-error/work-flow.png) 
+![](./media/aog-active-directory-troubleshoot-saml-error/work-flow.png) 
 
-然后，从前面的分析过程中可以看出SAML协议是会利用到 Cookie 的，那么明确下客户端涉及到的 Cookie 主要有哪些：
+然后，从前面的分析过程中可以看出 SAML 协议是会利用到 Cookie 的，那么明确下客户端涉及到的 Cookie 主要有哪些：
 
 |名称				|类型	|生命周期			|来源	|
 |-------------------|-------|-------------------|-------|
@@ -56,11 +56,11 @@
 
 1.	第一次访问 SP，然后新开窗口访问同一个 SP<br>
 	•	第一次访问 SP 成功后会设置所有 cookie<br>
-	•	没有关闭浏览器，所以所有 cookie都还保留<br>
-	•	访问SP时带上来自 SP 的 cookie “SESSIONID”，所以不需要到 IP 端认证就能成功访问
+	•	没有关闭浏览器，所以所有 cookie 都还保留 <br>
+	•	访问 SP 时带上来自 SP 的 cookie “SESSIONID”，所以不需要到 IP 端认证就能成功访问
 2.	第一次访问 SP，然后新开窗口访问另一个对应同一 IP 的 SP<br>
 	•	第一次访问 SP 成功后会设置所有 cookie<br>
-	•	没有关闭浏览器，所以所有 cookie都还保留<br>
+	•	没有关闭浏览器，所以所有 cookie 都还保留 <br>
 	•	访问新 SP 时，会被导向 IP，从而带上来自 IP 的 cookie “ESTSAUTHPERSISTENT，ESTSAUTH，buid，SignInStateCookie”<br>
 	•	IP 不需要用户再次登录，而根据 cookie 里的验证信息直接返回 SAML 响应<br>
 3.	第一次访问 SP，关闭浏览器，重新再访问同一个 SP<br>
@@ -86,7 +86,7 @@
 
 •	退出登录
 
-•	设置 authenticationAge 验证时长为6个月
+•	设置 authenticationAge 验证时长为 6 个月
 
 •	使用其他协议的实现，比如 OAuth，Azure AD 也是支持的
 

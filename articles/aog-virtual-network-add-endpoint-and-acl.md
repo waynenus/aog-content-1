@@ -7,7 +7,7 @@
 	authors=""
 	manager="" 
 	editor=""/>
-<tags ms.service="virtual-network-aog" ms.date="" wacn.date="06/08/2016"/>
+<tags ms.service="virtual-network-aog" ms.date="" wacn.date="08/01/2016"/>
 
 #虚拟机添加相应端口并配置 ACL
 
@@ -20,7 +20,7 @@
 
 添加端口时我们需要输入公用端口和私有端口，下面是它们的相关概念。
 
-**公用端口**：Azure 负载平衡器使用公用端口侦听从 Internet 传入的虚拟机流量
+**公用端口**：Azure 负载均衡器使用公用端口侦听从 Internet 传入的虚拟机流量
 
 **私有端口**：虚拟机使用私有端口侦听通常发送到虚拟机上运行的应用程序或服务的传入流量。
 

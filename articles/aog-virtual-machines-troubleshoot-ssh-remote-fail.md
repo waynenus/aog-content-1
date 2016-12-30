@@ -1,10 +1,20 @@
+<properties 
+	pageTitle="SSH 无法启动的原因分析及解决方法" 
+	description="本文介绍 SSH 无法启动的原因分析及解决方法" 
+	services="virtual machine" 
+	documentationCenter="" 
+	authors=""
+	manager="" 
+	editor=""/>
+<tags ms.service="virtual-machine-aog" ms.date="" wacn.date="10/28/2016"/>
+
 # SSH 无法启动的原因分析及解决方法 #
 
 ## 简介
 
 Secure Shell（缩写为 SSH），由 IETF 的网络工作小组（Network Working Group）所制定；SSH 为一项创建在应用层和传输层基础上的安全协议，为计算机上的 Shell（壳层）提供安全的传输和使用环境。
   
-传统的网络服务程序，如 rsh、FTP、POP 和 Telnet其本质上都是不安全的；因为它们在网络上用明文传送数据、用户帐号和用户口令，很容易受到中间人（man-in-the-middle）攻击方式的攻击。就是存在另一个人或者一台机器冒充真正的服务器接收用户传给服务器的数据，然后再冒充用户把数据传给真正的服务器。
+传统的网络服务程序，如 rsh、FTP、POP 和 Telnet 其本质上都是不安全的；因为它们在网络上用明文传送数据、用户帐号和用户口令，很容易受到中间人（man-in-the-middle）攻击方式的攻击。就是存在另一个人或者一台机器冒充真正的服务器接收用户传给服务器的数据，然后再冒充用户把数据传给真正的服务器。
  
 而 SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。通过 SSH 可以对所有传输的数据进行加密，也能够防止 DNS 欺骗和 IP 欺骗。
 
@@ -24,10 +34,9 @@ SSH 之另一项优点为其传输的数据可以是经过压缩的，所以可�
 
 **方案一:**
 
-通过 azure 新 portal 的重置远程访问
+通过 [azure 门户预览](https://portal.azure.cn/) 的重置远程访问
 
-![reset-remote](media/aog-virtual-machines-troubleshoot-ssh-remote-fail/reset-remote.png 
-	"reset-remote")
+![reset-remote](./media/aog-virtual-machines-troubleshoot-ssh-remote-fail/reset-remote.png "reset-remote")
 
 > <span style="background:#FFFF00">** 注意: ** 如果配置文件被删除, 该功能不会重建, 参考其他方案进行修复. </span> 
 

@@ -1,5 +1,5 @@
 <properties
-                pageTitle="如何在 Windows Azure 虚拟机里配置条带化"
+                pageTitle="如何在 Azure 虚拟机里配置条带化"
                 description="在 Windows Server 2012 R2 Datacenter 中配置条带化"
                 services="virtual-machines"
                 documentationCenter=""
@@ -13,7 +13,7 @@
                 ms.date="12/15/2016"
                 wacn.date="12/15/2016"/>
 
-# 如何在 Windows Azure 虚拟机里配置条带化
+# 如何在 Azure 虚拟机里配置条带化
 
 ## 什么是条带化（striping）
 
