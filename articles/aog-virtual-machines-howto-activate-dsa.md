@@ -16,7 +16,7 @@
 # 如何激活 Trend Micro Deep Security Agent
 
 Deep Security 即服务包括反恶意软件保护、防火墙、入侵防御系统和完整性监视。  
-Trend Micro Deep Security Agent(DSA) 可以配合 Deep Security Manager 工作，也可以使用 Trend Micro Deep Security 即服务。前一种方式由于配置和维护成本较高，我们推荐使用 Trend Micro Deep Security 即服务来激活 DSA。
+Trend Micro Deep Security Agent (DSA) 可以配合 Deep Security Manager 工作，也可以使用 Trend Micro Deep Security 即服务。前一种方式由于配置和维护成本较高，我们推荐使用 Trend Micro Deep Security 即服务来激活 DSA。
 
 ### 安装 DSA 的界面如下图所示： ###
 
