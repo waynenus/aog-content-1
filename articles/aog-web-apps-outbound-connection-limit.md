@@ -1,7 +1,7 @@
 <properties
                 pageTitle="Azure Web 应用对外连接数上限分析"
                 description="Azure Web 应用对外连接数存在上限，超出后会发生异常"
-                services="web-apps"
+                services="app-service-web"
                 documentationCenter=""
                 authors=""
                 manager=""
@@ -9,7 +9,7 @@
                 tags="Web Apps,outbound connection"/>
 
 <tags
-                ms.service="web-apps-aog"
+                ms.service="app-service-web-aog"
                 ms.date="12/23/2016"
                 wacn.date="12/23/2016"/>
 

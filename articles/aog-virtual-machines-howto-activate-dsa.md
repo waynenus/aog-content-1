@@ -22,7 +22,7 @@ Trend Micro Deep Security Agent (DSA) 可以配合 Deep Security Manager 工作�
 
 ![install](./media/aog-virtual-machines-howto-activate-dsa/install.png)
 
-详细操作步骤可以参考[如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务](/documentation/articles/virtual-machines-windows-classic-install-trend)。
+详细操作步骤可以参考[如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务](/documentation/articles/virtual-machines-windows-classic-install-trend/)。
 
 ### 激活步骤如下： ###
 
