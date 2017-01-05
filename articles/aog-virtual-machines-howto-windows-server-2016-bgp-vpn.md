@@ -1,17 +1,17 @@
 <properties
-                pageTitle="如何使用 Windows Server 2016 与 Azure 搭建支持 BGP 协议的 VPN 通道"
-                description="在 Windows Server 2016 中搭建支持 BGP 协议的 VPN 通道"
-                services="virtual-machines"
-                documentationCenter=""
-                authors=""
-                manager=""
-                editor=""
-                tags="虚拟机,Windows Server 2016,PowerShell,BGP, RRAS, VPN, VNET"/>
+	pageTitle="如何使用 Windows Server 2016 与 Azure 搭建支持 BGP 协议的 VPN 通道"
+	description="在 Windows Server 2016 中搭建支持 BGP 协议的 VPN 通道"
+	services="vpn-gateway"
+	documentationCenter=""
+	authors=""
+	manager=""
+	editor=""
+	tags="虚拟机,Windows Server 2016,PowerShell,BGP, RRAS, VPN, VNET"/>
 
 <tags
-                ms.service="virtual-machines-aog"
-                ms.date="12/15/2016"
-                wacn.date="12/15/2016"/>
+	ms.service="vpn-gateway-aog"
+	ms.date="12/15/2016"
+	wacn.date="12/15/2016"/>
 
 # 如何使用 Windows Server 2016 与 Azure 搭建支持 BGP 协议的 VPN 通道
  
