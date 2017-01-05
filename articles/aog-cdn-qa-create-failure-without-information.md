@@ -1,17 +1,17 @@
 <properties
-                pageTitle="在 Azure 经典管理门户中创建 CDN 终结点失败"
-                description="在 Azure 经典管理门户中创建 CDN 终结点时，出现无提示或 CDN 终结点创建失败"
-                services="cdn"
-                documentationCenter=""
-                authors=""
-                manager=""
-                editor=""
-                tags="cdn,IPC number, contoso"/>
+	pageTitle="在 Azure 经典管理门户中创建 CDN 终结点失败"
+	description="在 Azure 经典管理门户中创建 CDN 终结点时，出现无提示或 CDN 终结点创建失败"
+	services="cdn"
+	documentationCenter=""
+	authors=""
+	manager=""
+	editor=""
+	tags="cdn,IPC number, contoso"/>
 
 <tags
-                ms.service="cdn-aog"
-                ms.date="12/29/2016"
-                wacn.date="12/29/2016"/>
+	ms.service="cdn-aog"
+	ms.date="12/29/2016"
+	wacn.date="12/29/2016"/>
 
 # 在 Azure 经典管理门户中创建 CDN 终结点失败
 
@@ -33,6 +33,6 @@
 
 1.  申请正确的备案号。
 2.  对于域名在 CNC 上存在的情况：
-    1.  如果用户之前不是通过 Azure CDN 在 CNC 上创建过某个域名，例如 contoso.cn，需要用户自己将在 CNC 上创建的域名（contoso.cn）删除之后，再通过 Azure 创建。
-    2.  如果用户是使用 CCIH 提供的 CDN 服务，请向微软支持团队反应。
+    - 如果用户之前不是通过 Azure CDN 在 CNC 上创建过某个域名，例如 contoso.cn，需要用户自己将在 CNC 上创建的域名（contoso.cn）删除之后，再通过 Azure 创建。
+    - 如果用户是使用 CCIH 提供的 CDN 服务，请向微软支持团队反应。
 

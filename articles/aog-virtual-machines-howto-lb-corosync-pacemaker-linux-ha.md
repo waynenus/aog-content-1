@@ -1,17 +1,17 @@
 <properties
-                pageTitle="使用 Load Balancer,Corosync,Pacemaker 搭建 Linux 高可用集群"
-                description="使用 LB-corosync-pacemaker 搭建 Linux 高可用集群的详细步骤与测试 "
-                services="virtual-machines"
-                documentationCenter=""
-                authors=""
-                manager=""
-                editor=""
-                tags="Azure VM,HA,Azure LB,DRBD,MariaDB,Corosync,Pacemaker,PowerShell"/>
+	pageTitle="使用 Load Balancer,Corosync,Pacemaker 搭建 Linux 高可用集群"
+	description="使用 LB-corosync-pacemaker 搭建 Linux 高可用集群的详细步骤与测试 "
+	services="virtual-machines"
+	documentationCenter=""
+	authors=""
+	manager=""
+	editor=""
+	tags="Azure VM,HA,Azure LB,DRBD,MariaDB,Corosync,Pacemaker,PowerShell"/>
 
 <tags
-                ms.service="virtual-machines-aog"
-                ms.date="12/23/2016"
-                wacn.date="12/23/2016"/>
+	ms.service="virtual-machines-linux-aog"
+	ms.date="12/23/2016"
+	wacn.date="12/23/2016"/>
 
 # 使用 Load Balancer,Corosync,Pacemaker 搭建 Linux 高可用集群
 
