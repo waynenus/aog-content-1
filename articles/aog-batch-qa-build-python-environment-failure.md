@@ -8,7 +8,7 @@
 	selfHelpType=""
     supportTopicIds=""
     productPesIds=""
-    resourceTags=""​
+    resourceTags="Batch,Python"​
     cloudEnvironments="MoonCake" 
 />
 <tags 
@@ -28,7 +28,7 @@
 
 1. 镜像问题：
 
-	官方示例中是基于SKU方式来创建Batch计算节点，但因网络原因，目前中国无法访问 Azure 虚拟机应用商店映像(已经向产品组提交 Bug,后续会修复该问题)：
+	官方示例中是基于SKU方式来创建Batch计算节点，但因网络原因，目前中国无法访问 Azure 虚拟机应用商店镜像(已经向产品组提交 Bug,后续会修复该问题)：
 
 	    new_pool = batch.models.PoolAddParameter(
 	            id=pool_id,
