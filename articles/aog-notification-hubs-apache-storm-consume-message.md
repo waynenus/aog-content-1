@@ -8,7 +8,7 @@
 	selfHelpType=""
     supportTopicIds=""
     productPesIds=""
-    resourceTags="Notification Hubs, Apache Storm"​
+    resourceTags="Event Hubs, Apache Storm"​
     cloudEnvironments="MoonCake" 
 />
 <tags 
