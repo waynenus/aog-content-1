@@ -1,4 +1,4 @@
-<properties 
+,<properties 
 	pageTitle="Page Blob 文件释放租约工具" 
 	description="通过 Page Blob 文件释放租约工具解决删除 Page Blob 文件被占用的问题" 
 	service=""
@@ -8,7 +8,7 @@
 	selfHelpType=""
     supportTopicIds=""
     productPesIds=""
-    resourceTags="Azure Storage Blob"​
+    resourceTags="Page Blob,lease ID"​
     cloudEnvironments="MoonCake" 
 />
 <tags 
