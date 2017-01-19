@@ -8,7 +8,7 @@
 	selfHelpType=""
     supportTopicIds=""
     productPesIds=""
-    resourceTags="Notification Hubs"​
+    resourceTags="Event Hubs,receive"​
     cloudEnvironments="MoonCake" 
 />
 <tags 
