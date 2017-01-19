@@ -3,18 +3,18 @@
 	description="通过 Page Blob 文件释放租约工具解决删除 Page Blob 文件被占用的问题" 
 	service=""
 	resource="storage"
-	authors=""
-	displayOrder=""
-	selfHelpType=""
+    authors=""
+    displayOrder=""
+    selfHelpType=""
     supportTopicIds=""
     productPesIds=""
-    resourceTags="Azure Storage Blob"​
+    resourceTags="Page Blob,lease ID"
     cloudEnvironments="MoonCake" 
 />
 <tags 
-	ms.service="storage-blob-aog"
-	ms.date="" 
-	wacn.date="1/12/2016"
+    ms.service="storage-blob-aog"
+    ms.date="" 
+    wacn.date="1/12/2016"
 />
 # Page Blob 文件释放租约工具
 
