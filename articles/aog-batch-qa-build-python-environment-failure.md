@@ -8,7 +8,7 @@
 	selfHelpType=""
     supportTopicIds=""
     productPesIds=""
-    resourceTags=""​
+    resourceTags="Batch,Python"
     cloudEnvironments="MoonCake" 
 />
 <tags 
