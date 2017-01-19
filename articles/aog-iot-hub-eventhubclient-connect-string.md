@@ -43,7 +43,7 @@ Microsoft.ServiceBus.Messaging
 		var deviceConnectionString = "HostName=<iothub_host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"
 		var deviceClient = DeviceClient.CreateFromConnectionString(deviceConnectionString);
 
-可以看到其中消费 D2C（设备到云）消息是比较特殊的，它不是调用 IoT 中心的 SDK，而是使用服务总线 SDK 里的 EventHubClient。这是因为 IoT 中心公开[事件中心](/documentation/services/event-hubs)兼容的终结点来接收设备到云的消息 。这样就可以重用现有的事件中心所支持的方式来消费 IoT 中心的 D2C 消息，包括使用 EventHubClient 直接读取，使用事件处理程序主机（EventProcessorHost），或者使用 Apache Storm 等等。好处很明显，但是有时候也会产生混淆，**经常容易出错的地方就是使用 IoT 中心的连接字符串来创建 EventHubClient**。这样的使用是会产生问题的，比如连接不上或者连接容易断开等等。**正确的使用方式是使用事件中心兼容的连接字符串来创建 EventHubClient**。所以在 IoT 中心的管理门户里面提供了相应的事件中心兼容的名称和端点信息，以供构建正确的连接字符串。
+可以看到其中消费 D2C（设备到云）消息是比较特殊的，它不是调用 IoT 中心的 SDK，而是使用服务总线 SDK 里的 EventHubClient。这是因为 IoT 中心公开[事件中心](/documentation/services/event-hubs)兼容的终结点来接收设备到云的消息 。这样就可以重用现有的事件中心所支持的方式来消费 IoT 中心的 D2C 消息，包括使用 EventHubClient 直接读取，使用事件处理程序主机（EventProcessorHost），或者使用 Apache Storm 等等。这样做好处很明显，但是有时候也会产生混淆，**经常容易出错的地方就是使用 IoT 中心的连接字符串来创建 EventHubClient**。这样的使用是会产生问题的，比如连接不上或者连接容易断开等等。**正确的使用方式是使用事件中心兼容的连接字符串来创建 EventHubClient**。所以在 IoT 中心的管理门户里面提供了相应的事件中心兼容的名称和端点信息，以供构建正确的连接字符串。
 
 ### 事件中心兼容的连接字符串格式：
 
