@@ -8,8 +8,8 @@
 	selfHelpType=""
     supportTopicIds=""
     productPesIds=""
-    resourceTags="Azure Virtual Machines, C#"​
-    cloudEnvironments="MoonCake" 
+    resourceTags="虚拟机, 监控数据, 应用程序, C#"
+    cloudEnvironments="MoonCake"
 />
 <tags 
 	ms.service="na-aog"
