@@ -1,26 +1,24 @@
-<properties 
-	pageTitle="C# 获取虚拟机监控数据" 
-	description="如何通过 C# 获取虚拟机监控数据" 
+<properties
+	pageTitle="C# 获取虚拟机监控数据"
+	description="如何通过 C# 获取虚拟机监控数据"
 	service=""
 	resource="virtualmachines"
 	authors=""
 	displayOrder=""
 	selfHelpType=""
-    supportTopicIds=""
-    productPesIds=""
-    resourceTags="Azure Virtual Machines, C#"​
-    cloudEnvironments="MoonCake" 
-/>
-<tags 
+	supportTopicIds=""
+	productPesIds=""
+	resourceTags="虚拟机, 监控数据, 应用程序, C#"
+	cloudEnvironments="MoonCake" />
+<tags
 	ms.service="na-aog"
-	ms.date="" 
-	wacn.date="1/12/2016"
-/>
+	ms.date=""
+	wacn.date="01/12/2017" />
 # C# 获取虚拟机监控数据
 
 ## **问题描述**
 
-需要通过本地程序获取 Azure 虚拟机的监控数据并保存文件时，如果通过接口获取数据那么只能获取 30 天内的，无法获取更长时间的监控数据。
+需要通过本地程序获取 Azure 虚拟机的监控数据并保存成文件时，可以通过接口获取该种数据，然而我们最多只能获取 30 天内的监控数据。
 
 ## **前提条件**
 

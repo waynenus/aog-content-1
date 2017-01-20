@@ -1,26 +1,24 @@
-<properties 
-	pageTitle="C# SDK 调用认知服务时提示 Key 无效" 
-	description="C# SDK 调用认知服务时提示 Key 无效" 
+<properties
+	pageTitle="C# SDK 调用认知服务时提示 Key 无效"
+	description="C# SDK 调用认知服务时提示 Key 无效"
 	service="microsoft.cognitiveservices"
 	resource="cognitiveservices"
 	authors=""
 	displayOrder=""
 	selfHelpType=""
-    supportTopicIds=""
-    productPesIds=""
-    resourceTags="Cognitive Services, C# SDK, Key"​
-    cloudEnvironments="MoonCake" 
-/>
-<tags 
+	supportTopicIds=""
+	productPesIds=""
+	resourceTags="Cognitive Services, C# SDK, Key"
+	cloudEnvironments="MoonCake" />
+<tags
 	ms.service="cognitive-services-aog"
-	ms.date="" 
-	wacn.date="1/12/2016"
-/>
+	ms.date=""
+	wacn.date="01/12/2017" />
 # C# SDK 调用认知服务时提示 Key 无效
 
 ## **问题描述**
 
-直接使用 C# 的 SDK 无法调用认知服务。
+使用 C# 的 SDK 无法调用认知服务。
 
 ## **问题现象**
 

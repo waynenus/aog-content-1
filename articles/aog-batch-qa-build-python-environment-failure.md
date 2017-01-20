@@ -1,26 +1,24 @@
-<properties 
-	pageTitle="搭建 Windows Batch Python 环境" 
-	description="解决搭建 Windows Batch Python 环境出错的问题" 
+<properties
+	pageTitle="搭建 Windows Batch Python 环境"
+	description="解决搭建 Windows Batch Python 环境出错的问题"
 	service=""
 	resource="batch"
 	authors=""
 	displayOrder=""
 	selfHelpType=""
-    supportTopicIds=""
-    productPesIds=""
-    resourceTags=""​
-    cloudEnvironments="MoonCake" 
-/>
-<tags 
+	supportTopicIds=""
+	productPesIds=""
+	resourceTags="Batch,Python"
+	cloudEnvironments="MoonCake" />
+<tags
 	ms.service="batch-aog"
-	ms.date="" 
-	wacn.date="1/12/2016"
-/>
+	ms.date=""
+	wacn.date="01/12/2017" />
 # 搭建 Windows Batch Python 环境
 
 ## **问题描述**
 
-参照[ Azure Batch Python 客户端入门](/documentation/articles/batch-python-tutorial)文档，在 China Azure 环境下运行 Batch Python 示例时发现会遇到诸多问题。
+参照[ Azure Batch Python 客户端入门](/documentation/articles/batch-python-tutorial/)文档，在 China Azure 环境下运行 Batch Python 示例时发现会遇到诸多问题。
 
 ## **问题分析**
 
@@ -55,7 +53,7 @@
 	- azure-batch
 	- azure-storage  
 
-我们在尝试安装以上依赖环境时遇到了诸多问题，首要的问题就是如何在 Batch 节点中安装 Python 环境（示例中是基于 Linux Batch 节点，并未给出 Windows 安装 Python 的示例），因为 Windows Batch Pool 也是基于云服务建立的计算节点，因此我们参考了云服务中通过 PowerShell 安装 Python 的资料，参考：[云服务配置 Python 环境](/documentation/articles/cloud-services-python-ptvs)。
+我们在尝试安装以上依赖环境时遇到了诸多问题，首要的问题就是如何在 Batch 节点中安装 Python 环境（示例中是基于 Linux Batch 节点，并未给出 Windows 安装 Python 的示例），因为 Windows Batch Pool 也是基于云服务建立的计算节点，因此我们参考了云服务中通过 PowerShell 安装 Python 的资料，参考：[云服务配置 Python 环境](/documentation/articles/cloud-services-python-ptvs/)。
 
 在测试过程中，我们发现 China Azure 网络环境访问 [Python 官网](https://www.python.org/)较慢，因此在访问国外资源、国外镜像的时候会遇到各种问题，导致运行示例依赖的运行时环境无法配置成功。
 

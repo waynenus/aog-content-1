@@ -75,6 +75,7 @@ Azure 应用程序网关会通过探测机制去了解后端服务器的健康�
 		       <Host>www.contoso.com</Host>
 		       <Path>/</Path>
 		       <Interval>15</Interval>
+		       <Timeout>15</Timeout>
 		       <UnhealthyThreshold>5</UnhealthyThreshold>
 		   </Probe>
 		</Probes>
