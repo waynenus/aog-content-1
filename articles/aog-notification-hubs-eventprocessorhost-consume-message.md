@@ -8,7 +8,7 @@
 	selfHelpType=""
 	supportTopicIds=""
 	productPesIds=""
-	resourceTags="Notification Hubs, EventProcessorHost"
+	resourceTags="Event Hubs, EventProcessorHost"
 	cloudEnvironments="MoonCake" />
 <tags
 	ms.service="notification-hubs-aog"
