@@ -49,6 +49,8 @@ Microsoft.ServiceBus.Messaging
 
 ### 在IoT中心的管理门户上获取相应值：
 
+| Name      						| Operation																						|
+| 			---				        | 											    ---											 	|
 | eventhub_compatible_endpoint   	| {Your IoT Hub} -> Endpoints -> Built-in endpoints -> Events -> Event Hub-compatible endpoint 	|
 | iothub_sas_policy_name_and_key 	| {Your IoT Hub} -> Shared access policies -> {any policy with Device connect permission}      	|
 | eventhub_compatible_name       	| {Your IoT Hub} -> Endpoints ->,Built-in endpoints -> Events -> Event Hub-compatible name     	|
