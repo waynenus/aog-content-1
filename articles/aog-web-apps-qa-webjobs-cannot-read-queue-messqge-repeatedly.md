@@ -14,7 +14,7 @@
 	ms.service="app-service-web-aog"
 	ms.date=""
 	wacn.date="1/20/2017" />
-# 使用 Web jobs SDK 无法多次读取 Azure 队列中的消息
+# 使用 Web Jobs SDK 无法多次读取 Azure 队列中的消息
 
 ## **问题现象**
 
