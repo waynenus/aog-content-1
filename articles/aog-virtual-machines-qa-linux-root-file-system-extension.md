@@ -132,7 +132,7 @@
 		the next reboot or after you run partprobe(8) or kpartx(8)
 		Syncing disks.
 		
->[AZURE.NOTE]在 CentOS 7.x 中，可能会存在 /dev/sda1 和 /dev/sda2 分区，在进行上述步骤时，仅需要扩展 /dev/sda2 分区，且无需激活。
+	>[AZURE.NOTE]在 CentOS 7.x 中，可能会存在 /dev/sda1 和 /dev/sda2 分区，在进行上述步骤时，仅需要扩展 /dev/sda2 分区，且无需激活。
 
 6.	分区表修改完毕，重启虚拟机。
 
@@ -157,7 +157,7 @@
 		old_desc_blocks = 4, new_desc_blocks = 13
 		The filesystem on /dev/sda1 is now 26214144 blocks long.
 
->[AZURE.NOTE]在 CentOS 7.x 中，resize2fs 命令被 xfs 命令取代，请使用 xfs_growfs 命令扩展分区。
+	>[AZURE.NOTE]在 CentOS 7.x 中，resize2fs 命令被 xfs 命令取代，请使用 xfs_growfs 命令扩展分区。
 
 9.	检查根文件系统大小。
 
