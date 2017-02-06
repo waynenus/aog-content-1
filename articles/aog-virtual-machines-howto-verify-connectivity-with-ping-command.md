@@ -29,6 +29,7 @@ ASM 中的虚拟机开放 Ping 功能的方法就是为其添加 ILPIP（Instanc
 ASM 中的虚拟机设置 ILPIP 的途径有两种。
 
 您可以使用 Powershell 命令，为虚拟机添加 ILPIP。具体步骤请参考：[实例级公共 IP（经典）概述](/documentation/articles/virtual-networks-instance-level-public-ip/)
+
 您也可以在 Azure 门户预览中，通过页面中的选项来开启虚拟机的 ILPIP 功能。大致步骤是在 Azure 门户预览中选择 **虚拟机（经典）**，紧接着选择要设置 ILPIP 的虚拟机，然后再选择 **IP 地址** 选项，最后在 **实例 IP 地址** 功能中点击 **开**，并保存。具体位置见下图。
 
 ![ilpip-portal](./media/aog-virtual-machines-howto-verify-connectivity-with-ping-command/ilpip-portal.png)
