@@ -8,7 +8,7 @@
 	selfHelpType=""
 	supportTopicIds=""
 	productPesIds=""
-	resourceTags="Automation, PowerShell, RUNBOOK, Certification"
+	resourceTags="Automation, PowerShell, RUNBOOK, Certification"​
 	cloudEnvironments="MoonCake" />
 <tags 
 	ms.service="automation-aog"
