@@ -8,7 +8,7 @@
 	selfHelpType=""
 	supportTopicIds=""
 	productPesIds=""
-	resourceTags="Event Hub, Java, REST API, SDK"​
+	resourceTags="Event Hub, Java, REST API, SDK"
 	cloudEnvironments="MoonCake" />
 <tags 
 	ms.service="event-hub-aog"

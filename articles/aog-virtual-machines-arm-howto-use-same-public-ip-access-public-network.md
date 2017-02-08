@@ -8,7 +8,7 @@
 	selfHelpType=""
 	supportTopicIds=""
 	productPesIds=""
-	resourceTags="Virtual Machines, PowerShell ,ARM, Public IP"​
+	resourceTags="Virtual Machines, PowerShell ,ARM, Public IP"
 	cloudEnvironments="MoonCake" />
 <tags 
 	ms.service="virtual-machines-aog"

@@ -8,7 +8,7 @@
 	selfHelpType=""
 	supportTopicIds=""
 	productPesIds=""
-	resourceTags="Virtual Machines, Windows, RDP"​
+	resourceTags="Virtual Machines, Windows, RDP"
 	cloudEnvironments="MoonCake" />
 <tags 
 	ms.service="virtual-machines-windows-aog"
