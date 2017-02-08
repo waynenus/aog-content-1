@@ -8,7 +8,7 @@
 	selfHelpType=""
 	supportTopicIds=""
 	productPesIds=""
-	resourceTags="Virtual Machines, CentOS, Premium Storage ,LIS"​
+	resourceTags="Virtual Machines, CentOS, Premium Storage ,LIS"
 	cloudEnvironments="MoonCake" />
 <tags 
 	ms.service="virtual-machines-linux-aog"

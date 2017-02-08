@@ -8,7 +8,7 @@
 	selfHelpType=""
     supportTopicIds=""
     productPesIds=""
-    resourceTags="Virtual Machines, Linux, CentOS, GNOME, VNC"​
+    resourceTags="Virtual Machines, Linux, CentOS, GNOME, VNC"
     cloudEnvironments="MoonCake" />
 <tags
 	ms.service="virtual-machines-linux-aog"
@@ -20,7 +20,7 @@
 
 在特定的需求下，需要用到 Linux 的图形化界面，但是 Azure 平台提供的虚拟机默认没有开放远程图形化登陆的功能。以下解决方案，提供了市面上非常流行的 GNOME + VNC 的组合来远程图形化管理虚拟机。
 
->[AZURE.NOTE]以下步骤适用于 CentOS 6.x 版本，其他版本可能略微有区别。
+>[AZURE.NOTE]以下步骤适用于 CentOS 版本，其他版本可能略微有区别。
 
 ## 解决方案
 
@@ -32,7 +32,7 @@
 
 	1.	登陆虚拟机，切换管理员身份。
 
-	2.	编辑 `/etc/yum.conf` 文件，在最后一行加入： `exclude=NetworkManager*`
+	2.	编辑 `/etc/yum.conf` 文件，在最后一行加入： `exclude=NetworkManager`
 
 	3.	保存并退出
 
@@ -48,7 +48,7 @@
 	
 	3.	编辑文件 `~/.bashrc` (如果非 bash，则修改相对应的文件)，加入以下内容：
 	
-			if [ $TERM == "xterm" ]; then
+			if [ $TERM == "xterm" ] ; then
 			   		export TERM=xterm-color
 			fi
 
@@ -70,8 +70,6 @@
 	
 	2.	安装完毕以后，执行命令：`# vncserver`
 	
-	3.	第一次执行时，需要设置密码，默认端口号为 `5901`，从 `:1`依次加 1
+	3.	第一次执行时，需要设置密码，默认端口号从 `:1`依次加 1
 
-5.	在虚拟机上配置相应终结点，开放 VNC 端口。
-
-6.	通过客户端 VNC Viewer 远程登录虚拟机。 
+5.	通过客户端 VNC Viewer 远程登录虚拟机。 

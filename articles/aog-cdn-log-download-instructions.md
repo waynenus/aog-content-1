@@ -8,7 +8,7 @@
 	selfHelpType=""
 	supportTopicIds=""
 	productPesIds=""
-	resourceTags="Azure CDN"​
+	resourceTags="Azure CDN"
 	cloudEnvironments="MoonCake" />
 <tags 
 	ms.service="cdn-aog"
