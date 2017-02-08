@@ -1,6 +1,6 @@
 <properties
-	pageTitle="关于 CDN 日志下载的几点说明"
-	description="关于 CDN 日志下载的几点说明"
+	pageTitle="CDN 日志下载常见问题"
+	description="CDN 日志下载常见问题"
 	service=""
 	resource="cdn"
 	authors=""
@@ -14,9 +14,9 @@
 	ms.service="cdn-aog"
 	ms.date=""
 	wacn.date="02/07/2017" />
-# 关于 CDN 日志下载的几点说明
+# CDN 日志下载常见问题
 
-Azure CDN 提供了日志下载的功能。但很多客户不是很清楚日志生成的规则等具体信息，现就关于该部分内容做出如下解释：
+Azure CDN 提供了日志下载的功能。但很多客户不是很清楚日志生成的规则等具体信息，关于这部分常见问题，我们有以下经验分享：
 
 1.	CDN 日志中记录的生成不是实时的，根据供应商不同，生成的时间根据选择的方式有所不同。 
 
