@@ -6,10 +6,10 @@
 	authors=""
 	displayOrder=""
 	selfHelpType=""
-    supportTopicIds=""
-    productPesIds=""
-    resourceTags="Azure, Media Services, webcast, 容灾"​
-    cloudEnvironments="MoonCake" />
+	supportTopicIds=""
+	productPesIds=""
+	resourceTags="Azure, Media Services, webcast, 容灾"​
+	cloudEnvironments="MoonCake" />
 <tags
 	ms.service="meida-services-aog"
 	ms.date=""
