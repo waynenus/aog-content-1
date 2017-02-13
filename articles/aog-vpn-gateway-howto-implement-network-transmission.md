@@ -99,8 +99,10 @@
 
 	假设 VPN 网关建立成功后 VNET1 对应的 Gateway IP 为 `VIP1`，VNET2 对应的 Gateway IP 为 `VIP2`。
 	
-	| VNET1	| 10.3.0.0/16 | VIP1 |
-	| VNET2	| 10.5.0.0/16 | VIP2 |
+	| 虚拟网络	| 地址空间		| Gateway IP	| 
+	|---------	|------------	|-----------	|
+	| VNET1		| 10.3.0.0/16	| VIP1 			|
+	| VNET2		| 10.5.0.0/16	| VIP2 			|
 
 	需要建立 VNET1 对应的本地网络网关 LocalVnet1，VPN 地址为 `VIP1`，地址空间为 `10.3.0.0/16`，`192.168.37.0/24` （这里一定要把 On premises Local Site 的地址空间加上）。
 
