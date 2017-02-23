@@ -53,9 +53,9 @@
 
 此段命令会在本地电脑中生成一张 CN 名为 AzureManagement 的自签名证书，并导出 .pfx 和 .cer 两个版本的证书文件到 `%Temp%` 文件夹下。`$CertPlainPassword` 变量包含 .pfx 文件的密码，在后续步骤里会用到。
 
-## 将证书导入 Azure 经典门户
+## 将证书导入 Azure 经典管理门户
 
-使用 Azure 订阅的服务管理员或协同管理员账号登录 [Azure 经典门户](https://manage.windowsazure.cn/)，找到设置->管理证书，点击上载按钮，将 AzureManagement.cer 证书上载为 Azure 管理证书。
+使用 Azure 订阅的服务管理员或协同管理员账号登录 [Azure 经典管理门户](https://manage.windowsazure.cn/)，找到设置->管理证书，点击上载按钮，将 AzureManagement.cer 证书上载为 Azure 管理证书。
 
 ![azure-management-cer](./media/aog-automation-classic-cer-verification/azure-management-cer.png)
 
@@ -106,7 +106,7 @@
 
 ![publish](./media/aog-automation-classic-cer-verification/publish.png)
 
->[AZURE.NOTE] 使用 PowerShell 命令生成的自签名证书有效期为 1 年，到期后需要重复本文描述的步骤手动更新管理证书。如果需要自签名证书拥有更长的有效期，可以使用 `New-SelfSignedCertificate` 命令的 `-NotAfter` 参数设定过期时间。详情请参考 [New-SelfSignedCertificate Library](https://technet.microsoft.com/library/hh848633(v=wps.630)) 。
+>[AZURE.NOTE] 使用 PowerShell 命令生成的自签名证书有效期为 1 年，到期后需要重复本文描述的步骤手动更新管理证书。如果需要自签名证书拥有更长的有效期，可以使用 `New-SelfSignedCertificate` 命令的 `-NotAfter` 参数设定过期时间。详情请参考 [New-SelfSignedCertificate Library](https://technet.microsoft.com/zh-cn/library/hh848633(v=wps.630)) 。
 
 ## 后续步骤
 
