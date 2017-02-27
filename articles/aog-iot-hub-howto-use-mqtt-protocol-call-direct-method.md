@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Node JS 如何使用 MQTT 协议调用直接方法"
-    description="Node JS 如何使用 MQTT 协议调用直接方法"
+    pageTitle="Node JS 如何使用 MQTT 协议调用“直接方法”"
+    description="Node JS 如何使用 MQTT 协议调用“直接方法”"
     service=""
     resource="iot-hub"
     authors=""
@@ -15,9 +15,9 @@
     ms.date=""
     wacn.date="02/21/2017" />
 
-# Node JS 如何使用 MQTT 协议调用直接方法
+# Node JS 如何使用 MQTT 协议调用“直接方法”
 
-Azure IOT SDK 中封装了使用 MQTT 协议调用直接方法的用法，如果想直接使用 MQTT 协议自己封装调用 Azure IOT 来实现直接方法的调用。虽然官方文档也有介绍，但依照官方文档的步骤，依然无法调用，这是因为文档中讲解的一些参数细节并不详细，具体可以参考以下文档和代码 :
+Azure IOT SDK 中封装了使用 MQTT 协议调用“直接方法”的用法，如果想直接使用 MQTT 协议自己调用 Azure IOT 来实现“直接方法”的调用，虽然官方文档也有介绍，但依照官方文档的步骤，依然无法调用，这是因为文档中讲解到的一些参数并不详细，具体可以参考以下文档和代码 :
 
 使用 NodeJS 调用 MQTT 协议，需要依赖 [MQTT.JS](https://github.com/mqttjs/MQTT.js)。
 
@@ -25,7 +25,7 @@ Azure IOT SDK 中封装了使用 MQTT 协议调用直接方法的用法，如果
 
     npm install mqtt --save
 
-其次，在代码中配置连接 IOT 字符串，连接并接受云端发送调用直接方法消息 :
+其次，在代码中配置连接 IOT 字符串，连接并接受云端通过调用“直接方法”发送来的消息 :
 
     var mqtt = require('mqtt')
     var URL = require('url');
@@ -129,11 +129,11 @@ Azure IOT SDK 中封装了使用 MQTT 协议调用直接方法的用法，如果
     return undefined;
     }
 
-本示例是设备接受 Azure IOTHub 发来的调用直接方法消息，并进行响应处理。
+本示例是设备接受 Azure IOTHub 云端调用“直接方法”发来的消息，并进行响应处理。
 
-[AZURE.NOTE] IOT 的用户名必需是 `{iothubhostname}/{device_id}/ api-version={api-version}`, 官方文档中并没有提及要记入 api-version，但实际测试下来，这里是必须要有的。
+[AZURE.NOTE] IOT 的用户名必需是 `{iothubhostname}/{device_id}/ api-version={api-version}`, 官方文档中没有提及要记入 api-version，但实际测试下来，这里是必须要有的。
 
 参考文档：
 
-[Azure IoT 中心 MQTT 支持](/documentation/articles/iot-hub-mqtt-support#a-nameusing-the-mqtt-protocol-directlya/)<br>
-[Azure IoT 中心直接方法](/documentation/articles/iot-hub-devguide-direct-methods#a-namehandle-a-direct-method-on-a-devicea/)
+[Azure IoT 中心使用直接方法](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-node-node-direct-methods/)<br>
+[Azure IoT 中心直接方法的介绍](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-direct-methods/)
