@@ -136,4 +136,4 @@ Azure IOT SDK 中封装了使用 MQTT 协议调用“直接方法”的用法，
 参考文档：
 
 [Azure IoT 中心使用直接方法](/documentation/articles/iot-hub-node-node-direct-methods/)<br>
-[Azure IoT 中心直接方法的介绍](/documentation/articles/iot-hub/iot-hub-devguide-direct-methods/)
+[Azure IoT 中心直接方法的介绍](/documentation/articles/iot-hub-devguide-direct-methods/)
