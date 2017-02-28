@@ -37,11 +37,11 @@ Service Fabric 外网访问需要您开通对应的端口。<br>
 1. 登陆管理门户选择负载均衡，并选中您创建的负载均衡器。
 
     此处我所创建的 Service Fabric 名称为 `vikfabric` 节点名称为 `viknode`。
-    负载名称为下图 :
+    负载均衡器名称为下图 :
 
     ![lb-vikfabric](./media/aog-service-fabric-deployment-howto-access-through-internet/lb-vikfabric.png)
 
-2. 点击名称并选择前端 IP 池并选择 LoadBalancerIPConfic :
+2. 点击名称并选择“前端 IP 池”并选择 “LoadBalancerIPConfic” :
 
     ![front-end-ip-pool](./media/aog-service-fabric-deployment-howto-access-through-internet/front-end-ip-pool.png)
 
