@@ -99,10 +99,10 @@ Azure 应用程序网关会通过探测机制去了解后端服务器的健康�
 
 对于使用 ARM 模式创建的应用程序网关，我们可以直接在 Portal 直接进行配置。
 
-1. 如下图所示，点击运行探测规则，添加自定义探测并指定自定义探测的名称和主机名。
+1. 如下图所示，点击“运行状况探测”，添加自定义探测并指定自定义探测的名称和主机名。
 
 	![Portal-ARMAppGw](./media/aog-web-apps-bind-host-name-gateway-unusable/status-detection.png)
 
-2. 点击 HTTP 设置，找到对应的 HTTP 设置然后勾选 “使用自定义探测” 并选择刚才定义的探测规则，保存设置即可。
+2. 点击 “HTTP 设置”，找到对应的 HTTP 设置然后勾选 “使用自定义探测” 并选择刚才定义的探测规则，保存设置即可。
  
 	![Portal-ARMAppGw](./media/aog-web-apps-bind-host-name-gateway-unusable/HTTP-setting.png)
