@@ -18,7 +18,7 @@
 
 JAVA 在调用 Azure 的 HTTPS 的 REST API 时，会经常报证书问题。错误如下：
 
-	`PKIX：unable to find valid certification path to requested target`
+	PKIX：unable to find valid certification path to requested target
 
 ## **问题分析** 
 
