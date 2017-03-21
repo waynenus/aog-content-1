@@ -37,4 +37,4 @@
 ![add-account](./media/aog-portal-management-qa-vs2017-login/add-account.jpg)
 
 ## **参考文档**
-(中国区 Azure 应用程序开发说明)[/documentation/articles/developerdifferences/]
+[中国区 Azure 应用程序开发说明](/documentation/articles/developerdifferences/)
