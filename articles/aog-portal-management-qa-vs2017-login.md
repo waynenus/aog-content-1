@@ -35,3 +35,6 @@
 点开后，在第一个选项卡界面选择添加账户，之后就可以登录Azure账户了。
 
 ![add-account](./media/aog-portal-management-qa-vs2017-login/add-account.jpg)
+
+## **参考文档**
+(中国区 Azure 应用程序开发说明)[/documentation/articles/developerdifferences/]
