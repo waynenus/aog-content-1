@@ -79,7 +79,7 @@ PowerBI-Cli 命令的格式为 `powerbi [command] [options]`
     -b --baseUri
     HTTP 请求的 baseURI
 
-[AZURE.NOTE] Power BI REST API 发送 HTTP 请求的 baseURI 默认值为 https://api.powerbi.com。 若使用的是中国版 **Power BI** 时，可输入命令 **powerbi config -b https://api.powerbi.cn** 使连接指向 **Mooncake Power BI** 的 **base URI**。
+[AZURE.NOTE] Power BI REST API 发送 HTTP 请求的 **baseURI** 默认值为 **https://api.powerbi.com**。 若使用的是中国区 Power BI 时，可输入命令 `powerbi config -b https://api.powerbi.cn` 使连接指向 **Mooncake Power BI** 的 **base URI**。
 
 此外，为了方便操作，建议在不同的路径下存储不同的 .powerbirc 配置文件，如下所示：
 
@@ -176,7 +176,7 @@ PowerBI-Cli 命令的格式为 `powerbi [command] [options]`
 
 `create-embed-token` 命令用于创建令牌。令牌用于身份验证和授权，其创建可基于报表 ID 或数据集 ID，前者支持用 RLS 和 scope 的方式进行用户凭据设置，而后者则只支持用 scope 方式来实现此功能。
 
-当创建好令牌后，可在[Sample Report](https://microsoft.github.io/PowerBI-JavaScript/demo/code-demo/index.html#) 输入 report ID, 令牌以及 EmbedURL 查看内嵌报表的展示效果：
+当创建好令牌后，可在 [Sample Report](https://microsoft.github.io/PowerBI-JavaScript/demo/code-demo/index.html#) 输入 report ID, 令牌以及 EmbedURL 查看内嵌报表的展示效果：
 
 ![report-embed-sample](./media/aog-power-bi-embedded-cli-guidance/report-embed-sample.png)
 
