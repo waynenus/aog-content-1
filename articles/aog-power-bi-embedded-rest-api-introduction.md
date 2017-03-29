@@ -17,7 +17,7 @@
 
 # Power BI Embedded 的工作流及相关 REST API 命令介绍
 
-Power BI Embedded 服务使用 HTTP 请求实现对 REST API 的调用，完成创建Power BI 工作区，将 .pbix 报表文件导入工作区，数据源连接，在网页中进行身份验证和托管（嵌入）报表以及将报表嵌入网页等一系列。这些工作均可在 PowerBI-Cli 工具中完成，本文则主要介绍 Power BI Embedded 工作流所用到的 REST API 命令。
+Power BI Embedded 服务使用 HTTP 请求实现对 REST API 的调用，完成创建Power BI 工作区，将 .pbix 报表文件导入工作区，数据源连接，在网页中进行身份验证和托管（嵌入）报表以及将报表嵌入网页等一系列动作。这些工作均可在 PowerBI-Cli 工具中完成，本文则主要介绍 Power BI Embedded 工作流所用到的 REST API 命令。
 
 本文所采用的工具为 Postman V4.10.3 的 64 位版本。
 
