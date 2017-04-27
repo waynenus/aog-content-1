@@ -1,5 +1,5 @@
 <properties
-    pageTitle="频繁分离和附加导致磁盘识别错误"
+    pageTitle="如何解决虚拟机频繁分离和附加磁盘导致的识别错误"
     description="如何解决 Linux（CentOS 6.5）频繁分离和附加磁盘导致识别错误的现象"
     service=""
     resource="virtualmachines"
@@ -11,11 +11,11 @@
     resourceTags="Virtual Machines, CentOS, Disk"
     cloudEnvironments="MoonCake" />
 <tags
-    ms.service="virtual-machines-aog"
+    ms.service="virtual-machines-linux-aog"
     ms.date=""
     wacn.date="04/27/2017" />
 
-# 频繁分离和附加导致磁盘识别错误
+# 如何解决虚拟机频繁分离和附加磁盘导致的识别错误
 
 ## **问题描述**
 
