@@ -89,6 +89,3 @@ sdd 还挂载在 /data 上。但已经无法正常工作，任何操作会报 IO
 
 ![cmd-lsblk-3](./media/aog-virtual-machines-qa-attach-and-separate-disk-frequently-cause-recognition-error/cmd-lsblk-3.png)
 
-## **参考链接**
-
-[Linux – dynamically add/remove scsi from linux](http://unixadminschool.com/blog/2011/05/linux-dynamically-addremove-scsi-from-linux/)
