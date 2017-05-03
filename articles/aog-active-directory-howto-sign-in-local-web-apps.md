@@ -29,7 +29,7 @@
 
 ### 管理门户部分
 
-1. 登录 [Azure 管理门户](https://portal.azure.cn/)，在 ACTIVE DIRECTORY 下创建一个 Azure AD 租户并添加相关用户。
+1. 登录 [Azure 经典管理门户](https://manage.windowsazure.cn/)，在 ACTIVE DIRECTORY 下创建一个 Azure AD 租户并添加相关用户。
 
     ![portal-ad](./media/aog-active-directory-howto-sign-in-local-web-apps/portal-ad.png)
 
