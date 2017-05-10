@@ -87,9 +87,3 @@
 4. 执行成功后，等待几分钟，就可以通过 Portal 看到 VNET 中已经连接了一个客户端。
 
     ![vnet](./media/aog-web-apps-howto-connect-deployment-slot-to-vnet/vnet.jpg)
-
-    关于部署槽连接到虚拟网络，只需要修改 webAppname 和 ResourceType，修改如下：
-
-        $Configuration.WebAppName = "[websitename/slotname]"
-
-        $vnet = New-AzureRmResource -Name "$($Configuration.WebAppName)/$($Configuration.VnetName)" -ResourceGroupName $Configuration.WebAppResourceGroup -ResourceType "Microsoft.Web/sites/slots/virtualNetworkConnections" -PropertyObject @{"VnetResourceId" = "/subscriptions/$($Configuration.VnetSubscriptionId)/resourceGroups/$($Configuration.VnetResourceGroup)/providers/Microsoft.ClassicNetwork/virtualNetworks/$($Configuration.VnetName)"} -Location $Configuration.WebAppLocation -ApiVersion 2015-07-01
