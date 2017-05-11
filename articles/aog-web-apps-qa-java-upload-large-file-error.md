@@ -44,7 +44,7 @@
 
 2. 若上传大文件，建议配置 requestTimeout 为较长时间，默认是2分钟。
 
-        <httpPlatform processPath="C:\JavaSample\bin\apache-tomcat-8.0.28\apache-tomcat-8.0.28\bin\startup.bat"     arguments="" stdoutLogEnabled="true" stdoutLogFile=\\?c:\\JavaSample\log.txt   requestTimeout="00:02:00">
+        <httpPlatform processPath="<Your_Project_Path>\bin\apache-tomcat-8.0.28\apache-tomcat-8.0.28\bin\startup.bat"     arguments="" stdoutLogEnabled="true" stdoutLogFile="<Your_stdout_Log_File_Path>"   requestTimeout="00:02:00">
 
 3. 做完上述的配置之后，建议在管理门户重启网站。
 
