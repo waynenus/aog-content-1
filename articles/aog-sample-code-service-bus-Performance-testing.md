@@ -126,7 +126,7 @@
 
         <ConfigurationSettings>
         <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key];EndpointSuffix=core.chinacloudapi.cn" />
-        <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://[your namespace].servicebus.windows.net;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[your key]" />
+        <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://[your namespace].servicebus.chinalcoudapi.cn;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[your key]" />
         </ConfigurationSettings>
 
 2. 发布接收端项目 ReceiverWorkerRole 到 Azure 上
