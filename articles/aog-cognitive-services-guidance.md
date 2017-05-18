@@ -74,7 +74,7 @@
                     var queryString = HttpUtility.ParseQueryString(string.Empty);
 
                     // Request headers
-                    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "4fe95dd8ec4247a69cb2a001efda06c6");//Face API key
+                    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "4fe95********************fda06c6");//Face API key
 
                     // Request parameters
                     queryString["returnFaceId"] = "true";
@@ -107,7 +107,7 @@
                     var queryString = HttpUtility.ParseQueryString(string.Empty);
 
                     // Request headers
-                    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "4fe95dd8ec4247a69cb2a001efda06c6");//Face API key
+                    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "4fe95********************fda06c6");//Face API key
 
                     // Request parameters
                     queryString["returnFaceId"] = "true";
@@ -121,8 +121,8 @@
                     string path = @"C:\Users\yuvmtest\Desktop\test.jpg";//local picture path
                     FileStream fs = File.OpenRead(path); //OpenRead
                     int filelength = 0;
-                    filelength = (int)fs.Length; 
-                    byte[] image = new byte[filelength]; 
+                    filelength = (int)fs.Length;
+                    byte[] image = new byte[filelength];
                     fs.Read(image, 0, filelength);
                     fs.Close();
 
@@ -183,7 +183,7 @@
                     URI uri = builder.build();
                     HttpPost request = new HttpPost(uri);
                     request.setHeader("Content-Type", "application/json");
-                    request.setHeader("Ocp-Apim-Subscription-Key", "4fe95dd8ec4247a69cb2a001efda06c6");
+                    request.setHeader("Ocp-Apim-Subscription-Key", "4fe95********************fda06c6");
 
                     // Request body
                     StringEntity reqEntity = new StringEntity("{\"url\":\"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1494416315487&di=5e05a310f8c7b3fec011901ff3d13f93&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fbaike%2Fpic%2Fitem%2F4034970a304e251ff1e3819aa486c9177f3e53bf.jpg\"}"); //URL图片地址
@@ -221,7 +221,7 @@
                     URI uri = builder.build();
                     HttpPost request = new HttpPost(uri);
                     request.setHeader("Content-Type", "application/octet-stream");
-                    request.setHeader("Ocp-Apim-Subscription-Key", "4fe95dd8ec4247a69cb2a001efda06c6");
+                    request.setHeader("Ocp-Apim-Subscription-Key", "4fe95********************fda06c6");
 
                     // Request body
                     String pic_path = "C:\\Users\\yuvmtest\\Desktop\\test.jpg";
@@ -261,7 +261,7 @@
 
         $client = new Client();
 
-        $headers = ['Content-Type' => 'application/json','Ocp-Apim-Subscription-Key' => '4fe95dd8ec4247a69cb2a001efda06c6'];
+        $headers = ['Content-Type' => 'application/json','Ocp-Apim-Subscription-Key' => '4fe95********************fda06c6'];
 
         $body = '{"url":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1494416315487&di=5e05a310f8c7b3fec011901ff3d13f93&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fbaike%2Fpic%2Fitem%2F4034970a304e251ff1e3819aa486c9177f3e53bf.jpg"}';
 
@@ -280,7 +280,7 @@
         headers = {
             # Request headers
             'Content-Type': 'application/json',
-            'Ocp-Apim-Subscription-Key': '4fe95dd8ec4247a69cb2a001efda06c6',
+            'Ocp-Apim-Subscription-Key': '4fe95********************fda06c6',
         }
 
         params = urllib.parse.urlencode({
