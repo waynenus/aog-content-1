@@ -13,7 +13,7 @@
 <tags
     ms.service="na-aog"
     ms.date=""
-    wacn.date="03/17/2017" />
+    wacn.date="05/18/2017" />
 # VS2017 直接使用账户登录 Azure
 
 ## **问题描述**
