@@ -32,17 +32,17 @@
 
     3. 之后开启Visual Studio 2017，参考以下截图，管理账户和订阅。
 
-    ![manage-subscriptions](./media/aog-portal-management-qa-vs2017-login/manage-subscriptions.jpg)
+        ![manage-subscriptions](./media/aog-portal-management-qa-vs2017-login/manage-subscriptions.jpg)
 
-    点开后，在第一个选项卡界面选择添加账户，之后就可以登录Azure账户了。
+        点开后，在第一个选项卡界面选择添加账户，之后就可以登录Azure账户了。
 
-    ![add-account](./media/aog-portal-management-qa-vs2017-login/add-account.jpg)
+        ![add-account](./media/aog-portal-management-qa-vs2017-login/add-account.jpg)
 
 - 运行 extension 文件，自动添加配置文件：
 
     1. 首先，需要安装 Azure .NET SDK for VS 2017。
 
-    2. 安装成功后，关闭 Visual Studio 2017，下载 <a href="./media/aog-portal-management-qa-vs2017-login/AzureEnvironmentSelector.vsix" download> extension </a>文件。
+    2. 安装成功后，关闭 Visual Studio 2017，下载 <a href="./media/aog-portal-management-qa-vs2017-login/AzureEnvironmentSelector.vsix" download target="_blank"> extension </a>文件。
 
     3. 双击运行下载好的 extension 文件。
 
