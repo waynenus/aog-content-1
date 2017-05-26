@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Java 操作密钥保管库管理及客户端 API"
+    pageTitle="如何使用 Java 操作密钥保管库管理及客户端 API"
     description="如何使用 Java 操作密钥保管库管理及客户端 API"
     service=""
     resource="keyvault"
@@ -23,7 +23,7 @@
 
 ## **问题分析**
 
-需要基于 ADAL Library 通过重写 doAuthenticate 方法来创建 KeyVaultClient 来做认证。
+需要基于 ADAL Library ，通过重写 doAuthenticate 方法来创建 KeyVaultClient 来做认证。
 
 ## **解决方法**
 
