@@ -42,7 +42,7 @@
 
         pip install azure-storage==0.33.0
 
-- 如何查看模块的版本
+- 查看模块的版本
 
         >pip install azure-storage==
         Collecting azure-storage==
@@ -58,7 +58,7 @@
     from azure.storage.blob import ContentSettings
 
     account = 'devstorage'
-    key = 'GVbNd6Ntz4xfXyPAQ4GspP2oIePrshR5L3ws8oXZJQKr6RWmGGThxnAldwAp7Eh0sQlVAtaZDVV0BygaS2u+Yg=='
+    key = 'GVbNd6Ntz4xfXyPAQ4GspP2oIeXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXygaS2u+Yg=='
     endpoint = 'core.chinacloudapi.cn'
     print '1'
     blockblobservice=BlockBlobService(account_name=account, account_key=key,endpoint_suffix=endpoint)
