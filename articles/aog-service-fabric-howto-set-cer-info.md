@@ -17,7 +17,7 @@
 
 # 如何设置安全 Service Fabric 集群的证书信息
 
-当创建 Service Fabric 集群时，处于安全考虑，建议采用安全模式，但从 Azure 门户上操作时，却发现不知道该如何填写相应的证书信息（如下图）。其实 Azure 中国官网上有详细的步骤说明，可点击[链接](https://docs.microsoft.com/zh-cn/azure/service-fabric/service-fabric-cluster-creation-via-portal)查看，但因为详细所以比较长，这篇文章将把内容精简，并以 PowerShell 脚本呈现以便快速部署。
+当创建 Service Fabric 集群时，出于安全考虑，建议采用安全模式，但从 Azure 门户上操作时，却发现不知道该如何填写相应的证书信息（如下图）。其实 Azure 中国官网上有详细的步骤说明，可点击[链接](https://docs.microsoft.com/zh-cn/azure/service-fabric/service-fabric-cluster-creation-via-portal)查看，但因为详细所以比较长，这篇文章将把内容精简，并以 PowerShell 脚本呈现以便快速部署。
 
 ![portal](./media/aog-service-fabric-howto-set-cer-info/portal.png)
 
