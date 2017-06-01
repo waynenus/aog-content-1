@@ -1,3 +1,20 @@
+<properties
+    pageTitle="有关 Power BI Embedded 会话计费的常见问题及回答"
+    description="有关 Power BI Embedded 会话计费的常见问题及回答"
+    service=""
+    resource="powerbiembedded"
+    authors="Allan Li"
+    displayOrder=""
+    selfHelpType=""
+    supportTopicIds=""
+    productPesIds=""
+    resourceTags="PowerBI Embedded, Token, PowerBI-Cli"
+    cloudEnvironments="MoonCake" />
+<tags
+    ms.service="power-bi-embedded-aog"
+    ms.date=""
+    wacn.date="05/31/2017" />
+
 # 有关 Power BI Embedded 会话计费的常见问题及回答
 
 根据官网中的 [Power BI Embedded](/pricing/details/power-bi-embedded/) 相关文档介绍，Power BI Embedded 的计费依据是每个月产生的会话数目。每个月前 100 个会话免费，而超出的部分则按照每 100 个会话 32.86 元/月的标准进行计费。而对会话的定义，官网给出的解释如下所示：
