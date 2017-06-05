@@ -29,12 +29,12 @@
 
 问题 2 ：会话结束可以按用户关闭报表算，其中，用户关闭报表具体指的是什么？
 
-答：相比 [demo](https://microsoft.github.io/PowerBI-JavaScript/demo/code-demo/index.html#) 页面而言，用户访问题的 Power BI Embedded 报表展示页面往往类似于 [展示页面](https://pbi.chinacloudsites.cn/) 中的内容。当每次用户访问题 URL 时，网页的后台将创建一个新的 token 用于报表展示，因此当用户在展示报表一个小时内关闭页面时，该 Power BI Embedded 的会话结束，当客户重新登陆时将开启一个新的回话；而当用户访问题该报表超过一个小时后，也将开启一个新的会话，这也就是[官网文档](/pricing/details/power-bi-embedded/) 中所说 “ 会话结束可以按用户关闭报表算，也可以按启动会话后一个小时算，以先发生者为准。”
+答：相比 [demo](https://microsoft.github.io/PowerBI-JavaScript/demo/code-demo/index.html#) 页面而言，用户访问题的 Power BI Embedded 报表展示页面往往类似于 [展示页面](https://pbi.chinacloudsites.cn/) 中的内容。当每次用户访问 URL 时，网页的后台将创建一个新的 token 用于报表展示，因此当用户在展示报表一个小时内关闭页面时，该 Power BI Embedded 的会话结束，当客户重新登陆时将开启一个新的会话；而当用户访问该报表超过一个小时后，也将开启一个新的会话，这也就是[官网文档](/pricing/details/power-bi-embedded/) 中所说 “ 会话结束可以按用户关闭报表算，也可以按启动会话后一个小时算，以先发生者为准。”
 
 
 问题 3 ：创建一个 token 之后，是否多个用户同时用这一个 token，在一小时内算是一个会话？
 
-答：多个用户同时用一个 token 访问题内嵌报表，与一个用户用 token 访问题内嵌报表所产生的会话数相同，一个小时内都只用一个会话。
+答：多个用户同时用一个 token 访问内嵌报表，与一个用户用 token 访问内嵌报表所产生的会话数相同，一个小时内都只用一个会话。
 
 
 问题 4 ：根据文档[如何将 Power BI Embedded 与 REST 配合使用](/documentation/articles/power-bi-embedded-iframe/)用客户端程序生成了 token 时，有以下两个参数可以随意设置 token 有效时长：
