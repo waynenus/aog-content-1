@@ -49,11 +49,11 @@
 
 这里将通过配置文件的方式来托管服务，也就是将前面创建的服务用服务总线中继出去。
 
-    // TODO: update the values
+    // TODO: Update the values
     var serviceBusNamespace = "your service bus namespace";
     var relayServicePath = "data"; // you can define your own value
 
-    // for mooncake
+    // For China Azure
     var dataSvcUriString = $"https://{serviceBusNamespace}.servicebus.chinacloudapi.cn/{relayServicePath}";
 
     var webServiceHost = new WebServiceHost(typeof(DataService), new Uri(dataSvcUriString));
@@ -79,30 +79,30 @@
         </binding>
         </webHttpRelayBinding>
     </bindings>
-        <behaviors>
-        <endpointBehaviors>
-            <behavior name="sbTokenProvider">
-            <transportClientEndpointBehavior>
-                <tokenProvider>
-                <sharedAccessSignature keyName="service bus key name" key="your key" />
-                </tokenProvider>
-            </transportClientEndpointBehavior>
-            </behavior>
-        </endpointBehaviors>
-        </behaviors>
-        <services>
-            <service name="Service.DataService">
-            <endpoint name="sbRelayEndpoint"
-                        address=""
-                        binding="webHttpRelayBinding"
-                        bindingConfiguration="default"
-                        behaviorConfiguration="sbTokenProvider"
-                        contract="Service.IDataService" />
-            </service>
-        </services>
-        <extensions>
-            <!—Install Microsoft Service Bus NuGet package will automatically add needed all extensions -->
-            ……
+    <behaviors>
+    <endpointBehaviors>
+        <behavior name="sbTokenProvider">
+        <transportClientEndpointBehavior>
+            <tokenProvider>
+            <sharedAccessSignature keyName="service bus key name" key="your key" />
+            </tokenProvider>
+        </transportClientEndpointBehavior>
+        </behavior>
+    </endpointBehaviors>
+    </behaviors>
+    <services>
+        <service name="Service.DataService">
+        <endpoint name="sbRelayEndpoint"
+                    address=""
+                    binding="webHttpRelayBinding"
+                    bindingConfiguration="default"
+                    behaviorConfiguration="sbTokenProvider"
+                    contract="Service.IDataService" />
+        </service>
+    </services>
+    <extensions>
+        <!—Install Microsoft Service Bus NuGet package will automatically add needed all extensions -->
+        ……
     </extensions>
     </system.serviceModel>
 
@@ -126,47 +126,47 @@
             HttpUtility.UrlEncode(signature),
             expiry,
             keyName);
-    return sasToken;
+        return sasToken;
     }
 
 ## 添加 Token 作为头部
 
 使用 HttpClient 调用通过服务总线中继出来的服务，并添加生成的 Token 作为头部。
 
-public ActionResult Index()
-{
-    // TODO: update the values
-    var serviceBusNamespace = "your service bus namespace";
-    var relayServicePath = "data"; // you can define your own value
-    var keyName = "your service bus key name";
-    var key = "your service bus key value";
-
-    var resourceUriString = $"https://{serviceBusNamespace}.servicebus.chinacloudapi.cn/{relayServicePath}";
-    var token = createToken(resourceUriString, keyName, key);
-
-    try
+    public ActionResult Index()
     {
-        using (var httpClient = new HttpClient())
+        // TODO: update the values
+        var serviceBusNamespace = "your service bus namespace";
+        var relayServicePath = "data"; // you can define your own value
+        var keyName = "your service bus key name";
+        var key = "your service bus key value";
+
+        var resourceUriString = $"https://{serviceBusNamespace}.servicebus.chinacloudapi.cn/{relayServicePath}";
+        var token = createToken(resourceUriString, keyName, key);
+
+        try
         {
-            httpClient.DefaultRequestHeaders.Add("Authorization", token);
-
-            var requestUri = $"{resourceUriString}/GetRandomString";
-
-            using (var response = httpClient.GetAsync(requestUri).Result)
+            using (var httpClient = new HttpClient())
             {
-                response.EnsureSuccessStatusCode();
-                var result = response.Content.ReadAsStringAsync().Result;
-                ViewBag.Message = result;
+                httpClient.DefaultRequestHeaders.Add("Authorization", token);
+
+                var requestUri = $"{resourceUriString}/GetRandomString";
+
+                using (var response = httpClient.GetAsync(requestUri).Result)
+                {
+                    response.EnsureSuccessStatusCode();
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    ViewBag.Message = result;
+                }
             }
         }
-    }
-    catch (Exception ex)
-    {
-        ViewBag.Message = $"Exception happened: {ex.Message}";
-    }
+        catch (Exception ex)
+        {
+            ViewBag.Message = $"Exception happened: {ex.Message}";
+        }
 
-return View();
-}
+    return View();
+    }
 
 [AZURE.NOTE]直接把服务总线的 Key 提供在客户端是不安全的，可以另外提供一个专门生成 Token 的服务，这样客户端就可以需要的时候就从那个服务获取 Token，而不是直接拿到 Key 自己生成。
 
