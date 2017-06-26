@@ -11,8 +11,8 @@ ms.service: virtual-machines
 wacn.topic: aog
 ms.topic: article
 ms.author: v-johch
-ms.date: 06/21/2017
-wacn.date: 06/21/2017
+ms.date: 06/26/2017
+wacn.date: 06/26/2017
 ---
 
 # 如何定位虚拟机内部附加的数据磁盘
@@ -33,8 +33,8 @@ wacn.date: 06/21/2017
 
 2. 创建两块数据磁盘，名字为：
 
-        LunTest-LunTest-0-201706130314040006 （对应vhd： LunTest-LunTest-0613-1.vhd）
-        LunTest-LunTest-1-201706130315590578 （对应vhd： LunTest-LunTest-0613-2.vhd）
+        LunTest-LunTest-0-201706130314040006 （对应 vhd： LunTest-LunTest-0613-1.vhd）
+        LunTest-LunTest-1-201706130315590578 （对应 vhd： LunTest-LunTest-0613-2.vhd）
 
 3. 将上述数据磁盘附加到虚拟机。
 
@@ -122,46 +122,72 @@ wacn.date: 06/21/2017
 
 2. 创建两块数据磁盘，名字为：
 
-        dcuser-dcuser-0-201706130918520846（对应vhd： dcuser-dcuser-noid.vhd）
-        dcuser-dcuser-1-201706130924230994（对应vhd： dcuser-dcuser-noid-too.vhd）
+        dcuser-dcuser-0-201706130918520846（对应 vhd： dcuser-dcuser-noid.vhd）
+        dcuser-dcuser-1-201706130924230994（对应 vhd： dcuser-dcuser-noid-too.vhd）
 
 3. 将上述数据磁盘附加到虚拟机。
 
 4. 以管理员身份登录虚拟机。
 
-5. 打开电脑管理->磁盘管理：
+5. 打开命令，执行如下命令，查看当前磁盘的 LUN ID：
 
-    ![disk-management](./media/aog-virtual-machines-howto-loc-data-disk/disk-management.png)
+                PS C:\Users\azureuser> diskpart
+                Microsoft DiskPart version 6.3.9600
+                Copyright (C) 1999-2013 Microsoft Corporation.
+                On computer: dcuser
+                DISKPART> list disk
+                Disk ###  Status         Size     Free     Dyn  Gpt
+                --------  -------------  -------  -------  ---  ---
+                Disk 0    Online          127 GB  2048 KB
+                Disk 1    Online           50 GB      0 B
+                Disk 2    Online           10 GB  1024 KB
+                Disk 3    Online           10 GB  1024 KB
+                DISKPART> select disk 2
+                Disk 2 is now the selected disk.
+                DISKPART> detail disk
+                Microsoft Virtual Disk
+                Disk ID: 961D20C6
+                Type   : SAS
+                Status : Online
+                Path   : 0
+                Target : 0
+                LUN ID : 5
+                Location Path : UNAVAILABLE
+                Current Read-only State : No
+                Read-only  : No
+                Boot Disk  : No
+                Pagefile Disk  : No
+                Hibernation File Disk  : No
+                Crashdump Disk  : No
+                Clustered Disk  : No
+                Volume ###  Ltr  Label        Fs     Type        Size     Status     Info
+                ----------  ---  -----------  -----  ----------  -------  ---------  --------
+                Volume 2     E   New Volume   NTFS   Partition      9 GB  Healthy
+                DISKPART>
 
-6. 点击磁盘右键打开磁盘属性：
 
-    ![disk-properties](./media/aog-virtual-machines-howto-loc-data-disk/disk-properties.png)
+6. 通过 PowerShell，执行以下命令来获取数据磁盘的 LUN ID：
 
-7. 在通常页可以看到磁盘的 LUN ID：
+                PS C:\Users\chpa> $vm = Get-AzureVM -ServiceName dcuser -Name dcuser
+                PS C:\Users\chpa> $vm.vm.DataVirtualHardDisks
+                HostCaching         : None
+                DiskLabel           : 
+                DiskName            : dcuser-dcuser-0-201706130918520846
+                Lun                 : 5
+                LogicalDiskSizeInGB : 10
+                MediaLink           : https://tcportalvhdsgrnnb3k173zr.blob.core.chinacloudapi.cn/vhds/dcuser-dcuser-noid.vhd
+                SourceMediaLink     : 
+                IOType              : Standard
+                ExtensionData       : 
 
-    ![disk-properties-lun-id](./media/aog-virtual-machines-howto-loc-data-disk/disk-properties-lun-id.png)
+                HostCaching         : None
+                DiskLabel           : 
+                DiskName            : dcuser-dcuser-1-201706130924230994
+                Lun                 : 1
+                LogicalDiskSizeInGB : 10
+                MediaLink           : https://tcportalvhdsgrnnb3k173zr.blob.core.chinacloudapi.cn/vhds/dcuser-dcuser-noid-too.vhd
+                SourceMediaLink     : 
+                IOType              : Standard
+                ExtensionData       :
 
-8. 通过 PowerShell，执行以下命令来获取数据磁盘的 LUN ID：
-
-        PS C:\Users\chpa> $vm = Get-AzureVM -ServiceName dcuser -Name dcuser
-        PS C:\Users\chpa> $vm.vm.DataVirtualHardDisks
-        HostCaching         : None
-        DiskLabel           : 
-        DiskName            : dcuser-dcuser-0-201706130918520846
-        Lun                 : 5
-        LogicalDiskSizeInGB : 10
-        MediaLink           : https://tcportalvhdsgrnnb3k173zr.blob.core.chinacloudapi.cn/vhds/dcuser-dcuser-noid.vhd
-        SourceMediaLink     : 
-        IOType              : Standard
-        ExtensionData       : 
-        HostCaching         : None
-        DiskLabel           : 
-        DiskName            : dcuser-dcuser-1-201706130924230994
-        Lun                 : 1
-        LogicalDiskSizeInGB : 10
-        MediaLink           : https://tcportalvhdsgrnnb3k173zr.blob.core.chinacloudapi.cn/vhds/dcuser-dcuser-noid-too.vhd
-        SourceMediaLink     : 
-        IOType              : Standard
-        ExtensionData       :
-
-9. 至此，通过 LUN ID 将虚拟机内部的数据磁盘和 Azure 存储账号的磁盘一一对应起来了。
+7. 至此，通过 LUN ID 将虚拟机内部的数据磁盘和 Azure 存储账号的磁盘一一对应起来了。
