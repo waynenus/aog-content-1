@@ -51,6 +51,6 @@ Azure 平台默认是 UTC 时间，所以如果要基于中国时间配置则需
 
 ### 解决方法 ###
 
-在添加 Web 作业时，CRON 表达式中小时位（第三位）需要加 8，才可以使 Web 作业按时运行。
+在添加 Web 作业时，CRON 表达式中小时位（第三位）需要减 8（等同于加 16），才可以使 Web 作业按时运行。
 
 ![UTC+8](./media/aog-web-apps-qa-webjob-cron-boot-error/UTC+8.png)
