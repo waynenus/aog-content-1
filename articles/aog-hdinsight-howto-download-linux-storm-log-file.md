@@ -71,7 +71,7 @@ wacn.date: 07/05/2017
 
     ![sftp](./media/aog-hdinsight-howto-download-linux-storm-log-file/sftp.png)
 
-    >[!TIP]
-    >将 **stormtest-ssh.azurehdinsight.cn** 根据实际 ssh 登录地址进行替换。
+    > [!TIP]
+    > 将 **stormtest-ssh.azurehdinsight.cn** 根据实际 ssh 登录地址进行替换。
 
     然后在 /home/sshuser 目录下就能看到 worker.log，可以选择将文件 download 到本地。

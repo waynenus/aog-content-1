@@ -25,7 +25,7 @@ Azure HDInsight 作为 Azure 上的大数据分布式处理平台，目前支持
 
 1. [在 Azure 门户预览上创建 Windows HDInsight 的 HBase 群集](#portal)
 2. [用 HBase Shell 创建示例表格](#shell)
-3. [用 Microsoft Azure Storage Tool 复制 HBase 群集所用的容器](#storge-tool)
+3. [用 Microsoft Azure Storage Tool 复制 HBase 群集所用的容器](#storage-tool)
 4. [基于所复制的容器创建 Linux HDInsight 的 HBase 群集](#create)
 
 下面将就这几步进行具体介绍，其中将 Windows HDInsight 上的 HBase 群集简称为 Windows HBase 群集，将 Linux HDInsight 上的 HBase 群集简称为 Linux HBase 群集。
