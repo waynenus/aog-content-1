@@ -168,4 +168,4 @@ ASP.NET 2005 Core / MYSQL EntityFrameWork Core
 
 ## 参考方法
 
-[HowTo: Starting with MySQL EF Core provider and Connector/Net 7.0.4](http://insidemysql.com/howto-starting-with-mysql-ef-core-provider-and-connectornet-7-0-4/)
+[MySQL EF Core provider and Connector/Net 7.0.4 入门教程](http://insidemysql.com/howto-starting-with-mysql-ef-core-provider-and-connectornet-7-0-4/)
