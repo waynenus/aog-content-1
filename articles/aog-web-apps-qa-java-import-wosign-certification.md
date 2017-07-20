@@ -1,16 +1,22 @@
-<properties
-	pageTitle="如何在 JAVA 中导入 Wosign 证书"
-	description="介绍如何在 JAVA 中导入 Wosign 证书。"
-	services="app-service-web-aog"
-	documentationCenter=""
-	authors=""
-	manager=""
-	editor=""
-	tags="Java,Wosign 证书" />
-<tags
-    ms.service="service-fabric-aog"
-    ms.date=""
-    wacn.date="02/21/2017" />
+---
+redirect_url: web-mobile/aog-web-apps-howto-load-cer-with-java
+
+title: 如何在 JAVA 中导入 Wosign 证书
+description: 介绍如何在 JAVA 中导入 Wosign 证书。
+services: app-service-web-aog
+documentationCenter: ''
+author: taroyutao
+manager: ''
+editor: ''
+tags: Java,Wosign 证书
+
+ms.service: service-fabric
+wacn.topic: aog
+ms.topic: article
+ms.author: v-tawe
+ms.date: 02/21/2017
+wacn.date: 02/21/2017
+---
 
 # 如何在 JAVA 中导入 Wosign 证书 #
 
@@ -18,7 +24,9 @@
 
 JAVA 在调用 Azure 的 HTTPS 的 REST API 时，会经常报证书问题。错误如下：
 
-	PKIX：unable to find valid certification path to requested target
+```
+PKIX：unable to find valid certification path to requested target
+```
 
 ## **问题分析** 
 
@@ -28,16 +36,18 @@ JDK 有一套单独的证书库，JAVA 在访问 HTTPS 服务时，会使用自�
 
 安装 Wosign 根证书到 JDK 的证书库，详细步骤如下：
 
-1. 从 [http://www.wosign.com/Root/index.htm#](http://www.wosign.com/Root/index.htm# "http://www.wosign.com/Root/index.htm#") 站点下载 WoSign 根证书（Certification Authority of WoSign），将 `.crt` 文件后缀改为 `.cer`。
+1. 从 [http://www.wosign.com/Root/index.htm# "http://www.wosign.com/Root/index.htm#"](http://www.wosign.com/Root/index.htm# "http://www.wosign.com/Root/index.htm#") 站点下载 WoSign 根证书（Certification Authority of WoSign），将 `.crt` 文件后缀改为 `.cer`。
 
 2. 执行以下命令导入 :
 
-		keytool -
-		keystore "C:\Program Files\Java\jdk1.8.0_71\jre\lib\security\cacerts" -
-		importcert -alias WoSign -file WS_CA1_NEW.cer
+    ```
+    keytool -
+    keystore "C:\Program Files\Java\jdk1.8.0_71\jre\lib\security\cacerts" -
+    importcert -alias WoSign -file WS_CA1_NEW.cer
+    ```
 
-	接着会提示输入密码，默认密码为 changeit，输入之后，选择‘**是**’将其安装到 JDK 可信证书库中。
+    接着会提示输入密码，默认密码为 changeit，输入之后，选择‘**是**’将其安装到 JDK 可信证书库中。
 
 3. 如果看到以下结果，则导入成功。
 
-	![certification-imoport-success](./media/aog-web-apps-qa-java-import-wosign-certification/certification-import-success.png "certification-import-success")
+    ![certification-imoport-success](./media/aog-web-apps-qa-java-import-wosign-certification/certification-import-success.png "certification-import-success")
