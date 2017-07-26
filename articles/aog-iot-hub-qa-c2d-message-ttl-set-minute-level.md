@@ -44,12 +44,32 @@ C2D 消息的默认 TTL 确实可以设置为最小 1 mins，但是目前只能�
 - 可以通过设置 CloudToDevice 里的 `DefaultTtlAsIso8601` 属性来设置默认 TTL，这种方法是为整个 IoT 中心下所有设备的 C2D 的消息设置为同一默认 TTL。
 
     ```
-    IotHubDescription iothubdescription = new IotHubDescription();
-    IotHubProperties iothubproperties = new IotHubProperties();
-    iothubproperties.CloudToDevice.DefaultTtlAsIso8601 = new TimeSpan(0, 1, 0);
-    IotHubResourceOperationsExtensions.CreateOrUpdate(
-        operations, 
-        "resourceGroupName", 
-        "resourceName", 
-        iotHubDescription);
+    var iothubClient = new IotHubClient(
+    new Uri("https://management.chinacloudapi.cn/"), 
+    tokenCredential, 
+    new RetryDelegatingHandler());
+    iothubClient.SubscriptionId = subscriptionId;
+
+    var iothubResource = iothubClient.IotHubResource;
+
+    // get iothub description
+    var resourceDescription = iothubResource.Get(rgName, resourceName);
+    Console.WriteLine(resourceDescription.Name);
+
+    // set C2D message default ttl to 1 minute
+    resourceDescription.Properties.CloudToDevice.DefaultTtlAsIso8601 = TimeSpan.FromMinutes(1);
+
+    try
+    { 
+        // commit the change                 
+        iothubResource.CreateOrUpdate(rgName, resourceName, resourceDescription);
+        Console.WriteLine("Update successfully!");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+    Console.WriteLine("Press ENTER to exit!");
+    Console.ReadLine();            
+
     ```
