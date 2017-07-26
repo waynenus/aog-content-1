@@ -20,7 +20,7 @@ wacn.date: 07/19/2017
 
 # 构建混合应用方式之 - WCF 中继
 
-使用 VPN 或者 ER 服务建立云服务和本地服务网络通道来搭建混合应用的方式，需要网络设备的配合和比较复杂的网络配置，所以不是特别的方便。如果是不希望对本地网络环境做修改，而只是服务层面的混合，那么可以使用一个更方便的服务 – Azure 中继服务。基于 Azure 中继服务访问本地服务，客户端不需要与本地服务建立直接连接，也不需要了解服务所在的位置，并且本地服务无需在防火墙上打开任何入站端口。
+使用 VPN 或者 ER 服务建立云服务和本地服务网络通道来搭建混合应用的方式，需要网络设备的配合和比较复杂的网络配置，所以不是很方便。如果用户不希望对本地网络环境做修改，而只是服务层面的混合，那么可以使用一个更方便的服务 – Azure 中继服务。基于 Azure 中继服务访问本地服务，客户端不需要与本地服务建立直接连接，也不需要了解服务所在的位置，并且本地服务无需在防火墙上打开任何入站端口。
 
 Azure 中继服务支持传统的单向消息传送、请求/响应消息传送和对等消息传送。它还支持 Internet 范围的事件分发，以实现发布-订阅方案和双向套接字通信，从而提高点到点通信效率。在中继消息传送模式中，本地服务会通过出站端口连接至中继服务，并为绑定至特定会合地址的通信创建一个双向套接字。然后，客户端可以通过将消息发送到抵达会合地址的中继服务来与本地服务通信。
 
@@ -30,7 +30,7 @@ Azure 中继服务支持传统的单向消息传送、请求/响应消息传送�
 
 ## WCF 中继
 
-WCF 中继允许你向公有云公开位于企业网络内的 WCF 服务，而无需打开防火墙连接，也无需对企业网络基础结构进行彻底的更改。而且它还允许你安全的控制谁可以访问这些服务。另外对你原来的 WCF 项目所需要做的改动也是很小的。
+WCF 中继允许用户向公有云公开位于企业网络内的 WCF 服务，而无需打开防火墙连接，也无需对企业网络基础结构进行彻底的更改。而且它还允许用户安全的控制谁可以访问这些服务。另外对用户原来的 WCF 项目所需要做的改动也是很小的。
 
 ![wcf-relay](./media/aog-service-bus-relay-connect-on-primeses-apps-to-outside-world-via-wcf-relay/wcf-relay.png)
 
@@ -40,7 +40,7 @@ WCF 中继允许你向公有云公开位于企业网络内的 WCF 服务，而�
 
 ### 创建 WCF 中继服务
 
-可以登陆 [Azure 中国门户网站](https://portal.azure.cn/)，按照界面提示一步步创建。也可以通过 PowerShell 命令，如下，其中创建 WCF 中继时，WcfRelayType 设置为 NetTcp。RequiresTransportSecurity 和 RequiresClientAuthorization 默认都是 true，这里显示指定只是处于演示作用。
+可以登陆 [Azure 中国门户网站](https://portal.azure.cn/)，按照界面提示一步步创建。也可以通过 PowerShell 命令，如下，其中创建 WCF 中继时，WcfRelayType 设置为 NetTcp。RequiresTransportSecurity 和 RequiresClientAuthorization 默认都是 true，这里显示指定只是出于演示的作用。
 
 ```PowerShell
 # login to Azure China with your account
@@ -153,10 +153,10 @@ cf.Endpoint.Behaviors.Add(new TransportClientEndpointBehavior
 
 ## 基于 HTTP 的 REST 访问
 
-WCF 服务本身支持服务以 REST 的形式公开出来，那么同样的，客户端也希望能用普通的 HTTP 来访问。对于这种形式，WCF 中继服务也是支持的。
+WCF 服务本身支持服务以 REST 的形式公开出来，所以如果客户端希望能用普通的 HTTP 来访问，WCF 中继服务也是支持的。
 
 ### 创建 WCF 中继服务
-跟前面 TCP 方式的步骤一样，唯一的区别是 WcfRelayType 设置为 Http，服务名称也做相应的命名，比如 httpdata。这样创建出来的 WCF 中继服务地址是`https://relaydemons.servicebus.chinacloudapi.cn/httpdata`
+跟前面 TCP 方式的步骤一样，唯一的区别是 WcfRelayType 设置为 Http，下面的示例中服务名称命名为 httpdata。这样创建出来的 WCF 中继服务地址是`https://relaydemons.servicebus.chinacloudapi.cn/httpdata`
 
 ### 通过 WCF 中继公开本地 WCF 服务
 
