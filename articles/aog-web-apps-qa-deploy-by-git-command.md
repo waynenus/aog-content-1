@@ -38,25 +38,19 @@ wacn.date: 07/18/2017
 git init
 git add -A  
 git commit -m "init"
-git remote add main https:// testftpname@ testwebapp1.scm.chinacloudsites.cn:443/ testwebapp1.git 
+git remote add main https://testftpname@testwebapp1.scm.chinacloudsites.cn:443/ testwebapp1.git 
 git push main master
-git submodule add https://testftpname:MyPassword@ testwebapp2.scm.chinacloudsites.cn:443/ testwebapp2.git libs  
+git submodule add https://testftpname:MyPassword@testwebapp2.scm.chinacloudsites.cn:443/ testwebapp2.git libs  
 ```
 
 > [!TIP]
 > 其中 testwebapp1 为主站点, testwebapp2 为子模块站点, FTP 用户名为 testftpname, FTP 密码为 MyPassword。
 
-`git submodule add` 命令代表增加一个子模块 ，`https` 代表的是子模块的仓库地址，`libs` 代表将子模块放置在当前工程下的路径，`libs` 名称可以自定义。
-
 ```
 git submodule update –remote //更新带有 submodule 的项目
 git add -A  //-A 代表提交所有变化的文件
 git commit -m "add submodule and change some files" 
-```
 
-`git commit` 代表将本地修改的内容提交到缓存中，一般是 `git commit –m “xxxx”` ,`xxx` 代表修改的内容，但这个只是提交到缓存中，`git push` 才代表真正提交到本地存储库。
-
-```
 git submodule update   
 Git push main master
 ```
