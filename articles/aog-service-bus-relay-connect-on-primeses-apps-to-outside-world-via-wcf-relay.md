@@ -153,10 +153,10 @@ cf.Endpoint.Behaviors.Add(new TransportClientEndpointBehavior
 
 ## 基于 HTTP 的 REST 访问
 
-WCF 服务本身支持服务以 REST 的形式公开出来，所以如果用户的客户端希望能用普通的 HTTP 来访问，WCF 中继服务也是支持的。
+WCF 服务本身支持服务以 REST 的形式公开出来，所以如果客户端希望能用普通的 HTTP 来访问，WCF 中继服务也是支持的。
 
 ### 创建 WCF 中继服务
-跟前面 TCP 方式的步骤一样，唯一的区别是 WcfRelayType 设置为 Http，下面的示例中服务名称命名为httpdata。这样创建出来的 WCF 中继服务地址是`https://relaydemons.servicebus.chinacloudapi.cn/httpdata`
+跟前面 TCP 方式的步骤一样，唯一的区别是 WcfRelayType 设置为 Http，下面的示例中服务名称命名为 httpdata。这样创建出来的 WCF 中继服务地址是`https://relaydemons.servicebus.chinacloudapi.cn/httpdata`
 
 ### 通过 WCF 中继公开本地 WCF 服务
 
