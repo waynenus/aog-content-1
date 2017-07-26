@@ -26,24 +26,20 @@ wacn.date: 07/17/2017
 
 ## 实现思路
 
-通过调研最高版本的 JAVA SDK（1.1.0）源码发现，SDK 层面并未提供任启动诊断和配置诊断的相关接口。不过官方还是提供了相关的 REST 接口，参考：
+调研最高版本的 JAVA SDK（1.1.0）源码发现，SDK 层面并未提供任启动诊断和配置诊断的相关接口。然而官方提供了相关的 REST 接口，参考：[如何增加及更新虚拟机扩展](https://docs.microsoft.com/zh-cn/rest/api/compute/extensions/extensions-add-or-update)。
 
- [如何增加及更新虚拟机扩展](https://docs.microsoft.com/zh-cn/rest/api/compute/extensions/extensions-add-or-update)
-
-这个接口为我们提供了向现有的 ARM 虚拟机添加或更新虚拟机扩展（vm extension）的功能，而我们在 Portal 上配置的“**诊断功能**”其实是一个名为 “**IaaSDiagnostics**” 的一个扩展。结合上述的 REST 接口，这个 REST 请求示例如下：
+这个接口为我们提供了向现有的 ARM 虚拟机添加或更新虚拟机扩展（vm extension）的功能，而我们在 Portal 上配置的“**诊断功能**”其实是一个名为 “**IaaSDiagnostics**” 的一个扩展。结合上述的 REST 接口，该 REST 请求示例如下：
 
 ```
 https://management.chinacloudapi.cn/subscriptions/<subId>/resourceGroups/<groupName>/providers/Microsoft.Compute/virtualMachines/<vmName>/extensions/IaaSDiagnostics?api-version=2016-03-30
 ````
 
-这是一个 Put 方法请求，请求的参数主要包括 Header 和 Request Body 两部分的设置，官方连接中提供的解释略有不足，以下是我们关于相关参数的总结：
+这是一个 Put 请求，请求的参数主要包括 Header 和 Request Body 两部分，官方连接中提供的解释略有不足，以下是我们关于相关参数的说明：
 
 - Header：主要包括 Authorization、Content-Type 及 Host 的设置:
 
-    1. Authorization：提供认证的凭据，如何获取这个值请参认证凭据小节。
-
+    1. Authorization：提供认证的凭据，如何获取这个值请参考下面认证凭据描述。
     2. Content-Type：指定为 application/json，以 JSON 数据返回响应。
-
     3. Host：指定为“management.chinacloudapi.cn”，终结点地址。
 
 - Request Body：关于扩展的配置信息，可以参考 [Azure Windows VM 扩展配置示例](./windows/extensions-configuration-samples)或以下模板:
@@ -75,12 +71,12 @@ https://management.chinacloudapi.cn/subscriptions/<subId>/resourceGroups/<groupN
     1. subId：虚拟机所属的订阅 ID
     2. groupName:虚拟机所属的资源组名称
     3. vmName：虚拟机名称
-    4. location：虚拟机地缘位置，示例“China North” 或 “China East”
+    4. location：虚拟机地理位置(“China North” 或 “China East”)
     5. storageAccountName：虚拟诊断数据存储账号名称
     6. storageAccountKey：虚拟诊断数据存储账号秘钥
     7. 诊断 XML 配置的 Base64 编码值：这个值是指是将诊断指标配置做 Base64 编码计算得到的值。关于诊断指标配置参考[诊断 1.2 配置架构](https://docs.microsoft.com/zh-cn/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot2)、[诊断 1.3 及更高版本的配置架构](https://docs.microsoft.com/zh-cn/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later)。同时，我们在 GitHub 中提供了相关测试用例：[WadCfg](https://github.com/wacn/AOG-CodeSample/blob/master/VirtualMachines/Java/azure-vmop-demo-master/src/main/java/geo/azure/test/WadCfg.xml) 
 
-接下来我们要做的就是，通过 Java 来模拟提交该请求，实现为虚拟机开启诊断功能。
+接下来我们可以通过 Java 来模拟提交该请求，实现为虚拟机开启诊断功能。
 
 ## 认证凭据
 
@@ -159,28 +155,30 @@ Authorization Header 的值是基于 AAD 方式验证返回的 Token 字符串�
 
 ## 运行测试
 
-    ```Java
-    String resourceName ="geogroup";
-    String vmName ="geowin-test-005";
-    String vmLocation ="China North";
-    String storageAccountName = "";
-    String storageAccountKey= "";
+```Java
+String resourceName ="geogroup";
+String vmName ="geowin-test-005";
+String vmLocation ="China North";
+String storageAccountName = "";
+String storageAccountKey= "";
 
-    VmDiagnosticOperation diagnosticOperation = new VmDiagnosticOperation(
-    "tenant id",
-    "client id", 
-    "client secret",
-    "sub id");
+VmDiagnosticOperation diagnosticOperation = new VmDiagnosticOperation(
+"tenant id",
+"client id", 
+"client secret",
+"sub id");
 
-    String result = diagnosticOperation.EnableVMDiagnostic(
-    resourceName, 
-    vmName, 
-    vmLocation,
-    storageAccountName, 
-    storageAccountKey);
+String result = diagnosticOperation.EnableVMDiagnostic(
+resourceName, 
+vmName, 
+vmLocation,
+storageAccountName, 
+storageAccountKey);
 
-    System.out.println(result);
-    ```
+System.out.println(result);
+```
+    
+## 运行结果
 
 ![result](media/aog-virtual-machines-arm-howto-enable-diagnostics-with-java-rest-api/result.png)
 
