@@ -46,7 +46,7 @@ Invoke-AddCertToKeyVault -SubscriptionId $SubID -ResourceGroupName $ResouceGroup
 
 ## 设置域名解析
 
-我们需要创建一个静态公网 IP，并将我们的自定义域名 DNS 解析到该 IP 之上，如下图，绑定 DNS 域名并解析至之前创建的静态公网 IP 地址，以下DNS解析以 Aliyun 为例，每个域名提供商的设置可能不一样，请参考各域名提供商的设置进行配置。
+我们需要创建一个静态公网 IP，并将我们的自定义域名 DNS 解析到该 IP 之上，如下图，绑定 DNS 域名并解析至之前创建的静态公网 IP 地址，以下 DNS 解析以 Aliyun 为例，每个域名提供商的设置可能不一样，请参考各域名提供商的设置进行配置。
 
 ![portal](./media/aog-service-fabric-howto-set-custom-domain-for-security-authentication/portal.png)
 
