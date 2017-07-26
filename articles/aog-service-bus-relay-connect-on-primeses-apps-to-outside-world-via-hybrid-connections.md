@@ -20,9 +20,9 @@ wacn.date: 07/19/2017
 
 # 构建混合应用方式之 - 混合连接
 
-[前文](aog-service-bus-relay-connect-on-primeses-apps-to-outside-world-via-wcf-relay.md)介绍了通过 WCF 中继构建混合应用的方式，由于对 WCF 的依赖，使得其使用有一定的局限性，基本上只适用于本地服务是 WCF 的 .NET 应用。而混合连接则弥补了这一块的缺陷，除了支持原有 WCF 中继的功能之外，还提供了多平台多语言的支持，这只要是因为混合连接是基于开放标准协议 web sockets 实现的。
+[前文](aog-service-bus-relay-connect-on-primeses-apps-to-outside-world-via-wcf-relay.md)介绍了通过 WCF 中继构建混合应用的方式，由于对 WCF 的依赖，使得其使用有一定的局限性，基本上只适用于本地服务是 WCF 的 .NET 应用。而混合连接则弥补了这一块的缺陷，除了支持原有 WCF 中继的功能之外，还提供了多平台多语言的支持，这主要是因为混合连接是基于开放标准协议 web sockets 实现的。
 
-以下是与 WCF 中继的一个对比表：
+以下是混合连接与 WCF 中继的一个对比表：
 
 <table align="center">
 <tr>
@@ -112,7 +112,7 @@ await relayConnection.CloseAsync(CancellationToken.None);
 
 ### 外部服务（发送者）
 
-发送者提供具有发送权限的连接字符串（不是必须如果建立混合连接时没有要求客户端认证，不过从安全角度考虑，推荐要求认证），与混合连接服务建立 WebSocket 连接，最终会与一个监听者建立起连接，从而进行沟通。
+发送者提供具有发送权限的连接字符串（如果建立混合连接时没有要求客户端认证则不是必须的，不过从安全角度考虑，推荐要求认证），与混合连接服务建立 WebSocket 连接，最终会与一个监听者建立起连接，从而进行沟通。
 
 ```
 private const string ConnectionString = "connection string with send permission";
@@ -140,7 +140,7 @@ await relayConnection.CloseAsync(CancellationToken.None);
 
 ## 基于 Azure Web 应用混合连接工具
 
-目前 Azure 中国还没有支持混合连接的整合，不过已经在路上了，应该会很快就可上线。以下用 Azure 全球来演示，最终 Azure 中国也会是同样的体验。
+目前 Azure 中国还没有支持混合连接的整合，不过已经在路上了，并且会很快就会上线。以下用 Azure 全球来演示，最终 Azure 中国也会是同样的体验。
 
 ### 配置混合连接端节点
 
