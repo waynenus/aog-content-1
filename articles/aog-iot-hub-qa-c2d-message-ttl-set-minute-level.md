@@ -56,13 +56,13 @@ C2D 消息的默认 TTL 确实可以设置为最小 1 mins，但是目前只能�
     var resourceDescription = iothubResource.Get(rgName, resourceName);
     Console.WriteLine(resourceDescription.Name);
 
-    // set C2D message default ttl to 2 hours
-    resourceDescription.Properties.CloudToDevice.DefaultTtlAsIso8601 = TimeSpan.FromHours(2);
+    // set C2D message default ttl to 1 minute
+    resourceDescription.Properties.CloudToDevice.DefaultTtlAsIso8601 = TimeSpan.FromMinutes(1);
 
     try
     { 
         // commit the change                 
-    iothubResource.CreateOrUpdate(rgName, resourceName, resourceDescription);
+        iothubResource.CreateOrUpdate(rgName, resourceName, resourceDescription);
         Console.WriteLine("Update successfully!");
     }
     catch (Exception ex)
