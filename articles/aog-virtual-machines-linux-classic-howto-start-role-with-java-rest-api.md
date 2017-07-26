@@ -20,7 +20,7 @@ wacn.date: 07/17/2017
 
 ## 现象描述
 
-用户可以通过 Rest API 设置经典 Linux 虚拟机实例的启停。在调用该 API 时需要通过 Azure Active Directory(下文简称 AAD) 获取 Token，但是因为中国 Azure 中通过 AAD 的 Application 获取到的 Token 无法操作经典 API，所以需要通过Client ID 和管理员的用户名密码来获取 Token。
+用户可以通过 Rest API 设置经典 Linux 虚拟机实例的启停。在调用该 API 时需要通过 Azure Active Directory(下文简称 AAD) 获取 Token，但是因为中国 Azure 中通过 AAD 的 Application 获取到的 Token 无法操作经典 API，所以需要通过 Client ID 和管理员的用户名密码来获取 Token。
 
 ## 前提条件
 
