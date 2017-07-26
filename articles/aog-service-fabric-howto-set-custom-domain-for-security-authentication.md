@@ -18,7 +18,7 @@ wacn.date: 07/17/2017
 
 # 如何为开启安全认证的 Service Fabric 设置自定义域名
 
-一般情况下，如果我们没有为 Azure Service Fabric 开启群集安全证书功能，我们只需要将域名的 DNS 解析绑定到 Service Fabric 群集使用的负载均衡器对应的公网 IP 上即可。但对于开启了安全证书功能的群集，我们需要将证书和域名进行绑定，相对要麻烦一些。
+一般情况下，如果我们没有为 Azure Service Fabric 开启群集安全证书功能，我们只需要将域名的 DNS 解析绑定到 Service Fabric 群集使用的负载均衡器对应的公网 IP 上即可。但对于开启了安全证书功能的群集，我们需要将证书和域名进行绑定，相对要复杂一些。
 
 ## 生成证书
 
@@ -46,7 +46,7 @@ Invoke-AddCertToKeyVault -SubscriptionId $SubID -ResourceGroupName $ResouceGroup
 
 ## 设置域名解析
 
-我们需要创建一个静态公网 IP，并将我们的自定义域名 DNS 解析到该 IP 之上，如下图，绑定 DNS 域名并解析至之前创建的静态公网 IP 地址，以下是 Aliyun 示例，每个域名提供商的设置可能不一样，请参考各域名提供商的设置进行配置。
+我们需要创建一个静态公网 IP，并将我们的自定义域名 DNS 解析到该 IP 之上，如下图，绑定 DNS 域名并解析至之前创建的静态公网 IP 地址，以下 DNS 解析以 Aliyun 为例，每个域名提供商的设置可能不一样，请参考各域名提供商的设置进行配置。
 
 ![portal](./media/aog-service-fabric-howto-set-custom-domain-for-security-authentication/portal.png)
 
