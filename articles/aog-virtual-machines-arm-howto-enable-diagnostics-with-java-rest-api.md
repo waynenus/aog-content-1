@@ -26,7 +26,7 @@ wacn.date: 07/17/2017
 
 ## 实现思路
 
-调研最高版本的 JAVA SDK（1.1.0）源码发现，SDK 层面并未提供任启动诊断和配置诊断的相关接口。然而官方提供了相关的 REST 接口，参考：[如何增加及更新虚拟机扩展](https://docs.microsoft.com/zh-cn/rest/api/compute/extensions/extensions-add-or-update)
+调研最高版本的 JAVA SDK（1.1.0）源码发现，SDK 层面并未提供任启动诊断和配置诊断的相关接口。然而官方提供了相关的 REST 接口，参考：[如何增加及更新虚拟机扩展](https://docs.microsoft.com/zh-cn/rest/api/compute/extensions/extensions-add-or-update)。
 
 这个接口为我们提供了向现有的 ARM 虚拟机添加或更新虚拟机扩展（vm extension）的功能，而我们在 Portal 上配置的“**诊断功能**”其实是一个名为 “**IaaSDiagnostics**” 的一个扩展。结合上述的 REST 接口，该 REST 请求示例如下：
 
@@ -38,7 +38,7 @@ https://management.chinacloudapi.cn/subscriptions/<subId>/resourceGroups/<groupN
 
 - Header：主要包括 Authorization、Content-Type 及 Host 的设置:
 
-    1. Authorization：提供认证的凭据，如何获取这个值请参考下面认证凭据描述。
+    1. Authorization：提供认证的凭据，如何获取这个值请参考下面认证凭据描述。
     2. Content-Type：指定为 application/json，以 JSON 数据返回响应。
     3. Host：指定为“management.chinacloudapi.cn”，终结点地址。
 
