@@ -26,9 +26,7 @@ wacn.date: 07/17/2017
 
 ## 实现思路
 
-调研最高版本的 JAVA SDK（1.1.0）源码发现，SDK 层面并未提供任启动诊断和配置诊断的相关接口。然而官方提供了相关的 REST 接口，参考：
-
- [如何增加及更新虚拟机扩展](https://docs.microsoft.com/zh-cn/rest/api/compute/extensions/extensions-add-or-update)
+调研最高版本的 JAVA SDK（1.1.0）源码发现，SDK 层面并未提供任启动诊断和配置诊断的相关接口。然而官方提供了相关的 REST 接口，参考：[如何增加及更新虚拟机扩展](https://docs.microsoft.com/zh-cn/rest/api/compute/extensions/extensions-add-or-update)
 
 这个接口为我们提供了向现有的 ARM 虚拟机添加或更新虚拟机扩展（vm extension）的功能，而我们在 Portal 上配置的“**诊断功能**”其实是一个名为 “**IaaSDiagnostics**” 的一个扩展。结合上述的 REST 接口，该 REST 请求示例如下：
 
@@ -41,9 +39,7 @@ https://management.chinacloudapi.cn/subscriptions/<subId>/resourceGroups/<groupN
 - Header：主要包括 Authorization、Content-Type 及 Host 的设置:
 
     1. Authorization：提供认证的凭据，如何获取这个值请参考下面认证凭据描述。
-
     2. Content-Type：指定为 application/json，以 JSON 数据返回响应。
-
     3. Host：指定为“management.chinacloudapi.cn”，终结点地址。
 
 - Request Body：关于扩展的配置信息，可以参考 [Azure Windows VM 扩展配置示例](./windows/extensions-configuration-samples)或以下模板:
@@ -159,28 +155,28 @@ Authorization Header 的值是基于 AAD 方式验证返回的 Token 字符串�
 
 ## 运行测试
 
-    ```Java
-    String resourceName ="geogroup";
-    String vmName ="geowin-test-005";
-    String vmLocation ="China North";
-    String storageAccountName = "";
-    String storageAccountKey= "";
+```Java
+String resourceName ="geogroup";
+String vmName ="geowin-test-005";
+String vmLocation ="China North";
+String storageAccountName = "";
+String storageAccountKey= "";
 
-    VmDiagnosticOperation diagnosticOperation = new VmDiagnosticOperation(
-    "tenant id",
-    "client id", 
-    "client secret",
-    "sub id");
+VmDiagnosticOperation diagnosticOperation = new VmDiagnosticOperation(
+"tenant id",
+"client id", 
+"client secret",
+"sub id");
 
-    String result = diagnosticOperation.EnableVMDiagnostic(
-    resourceName, 
-    vmName, 
-    vmLocation,
-    storageAccountName, 
-    storageAccountKey);
+String result = diagnosticOperation.EnableVMDiagnostic(
+resourceName, 
+vmName, 
+vmLocation,
+storageAccountName, 
+storageAccountKey);
 
-    System.out.println(result);
-    ```
+System.out.println(result);
+```
     
 ## 运行结果
 
