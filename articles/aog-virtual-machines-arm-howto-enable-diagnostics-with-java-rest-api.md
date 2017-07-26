@@ -181,7 +181,9 @@ Authorization Header 的值是基于 AAD 方式验证返回的 Token 字符串�
 
     System.out.println(result);
     ```
-运行结果：
+    
+## 运行结果
+
 ![result](media/aog-virtual-machines-arm-howto-enable-diagnostics-with-java-rest-api/result.png)
 
 ## 示例代码
