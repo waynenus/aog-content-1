@@ -72,6 +72,7 @@ EXEC sp_addrolemember 'db_datareader', 'testuser';
     ![firewall](./media/aog-sql-database-connection-faq/firewall.png)
 
 2. 在客户端和 Internet 之间的所有防火墙上面，确保 1433 端口的出站链接(outbound connection)是开放的。
+3. 对于部署在Azure VM上的客户端，除1433端口外，确保为客户端与SQL数据库之间的交互保留 Azure 客户端计算机上 11000-11999 和 14000-14999 的端口范围。
 
 ## <a id="section4"></a>暂时性错误
 
