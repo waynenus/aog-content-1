@@ -17,7 +17,6 @@ wacn.date: 06/27/2017
 ---
 
 # Azure SQL 数据库常见的连接问题
-
 这篇文章总结了常见的 Azure SQL 数据库连接失败的情况，主要分为 5 大类，旨在帮助用户或企业数据库管理员排查数据库连接异常的问题。
 
 根据不同的情况，常见的连接问题有以下五种：
@@ -72,6 +71,7 @@ EXEC sp_addrolemember 'db_datareader', 'testuser';
     ![firewall](./media/aog-sql-database-connection-faq/firewall.png)
 
 2. 在客户端和 Internet 之间的所有防火墙上面，确保 1433 端口的出站链接(outbound connection)是开放的。
+3. 对于部署在 Azure 虚拟机上的客户端，除 1433 端口外，确保为客户端与 SQL 数据库之间的交互保留 Azure 客户端计算机上 11000-11999 和 14000-14999 的端口范围。
 
 ## <a id="section4"></a>暂时性错误
 
