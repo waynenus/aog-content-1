@@ -135,7 +135,7 @@ wacn.date: 06/27/2017
 
 ![packet](./media/aog-sql-database-connect-with-microsoft-jdbc-driver/packet.png)
 
-Driver 将整个语句拆成了 5 个网络包（Frame Number 为 1929~1932 和 1992），然而 Frame Number 为 1992 的包距离 1932 时间差较大（1932 的 Flags 是 A），然后服务器端立即对之前的包进行了回复，但是发现 1929~1932 的包并不完整，随即对整个链接发出了中断的请求（1993）, 最后出现 Reset 操作（2010）。这整个过程体现了 JTDS driver 对一个大的请求在拆包过程中与服务器交互出现了问题。
+Driver 将整个语句拆成了 5 个网络包（Frame Number 为 1929，1930，1931，1932 和 1992），然而 Frame Number 为 1992 的包距离 1932 时间差较大（1932 的 Flags 是 A），然后服务器端立即对之前的包进行了回复，但是发现 1929，1930，1931，1932 的包并不完整，随即对整个链接发出了中断的请求（1993）, 最后出现 Reset 操作（2010）。这整个过程体现了 JTDS driver 对一个大的请求在拆包过程中与服务器交互出现了问题。
 
 反观 Microsoft JDBC Driver 与服务器交互过程一切正常，且最后是由客户端发起了中断请求：
 
