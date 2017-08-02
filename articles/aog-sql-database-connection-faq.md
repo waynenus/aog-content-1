@@ -17,7 +17,6 @@ wacn.date: 06/27/2017
 ---
 
 # Azure SQL 数据库常见的连接问题
-
 这篇文章总结了常见的 Azure SQL 数据库连接失败的情况，主要分为 5 大类，旨在帮助用户或企业数据库管理员排查数据库连接异常的问题。
 
 根据不同的情况，常见的连接问题有以下五种：
@@ -48,7 +47,7 @@ wacn.date: 06/27/2017
 
 如果使用的 Login 并没有访问目标数据库的权限，那么在尝试直接连接到这个数据库或者连接到 master 数据库后展开这个数据库的时候就会遇到下面这个错误：
 
- ![error-3](./media/aog-sql-database-connection-faq/error-3.png)
+![error-3](./media/aog-sql-database-connection-faq/error-3.png)
 
 这时候需要根据情况为这个 Login 创建一个 User，然后赋予这个 User 访问数据库的权限；或者直接更换一个有访问权限的账号进行连接。下面的例子是如何创建一个名为 testlogin 的 Login 并且赋予对数据库 testdb 的 read 权限：
 
