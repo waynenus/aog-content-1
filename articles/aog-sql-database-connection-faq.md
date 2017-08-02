@@ -48,7 +48,7 @@ wacn.date: 06/27/2017
 
 如果使用的 Login 并没有访问目标数据库的权限，那么在尝试直接连接到这个数据库或者连接到 master 数据库后展开这个数据库的时候就会遇到下面这个错误：
 
-![error-3](./media/aog-sql-database-connection-faq/error-3.png)
+ ![error-3](./media/aog-sql-database-connection-faq/error-3.png)
 
 这时候需要根据情况为这个 Login 创建一个 User，然后赋予这个 User 访问数据库的权限；或者直接更换一个有访问权限的账号进行连接。下面的例子是如何创建一个名为 testlogin 的 Login 并且赋予对数据库 testdb 的 read 权限：
 
@@ -72,7 +72,7 @@ EXEC sp_addrolemember 'db_datareader', 'testuser';
     ![firewall](./media/aog-sql-database-connection-faq/firewall.png)
 
 2. 在客户端和 Internet 之间的所有防火墙上面，确保 1433 端口的出站链接(outbound connection)是开放的。
-3. 对于部署在Azure VM上的客户端，除1433端口外，确保为客户端与SQL数据库之间的交互保留 Azure 客户端计算机上 11000-11999 和 14000-14999 的端口范围。
+3. 对于部署在 Azure 虚拟机上的客户端，除 1433 端口外，确保为客户端与 SQL 数据库之间的交互保留 Azure 客户端计算机上 11000-11999 和 14000-14999 的端口范围。
 
 ## <a id="section4"></a>暂时性错误
 
