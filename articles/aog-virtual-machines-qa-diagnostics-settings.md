@@ -149,7 +149,7 @@ C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\*
 
 在排查性能视图不可见的问题时，用户首先要明确的是什么时间段的数据不可见，然后找到对应的表，查看表中是否有虚拟机的对应时刻的性能指标记录。由于表中包含数以万计的实体，您可以使用 Microsoft Azure Storage Explorer 提供的过滤功能筛选结果，但由于单次下载到内存中的数据并不多，不一定能查到所需数据；在这种情况下，建议将表导出到本地 csv 文件中进行筛选。
 
-如果表中确实没有对应的数据，则需要再次[检查配置文件](section2)确认存储账号设置是否有误，或者数据上传是否有错。如果是上传错误，在 VM agent 的日志，或者扩展日志中将会有对应的记录。
+如果表中确实没有对应的数据，则需要再次[检查配置文件](#section2)确认存储账号设置是否有误，或者数据上传是否有错。如果是上传错误，在 VM agent 的日志，或者扩展日志中将会有对应的记录。
 
 ![log](./media/aog-virtual-machines-qa-diagnostics-settings/log.png)
 

@@ -66,7 +66,7 @@ EXEC sp_addrolemember 'db_datareader', 'testuser';
 
 1. IP 地址不在白名单中
 
-    如果发起连接的客户端 IP 地址不在 Azure SQL Database 的 IP 白名单中，那么连接会失败。这时候需要登录到 [Azure 管理门户](portal.azure.cn)中添加相应的防火墙规则。
+    如果发起连接的客户端 IP 地址不在 Azure SQL Database 的 IP 白名单中，那么连接会失败。这时候需要登录到 [Azure 管理门户](https://portal.azure.cn)中添加相应的防火墙规则。
 
     ![firewall](./media/aog-sql-database-connection-faq/firewall.png)
 
