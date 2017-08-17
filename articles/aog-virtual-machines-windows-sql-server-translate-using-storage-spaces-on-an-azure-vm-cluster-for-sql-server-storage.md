@@ -15,7 +15,6 @@ ms.date: 08/15/2017
 wacn.date: 08/15/2017
 ---
 # 在 Azure VM 集群上使用存储空间进行 SQL Server 存储
-add new line
 
 [存储空间](https://technet.microsoft.com/zh-cn/library/hh831739.aspx) 是 Windows Server 的一项功能，可让您在多个底层物理磁盘中创建虚拟磁盘（也称为存储空间）。[Azure VM 中的 SQL Server 性能指南白皮书](http://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/Performance%20Guidance%20for%20SQL%20Server%20in%20Windows%20Azure%20Virtual%20Machines.docx) （第 15 和 26 页）指出，在 Azure VM 中，存储空间可用于提高 SQL Server 工作负载的存储性能。这是通过从条带化的物理磁盘集创建虚拟磁盘来实现的。在 Azure VM 中，物理磁盘使用 Azure Blob 存储，这具有一定的[性能限制](https://docs.azure.cn/zh-cn/storage/storage-scalability-targets) 。但是，在物理磁盘的条带化集顶部创建存储空间可让您在一定程度上解决这些限制。对于支持多个（最多 16 个）物理磁盘的大型虚拟机，可以显著提高存储性能。这可以使 Azure 成为多个 SQL 工作负载的可行平台，否则这些 SQL 负载将受到单个 Azure 磁盘的 I/O 性能的限制。
 
