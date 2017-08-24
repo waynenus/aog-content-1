@@ -37,13 +37,13 @@ P2S VPN 为用户单机环境连接 Azure 服务提供了便利。根据用户�
 
 Azure P2S VPN 日志提供了 VPN 连接的具体信息，打开方式如下：
 
-![viewlog](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/viewlog.png)
+![viewlog](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/viewlog.png)
 
-![loginfo](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/loginfo.png)
+![loginfo](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/loginfo.png)
 
 在这个文件中，可以看到 Custom Action Dll 中 ActionPath 这个路径，打开本地相应地址可以看到 VPN 客户端配置包（类似于传统的拨号），包含了具体的拨号内容（.pbk 文件 - 可以查看拨号的 Host name / IP address of destination，Security 相关选项）、路由表（ routes.txt ）等等。
 
-![clientconfigpg](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/clientconfigpg.png)
+![clientconfigpg](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/clientconfigpg.png)
 
 ## <a id='section-1'>Azure P2S VPN 如何配置自动重连</a>
 
@@ -57,13 +57,13 @@ Azure P2S VPN 日志提供了 VPN 连接的具体信息，打开方式如下：
 
     任务计划程序（ Schedule Task ）界面创建任务。
         
-    ![1-1](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/1-1.png)
+    ![1-1](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/1-1.png)
 
 2. 参照用户需要，配置常规选卡、条件选卡和设置选卡，以下是模拟情况以供参考：
 
-    ![1-2](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/1-2.png)
-    ![1-3](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/1-3.png)
-    ![1-4](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/1-4.png)
+    ![1-2](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/1-2.png)
+    ![1-3](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/1-3.png)
+    ![1-4](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/1-4.png)
 
 3. 创建触发器：
 
@@ -81,15 +81,15 @@ Azure P2S VPN 日志提供了 VPN 连接的具体信息，打开方式如下：
     </QueryList>
     ``` 
 
-    ![1-5](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/1-5.png)
+    ![1-5](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/1-5.png)
 
-    ![1-6](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/1-6.png)
+    ![1-6](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/1-6.png)
 
 4. 创建操作：
 
     事件被触发时，执行 rasdial “用户自行创建的 VPN Name ” （这里根据用户需要也可写更复杂的脚本）。
 
-    ![1-7](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/1-7.png)
+    ![1-7](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/1-7.png)
 
 5. 至此 P2S VPN 自动重连配置完毕。
 
@@ -102,12 +102,12 @@ Azure P2S VPN 日志提供了 VPN 连接的具体信息，打开方式如下：
 
 ### 修改方法
 
-![2-1](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/2-1.png)
-![2-2](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/2-2.png)
+![2-1](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/2-1.png)
+![2-2](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/2-2.png)
     
 **开机/挂起后自动重启，跳出 VPN 等待连接界面：**
 
-![2-3](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/2-3.png)
+![2-3](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/2-3.png)
 
 为了使 VPN 自动连接，在正常配置 Azure P2S VPN 的基础上，本文尝试了**创建拨号**的方式实现自动连接：
 
@@ -122,27 +122,27 @@ Azure P2S VPN 日志提供了 VPN 连接的具体信息，打开方式如下：
     ```
     C:\Users\xxxx\AppData\Roaming\Microsoft\Network\Connections\Cm\xxxxx 
     ```
-    ![2-4](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/2-4.png)
-    ![2-5](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/2-5.png)
+    ![2-4](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/2-4.png)
+    ![2-5](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/2-5.png)
 
 2. 在该目录文件夹中查看拨号目的地址，双击 pbk 文件，查看属性中目的地主机名:
 
-    ![2-6](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/2-6.png)
+    ![2-6](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/2-6.png)
 
 3. 创建一个新的 VPN 连接:
 
     打开网络和共享中心，设置新的网络连接到工作区，创建新的 Internet 连接，在地址栏键入刚才的目的地址。
-    ![2-7](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/2-7.png)
+    ![2-7](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/2-7.png)
 
 4. 在网络连接面板配置这个 VPN ，可参考步骤 2 中 pbk 文件的属性，请注意以下两点：
 
     选项选卡，PPP 设置中全都勾上：
 
-    ![2-8](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/2-8.png)
+    ![2-8](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/2-8.png)
 
     安全选项页，使用 SSTP 协议，使用 Microsoft 证书加密，在属性中选取 **azuregateway** 开头的证书：
 
-    ![2-9](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/2-9.png)
+    ![2-9](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/2-9.png)
 
     至此，VPN 配置完毕，可用 cmd 键入< rasdial “ VPN 名称”> 测试 P2S 建立是否成功。
 
@@ -152,7 +152,7 @@ Azure P2S VPN 日志提供了 VPN 连接的具体信息，打开方式如下：
 
     将上述 rasdial “ VPN 名称”这个命令另存为 bat 脚本，将它复制到 Windows 启动窗口。到这里就可以实现开机自动开启 VPN 了。
 
-    ![2-10](./media/aog-vpn-gateway-qa-azure-P2S-VPN-how-to-configure-auto-reconnection/2-10.png)
+    ![2-10](./media/aog-vpn-gateway-qa-azure-p2s-vpn-how-to-configure-auto-reconnection/2-10.png)
 
 6. 还有一点需要请用户注意，由于这里的 VPN 是我们手动配置的，它无法更新 Azure VPN 的路由表。
 
