@@ -20,10 +20,9 @@ wacn.date: 08/01/2017
 
 ## 问题描述
 
-在压力 / 负载测试（并发数非常高）状态下，使用 Azure 虚拟机访问其他资源，可能会出现以下情况 ：
+用户使用 Azure 虚拟机访问其他资源，做压力 / 负载测试（并发数非常高）时，可能会出现以下情况 ：
 
 测试初期 Client VM 的延迟结果正常；
-
 测试后期 Client VM 的延迟偶尔突增/连接失败，越后期超高延迟（比如 30 秒）出现越多；
 
 ## 问题分析
@@ -32,7 +31,7 @@ wacn.date: 08/01/2017
 
 ### 什么是 SNAT 呢？
 
-对于 ASM 虚拟机，出于可拓展性的考虑，云服务中每台虚拟机都隐藏在云服务面向公网的 VIP 之后，拥有各自的 DIP。
+对于 ASM 虚拟机，出于可拓展性的考虑，云服务中每台虚拟机都隐藏在云服务面向公网的 VIP 之后，各自有自己的 DIP。
 
 对于 ARM 虚拟机，默认会分配一个面向公网的 VIP 和一个面向内部的 DIP。用户可以自定义设置，不为 ARM 虚拟机分配公网 IP。
 
@@ -54,21 +53,21 @@ wacn.date: 08/01/2017
     对于 ARM 部署的虚拟机，可以为它的网卡 NIC 配置公网 IP
     通过 Portal 或 PowerShell 创建公网 IP，具体操作步骤可以参考官网：[创建公共 IP 地址](https://docs.azure.cn/zh-cn/virtual-network/virtual-network-public-ip-address#create)。
 
-    在 Portal 上虚拟机对应的 "**网络接口**" 内， 点击 "**IP 配置**"，配置对应的公共 IP 地址即可。
+    在 Portal 上虚拟机对应的 "**网络接口**" 内， 点击 **IP 配置**，配置对应的公共 IP 地址 即可。
 
 - 经典模式
 
-    一般对此的解决方法是为这台高负载的机器配置独有的公网 IP —— 实例层级公共 IP（Instance Level Public IP, 下文简称 ILPIP）。
+    一般对此的解决方法是为这台高负载的机器配置独有的公网 IP —— 实例层级公共 IP（ILPIP）。
 
     对于 ASM 部署的虚拟机，将创建的公网 IP 配置为虚拟机的 ILPIP：
 
-    ILPIP 为用户虚拟机提供了一个独有的公网 IP，于是用户可用此 IP 直接访问虚拟机，出站流量也无需作 SNAT。
+    ILPIP（Instance Level Public IP） 为用户虚拟机提供了一个独有的公网 IP，于是用户可用此 IP 直接访问虚拟机，出站流量也无需作 SNAT。
 
     具体说明可参考官网：[实例层级公共 IP（经典）概述](https://www.azure.cn/documentation/articles/virtual-networks-instance-level-public-ip)。
 
     具体配置方法如下，具体参数请根据实际情况修改。
 
-    1. 检索虚拟机的 ILPIP 信息 ：
+    1. 如何检索虚拟机的 ILPIP 信息：
 
         若要查看虚拟机的 ILPIP 信息，请运行以下 PowerShell 命令，然后观察 PublicIPAddress 和 PublicIPName 的值：
 
@@ -107,9 +106,9 @@ wacn.date: 08/01/2017
         OperationStatus            	: OK
         ```
 
-    2. 向现有的虚拟机配置 ILPIP ：
+    2. 如何向现有的虚拟机配置 ILPIP
 
-        运行以下 PowerShell 命令（仅支持使用 Powershell 配置 ILPIP），以下示例为 FTPInstance 这台虚拟机新建了一个名为 **ftpip2** 的 ILPIP ：
+        运行以下 PowerShell 命令（仅支持使用 Powershell 配置 ILPIP），下面的示例为 FTPInstance 这台虚拟机新建了一个名为 ftpip2 的 ILPIP：
 
         ```
         Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -PublicIPName ftpip2 | Update-AzureVM
