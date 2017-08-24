@@ -1,4 +1,4 @@
-﻿---
+---
 title: Azure P2S VPN 如何配置自动重连
 description: Azure P2S VPN 如何配置自动重连
 service: ''
