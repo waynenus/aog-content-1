@@ -21,7 +21,7 @@ wacn.date: 08/23/2017
 
 ## 中国区 Azure 与 Palo Alto 之间的网络方案
 
-随着 Azure 平台用户越来越多，同时需求也越来越广泛，其中之一就是网络架构上的需求，比如需要强大的应用层防火墙，网络访问控制管理，网络安全认证，出口网关统一等，而用户为了满足架构需求，希望借助第三方网络设备厂商来兼容 Azure 的网络服务来实现。虽然看起来是一个很好的方式，但是其中存在着很多兼容问题以及需要通过实践来测试架构上的可信性。
+随着 Azure 平台用户越来越多，同时需求也越来越广泛，其中之一就是网络架构上的需求，比如需要强大的应用层防火墙，网络访问控制管理，网络安全认证，出口网关统一等，而用户为了满足架构需求，希望借助第三方网络设备厂商来兼容 Azure 的网络服务来实现。虽然看起来是一个很好的方式，但是其中存在着很多兼容问题以及需要通过实践来测试架构上的可行性。
 
 本文旨在将经验总结分享给大家，希望对大家以后的工作和项目有所帮助。
 
@@ -75,7 +75,7 @@ wacn.date: 08/23/2017
     - Local-PA 通过 Internet 与 pavm1 的 PIP 建立 IPsec 隧道。
     - 在 IPsec 隧道的基础上实现路由传递：BGP或者静态。
 
-3. 通过 VPN Gateway 来实现本地 Palo Alto 设备与 Azure NVA 之间建立 IPsec 隧道。
+3. 通过 VPN Gateway 来实现本地 Palo Alto 设备与 Azure NVA 之间建立 IPsec 隧道：
  
     ![1-3](./media/aog-virtual-network-connect-with-palo-alto-guidance/1-3.png)
  
@@ -86,36 +86,38 @@ wacn.date: 08/23/2017
     - 基于此 IPsec 隧道，Local-PA 的私有地址与 pavm1 的私有地址建立 IPsec 隧道。
     - 在 IPsec 隧道的基础上实现路由传递。
 
-从以上介绍可以看出，基于 NVA 来建立 IPsec 隧道方式有多种，需要根据自身的网络架构需求来选择最适合的方式，以下介绍一个较复杂的需求供各位参考：让本地网络去往 Internet 的流量通过 Azure 出口进行转发。
+4. 通过 Azure 出口转发本地到 Internet 的流量：
+
+    从以上介绍可以看出，基于 NVA 来建立 IPsec 隧道方式有多种，需要根据自身的网络架构需求来选择最适合的方式，以下介绍一个较复杂的需求供各位参考：让本地网络去往 Internet 的流量通过 Azure 出口进行转发。
     
-![1-4](./media/aog-virtual-network-connect-with-palo-alto-guidance/1-4.png)
+    ![1-4](./media/aog-virtual-network-connect-with-palo-alto-guidance/1-4.png)
  
-**部署步骤**：
-- pavm2：通过 Palo Alto 的 VHD 镜像创建出来的 Azure VM2，并属于 VNet2。
-- Local-PA：拥有独立公网地址的 Palo Alto 硬件设备，目前没有发现版本兼容性问题。
-- Local-PA 通过 Internet 与 VNet1 中的 VPN Gateway 建立基于路由的 IPsec 隧道并建立 EBGP 邻居。
-- VNet1 中的 VPN Gateway 与 pavm2 的 PIP 建立 IPsec 隧道并建立 EBGP 邻居。
-- pavm2 在 BGP 路由协议中通告默认路由。
-- pavm2 配置 NIC 的默认路由。
-- pavm2 配置 NAT 条目，封装来自本地网段的源地址为 NIC 的地址。
+    **部署步骤**：
+    - pavm2：通过 Palo Alto 的 VHD 镜像创建出来的 Azure VM2，并属于 VNet2。
+    - Local-PA：拥有独立公网地址的 Palo Alto 硬件设备，目前没有发现版本兼容性问题。
+    - Local-PA 通过 Internet 与 VNet1 中的 VPN Gateway 建立基于路由的 IPsec 隧道并建立 EBGP 邻居。
+    - VNet1 中的 VPN Gateway 与 pavm2 的 PIP 建立 IPsec 隧道并建立 EBGP 邻居。
+    - pavm2 在 BGP 路由协议中通告默认路由。
+    - pavm2 配置 NIC 的默认路由。
+    - pavm2 配置 NAT 条目，封装来自本地网段的源地址为 NIC 的地址。
 
-**本地网络 Internet 流量走向（绿色箭头）**：
-1. 本地网络通过内部路由转发到 Local-PA。
-2. Local-PA 根据从 BGP 学到的默认路由转发到 VPN Gateway。
-3. VPN Gateway 根据从 BGP 学到的默认路由转发到 pavm2。
-4. pavm2 根据配置的 NIC 的默认路由丢给 PIP，并将源地址封装成 NIC 地址。
-5. 将源地址转化成 PIP 地址丢到公网。
+    **本地网络 Internet 流量走向（绿色箭头）**：
+    1. 本地网络通过内部路由转发到 Local-PA。
+    2. Local-PA 根据从 BGP 学到的默认路由转发到 VPN Gateway。
+    3. VPN Gateway 根据从 BGP 学到的默认路由转发到 pavm2。
+    4. pavm2 根据配置的 NIC 的默认路由丢给 PIP，并将源地址封装成 NIC 地址。
+    5. 将源地址转化成 PIP 地址丢到公网。
 
-**分析**：
-- 为了网络的扩展性，让其中一个 VNet 中的 VPN Gateway 作为网络 Hub 是一个比较可行的方式。
-- BGP 路由协议是目前 VPN Gateway 唯一支持的动态路由协议。
-- 由于 Azure VM 的公网地址并不是直接绑定到 VM 上，而是对 VM 的 NIC 地址进行 NAT 的地址转化，因此如果将 VM 作为路由器，还需要对转发的流量进行 NAT 转化。
-- 实现的方式有多种，各自都有利弊。
+    **分析**：
+    - 为了网络的扩展性，让其中一个 VNet 中的 VPN Gateway 作为网络 Hub 是一个比较可行的方式。
+    - BGP 路由协议是目前 VPN Gateway 唯一支持的动态路由协议。
+    - 由于 Azure VM 的公网地址并不是直接绑定到 VM 上，而是对 VM 的 NIC 地址进行 NAT 的地址转化，因此如果将 VM 作为路由器，还需要对转发的流量进行 NAT 转化。
+    - 实现的方式有多种，各自都有利弊。
 
-**目前以下方式无法实现**：
-1. 由于 Azure VM 网络禁用 GRE 协议，因此任何基于 GRE 的隧道技术都无法实现。
-2. 避免在 VNet 中的 VPN Gateway 与同一个 VNet 中的 pavm 建立 BGP 邻居并传递路由，可能会造成环路。
+    **目前以下方式无法实现**：
+    1. 由于 Azure VM 网络禁用 GRE 协议，因此任何基于 GRE 的隧道技术都无法实现。
+    2. 避免在 VNet 中的 VPN Gateway 与同一个 VNet 中的 pavm 建立 BGP 邻居并传递路由，可能会造成环路。
 
 ## 小结
 
-如果你的网络架构会参考到部分文章内容，请进行测试评估后再考虑部署，在部署过程中可能会遇到一些小问题，请咨询相关厂商和 Azure 技术支持。
+如果您的网络架构会参考到部分文章内容，请进行测试评估后再考虑部署，在部署过程中可能会遇到一些小问题，请咨询相关厂商和 Azure 技术支持。
