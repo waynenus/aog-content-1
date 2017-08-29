@@ -1,6 +1,6 @@
 ---
-title: 如何复制或导出托管硬盘
-description: 如何复制或导出托管硬盘
+title: 如何复制或导出托管磁盘
+description: 如何复制或导出托管磁盘
 service: ''
 resource: Virtual Machines
 author: sscchh2001
