@@ -1,6 +1,6 @@
 ---
-title: Python 获取 Token 进行验证
-description: Python 获取 Token 进行验证
+title: 如何通过 Python 获取 Token 操作资源
+description: 如何通过 Python 获取 Token 操作资源
 service: ''
 resource: multiple
 author: taroyutao
@@ -18,7 +18,7 @@ ms.author: v-tawe
 ms.date: 08/31/2017
 wacn.date: 08/31/2017
 ---
-# Python 获取 Token 进行验证
+# 如何通过 Python 获取 Token 操作资源
 
 在使用 Python SDK 操作 Azure 资源时，首先需要获取认证的 Token，然后才能对资源的做进一步的操作。本文分别介绍了基于 Azure AD 和 Azure 账户名和密码两种获取 Token 的方式，实现 managerClient 对象的创建，进而操作 Azure 资源。
 
