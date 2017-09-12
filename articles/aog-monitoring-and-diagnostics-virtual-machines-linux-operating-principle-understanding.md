@@ -22,7 +22,7 @@ wacn.date: 08/24/2017
 
 ## 简介
 
-在前文:[理解 Azure 虚拟机的负载监控](aog-monitoring-and-diagnostics-virtual-machines-load-monitoring-guidance.md),我们介绍了 Azure 虚拟机监控功能的工作原理和基本排查步骤。本文主要关注在 Linux 虚拟机中性能指标的获取，即 LinuxDiagnostic 的工作原理。
+在前文:[理解 Azure 虚拟机的负载监控](aog-monitoring-and-diagnostics-virtual-machines-load-monitoring-understanding.md),我们介绍了 Azure 虚拟机监控功能的工作原理和基本排查步骤。本文主要关注在 Linux 虚拟机中性能指标的获取，即 LinuxDiagnostic 的工作原理。
 
 Linux 并非微软原生的系统，但在拥抱开源的路上，微软展现了其积极的姿态。为了让其平台能提供更多的对 Linux 的支持，微软在改进其 Windows 产品功能的同时，也不断在开发工具增加对 Linux 类似功能支持。
 

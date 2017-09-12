@@ -21,7 +21,7 @@ wacn.date: 08/24/2017
 
 # 理解 Azure 存储的监控
 
-前文：[理解 Azure 虚拟机的负载监控](aog-monitoring-and-diagnostics-virtual-machines-load-monitoring-understanding)，我们介绍了运行在 Azure 平台上的 Windows 虚拟机和 Linux 虚拟机可以收集的性能指标，以及 Azure 如何存储这些数据用于用户界面的显示和资源的缩放，本文我们脱离虚拟机，来了解一下 Azure 平台上其他服务的监控。
+前文：[理解 Azure 虚拟机的负载监控](aog-monitoring-and-diagnostics-virtual-machines-load-monitoring-understanding.md)，我们介绍了运行在 Azure 平台上的 Windows 虚拟机和 Linux 虚拟机可以收集的性能指标，以及 Azure 如何存储这些数据用于用户界面的显示和资源的缩放，本文我们脱离虚拟机，来了解一下 Azure 平台上其他服务的监控。
 
 ![architecture-1](media/aog-monitoring-and-diagnostics-storage-understanding/architecture-1.png)
 
@@ -75,5 +75,5 @@ wacn.date: 08/24/2017
 
 ## 相关链接 
 
-- [理解 Azure Linux 虚拟机的诊断工作原理](aog-monitoring-and-diagnostics-virtual-machines-linux-diagnostics-guidance.md)
+- [理解 Azure Linux 虚拟机的诊断工作原理](aog-monitoring-and-diagnostics-virtual-machines-linux-operating-principle-understanding.md)
 - [理解 Azure 虚拟机的负载监控](aog-monitoring-and-diagnostics-virtual-machines-load-monitoring-understanding.md)

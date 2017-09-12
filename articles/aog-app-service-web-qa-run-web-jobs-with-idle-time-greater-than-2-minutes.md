@@ -38,7 +38,7 @@ wacn.date: 08/21/2017
 
 在应用程序设置中修改 **WEBJOBS_IDLE_TIMEOUT** 的配置（此处修改的时间为 20 分钟）:
 
-![WebJob_idle_timeout](./media/aog-app-service-web-qa-run-web-jobs-with-idle-time-greater-than-2-minutes/WebJobs_idle_timeout.png)
+![WebJob_idle_timeout](./media/aog-app-service-web-qa-run-web-jobs-with-idle-time-greater-than-2-minutes/webjobs_idle_timeout.png)
 
 开启“**始终可用**”功能 :
 

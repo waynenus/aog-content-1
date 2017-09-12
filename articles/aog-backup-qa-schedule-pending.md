@@ -33,7 +33,7 @@ wacn.date: 08/31/2017
 
 ## 问题分析
 
-Azure 备份代理生成的备份任务会添加到任务计划，但任何计划执行 `import-module msonlinebackup` 命令时失败。
+Azure 备份代理生成的备份任务会添加到任务计划，但该任务计划执行 `import-module msonlinebackup` 命令时失败。
 
 ### 排错过程
 
@@ -44,11 +44,11 @@ Azure 备份代理生成的备份任务会添加到任务计划，但任何计�
 
 3.  可以尝试新建一个备份任务，比如每 5 分钟执行一次备份，来查看该任务计划是否会成功执行。如此来判断时任务计划的问题还是备份本身的问题。
 
-4.	打开任务计划详细，在 Actions 选项卡中查看具体的命令。拷贝该命令并尝试手动运行。
+4.	打开任务计划详细，在 Actions 选项卡中查看具体的命令。可以看到任务计划实际是执行了`import-module msonlinebackup`, 为了进一步排错，复制该命令并尝试手动运行。
 
     ![properties.png](media/aog-backup-qa-schedule-pending/properties.png)
 
-5.	在手动执行命令时，发现import-module msonlinebackup报错Module 不存在
+5.	在手动执行命令时，发现import-module msonlinebackup报错Module 不存在。
 
 ## 解决方法
 
@@ -57,3 +57,7 @@ Azure 备份代理生成的备份任务会添加到任务计划，但任何计�
 1.	到 `C:/ProgramFiles/Microsoft Azure Recovery Services/Bin/Modules/MSOnlineBackup` 文件夹下。
 2.	拷贝 MSOnlineBackup.psd1 到 `C:\Windows\System32\WindowsPowerShell\v1.0.` 目录。
 3.	重新运行 `import-module msonlinebackup` 命令。
+
+> [!NOTE]
+> 该解决方法只适用于符合 “**问题描述**” 中的场景 (安装了 Microsoft Azure Recovery Services Agent 的 Windows Server 以及 Windows Client)。如果本文未解决您的 Azure 问题，建议您下载并安装最新的 Azure 备份代理。  
+> 您也可以访问 MSDN 和 CSDN 上的 Azure 论坛。 您可以在这些论坛上发布您的问题。 此外，还可以通过在 Azure 支持站点上选择 “**获取支持**” 来发出 Azure 支持请求。

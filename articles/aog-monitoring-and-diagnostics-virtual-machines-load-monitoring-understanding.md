@@ -69,7 +69,7 @@ wacn.date: 08/24/2017
 
 - [使用 Linux 诊断扩展监视 Linux VM 的性能和诊断数据](https://docs.azure.cn/zh-cn/virtual-machines/linux/classic/diagnostic-extension-v2?toc=%252fvirtual-machies%252flinux%252ftoc.json)
 
-- [如何为运行的 ARM Linux 启用 LAD2.3 版本的诊断扩展](aog-virtual-machines-linux-howto-enable-lad.md)
+- [如何为运行的 ARM Linux 启用 LAD2.3 版本的诊断扩展](https://docs.azure.cn/zh-cn/articles/virtual-machines/linux/aog-virtual-machines-linux-howto-enable-lad)
 
 另外，可以参考[理解 Azure 虚拟机的性能监视](https://docs.azure.cn/zh-cn/articles/compute/aog-virtual-machines-performance-monitor-guidance)了解各个性能指标的具体含义以更好的配置缩放目标。
 
@@ -97,5 +97,5 @@ Azure 的管理界面就是通过读取这些数据表格来显示虚拟机的�
 ## 相关文档
 
 - [理解 Azure 虚拟机的性能监视](https://docs.azure.cn/zh-cn/articles/compute/aog-virtual-machines-performance-monitor-guidance)
-- [理解 Azure Linux 虚拟机的诊断工作原理](aog-monitoring-and-diagnostics-virtual-machines-linux-diagnostics-guidance.md)
+- [理解 Azure Linux 虚拟机的诊断工作原理](aog-monitoring-and-diagnostics-virtual-machines-linux-operating-principle-understanding.md)
 - [理解 Azure 存储的监控](aog-monitoring-and-diagnostics-storage-understanding.md)
