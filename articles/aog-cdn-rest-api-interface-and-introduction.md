@@ -84,7 +84,7 @@ public static String calculateAuthorizationHeader(
 
 ## 示例代码
 
-[Azure CDN Demo](https://github.com/wacn/AOG-CodeSample/tree/master/cdn/Java/azure-cdn-demo-master)
+下载链接：[Azure CDN Demo](https://github.com/wacn/AOG-CodeSample/tree/master/cdn/Java/azure-cdn-demo-master)
 
 ## 测试用例
 
@@ -126,14 +126,14 @@ AzureCDN cc65a046-2a32-4f7d-ab22-9ae49507d719:CB82B4555573CCE40FF2BAB1C5AA256C35
 
 - Endpoint
 
-`GET https://restapi.cdn.azure.cn/subscriptions/{subscriptionId}/endpoints/{endpointId}?apiVersion=1.0`
+    `GET https://restapi.cdn.azure.cn/subscriptions/{subscriptionId}/endpoints/{endpointId}?apiVersion=1.0`
 
 - 请求参数
 
-| 参数名称 | 参数值 |
-| ------- | ------ |
-| x-azurecdn-request-date | 必填。符合yyyy-MM-dd hh:mm:ss格式的UTC当前请求时间 |
-| Authorization | 必填。授权头请参考 [CDN API 签名机制](https://docs.azure.cn/zh-cn/cdn/cdn-api-signature) |
+    | 参数名称 | 参数值 |
+    | ------- | ------ |
+    | x-azurecdn-request-date | 必填。符合yyyy-MM-dd hh:mm:ss格式的UTC当前请求时间 |
+    | Authorization | 必填。授权头请参考 [CDN API 签名机制](https://docs.azure.cn/zh-cn/cdn/cdn-api-signature) |
 
 ## 示例代码
 

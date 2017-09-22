@@ -758,4 +758,4 @@ wacn.date: 09/22/2017
 - [认知服务价格详情](/pricing/details/cognitive-services/)
 - [Cognitive-Samples-IntelligentKiosk](https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk)
 - [PHP 使用 Face API](http://azurecloudapi.cn/?p=366)
-- [CognitiveServices SDK](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/CognitiveServices)
+- [CognitiveServices SDK](https://github.com/Microsoft/ProjectOxford-ClientSDK)

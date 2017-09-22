@@ -161,33 +161,33 @@ wacn.date: 09/22/2017
         1. Endpoint: 上述 API 连接中的 API 终结点是 Global Azure 服务，我们需要修改为 China Azure 终结点，即将 `https://management.azure.com` 换成 `https://management.chinacloudapi.cn`。
         2. Authorization: 参考[《关于虚拟机 REST 接口的认证》](#section1)部分。
 
-- 接口测试：
+    - 接口测试：
 
-    1. [Resource Groups - List](https://docs.microsoft.com/zh-cn/rest/api/resources/ResourceGroups/List)
+        1. [Resource Groups - List](https://docs.microsoft.com/zh-cn/rest/api/resources/ResourceGroups/List)
 
-        1. 测试请求：`https://management.chinacloudapi.cn/subscriptions/e0fbea86-6cf2-4b2d-81e2-9c59f4f96bcb/resourcegroups?api-version=2017-05-10`
+            1. 测试请求：`https://management.chinacloudapi.cn/subscriptions/e0fbea86-6cf2-4b2d-81e2-9c59f4f96bcb/resourcegroups?api-version=2017-05-10`
+            
+            2. 参数设置：
+            
+                - Authorization：上一步中浏览器中拿到的 Authorization 值
+                - Content-Type：application/json
+            
+            3. Postman 测试：
+                
+                ![02](media/aog-virtual-machines-get-sub-via-rest-api/02.png)
         
-        2. 参数设置：
-        
+        2. [List the virtual machines in a resource group](https://docs.microsoft.com/zh-cn/rest/api/compute/virtualmachines/virtualmachines-list-resource-group)
+
+            1. 测试请求：`https://management.chinacloudapi.cn/subscriptions/e0fbea86-6cf2-4b2d-81e2-9c59f4f96bcb/resourceGroups/geogroup/providers/Microsoft.Compute/virtualmachines?api-version=2016-04-30-preview`
+
+            2. 参数设置：
+
             - Authorization：上一步中浏览器中拿到的 Authorization 值
             - Content-Type：application/json
-        
-        3. Postman 测试：
-            
-            ![02](media/aog-virtual-machines-get-sub-via-rest-api/02.png)
-    
-    2. [List the virtual machines in a resource group](https://docs.microsoft.com/zh-cn/rest/api/compute/virtualmachines/virtualmachines-list-resource-group)
 
-        1. 测试请求：`https://management.chinacloudapi.cn/subscriptions/e0fbea86-6cf2-4b2d-81e2-9c59f4f96bcb/resourceGroups/geogroup/providers/Microsoft.Compute/virtualmachines?api-version=2016-04-30-preview`
+            3. Postman 测试：
 
-        2. 参数设置：
-
-        - Authorization：上一步中浏览器中拿到的 Authorization 值
-        - Content-Type：application/json
-
-        3. Postman 测试：
-
-            ![03](media/aog-virtual-machines-get-sub-via-rest-api/03.png)
+                ![03](media/aog-virtual-machines-get-sub-via-rest-api/03.png)
 
 2.	ASM API（经典模式）:
 
@@ -209,22 +209,22 @@ wacn.date: 09/22/2017
         1. Endpoint: 上述 API 连接中的 API 终结点是 Global Azure 服务，我们需要修改为 China Azure 终结点，即将 `https://management.core.windows.net` 换成 `https://management.core.chinacloudapi.cn` 
         2. 同样可以基于 AAD 方式认证，参考前面[《关于虚拟机 REST 接口的认证》](#section1) 部分。
 
-- 接口测试：
+    - 接口测试：
 
-    1. [List Cloud Services](ttps://msdn.microsoft.com/zh-cn/library/azure/ee460781.aspx)
+        1. [List Cloud Services](ttps://msdn.microsoft.com/zh-cn/library/azure/ee460781.aspx)
 
-        1. 测试请求： `https://management.core.chinacloudapi.cn/e0fbea86-6cf2-4b2d-81e2-9c59f4f96bcb/services/hostedservices`
-       
-        2. 参数设置：
-
-            - Authorization：Chrome 浏览器拿到的那个认证 Token
-            - x-ms-version：2016-06-01
+            1. 测试请求： `https://management.core.chinacloudapi.cn/e0fbea86-6cf2-4b2d-81e2-9c59f4f96bcb/services/hostedservices`
         
-        3. Postman 测试：
-    
-            ![04](media/aog-virtual-machines-get-sub-via-rest-api/04.png)
+            2. 参数设置：
 
-    2. 关于 [Get Deployment](https://msdn.microsoft.com/zh-cn/library/azure/ee460804.aspx)、[Get Role](https://msdn.microsoft.com/zh-cn/library/azure/jj157193.aspx) 的调用也非常简单，与 [List Cloud Services](https://msdn.microsoft.com/zh-cn/library/azure/ee460781.aspx) 类似，不在赘述。
+                - Authorization：Chrome 浏览器拿到的那个认证 Token
+                - x-ms-version：2016-06-01
+            
+            3. Postman 测试：
+        
+                ![04](media/aog-virtual-machines-get-sub-via-rest-api/04.png)
+
+        2. 关于 [Get Deployment](https://msdn.microsoft.com/zh-cn/library/azure/ee460804.aspx)、[Get Role](https://msdn.microsoft.com/zh-cn/library/azure/jj157193.aspx) 的调用也非常简单，与 [List Cloud Services](https://msdn.microsoft.com/zh-cn/library/azure/ee460781.aspx) 类似，不在赘述。
 
 ## 最后说明
 
