@@ -8,14 +8,15 @@ displayOrder: ''
 selfHelpType: ''
 supportTopicIds: ''
 productPesIds: ''
-resourceTags: Cognitive Services, REST API, Code Sample
+resourceTags: 'Cognitive Services, REST API, Code Sample'
+cloudEnvironments: MoonCake
 
 ms.service: cognitive-services
 wacn.topic: aog
 ms.topic: article
 ms.author: v-tawe
-ms.date: 05/16/2016
-wacn.date: 07/18/2017
+ms.date: 09/22/2017
+wacn.date: 09/22/2017
 ---
 
 # 中国版认知服务使用指导
@@ -46,7 +47,7 @@ wacn.date: 07/18/2017
 
     ![api-console-test.png](./media/aog-cognitive-services-guidance/api-console-test.png)
 
-## 程序调用示例
+## Rest API 程序调用示例
 
 - C# Code Samples：
 
@@ -379,9 +380,378 @@ wacn.date: 07/18/2017
 
     ```
 
-### Code 测试结果：
+- JavaScript Code Sample :
 
-        [{"faceId":"13a27b70-db59-4d36-b7fe-6a2e3ad306f5","faceRectangle":{"top":126,"left":95,"width":137,"height":137},"faceAttributes":{"age":26.2}}]
+    ```JavaScript
+    // User Local Picture
+
+    <html>
+    <head>
+        <title>Face detection using Project Oxford in javascript</title>
+        <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+    </head>                         
+                            
+    <body>
+        <div>
+            <label for="filename">Select image: </label>
+            <input type="file" id="filename" name="filename" accept="image/*">
+            <br />
+            <br />
+            <button id="btn">Detect faces</button>
+        </div>
+        <div>
+            <p id="response"></p>
+        </div>
+        <div>
+            <canvas id="myCanvas" width="1000" height="800">
+                Your browser does not support the HTML5 canvas tag.
+            </canvas>
+        </div>
+    <script>
+
+    $('#btn').click(function () {
+        alert("click");
+        var file = document.getElementById('filename').files[0];
+        detectFaces(file);
+    });
+
+    $("#filename").change(function () {
+        showImage();
+    });
+
+    function detectFaces(file) {
+        var apiKey = "bd8e4ce12f444c639ac9c214d70ac72c";
+        
+        // Call the API
+        $.ajax({
+            url: "https://api.cognitive.azure.cn/face/v1.0/detect",
+            beforeSend: function (xhrObj) {
+                xhrObj.setRequestHeader("Content-Type", "application/octet-stream");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", apiKey);
+                $("#response").text("Calling api...");
+            },
+            type: "POST",
+            data: file,
+            processData: false
+        })
+            .done(function (response) {
+                // Process the API response.
+                processResult(response);
+            })
+            .fail(function (error) {
+                // Oops, an error :(
+                $("#response").text(error.getAllResponseHeaders());
+            });
+    }
+
+    function processResult(response) {
+        var arrayLength = response.length;
+
+        if (arrayLength > 0) {
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext('2d');
+
+            context.beginPath();
+            
+            // Draw face rectangles into canvas.
+            for (var i = 0; i < arrayLength; i++) {
+                var faceRectangle = response[i].faceRectangle;
+                context.rect(faceRectangle.left, faceRectangle.top, faceRectangle.width, faceRectangle.height);
+            }
+
+            context.lineWidth = 3;
+            context.strokeStyle = 'red';
+            context.stroke();
+        }
+
+        // Show the raw response.
+        var data = JSON.stringify(response);
+        $("#response").text(data);
+    }
+
+    function showImage() {
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        var input = document.getElementById("filename");
+        var img = new Image;
+
+        img.onload = function () {
+            context.drawImage(img, 0, 0);
+        }
+
+        img.src = URL.createObjectURL(input.files[0]);
+    }
+
+    </script>
+    </body>
+    </html>
+    ```
+
+    ```JavaScript
+    # User Picture URL
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Detect Faces Sample</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    </head>
+    <body>
+
+    <script type="text/javascript">
+        function processImage() {
+            // **********************************************
+            // *** Update or verify the following values. ***
+            // **********************************************
+            // Replace the subscriptionKey string value with your valid subscription key.
+            var subscriptionKey = "bd8e4ce12f444c639ac9c214d70ac72c";
+            // Replace or verify the region.
+            //
+            // You must use the same region in your REST API call as you used to obtain your subscription keys.
+            // For example, if you obtained your subscription keys from the westus region, replace
+            // "westcentralus" in the URI below with "westus".
+            //
+            // NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
+            // a free trial subscription key, you should not need to change this region.
+            var uriBase = "https://api.cognitive.azure.cn/face/v1.0/detect";
+
+            // Request parameters.
+            var params = {
+                "returnFaceId": "true",
+                "returnFaceLandmarks": "false",
+                "returnFaceAttributes": "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise",
+            };
+
+            // Display the image.
+            var sourceImageUrl = document.getElementById("inputImage").value;
+            document.querySelector("#sourceImage").src = sourceImageUrl;
+
+            // Perform the REST API call.
+            $.ajax({
+                url: uriBase + "?" + $.param(params),
+
+                // Request headers.
+                beforeSend: function(xhrObj){
+                    xhrObj.setRequestHeader("Content-Type","application/json");
+                    xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+                },
+                type: "POST",
+
+                // Request body.
+                data: '{"url": ' + '"' + sourceImageUrl + '"}',
+            })
+
+            .done(function(data) {
+                // Show formatted JSON on webpage.
+                $("#responseTextArea").val(JSON.stringify(data, null, 2));
+            })
+
+            .fail(function(jqXHR, textStatus, errorThrown) {
+                // Display error message.
+                var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+                errorString += (jqXHR.responseText === "") ? "" : (jQuery.parseJSON(jqXHR.responseText).message) ? 
+                    jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
+                alert(errorString);
+            });
+        };
+    </script>
+
+    <h1>Detect Faces:</h1>
+    Enter the URL to an image that includes a face or faces, then click the <strong>Analyze face</strong> button.
+    <br><br>
+    Image to analyze: <input type="text" name="inputImage" id="inputImage" value="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1494416315487&di=5e05a310f8c7b3fec011901ff3d13f93&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fbaike%2Fpic%2Fitem%2F4034970a304e251ff1e3819aa486c9177f3e53bf.jpg" />
+    <button onclick="processImage()">Analyze face</button>
+    <br><br>
+    <div id="wrapper" style="width:1020px; display:table;">
+        <div id="jsonOutput" style="width:600px; display:table-cell;">
+            Response:
+            <br><br>
+            <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;"></textarea>
+        </div>
+        <div id="imageDiv" style="width:420px; display:table-cell;">
+            Source image:
+            <br><br>
+            <img id="sourceImage" width="400" />
+        </div>
+    </div>
+    </body>
+    </html>
+    ```
+
+### 测试结果：
+
+`[{"faceId":"13a27b70-db59-4d36-b7fe-6a2e3ad306f5","faceRectangle":{"top":126,"left":95,"width":137,"height":137},"faceAttributes":{"age":26.2}}]`
+
+## SDK程序调用示例
+
+- C# SDK Code Sample：
+
+    ### 环境搭建说明
+
+    - SDK：Microsoft.ProjectOxford.Face
+    - GitHub：[Cognitive-Face-Windows](https://github.com/Microsoft/Cognitive-Face-Windows)
+
+    ### 示例代码
+
+    ```C#
+    using Microsoft.ProjectOxford.Face;
+    using Microsoft.ProjectOxford.Face.Contract;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+
+    namespace CognitiveServiceTaro
+    {
+        class Program
+        {
+            private readonly static IFaceServiceClient faceServiceClient =
+                new FaceServiceClient("<face api key>", "https://api.cognitive.azure.cn/face/v1.0");
+            static void Main(string[] args)
+            {
+                // The list of Face attributes to return.
+                IEnumerable<FaceAttributeType> faceAttributes =
+                    new FaceAttributeType[] { FaceAttributeType.Gender, FaceAttributeType.Age, FaceAttributeType.Smile, FaceAttributeType.Emotion, FaceAttributeType.Glasses, FaceAttributeType.Hair,FaceAttributeType.FacialHair,FaceAttributeType.HeadPose};
+
+                //The url of picture.
+                //String imageUrl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1494416315487&di=5e05a310f8c7b3fec011901ff3d13f93&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fbaike%2Fpic%2Fitem%2F4034970a304e251ff1e3819aa486c9177f3e53bf.jpg";
+                //Face[] faces = faceServiceClient.DetectAsync(imageUrl, returnFaceId: true, returnFaceLandmarks: true, returnFaceAttributes: faceAttributes).GetAwaiter().GetResult();
+
+                //use local picture
+                string imageFilePath = @"D:\test.jpg";
+                Stream imageFileStream = File.OpenRead(imageFilePath);
+
+                // Call the Face API.
+                Face[] faces = faceServiceClient.DetectAsync(imageFileStream, returnFaceId: true, returnFaceLandmarks: true, returnFaceAttributes: faceAttributes).GetAwaiter().GetResult();
+
+                imageFileStream.Close();
+
+                foreach (Face face in faces)
+                {
+                    Console.WriteLine("FaceId: " + face.FaceId);
+                    Console.WriteLine("Age: " + face.FaceAttributes.Age);
+                    Console.WriteLine("face.FaceLandmarks.PupilLeft.X： " + face.FaceLandmarks.PupilLeft.X);
+                }
+
+                Console.ReadKey(true);
+            }
+        }
+    }
+    ```
+
+- Java SDK Code Sample：
+
+    ### 环境搭建说明
+
+    - SDK 下载：
+
+        如果使用 Android 项目添加依赖包，可以直接在 [maven 中心仓库](https://mvnrepository.com/)搜索：`com.microsoft.projectoxford:face` 添加 `dependency` 即可；<br>
+        如果使用 java 项目，需要下载对应的 arr 包，解压得到其中的 classes.jar，添加到项目即可。
+
+    - 第三方依赖pom.xml：
+
+        ```XML
+        <dependencies>
+            <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.3.1</version>
+            <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5.2</version>
+            </dependency>
+        </dependencies>
+        ```
+
+    - GitHub：[Cognitive-Face-Android](https://github.com/Microsoft/Cognitive-Face-Android)
+
+    ### 示例代码
+
+    ```Java
+    package buct.edu.cn;
+
+    import java.io.FileInputStream;
+    import java.io.IOException;
+    import java.io.InputStream;
+    import com.microsoft.projectoxford.face.FaceServiceClient;
+    import com.microsoft.projectoxford.face.FaceServiceClient.FaceAttributeType;
+    import com.microsoft.projectoxford.face.FaceServiceRestClient;
+    import com.microsoft.projectoxford.face.contract.Face;
+    import com.microsoft.projectoxford.face.rest.ClientException;
+
+    public class FaceAPIDemo {
+
+        private static FaceServiceClient faceServiceClient =  
+                new FaceServiceRestClient("https://api.cognitive.azure.cn/face/v1.0","bd8e4ce12f444c639ac9c214d70ac72c");  
+        
+        public static void main(String[] args) throws ClientException, IOException {
+            // TODO Auto-generated method stub
+            
+            FaceAttributeType[] parameters = { FaceAttributeType.Age,FaceAttributeType.Gender};
+            
+            //Use URL
+    //		Face[] result = faceServiceClient.detect(
+    //                "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1494416315487&di=5e05a310f8c7b3fec011901ff3d13f93&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fbaike%2Fpic%2Fitem%2F4034970a304e251ff1e3819aa486c9177f3e53bf.jpg", 
+    //                true,         // returnFaceId
+    //                false,        // returnFaceLandmarks
+    //                parameters       // returnFaceAttributes: a string like "age, gender"
+    //        );
+
+            //User local picture
+            String imageFilePath = "D:\\timg.jpg";
+            InputStream imageFileStream = new FileInputStream(imageFilePath);
+            
+            Face[] result = faceServiceClient.detect(
+                    imageFileStream, 
+                    true,         // returnFaceId
+                    false,        // returnFaceLandmarks
+                    parameters       // returnFaceAttributes: a string like "age, gender"
+            );
+            
+            imageFileStream.close();
+            
+            for(Face face:result)
+            {
+                System.out.println("FaceID: " + face.faceId);
+                System.out.println("Age:" + face.faceAttributes.age);
+            }
+        }
+    }
+    ```
+
+- Python SDK Code Sample：
+
+    ### 环境搭建说明
+
+    - SDK安装：pip install cognitive_face
+    - GitHub：[Cognitive-Face-Python](https://github.com/Microsoft/Cognitive-Face-Python)
+
+    ### 示例代码
+
+    ```Python
+    import cognitive_face as CF
+
+    KEY = '<face api key>'  # Replace with a valid subscription key (keeping the quotes in place).
+    URL = 'https://api.cognitive.azure.cn/face/v1.0/'
+    CF.Key.set(KEY)
+    CF.BaseUrl.set(URL)
+
+    # You can use this example JPG or replace the URL below with your own URL to a JPEG image.
+    filenamePath = "D:/timg.jpg"  # the path of pciture
+    img_local = open(filenamePath, 'rb')
+
+    img_url = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1494416315487&di=5e05a310f8c7b3fec011901ff3d13f93&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fbaike%2Fpic%2Fitem%2F4034970a304e251ff1e3819aa486c9177f3e53bf.jpg'
+    result = CF.face.detect(img_local,face_id=True,attributes='age,gender') #img_local or img_url
+    print(result)
+    ```
+
+### 测试结果：
+
+`[{'faceId': 'd9c2f3c7-8053-4910-9f26-67ecff5a614f', 'faceRectangle': {'top': 126, 'left': 95, 'width': 137, 'height': 137}, 'faceAttributes': {'gender': 'female', 'age': 26.2}}]`
+
 
 ## 参考链接
 
