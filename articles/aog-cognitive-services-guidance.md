@@ -757,8 +757,8 @@ wacn.date: 09/30/2017
 
 ## 参考链接
 
-- [认知服务价格详情](/pricing/details/cognitive-services/)
+- [认知服务价格详情](https://www.azure.cn/pricing/details/cognitive-services/)
 - [Cognitive-Samples-IntelligentKiosk](https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk)
 - [Java 调用 Azure 认知服务 Demo--Computer API](http://www.cnblogs.com/taro/p/6516722.html)
-- [PHP 使用 Face API](http://azurecloudapi.cn/?p=366)
 - [CognitiveServices SDK](https://github.com/Microsoft/ProjectOxford-ClientSDK)
+- [PHP 调用认知服务证书认证问题](https://docs.azure.cn/zh-cn/articles/cognitive-services/aog-cognitive-services-qa-php-certification)
