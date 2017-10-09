@@ -16,7 +16,7 @@ wacn.topic: aog
 ms.topic: article
 ms.author: v-tawe
 ms.date: 09/22/2017
-wacn.date: 09/22/2017
+wacn.date: 09/30/2017
 ---
 
 # 中国版认知服务使用指导
@@ -27,9 +27,11 @@ wacn.date: 09/22/2017
 
 1. 登陆到 [China Azure 管理门户](https://portal.azure.cn)。
 
-2. 新建 Face API (新建 -> Data+Analytics -> 认知服务)：
+2. 新建 Face API (创建新服务 -> 数据 + 分析 -> 认知服务 APIS)：
 
-    ![api-type.png](./media/aog-cognitive-services-guidance/api-type.png)
+    ![create-1.png](./media/aog-cognitive-services-guidance/create-1.png)
+    ![create-2.png](./media/aog-cognitive-services-guidance/create-2.png)
+    ![create-3.png](./media/aog-cognitive-services-guidance/create-3.png)
 
 3. 获取服务的 key：
 
@@ -757,5 +759,6 @@ wacn.date: 09/22/2017
 
 - [认知服务价格详情](/pricing/details/cognitive-services/)
 - [Cognitive-Samples-IntelligentKiosk](https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk)
+- [Java 调用 Azure 认知服务 Demo--Computer API](http://www.cnblogs.com/taro/p/6516722.html)
 - [PHP 使用 Face API](http://azurecloudapi.cn/?p=366)
 - [CognitiveServices SDK](https://github.com/Microsoft/ProjectOxford-ClientSDK)
