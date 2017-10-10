@@ -3,7 +3,7 @@ title: 以复制重建的方式修复托管磁盘虚拟机
 description: 以复制重建的方式修复托管磁盘虚拟机
 service: ''
 resource: Virtual Machines
-author: v-DavidTang
+author: hlmstone
 displayOrder: ''
 selfHelpType: ''
 supportTopicIds: ''
