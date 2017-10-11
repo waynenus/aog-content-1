@@ -22,7 +22,7 @@ wacn.date: 09/22/2017
 
 ## 现象描述
 
-由于当前国内 Azure 还无法通过门户来操作组，但是可以通过 Graph api 来创建用户，创建组，并把该 user 添加到组中。当用户单点登录以后发现只能获取到自己的基本信息，而无法获取到组的信息，获取组信息需要使用 openid 进行请求，并且在返回中的 id_token 中获取到组信息。
+当前China Azure 还无法通过门户来操作组，但是我们可以通过 Graph api 来创建用户，创建组，并把该 user 添加到组中。因此当用户单点登录以后发现只能获取到自己用户的基本信息，而无法获取到组的信息，可以通过 openid 进行请求获取组信息(可以在在返回中的 id_token 中获取到组信息)。
  
 ### Graph API 参考资料
 
@@ -35,18 +35,18 @@ wacn.date: 09/22/2017
 1. 登陆 [Azure 经典管理门户](https://manage.windowsazure.cn)，并添加 AAD 应用程序。
 2. 在 AAD 程序的管理清单选项中选择下载清单后缀为 json 文件。
 3. 下载后打开 json 文件。
-4. groupMembershipClaims 节点并添加值。
+4. 找到groupMembershipClaims 节点并添加值。
 
     `"groupMembershipClaims" : "SecurityGroup"`
 
 5. 保存 json 文件并点击上载清单。
-6. 编写程序通过 openID 的方式获取 token。
+6. 编写程序用于通过 openID 获取 token。
 
     > [!NOTE]
     > 代码的编写只需要把[示例代码](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect)修改为自己的信息即可，节点修改为中国节点。
 
-7. 登陆完成以后通过获取 result 信息中的 id_token 字段中的值。
-8. 该值为 JWT 数据，现在后需要进行转换，也可以通过 
+7. 登陆完成后获取 result 信息中的 id_token 字段中的值。
+8. 该值为 JWT 数据，获取后需要进行转换，也可以通过 
 [JWT Decoder](http://jwt.calebb.net/) 页面中查看 JWT 值。
 
 ## 结果如下
