@@ -1,6 +1,6 @@
 ---
-title: 如何在云服务中发布 Python 应用程序
-description: 如何在云服务中发布 Python 应用程序
+title: 如何在云服务中使用离线包发布 Python 应用程序
+description: 如何在云服务中使用离线包发布 Python 应用程序
 service: ''
 resource: Cloud Services
 author: chenrui1988
@@ -18,7 +18,7 @@ ms.author: v-tawe
 ms.date: 09/22/2017
 wacn.date: 09/22/2017
 ---
-# 如何在云服务中发布Python应用程序使用离线包
+# 如何在云服务中使用离线包发布 Python 应用程序
 
 当用户使用 Azure 云服务发布 Python Work Role 应用程序时，在启动应用程序之前，需要先下载并安装 Python 环境，并且使用 pip 安装必需的第三方包。但这个过程中，往往会受到网络的影响导致下载失败，从而致使云服务应用启动失败。本文将介绍一种使用离线 Python 下载包安装 Python 运行环境，并缓存 pip 离线包来加速 Python 应用程序的启动的方法。
 
