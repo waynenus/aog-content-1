@@ -20,7 +20,7 @@ wacn.date: 09/22/2017
 ---
 # Storage Table Rest API 调用示例
 
-在使用参考直接基于 Rest API 操作 Azure Storage Table 的过程中，官方提供了两种方式进行认证，分别为：SharedKey 和 ShareKeyLite。在请求 Header 过程中加入 Date（或 x-ms-date）和 Authorization 参数即可完成认证。
+在参考基于 Rest API 操作 Azure Storage Table 的过程中，官方提供了两种方式进行认证，分别为：SharedKey 和 ShareKeyLite。这种认证过程需要通过在请求 Header 过程中加入 Date（或 x-ms-date）和 Authorization 参数来完成。
 
 ## 调用示例
 
