@@ -22,7 +22,7 @@ wacn.date: 09/22/2017
 
 ## 问题描述
 
-如何查看 blob服务 中某个 container 每日的数据增加量。
+如何查看 blob 服务中某个 container 每日的数据增加量。
 
 ## 实现思路
 
