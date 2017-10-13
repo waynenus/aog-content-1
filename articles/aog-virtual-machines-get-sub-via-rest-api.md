@@ -1,6 +1,6 @@
 ---
-title: REST 接口获取订阅下虚拟机信息
-description: REST 接口获取订阅下虚拟机信息
+title: 使用 REST 接口获取订阅下虚拟机信息
+description: 使用 REST 接口获取订阅下虚拟机信息
 service: ''
 resource: Virtual Machines
 author: hello-azure
@@ -18,17 +18,17 @@ ms.author: v-tawe
 ms.date: 09/22/2017
 wacn.date: 09/22/2017
 ---
-# REST 接口获取订阅下虚拟机信息
+# 使用 REST 接口获取订阅下虚拟机信息
 
-在有些场景下，客户期望通过使用 REST 接口来统计某个订阅下的虚拟机信息，比如：获取订阅下某个 Size 虚拟机的总数量。实际上这是一个按属性进行分组统计的典型场景，对于这种需求，我们更建议使用 Powershell 或 SDK 来实现。
+在有些场景下，客户期望通过使用 REST 接口来统计某个订阅下的虚拟机信息，比如：获取订阅下某个 Size 虚拟机的总数量。实际上这是一个按属性进行分组统计的典型场景，对于这种需求，我们更建议使用 Powershell 或 SDK 来实现，因为实现起来较为简单方便。
 
-无论哪种方式，我们均需要注意，虚拟机存在两种部署模型：ASM（经典模式）和 ARM（资源管理器模式），那么不同的部署模型也对应着不同的 REST 协议，SDK、Powershell 命令亦如此。
+无论哪种方式，我们均需要注意，虚拟机存在两种部署模型：ASM（经典模式）和 ARM（资源管理器模式），不同的部署模型也对应着不同的 REST 协议，SDK、Powershell 命令亦如此。
 
-本文我们将重点介绍使用 REST 接口来达成这个需求的基本思路，一般来说这个过程需要通过程序调用 REST，然后实现分组统计的业务逻辑即可。
+本文我们将重点介绍使用 REST 接口来达成这个需求的基本思路，一般来说这个过程需要通过程序调用 REST 接口，然后通过分组统计来实现具体的业务逻辑。
 
 ## <a id="section1"></a>关于虚拟机 REST 接口的认证
 
-无论是哪种部署模型的虚拟机，目前其 REST 接口都支持基于 AAD 的认证方式，早期的 ASM 虚拟机同样支持 x509 证书认证，处于一致性考虑，这里我们介绍两种都支持的 AAD 认证方式。
+无论是哪种部署模型的虚拟机，目前其 REST 接口都支持基于 AAD 的认证方式，早期的 ASM 虚拟机同样支持 x509 证书认证，出于一致性考虑，这里我们介绍两种都支持的 AAD 认证方式。
 
 在调用接口时，我们需要提供一个基于 AAD 的认证 Token，总体来说有两种方式获取这个 Token:
 
@@ -158,14 +158,14 @@ wacn.date: 09/22/2017
 
     - 测试准备：
 
-        1. Endpoint: 上述 API 连接中的 API 终结点是 Global Azure 服务，我们需要修改为 China Azure 终结点，即将 `https://management.azure.com` 换成 `https://management.chinacloudapi.cn`。
+        1. Endpoint: 上述 API 连接中的 API 终结点是指向 Global Azure 服务，我们需要修改为 China Azure 终结点，即将 `https://management.azure.com` 换成 `https://management.chinacloudapi.cn`。
         2. Authorization: 参考[《关于虚拟机 REST 接口的认证》](#section1)部分。
 
     - 接口测试：
 
         1. [Resource Groups - List](https://docs.microsoft.com/zh-cn/rest/api/resources/ResourceGroups/List)
 
-            1. 测试请求：`https://management.chinacloudapi.cn/subscriptions/e0fbea86-6cf2-4b2d-81e2-9c59f4f96bcb/resourcegroups?api-version=2017-05-10`
+            1. 测试请求：`https://management.chinacloudapi.cn/subscriptions/<subscriptionId>/resourcegroups?api-version=2017-05-10`
             
             2. 参数设置：
             
@@ -178,7 +178,7 @@ wacn.date: 09/22/2017
         
         2. [List the virtual machines in a resource group](https://docs.microsoft.com/zh-cn/rest/api/compute/virtualmachines/virtualmachines-list-resource-group)
 
-            1. 测试请求：`https://management.chinacloudapi.cn/subscriptions/e0fbea86-6cf2-4b2d-81e2-9c59f4f96bcb/resourceGroups/geogroup/providers/Microsoft.Compute/virtualmachines?api-version=2016-04-30-preview`
+            1. 测试请求：`https://management.chinacloudapi.cn/subscriptions/<subscriptionId>/resourceGroups/<resourcegroupsname>/providers/Microsoft.Compute/virtualmachines?api-version=2016-04-30-preview`
 
             2. 参数设置：
 
@@ -206,14 +206,14 @@ wacn.date: 09/22/2017
 
     - 测试准备：
 
-        1. Endpoint: 上述 API 连接中的 API 终结点是 Global Azure 服务，我们需要修改为 China Azure 终结点，即将 `https://management.core.windows.net` 换成 `https://management.core.chinacloudapi.cn` 
+        1. Endpoint: 上述 API 连接中的 API 终结点是指向 Global Azure 服务，我们需要修改为 China Azure 终结点，即将 `https://management.core.windows.net` 换成 `https://management.core.chinacloudapi.cn` 
         2. 同样可以基于 AAD 方式认证，参考前面[《关于虚拟机 REST 接口的认证》](#section1) 部分。
 
     - 接口测试：
 
         1. [List Cloud Services](ttps://msdn.microsoft.com/zh-cn/library/azure/ee460781.aspx)
 
-            1. 测试请求： `https://management.core.chinacloudapi.cn/e0fbea86-6cf2-4b2d-81e2-9c59f4f96bcb/services/hostedservices`
+            1. 测试请求： `https://management.core.chinacloudapi.cn/subscriptions/<subscriptionId>/services/<servicesname>`
         
             2. 参数设置：
 
