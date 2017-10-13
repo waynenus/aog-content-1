@@ -22,7 +22,7 @@ wacn.date: 09/22/2017
 
 ## 现象描述
 
-当前China Azure 还无法通过门户来操作组，但是我们可以通过 Graph api 来创建用户，创建组，并把该 user 添加到组中。因此当用户单点登录以后发现只能获取到自己用户的基本信息，而无法获取到组的信息，可以通过 openid 进行请求获取组信息(可以在在返回中的 id_token 中获取到组信息)。
+当前中国区 Azure 还无法通过门户来操作组，但是我们可以通过 Graph api 来创建用户，创建组，并把该 user 添加到组中。因此当用户单点登录以后发现只能获取到自己用户的基本信息，而无法获取到组的信息，可以通过 openid 进行请求获取组信息(可以在在返回中的 id_token 中获取到组信息)。
  
 ### Graph API 参考资料
 
@@ -35,7 +35,7 @@ wacn.date: 09/22/2017
 1. 登陆 [Azure 经典管理门户](https://manage.windowsazure.cn)，并添加 AAD 应用程序。
 2. 在 AAD 程序的管理清单选项中选择下载清单后缀为 json 文件。
 3. 下载后打开 json 文件。
-4. 找到groupMembershipClaims 节点并添加值。
+4. 找到 groupMembershipClaims 节点并添加值。
 
     `"groupMembershipClaims" : "SecurityGroup"`
 
