@@ -1,6 +1,6 @@
 ---
-title: 如何在云服务中发布 Python 应用程序
-description: 如何在云服务中发布 Python 应用程序
+title: 如何在云服务中使用离线包发布 Python 应用程序
+description: 如何在云服务中使用离线包发布 Python 应用程序
 service: ''
 resource: Cloud Services
 author: chenrui1988
@@ -18,9 +18,9 @@ ms.author: v-tawe
 ms.date: 09/22/2017
 wacn.date: 09/22/2017
 ---
-# 如何在云服务中发布 Python 应用程序
+# 如何在云服务中使用离线包发布 Python 应用程序
 
-在 Azure 云服务发布 Python Work Role 应用程序，需要在启动应用程序之前，先要下载并安装 Python 环境，并且使用 pip 安装必需的第三方包。但这个过程中，往往会受到网络的影响导致下载失败，并使云服务应用启动失败。而且当，本文将介绍一种使用离线 Python 下载包安装 Python 运行环境，并缓存 pip 离线包的方法，来加速 Python 应用程序的启动。
+当用户使用 Azure 云服务发布 Python Work Role 应用程序时，在启动应用程序之前，需要先下载并安装 Python 环境，并且使用 pip 安装必需的第三方包。但这个过程中，往往会受到网络的影响导致下载失败，从而致使云服务应用启动失败。本文将介绍一种使用离线 Python 下载包安装 Python 运行环境，并缓存 pip 离线包来加速 Python 应用程序的启动的方法。
 
 首先，我们需要按照官方推荐的方法来创建 Python Work Role 项目，具体可参考此文档：[用于 Visual Studio 的 Python 工具中的 Python Web 角色和辅助角色](https://docs.azure.cn/zh-cn/cloud-services/cloud-services-python-ptvs)。
 
@@ -28,7 +28,7 @@ wacn.date: 09/22/2017
 
 ![01](media/aog-cloud-services-deploy-python-project/01.png)
 
-然后，创建 cache 目录，用来存放离线第三方包，下载第三方依赖包，并放置到该目录下，Python 包的依赖可能比较复杂，我们可以执行以下命令下载依赖包，使用离线依赖的作用就是可以防止在云服务上下载依赖，减少云服务启动时间。
+然后，创建用来存放离线第三方包的 cache 目录，下载第三方依赖包，并放置到该目录下，Python 包的依赖可能比较复杂，我们可以执行以下命令下载依赖包，使用离线依赖的作用就是可以防止在云服务上再去下载依赖，减少云服务启动时间。
 
 `py -m pip download -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/ -d cache --timeout 60`
 
