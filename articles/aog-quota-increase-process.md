@@ -20,6 +20,8 @@ wacn.date: 09/20/2017
 ---
 # 关于 Azure 配额资源如何申请的流程
 
+## 注意事项
+
 1. 配额类型：Core, IP, Host Services, Storage, HDInsight
 
     > [!NOTE]
@@ -27,7 +29,7 @@ wacn.date: 09/20/2017
 
 2. 配额申请适用情况：所用订阅当前配额不足，需要尽快申请
 
-    > [!TIPS]
+    > [!TIP]
     > 如果您的配额需求较大，时间较急，我们建议您提前至少三个工作日申请。
 
 3. 申请方式：您可以拨打 Azure 世纪互联客户服务热线：+86 400 0890 365 / +86 010-84563652，或通过网页在线提交服务请求获取支持：[Azure 支持](https://www.azure.cn/support/contact/)。
@@ -39,12 +41,12 @@ wacn.date: 09/20/2017
         在 **订阅** - **用法 + 配额** 下，可以看到经典门户以及资源管理门户的配额和使用情况。
         在第四个选项框中选择 “**全部显示**”，会列出来所有的配额情况，您可以在筛选框中输入您要查看的配额名称，即可查看相应的结果。
 
-        ![portal](media/aog-subscription-management-resource-quotas-application/portal.png)
+        ![portal](media/aog-quota-increase-process/portal.png)
 
     - 通过下载下载 [Azure 云助手 APP](https://www.azure.cn/azure-cloud-assistant/)，在 APP 中登录您的账号之后，可按照以下截图查看：
 
-        ![aca-1](media/aog-subscription-management-resource-quotas-application/aca-1.png)
-        ![aca-2](media/aog-subscription-management-resource-quotas-application/aca-2.png)
+        ![aca-1](media/aog-quota-increase-process/aca-1.png)
+        ![aca-2](media/aog-quota-increase-process/aca-2.png)
 
     - 如何通过 PowerShell 查看 ARM 配额情况：
 
@@ -52,23 +54,23 @@ wacn.date: 09/20/2017
             
             `get-module -listavailable | where-object {$_.name -like "*azure*" }`
             
-            ![powershell](media/aog-subscription-management-resource-quotas-application/powershell.png)
+            ![powershell](media/aog-quota-increase-process/powershell.png)
 
         2. 将 ARM 环境加入到 PowerShell 中来, 命令：
             
             `$chinarmenv =get-azurermenvironment -name azurechinacloud`
             `login-azurermaccount -environment $chinarmenv`
 
-            ![powershell-2](media/aog-subscription-management-resource-quotas-application/powershell-2.png)
+            ![powershell-2](media/aog-quota-increase-process/powershell-2.png)
 
         3. 查看某服务的 配额：
             1. 存储账户：`get-azurermstorageusage`
 
-                ![powershell-3](media/aog-subscription-management-resource-quotas-application/powershell-3.png)
+                ![powershell-3](media/aog-quota-increase-process/powershell-3.png)
 
             2. 核数：`get-azurermvmusage -location "china east"`
 
-                ![powershell-4](media/aog-subscription-management-resource-quotas-application/powershell-4.png)
+                ![powershell-4](media/aog-quota-increase-process/powershell-4.png)
 
 5. 有关 Azure 订阅和服务限制、配额和约束的详情，请参考链接有详细说明：[限制和 Azure Resource Manager](https://docs.azure.cn/zh-cn/azure-subscription-service-limits#limits-and-the-azure-resource-manager)。
 

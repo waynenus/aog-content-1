@@ -22,7 +22,7 @@ wacn.date: 09/22/2017
 
 在 Azure Key Vault 存储帐户密钥推出之前，开发人员必须管理其自己的 Azure 存储帐户 (ASA) 密钥，并手动或通过外部自动化功能轮换这些密钥。 现在，通过 Key Vault 存储帐户密钥已实现为 Azure 存储帐户进行身份验证的功能。本文主要介绍如何使用 Azure Powershell 创建基于 Key Vault 的存储账户 SAS 信息，然后结合 C# 基于 AD Application 认证的方式使用 Key Vault 获取存储对应的 SAS，进而创建 StorageClient。
 
-## Powershell code
+## Powershell 脚本
 
 ```PowerShell
 # 参数设置
@@ -77,11 +77,11 @@ Add-AzureKeyVaultManagedStorageAccount -AccountName $keyVaultName -VaultName $ke
 Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Container,Service -VaultName $keyVaultName -AccountName $keyVaultName -Name blobsas111 -Protocol HttpsOnly -ValidityPeriod ([System.Timespan]::FromDays(1)) -Permission Read,List,Write,Delete
 ```
 
-**获取的 Secret URL**：
+**获取的 Secret URL :**
 
 ![powershell](media/aog-key-vault-howto-manage-storage-account-key/powershell.png)
 
-## C# Code
+## C# 代码
 
 ```C#
 using Microsoft.Azure.KeyVault;
@@ -175,7 +175,7 @@ namespace storagekeyvault
 }
 ```
 
-## 更多信息参考链接
+## 参考链接
 
 - [Azure Key Vault 存储帐户密钥](https://docs.azure.cn/zh-cn/key-vault/key-vault-ovw-storage-keys)
 

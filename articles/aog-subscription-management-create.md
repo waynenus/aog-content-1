@@ -22,7 +22,7 @@ wacn.date: 09/20/2017
 
 ## 如何创建订阅
 
-1. 在[世纪互联运营的 Azure 官网](www.azure.cn) > 点击 “**我要购买**” :
+1. 在[世纪互联运营的 Azure 官网](https://www.azure.cn/) > 点击 “**我要购买**” :
 
     ![01](media/aog-subscription-management-create/01.png)
     

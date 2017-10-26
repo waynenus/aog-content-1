@@ -96,7 +96,6 @@ wacn.date: 09/20/2017
     #选择需要复制到的订阅
     PS C:\windows\system32> Select-AzureRmSubscription -SubscriptionId d1fc1ce1-589b-47af-b2a8-0a5e860f0560
 
-
     Environment           : AzureChinaCloud
     Account               : tonwan@mcpod.partner.onmschina.cn
     TenantId              : 954ddad8-66d7-47a8-8f9f-1316152d9587

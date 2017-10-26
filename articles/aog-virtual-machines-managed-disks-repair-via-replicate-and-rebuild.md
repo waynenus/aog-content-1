@@ -116,14 +116,13 @@ wacn.date: 09/20/2017
 
     ![08](media/aog-virtual-machines-managed-disks-repair-via-replicate-and-rebuild/08.png)
 
-5. 在 “**磁盘**” 项中找到刚修复好的 OS 磁盘，创建虚拟机 C。
+4. 在 “**磁盘**” 项中找到刚修复好的 OS 磁盘，创建虚拟机 C。
 
     ![09](media/aog-virtual-machines-managed-disks-repair-via-replicate-and-rebuild/09.png)
 
     ![10](media/aog-virtual-machines-managed-disks-repair-via-replicate-and-rebuild/10.png)
 
-6. 将原来的两块数据磁盘附加上去，发现 raid 已经重组但 lvm 并没有自动重组，不要着急，我们重启下机器就会发现 lvm 已经自动重组了。
-
+5. 将原来的两块数据磁盘附加上去，发现 raid 已经重组但 lvm 并没有自动重组，不要着急，我们重启下机器就会发现 lvm 已经自动重组了。
 
     ![11](media/aog-virtual-machines-managed-disks-repair-via-replicate-and-rebuild/11.png)
 
@@ -196,7 +195,9 @@ wacn.date: 09/20/2017
     abcdefg
     ```
 
-总结说明：通过上面的测试说明，托管磁盘挂载修复的步骤还是比较方便的，并且虚拟机中即使有 raid 或 lvm 也不用担心，重新创建后会自动重组，该文仅供参考，具体案例还需根据具体情况灵活应用。
+## 总结说明
+
+通过上面的测试说明，托管磁盘挂载修复的步骤还是比较方便的，并且虚拟机中即使有 raid 或 lvm 也不用担心，重新创建后会自动重组，该文仅供参考，具体案例还需根据具体情况灵活应用。
 
 ## 相关文档
 

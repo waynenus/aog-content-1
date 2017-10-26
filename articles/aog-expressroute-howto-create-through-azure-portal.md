@@ -20,8 +20,6 @@ wacn.date: 09/20/2017
 ---
 # 使用 Azure 门户创建 Express Route
 
-## 通过 Azure 门户创建 Express Route
-
 通过 Azure 门户创建 Express Route 流程如下：
 
 ## 准备工作
@@ -85,12 +83,12 @@ wacn.date: 09/20/2017
     - 必须为路由接口保留一个 /29 子网或两个 /30 子网。
     - 用于路由的子网可以是专用 IP 地址或公共 IP 地址。
     - 子网不得与客户保留用于 Microsoft 云的范围冲突。
-    - 如果使用 /29 子网，它将拆分成两个 /30 子网。 
+    - 如果使用 /29 子网，它将拆分成两个 /30 子网。
     - 第一个 /30 子网用于主链路，第二个 /30 子网用于辅助链路。
     - 对于每个 /30 子网，必须在路由器上使用 /30 子网的第一个 IP 地址。Microsoft 使用 /30 子网的第二个 IP 地址来设置 BGP 会话。
-    - 只有设置了两个 BGP 会话，我们的[可用性 SLA](http://azure.microsoft.com/support/legal/sla/) 才有效。 
+    - 只有设置了两个 BGP 会话，我们的[可用性 SLA](http://azure.microsoft.com/support/legal/sla/) 才有效。
 
-    **对等互连示例**
+    **对等互连示例** :
 
     如果您选择使用 a.b.c.d/29 来设置对等互连，它将拆分成两个 /30 子网。在以下示例中，我们可以了解 a.b.c.d/29 子网的用法。
 
@@ -104,7 +102,7 @@ wacn.date: 09/20/2017
     **VLAN ID**:
 
     VLAN ID 是客户自定义的 internal VLAN（C-tag）。不同的客户可以使用相同的 VLAN ID（C-tag），对于 IXP 来说，会有一个唯一的 S-tag 进行标记，不需要客户配置网络底层的 S-tag。您可以使用 1 至 4094 之间的数字配置 VLAN ID：
-    
+
     **Shared key**:
 
     共享秘钥，也可以不为 ER 线路配置共享秘钥。

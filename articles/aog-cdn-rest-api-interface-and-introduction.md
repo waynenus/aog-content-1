@@ -1,6 +1,6 @@
 ---
-title: 如何预热 Azure Web 应用
-description: 如何预热 Azure Web 应用
+title: CDN REST 接口调用及说明
+description: CDN REST 接口调用及说明
 service: ''
 resource: CDN
 author: hello-azure
@@ -48,18 +48,18 @@ wacn.date: 09/22/2017
     | content-type |	必填。application/json |
     | Body | 必填。参考 API 连接中的解释 |
 
-这里我们主要解释 Authorization 的生成，[CDN API 签名机制](https://docs.azure.cn/zh-cn/cdn/cdn-api-signature)中提供了不同语言生成认证头的代码示例，这里我们以 Java 作为说明，方法定义如下：
+    这里我们主要解释 Authorization 的生成，[CDN API 签名机制](https://docs.azure.cn/zh-cn/cdn/cdn-api-signature)中提供了不同语言生成认证头的代码示例，这里我们以 Java 作为说明，方法定义如下：
 
-```Java
-public static String calculateAuthorizationHeader(
-	String requestURL, 
-	String requestTime, 
-	String keyID, 
-	String keyValue, 
-	String httpMethod) throws Exception {
-…
-}
-```
+    ```Java
+    public static String calculateAuthorizationHeader(
+        String requestURL, 
+        String requestTime, 
+        String keyID, 
+        String keyValue, 
+        String httpMethod) throws Exception {
+    …
+    }
+    ```
 
 - requestURL
 
@@ -82,11 +82,7 @@ public static String calculateAuthorizationHeader(
 
     请求方法类型，参数值示例：`POST`。
 
-## 示例代码
-
-下载链接：[Azure CDN Demo](https://github.com/wacn/AOG-CodeSample/tree/master/cdn/Java/azure-cdn-demo-master)
-
-## 测试用例
+### 测试用例
 
 ```Java
 String requestURL = "https://restapi.cdn.azure.cn/subscriptions/e0fbea86-6cf2-4b2d-81e2-9c59f4f96bcb/endpoints?apiVersion=1.0";
@@ -135,11 +131,7 @@ AzureCDN cc65a046-2a32-4f7d-ab22-9ae49507d719:CB82B4555573CCE40FF2BAB1C5AA256C35
     | x-azurecdn-request-date | 必填。符合yyyy-MM-dd hh:mm:ss格式的UTC当前请求时间 |
     | Authorization | 必填。授权头请参考 [CDN API 签名机制](https://docs.azure.cn/zh-cn/cdn/cdn-api-signature) |
 
-## 示例代码
-
-下载链接：[Azure CDN Demo](https://github.com/wacn/AOG-CodeSample/tree/master/cdn/Java/azure-cdn-demo-master)
-
-## 测试用例
+### 测试用例
 
 ```Java
 String requestURL = "https://restapi.cdn.azure.cn/subscriptions/e0fbea86-6cf2-4b2d-81e2-9c59f4f96bcb/endpoints/8137ecc4-71c4-11e7-8259-0017fa00a611?apiVersion=1.0";
@@ -181,11 +173,7 @@ AzureCDN cc65a046-2a32-4f7d-ab22-9ae49507d719:AE889EA579556251F5CA57B19361BE57C2
     | Authorization | 必填。授权头请参考 [CDN API 签名机制](https://docs.azure.cn/zh-cn/cdn/cdn-api-signature) |
     | content-type | application/json |
 
-## 示例代码
-
-下载链接：[Azure CDN Demo](https://github.com/wacn/AOG-CodeSample/tree/master/cdn/Java/azure-cdn-demo-master)
-
-## 测试用例
+### 测试用例
 
 ```Java
 static void Main(string[] args)
@@ -272,3 +260,7 @@ static async void post(string requestUrl, string requestAuth, string requestTime
     }
 }
 ```
+
+## 示例代码
+
+[Azure CDN Demo](https://github.com/wacn/AOG-CodeSample/tree/master/cdn/Java/azure-cdn-demo-master)
