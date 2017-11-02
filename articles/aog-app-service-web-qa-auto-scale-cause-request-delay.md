@@ -1,6 +1,6 @@
 ---
 title: "Http 请求向 Web 应用自动缩放新增实例的平滑过渡"
-description: "Http 请求向 Web 应用自动缩放新增实例的平滑过渡"
+description: "Web 应用自动缩放时，如何避免 ASP.NET 站点部分请求处理缓慢或超时。"
 author: Chris-ywt
 resourceTags: 'App Service Web, ASP.NET'
 ms.service: app-service-web
