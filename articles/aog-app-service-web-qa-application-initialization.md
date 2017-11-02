@@ -1,56 +1,56 @@
 ---
-title: 如何预热 Azure Web 应用
-description: 如何预热 Azure Web 应用
-service: ''
-resource: App Service Web
+title: "Http 请求向 Web 应用自动缩放新增实例的平滑过渡"
+description: "Http 请求向 Web 应用自动缩放新增实例的平滑过渡"
 author: Chris-ywt
-displayOrder: ''
-selfHelpType: ''
-supportTopicIds: ''
-productPesIds: ''
-resourceTags: 'App Service Web, Application Initialization'
-cloudEnvironments: MoonCake
-
+resourceTags: 'App Service Web, ASP.NET'
 ms.service: app-service-web
 wacn.topic: aog
 ms.topic: article
 ms.author: v-tawe
-ms.date: 09/22/2017
-wacn.date: 09/22/2017
+ms.date: 10/31/2017
+wacn.date: 10/31/2017
 ---
-# 如何预热 Azure Web 应用
+# Http 请求向 Web 应用自动缩放新增实例的平滑过渡
+
+Web 应用自动缩放时，如何避免 ASP.NET 站点部分请求处理缓慢或超时。
 
 ## 问题描述
 
-Azure Web 应用在自动缩放时会初始化新的实例，这时前端负载均衡器会将新的用户请求转发给新的实例，如果新的实例初始化需要较长时间，此用户请求有可能会返回 `502.3` 错误。
+对于应用本身所需初始化时间较长的 ASP.NET 站点，在站点自动缩放增加实例后，由于应用程序本身还没有加载完全，部分访问该站点请求会出现处理缓慢或者发生 `HTTP 502` 的错误。
 
 ## 解决方案
 
-通过在 web.config 中配置 `ApplicationInitialization` 属性来解决该问题。
+通过配置 Application Initialization 来实现将 HTTP 请求暂时分发到原来的实例，直到站点应用程序初始化完成，才将请求向新增实例的分发。
 
-Application Initialization 模块能够预热 Web 应用程序，使得在应用程序初始化完成之前，客户端的请求将会继续发送到原来的实例上，直到应用程序完全加载完成，才会将请求发送到新增加的实例。
+当自动缩放增加新实例并完成实例初始化后，部分客户端请求将随即被负载均衡到新的实例。新的实例上应用有可能正在执行应用程序初始化代码没有及时处理 HTTP 请求，直到应用程序初始化完成，才开始处理已排队的请求。此时如果应用所需的初始化时间较长，从客户端角度来看，会观察到一部分请求返回缓慢。如果应用所需初始化时间非常长时，甚至超过某些超时设定而此时则会收到 timeout 相关错误或 `HTTP 502` 错误。
 
-以 ASP.NET 应用为例，具体的 web.config 配置如下
+因此，为了避免这种现象的发生，当自动缩放扩展出新实例后，需要使新增实例不应立即开始接收 HTTP 请求，而是等到站点初始化工作彻底完成后再开始接收并处理请求。 
+
+而 Application Initialization 是 IIS8.0 新引入的功能模块，旨在帮助网站管理员更好处理网站预热(warm up)的相关工作。Web 应用利用这个模块，能够很好地帮助 Azure 用户实现上述需求。
+
+用户可以通过站点的 web.config 文件进行 Application Initialization 相关配置, 并将该配置上传到 `site/wwwroot/` 目录下，具体内容如下：
 
 ```XML
 <?xml version="1.0"?>
 <configuration>
   <system.web>
-      <compilation debug="true" targetFramework="4.5.2" />
-      <httpRuntime targetFramework="4.5.2" />
-    </system.web>
+    <compilation debug="true" targetFramework="4.5.2" />
+    <httpRuntime targetFramework="4.5.2" />
+  </system.web>
   <system.webServer>
-  <applicationInitialization  remapManagedRequestsTo="loading.htm">
-    <add initializationPage="/default.aspx" />
-  </applicationInitialization>
-</system.webServer>
+    <applicationInitialization  remapManagedRequestsTo="warming.htm">
+      <add initializationPage="/warmup.aspx" />
+    </applicationInitialization>
+  </system.webServer>
 </configuration>
 ```
 
-用 `remapManagedRequestsTo` 属性指定在网站初始化期间，将用户请求导向所指定的提示页面。
+应在 Application Initialization 模块中配置 `remapManagedRequestsTo` 和 `initializationPage` 属性。其中：
 
-用 `initializationPage` 属性指定一个页面，例如此页面可以运行用户代码进行初始化工作或者检测初始化进度，Azure 平台会在启动后访问此页面，当此页面返回 `200` 时，Azure 平台即认为初始化完成。
+* `remapManagedRequestsTo` 属性：当应用站点首次启动或重启时，在初始化代码完成前，请求将会映射到这个页面。用户应配置该属性并编辑该页面的友好提示信息。
 
-##参考链接
+* `initializationPage` 属性：自动缩放扩展出新实例后，App Service 后台程序会自动持续访问该属性对应的页面。直到后台程序收到该页面的 `HTTP 200` 返回码后认为该实例上的站点预热完成，并通知前端负载均衡开始将新请求转发到本实例上来。
 
-[Application Initialization <applicationInitialization>](https://docs.microsoft.com/zh-cn/iis/configuration/system.webServer/applicationInitialization/)
+## 参考链接
+
+[关于 IIS Application Initialization 模块的详细信息](https://docs.microsoft.com/zh-cn/iis/configuration/system.webServer/applicationInitialization/)
