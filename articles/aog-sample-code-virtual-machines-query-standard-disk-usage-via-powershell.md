@@ -1,24 +1,17 @@
 ---
-title: 使用 PowerShell 脚本查询 Azure 虚拟机标准磁盘用量
-description: 使用 PowerShell 脚本查询 Azure 虚拟机标准磁盘用量
-service: ''
-resource: Virtual Mahicnes
+title: "使用 PowerShell 脚本查询 Azure 虚拟机标准磁盘用量"
+description: "使用 PowerShell 脚本查询 Azure 虚拟机标准磁盘用量"
 author: sscchh2001
-displayOrder: ''
-selfHelpType: ''
-supportTopicIds: ''
-productPesIds: ''
 resourceTags: 'Virtual Mahicnes, Sample Code, PowerShell'
-cloudEnvironments: MoonCake
-
-ms.service: virtual-machines
+ms.service: storage
 wacn.topic: aog
 ms.topic: article
 ms.author: chesh
-ms.date: 09/22/2017
-wacn.date: 09/22/2017
+ms.date: 11/16/2017
+wacn.date: 11/16/2017
 ---
-# 使用 PowerShell 脚本查询 Azure 虚拟机标准磁盘用量
+
+# 使用 PowerShell 脚本查询 Azure 虚拟机计算资源和标准磁盘用量
 
 众所周知，在使用非托管磁盘或非高级存储虚拟机时，Azure 会按实际用量收费。
 这里我们引入两个概念：
@@ -39,17 +32,21 @@ wacn.date: 09/22/2017
 
 ## PowerShell 脚本
 
-脚本 `Get-AsmVMDiskSize.ps1` 和 `Get-ArmVMDiskSize.ps1` 分别查询 ASM 和 ARM 部署模式下所有虚拟机的普通磁盘用量，将结果输出到位于 `%UserProfile%\Downloads` 文件夹下的 `asm-<sub ID>.csv` 和 `arm-<sub ID>.csv` 文件中。
+脚本 `Get-AsmVMDiskSize.ps1` 和 `Get-ArmVMDiskSize.ps1` 分别查询 ASM 和 ARM 部署模式下所有虚拟机的普通磁盘用量，将结果输出到位于 `%UserProfile%\Downloads` 文件夹下的 `asm-<sub ID>.csv` 和 `arm-<sub ID>.csv` 文件中。VMsizes.csv 文件提供了虚拟机大小与 CPU 内存的对照表，脚本会查询此文件获取虚拟机的计算资源用量。
 
-用户需要首先安装最新版本的 [PowerShell AzureRM 模块](https://docs.microsoft.com/zh-cn/powershell/azure/install-azurerm-ps?view=azurermps-4.3.1) ，运行脚本，提供订阅号并登陆账号，即可成功抓取普通磁盘的实际用量。
+### 用户需要：
 
-脚本下载链接：
+1. 安装最新版本的 [PowerShell AzureRM 模块](https://docs.microsoft.com/zh-cn/powershell/azure/install-azurerm-ps?view=azurermps-4.3.1) 。
+2. 将链接中的 [VMsizes.csv](https://github.com/wacn/AOG-CodeSample/blob/master/VirtualMachines/others/VMsizes.csv) 文件拷贝至 `%UserProfile%\Downloads` 文件夹下。
+3. 在 PowerShell 中运行脚本，提供订阅号并登陆账号，即可成功抓取普通磁盘的实际用量。
+
+### 脚本下载链接：
 
 [Get-ArmVMDiskSize.ps1](https://github.com/wacn/AOG-CodeSample/blob/master/PowerShell/Get-ArmVMDiskSize.ps1)
 
 [Get-AsmVMDiskSize.ps1](https://github.com/wacn/AOG-CodeSample/blob/master/PowerShell/Get-AsmVMDiskSize.ps1)
 
-示例运行结果如下：
+### 示例运行结果如下：
 
 ```PowerShell
 PS C:\> .\Get-ArmVMDiskSize.ps1 xxxxxxx-xxxx-xxxx-xxxxxxxxxx
@@ -66,6 +63,12 @@ The VM cheshsles12 is using Managed Disks.
 The VM cheshsles12 contains no data disk.
 ARM part finished! 
 ```
+
+### 示例输出如下：
+
+![02](media/aog-sample-code-virtual-machines-query-standard-disk-usage-via-powershell/02.png)
+
+其中 Cores 列即虚拟机所用 CPU 核数，Memory 列即内存数，最后两列为磁盘大小和使用量。
 
 ## 相关限制
 
