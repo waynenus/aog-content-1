@@ -92,6 +92,5 @@ PS C:\Users\dillion> Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("B
 
 ## 参考文档
 
-- [通过 cron 表达式计划 Azure Web 作业](http://blog.amitapple.com/post/2015/06/scheduling-azure-webjobs/#.Wf_ULNeWaM9)
 - [创建的 WebJobs 无法按照 CRON 的设置来启动](https://docs.azure.cn/articles/azure-operations-guide/app-service-web/aog-web-apps-qa-webjob-cron-boot-error)
 - [Web Job API](https://github.com/projectkudu/kudu/wiki/WebJobs-API)
