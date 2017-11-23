@@ -17,18 +17,18 @@ wacn.date: 11/21/2017
 
 在 [Office365 管理门户](https://portal.partner.microsoftonline.cn) 里进行添加。
 
-点击左上角 9 宫格，选择“**管理员**”。
+1. 点击左上角 9 宫格，选择“**管理员**”。
 
-![01](media/aog-commerce-subscription-management-howto-use-o365-portal/01.png)
+    ![01](media/aog-commerce-subscription-management-howto-use-o365-portal/01.png)
 
-1. **用户** > **活动用户**，点击 “**+添加用户**” 添加活动用户。
+2. **用户** > **活动用户**，点击 “**+添加用户**” 添加活动用户。
 
-![02](media/aog-commerce-subscription-management-howto-use-o365-portal/02.png)
-![03](media/aog-commerce-subscription-management-howto-use-o365-portal/03.png)
+    ![02](media/aog-commerce-subscription-management-howto-use-o365-portal/02.png)
+    ![03](media/aog-commerce-subscription-management-howto-use-o365-portal/03.png)
 
-2. 出现以下页面时，代表已成功创建了活动用户。
+3. 出现以下页面时，代表已成功创建了活动用户。
 
-![04](media/aog-commerce-subscription-management-howto-use-o365-portal/04.png)
+    ![04](media/aog-commerce-subscription-management-howto-use-o365-portal/04.png)
 
 > [!NOTE]
 > 活动用户在 AD 内或者在 Office365 管理门户添加之后，如果需要给账号分配权限，该操作需要查看下一节。
@@ -37,11 +37,11 @@ wacn.date: 11/21/2017
 
 1. 使用全局管理员登录 Office365 管理门户，勾选需要修改的用户，对需要更改的信息点击编辑即可。
 
-![05](media/aog-commerce-subscription-management-howto-use-o365-portal/05.png)
+    ![05](media/aog-commerce-subscription-management-howto-use-o365-portal/05.png)
 
 2. 当对 “**角色**” 进行编辑时，可以更改该用户的身份（亦可设置为全局管理员）。备用电子邮件地址则用于用户自助修改密码时接收重置密码的邮件。
 
-![06](media/aog-commerce-subscription-management-howto-use-o365-portal/06.png)
+    ![06](media/aog-commerce-subscription-management-howto-use-o365-portal/06.png)
 
 > [!NOTE]
 > 自定义的管理员多用于 Office365 用户，Azure 用户可以忽略。
