@@ -1,5 +1,5 @@
 ---
-title: 企业门户添加账户管理员
+title: 如何为企业门户添加账户管理员？
 description: 企业门户添加账户管理员
 service: ''
 resource: Subscription Management
@@ -19,7 +19,7 @@ ms.date: 10/24/2017
 wacn.date: 10/24/2017
 ---
 
-# 企业门户添加账户管理员
+# 如何为企业门户添加账户管理员？
 
 ## 操作步骤
 

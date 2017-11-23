@@ -1,5 +1,5 @@
 ---
-title: 关于 Azure 配额资源如何申请的流程
+title: 如何申请 Azure 配额资源？
 description: 关于 Azure 配额资源如何申请的流程
 service: ''
 resource: Subscription Management
@@ -18,7 +18,7 @@ ms.author: v-tawe
 ms.date: 09/20/2017
 wacn.date: 09/20/2017
 ---
-# 关于 Azure 配额资源如何申请的流程
+# 如何申请 Azure 配额资源？
 
 ## 注意事项
 
@@ -41,12 +41,12 @@ wacn.date: 09/20/2017
         在 **订阅** - **用法 + 配额** 下，可以看到经典门户以及资源管理门户的配额和使用情况。
         在第四个选项框中选择 “**全部显示**”，会列出来所有的配额情况，您可以在筛选框中输入您要查看的配额名称，即可查看相应的结果。
 
-        ![portal](media/aog-quota-increase-process/portal.png)
+        ![portal](media/aog-commerce-quota-increase-process/portal.png)
 
     - 通过下载下载 [Azure 云助手 APP](https://www.azure.cn/azure-cloud-assistant/)，在 APP 中登录您的账号之后，可按照以下截图查看：
 
-        ![aca-1](media/aog-quota-increase-process/aca-1.png)
-        ![aca-2](media/aog-quota-increase-process/aca-2.png)
+        ![aca-1](media/aog-commerce-quota-increase-process/aca-1.png)
+        ![aca-2](media/aog-commerce-quota-increase-process/aca-2.png)
 
     - 如何通过 PowerShell 查看 ARM 配额情况：
 
@@ -54,23 +54,23 @@ wacn.date: 09/20/2017
             
             `get-module -listavailable | where-object {$_.name -like "*azure*" }`
             
-            ![powershell](media/aog-quota-increase-process/powershell.png)
+            ![powershell](media/aog-commerce-quota-increase-process/powershell.png)
 
         2. 将 ARM 环境加入到 PowerShell 中来, 命令：
             
             `$chinarmenv =get-azurermenvironment -name azurechinacloud`
             `login-azurermaccount -environment $chinarmenv`
 
-            ![powershell-2](media/aog-quota-increase-process/powershell-2.png)
+            ![powershell-2](media/aog-commerce-quota-increase-process/powershell-2.png)
 
         3. 查看某服务的 配额：
             1. 存储账户：`get-azurermstorageusage`
 
-                ![powershell-3](media/aog-quota-increase-process/powershell-3.png)
+                ![powershell-3](media/aog-commerce-quota-increase-process/powershell-3.png)
 
             2. 核数：`get-azurermvmusage -location "china east"`
 
-                ![powershell-4](media/aog-quota-increase-process/powershell-4.png)
+                ![powershell-4](media/aog-commerce-quota-increase-process/powershell-4.png)
 
 5. 有关 Azure 订阅和服务限制、配额和约束的详情，请参考链接有详细说明：[限制和 Azure Resource Manager](https://docs.azure.cn/zh-cn/azure-subscription-service-limits#limits-and-the-azure-resource-manager)。
 

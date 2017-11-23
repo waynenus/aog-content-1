@@ -19,20 +19,20 @@ wacn.date: 11/14/2017
 
 2. 点击订阅名称展开订阅：
 
-    ![01](media/aog-subscription-management-recharge-faq/01.png)
+    ![01](media/aog-commerce-subscription-management-recharge-faq/01.png)
 
 3. 点击右侧绿色按钮“**重新缴费**”（1 元试用选择“立即升级”）：
 
-    ![02](media/aog-subscription-management-recharge-faq/02.png)
+    ![02](media/aog-commerce-subscription-management-recharge-faq/02.png)
 
 4. 选择支付方式：
 
-    ![03](media/aog-subscription-management-recharge-faq/03.png)
+    ![03](media/aog-commerce-subscription-management-recharge-faq/03.png)
 
 5. 选择金额后，跳转到相应支付平台进行支付。
 
-    ![04](media/aog-subscription-management-recharge-faq/04.png)
-    ![05](media/aog-subscription-management-recharge-faq/05.png)
+    ![04](media/aog-commerce-subscription-management-recharge-faq/04.png)
+    ![05](media/aog-commerce-subscription-management-recharge-faq/05.png)
 
 ## 支付方式
 
@@ -52,11 +52,11 @@ wacn.date: 11/14/2017
 
 支付宝订单有效期为 3 天，如果支付过程中遇到问题没有及时完成支付，3 天内都可以点击订阅名称下显示的黄条（如下图）完成支付。支付宝订单无法手动取消，需等待 3 天之后系统自动取消。
 
-![06](media/aog-subscription-management-recharge-faq/06.png)
+![06](media/aog-commerce-subscription-management-recharge-faq/06.png)
 
 银联订单一般一个小时内失效，订单失效之后，黄条提示会变为“**重新对您的订购支付失败。请单击此处重试。**”，此时如果要更改支付方式，需按照以上充值的步骤重新操作。
 
-![07](media/aog-subscription-management-recharge-faq/07.png)
+![07](media/aog-commerce-subscription-management-recharge-faq/07.png)
 
 电汇订单有效期为 7 个工作日，超过 7 个工作日未完成付款，电汇订单会被后台取消。如需取消电汇订单，需要联售后服务热线 400-089-0365。
 

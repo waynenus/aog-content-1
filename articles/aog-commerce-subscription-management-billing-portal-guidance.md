@@ -1,5 +1,5 @@
 ---
-title: 帐单门户的功能及使用
+title: 如何使用账单门户网站？
 description: 帐单门户的功能及使用
 service: ''
 resource: Subscription Management
@@ -19,7 +19,7 @@ ms.date: 10/24/2017
 wacn.date: 10/24/2017
 ---
 
-# 帐单门户的功能及使用
+# 如何使用账单门户网站？
 
 ## 登录方式
 

@@ -1,5 +1,5 @@
 ---
-title: 企业门户添加订阅
+title: 如何在企业门户添加订阅？
 description: 如何为企业账户添加订阅
 service: ''
 resource: Subscription Management
@@ -18,7 +18,7 @@ ms.author: v-tawe
 ms.date: 10/24/2017
 wacn.date: 10/24/2017
 ---
-# 企业门户添加订阅
+# 如何在企业门户添加订阅？
 
 ## 操作步骤
 

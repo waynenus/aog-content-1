@@ -1,9 +1,9 @@
 ---
-title: 发票相关的申请和常见问题
+title: 如何申请发票？（及常见问题）
 description: 发票相关的申请和常见问题
 service: ''
 resource: Billing
-author: LenkaLee
+author: JianxinLi333
 displayOrder: ''
 selfHelpType: ''
 supportTopicIds: ''
@@ -18,18 +18,18 @@ ms.author: v-tawe
 ms.date: 09/20/2017
 wacn.date: 09/20/2017
 ---
-# 发票相关的申请和常见问题
+# 如何申请发票？（及常见问题）
 
 ## 申请流程
 
-![01](media/aog-fapiao-process/01.png)
+![01](media/aog-commerce-fapiao-process/01.png)
 
 1. 如何申请发票
 
     - 您在网站成功付款后，会收到一封“**订单确认**”邮件，此邮件里包含有发票申请界面的链接、用户的 order ID 和您自己的邮箱，请您根据链接到[世纪互联发票信息管理系统](http://fapiao.cloud.21vianet.com/EmailAcount/Register)进行注册。
     - 您也可以在[账户管理门户](https://account.windowsazure.cn/Home/Index)中直接点击以下链接：
     
-        ![02](media/aog-fapiao-process/02.png)
+        ![02](media/aog-commerce-fapiao-process/02.png)
 
 2. 发票系统注册
 
@@ -37,7 +37,7 @@ wacn.date: 09/20/2017
 
     注册完账户后，系统会发送激活邮件给您的注册邮箱，请点击邮件中的激活链接以激活该账户。
 
-    ![03](media/aog-fapiao-process/03.png)
+    ![03](media/aog-commerce-fapiao-process/03.png)
 
 3. 开发票具体操作
 
@@ -45,11 +45,11 @@ wacn.date: 09/20/2017
 
     支付系统是搭建在第三方平台，订单资料和支付结果需要 3 天的时间同步，请您耐心等待。
 
-    ![04](media/aog-fapiao-process/04.png)
+    ![04](media/aog-commerce-fapiao-process/04.png)
 
     请您先选择发票类型，然后继续完成“**发票信息**”，请完成 * 标记的待填项:
 
-    ![05](media/aog-fapiao-process/05.png)
+    ![05](media/aog-commerce-fapiao-process/05.png)
 
     > [!IMPORTANT]
     > - 根据《国家税务总局关于增值税发票开具有关问题的公告》最新规定，自 2017 年 7 月 1 日起，企业单位申请**增值税普通发票**必须要提供纳税人识别号。
@@ -59,7 +59,7 @@ wacn.date: 09/20/2017
 
     请填写邮寄信息，派送方式可选韵达或顺丰（只能到付），您也可以到世纪互联上海分公司自取。
 
-    ![06](media/aog-fapiao-process/06.png)
+    ![06](media/aog-commerce-fapiao-process/06.png)
 
     - 世纪互联上海分公司地址：
 
@@ -71,18 +71,18 @@ wacn.date: 09/20/2017
 
     请您再次确认填写的信息，核对无误点击“**确认**”。
 
-    ![07](media/aog-fapiao-process/07.png)
+    ![07](media/aog-commerce-fapiao-process/07.png)
 
 4. 开票和寄出
     
     您填写的信息自动传送到世纪互联服务中心，您的申请将在 2 个工作日完成操作。
 
-    ![08](media/aog-fapiao-process/08.png)
+    ![08](media/aog-commerce-fapiao-process/08.png)
 
 - 您的工单完成后，可以随时查看进度，我们会及时更新进度，例如“**已打印**”，“**已寄出**”。
 - 当票源紧张时，系统会发出公告并告知预计寄票时间，请您提交申请之后耐心等待。
 
-    ![09](media/aog-fapiao-process/09.png)
+    ![09](media/aog-commerce-fapiao-process/09.png)
 
 ## 热点问题
 
@@ -91,8 +91,8 @@ wacn.date: 09/20/2017
 - 查询开票进度，及未收到发票的问题查询。
 - 更改发票信息或类型。请您寄回已开发票，我们会即刻给您更换新发票。
 
-    ![10](media/aog-fapiao-process/10.png)
-    ![11](media/aog-fapiao-process/11.png)
+    ![10](media/aog-commerce-fapiao-process/10.png)
+    ![11](media/aog-commerce-fapiao-process/11.png)
 
 Azure 用户可以通过 [Azure 支持](https://www.azure.cn/support/contact/) 提交工单。
 
@@ -100,11 +100,11 @@ Azure 用户可以通过 [Azure 支持](https://www.azure.cn/support/contact/) �
 
 - 登录[发票管理系统](http://fapiao.cloud.21vianet.com/EmailAcount/LoginView)，直接修改邮箱和密码。
 
-    ![12](media/aog-fapiao-process/12.png)
+    ![12](media/aog-commerce-fapiao-process/12.png)
 
 - 如果您忘记了登录密码，请您使用登录邮箱重置密码。系统将新密码发送到您的邮箱，请您收到后用新密码登录。
 
-    ![13](media/aog-fapiao-process/13.png)
+    ![13](media/aog-commerce-fapiao-process/13.png)
 
 - 如果您忘记了登录邮箱，请致电 400-089-0365，我们的客服会帮助您解决问题。
 
@@ -114,7 +114,7 @@ Azure 用户可以通过 [Azure 支持](https://www.azure.cn/support/contact/) �
 - 依次点击 “**订阅**” > 要开具发票的订阅名称。
 - 右侧会显示订单 ID。
 
-    ![14](media/aog-fapiao-process/14.png)
+    ![14](media/aog-commerce-fapiao-process/14.png)
 
 ### 问题四：注册时提示“**找不到订单号**”怎么办
 
@@ -130,7 +130,7 @@ Azure 用户可以通过 [Azure 支持](https://www.azure.cn/support/contact/) �
 
 如果您在注册成功后的 24 小时内没有收到账号激活邮件，可以到发票申请界面点击 “**重发激活邮件**”，系统将再次发送账号激活邮件到您的注册邮箱。若您尝试 “**重发激活邮件**” 后还是无法收到激活邮件，请联系世纪互联客户服务中心，电话：400-089-0365.
 
-![15](media/aog-fapiao-process/15.png)
+![15](media/aog-commerce-fapiao-process/15.png)
 
 ### 问题七：超过三个工作日仍然没有发票信息怎么办
 
