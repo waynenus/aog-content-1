@@ -15,7 +15,7 @@ wacn.date: 11/21/2017
 
 ## 添加活动用户
 
-在 [Office365 管理门户](https://portal.partner.microsoftonline.cn) 里进行添加。
+在 [Office365 管理门户](https://portal.partner.microsoftonline.cn) 里进行添加：
 
 1. 点击左上角 9 宫格，选择“**管理员**”。
 
