@@ -21,7 +21,7 @@ wacn.date: 11/16/2017
 
 页面 Blob，即虚拟机磁盘的 VHD 文件实质上是稀疏文件 (Sparse File)，只有非空的数据块会被写入到磁盘，其他空闲数据块会被填充为 0。Azure 存储对于页面 Blob，只会按其大小，即实际占用空间收费。
 
-![01](media/aog-sample-code-virtual-machines-query-standard-disk-usage-via-powershell/01.png)
+<center>![01](media/aog-sample-code-virtual-machines-query-standard-disk-usage-via-powershell/01.png)</center>
 <center>（图片转自 Wikipedia）</center>
 
 在了解了页面 Blob 文件计费原理之后，第二个问题便随之而来 – 用户要如何查看一个页面 Blob 文件的真实用量呢？
