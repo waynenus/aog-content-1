@@ -61,7 +61,7 @@ $VMName = "VMname"
 $Settings = @{
     Name = "contoso.com" #AD域名
     User = "contoso.com\admin" #AD域管理员
-    Restart = "true“ #设置加域后虚拟机是否需要自动重启
+    Restart = "true" #设置加域后虚拟机是否需要自动重启
     Options = "3" #加域模式，不建议改动
     }
 
