@@ -54,5 +54,5 @@ Android4.1 或更高 (API Level 16 或更高)
 ## 更多参考
 
 * [中国版认知服务使用指导](https://docs.azure.cn/zh-cn/articles/cognitive-services/aog-cognitive-services-guidance)
+* [认知服务 Windows 使用示例](https://docs.azure.cn/zh-cn/articles/azure-operations-guide/cognitive-services/aog-cognitive-services-windows-sample)
 * [Microsoft/ProjectOxford-ClientSDK](https://github.com/Microsoft/ProjectOxford-ClientSDK/tree/master/Face)
-

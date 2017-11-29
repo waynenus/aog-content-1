@@ -36,7 +36,7 @@ wacn.date: 11/15/2017
 * [使用 Azure ARM 模板](#section1)
 * [使用 Azure ARM PowerShell Cmdlet](#section2)
 
-### <a id=section1></a>使用 Azure ARM 模板
+### <a id="section1"></a>使用 Azure ARM 模板
 
 使用 Azure ARM 模板很简单，只需访问 [Azure Portal - 自定义部署](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vm-domain-join%2Fazuredeploy.json)，将模板部署到 Azure 中国即可。
 用户需要提供的参数如下：
@@ -50,7 +50,7 @@ wacn.date: 11/15/2017
 
 正如上文所述，这个新的虚拟机扩展可以使用所有必要的参数将虚拟机添加到一个已经存在的 AD 域，然后在完成加入操作后重启虚拟机。现在，如果您不熟悉或不想使用 ARM 模板，而是想要使用 Azure PowerShell，需要怎么做呢？
 
-### <a id=section2></a>使用 Azure PowerShell 命令行
+### <a id="section2"></a>使用 Azure PowerShell 命令行
 
 使用以下 PowerShell 命令行可以将现有的虚拟机加入已有的 AD 域，具体参数请按实际情况更改。
 

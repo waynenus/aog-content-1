@@ -757,6 +757,8 @@ wacn.date: 09/30/2017
 
 ## 参考链接
 
+- [认知服务 Android 使用示例](https://docs.azure.cn/zh-cn/articles/azure-operations-guide/cognitive-services/aog-cognitive-services-android-sample)
+- [认知服务 Windows 使用示例](https://docs.azure.cn/zh-cn/articles/azure-operations-guide/cognitive-services/aog-cognitive-services-windows-sample)
 - [认知服务价格详情](https://www.azure.cn/pricing/details/cognitive-services/)
 - [Cognitive-Samples-IntelligentKiosk](https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk)
 - [Java 调用 Azure 认知服务 Demo--Computer API](http://www.cnblogs.com/taro/p/6516722.html)

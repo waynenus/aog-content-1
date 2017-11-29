@@ -37,7 +37,7 @@ wacn.date: 11/14/2017
 
     您需要首先安装 Azure CLI 2.0。安装方法请参考：[安装 Azure CLI 2.0](https://docs.microsoft.com/zh-cn/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-    ```Azure CLI
+    ```Shell
     $ az cloud set -n AzureChinaCloud
     $ az login  -u test@test.partner.onmschina.cn -p yourpassword
     $ az account set --subscription  "12345678-xxxx-xxxx-1234567890"
@@ -57,15 +57,15 @@ wacn.date: 11/14/2017
     > [!NOTE]
     > 为了安全考虑，这里仅将服务主体的权限赋予了特定资源组，该资源组将用于创建 Kubernetes 的所有 Azure 资源。如果您需要将 Kubernetes 集群放在其他资源组，您需要额外再进行权限设置，否则在后续服务配置中会遇到权限拒绝等错误。设置方法为：
     > 
-    > ```
+    > ```Shell
     > $ az role assignment create --role "Contributor" --assignee "appid" --scope /subscriptions/12345678-xxxx-xxxx-1234567890/resourceGroups/lqik8s08
     > ```
     > 
     > 为了测试方便，您也可以直接将权限赋予整个订阅，但我们不推荐在生产环境中这样做。方法如下：
     > 
-    > ```
+    > ```Shell
     > $ az role assignment create --role "Contributor" --assignee "appid" --scope /subscriptions/12345678-xxxx-xxxx-1234567890
-    > s```
+    > ```
 
 3. 编辑模板
 
@@ -139,7 +139,7 @@ wacn.date: 11/14/2017
 
     切换到模板目录 _output/yourprefix，编辑 azuredeploy.parameters.json。替换其中部分值如下：
 
-    ```
+    ```Shell
     $ cd _output/lqi07
     $ vi azuredeploy.parameters.json
     ```
@@ -152,7 +152,7 @@ wacn.date: 11/14/2017
 
     该过程大约需要 20 分钟左右，其中包括创建 Azure 资源如 VNET，负载均衡，自定义路由，虚拟机，存储账号等，并配置虚拟机中 Kubernetes 各组件和服务。
 
-    ```
+    ```Shell
     $ az group deployment create -g lqik8s07 --template-file azuredeploy.json  --parameters azuredeploy.parameters.json
     ```
 
