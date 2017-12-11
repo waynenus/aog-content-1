@@ -26,18 +26,25 @@ wacn.date: 09/20/2017
 
 1. 如何申请发票
 
-    - 您在网站成功付款后，会收到一封“**订单确认**”邮件，此邮件里包含有发票申请界面的链接、用户的 order ID 和您自己的邮箱，请您根据链接到[世纪互联发票信息管理系统](http://fapiao.cloud.21vianet.com/EmailAcount/Register)进行注册。
+    - 您在网站成功付款后，会收到一封“**订单确认**”邮件，此邮件里包含有发票申请界面的链接，请您根据链接到[世纪互联发票信息管理系统](http://fapiao.cloud.21vianet.com/EmailAcount/Register)进行注册。
     - 您也可以在[账户管理门户](https://account.windowsazure.cn/Home/Index)中直接点击以下链接：
     
         ![02](media/aog-commerce-fapiao-process/02.png)
 
 2. 发票系统注册
 
-    当您进入世纪互联发票信息管理系统时，请填写以下信息进行注册。
+    当您进入世纪互联发票信息管理系统时，需填写[订单号](#SubID)、邮箱进行注册。
+    
+    ![03](media/aog-commerce-fapiao-process/03.png)
+
+    <a id="SubID"></a>**获取订单号**
+    
+    登录 Azure 门户，点击 “**订阅**”，选择需要开取发票的对应订阅，点击 “**管理**”，页面将自动跳转到账户中心，您可在此处获取您的订单编号信息。
+
+    ![access-sub-num-01](media/aog-commerce-fapiao-process/access-sub-num-01.png)
+    ![access-sub-num-02](media/aog-commerce-fapiao-process/access-sub-num-02.png)
 
     注册完账户后，系统会发送激活邮件给您的注册邮箱，请点击邮件中的激活链接以激活该账户。
-
-    ![03](media/aog-commerce-fapiao-process/03.png)
 
 3. 开发票具体操作
 
@@ -114,7 +121,7 @@ Azure 用户可以通过 [Azure 支持](https://www.azure.cn/support/contact/) �
 - 依次点击 “**订阅**” > 要开具发票的订阅名称。
 - 右侧会显示订单 ID。
 
-    ![14](media/aog-commerce-fapiao-process/14.png)
+![14](media/aog-commerce-fapiao-process/14.png)
 
 ### 问题四：注册时提示“**找不到订单号**”怎么办
 

@@ -1,5 +1,5 @@
 ---
-title: 如何迁移订阅？
+title: 如何在企业门户中迁移订阅？
 description: 订阅管理 - 迁移
 service: ''
 resource: Subscription Management
@@ -19,9 +19,7 @@ ms.date: 09/20/2017
 wacn.date: 09/20/2017
 ---
 
-# 如何迁移订阅？
-
-## 如何迁移订阅
+# 如何在企业门户中迁移订阅？
 
 > [!NOTE]
 > 目前只有大客户支持此功能。
@@ -45,6 +43,6 @@ wacn.date: 09/20/2017
 
 ## 相关文档
 
-- [订阅管理 - 创建](aog-subscription-management-create.md)
-- [订阅管理 - 取消](aog-subscription-management-cancel.md)
-- [订阅管理 - 重命名](aog-subscription-management-rename.md)
+- [如何创建订阅？](aog-subscription-management-create.md)
+- [如何在企业门户中取消订阅？](aog-subscription-management-cancel.md)
+- [如何重命名订阅？](aog-subscription-management-rename.md)

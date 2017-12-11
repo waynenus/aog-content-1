@@ -56,6 +56,6 @@ wacn.date: 09/20/2017
 
 ## 相关文档
 
-- [订阅管理 - 取消](aog-subscription-management-cancel.md)
-- [订阅管理 - 重命名](aog-subscription-management-rename.md)
-- [订阅管理 - 迁移](aog-subscription-management-migrate.md)
+- [如何取消订阅？](aog-subscription-management-cancel.md)
+- [如何重命名订阅？](aog-subscription-management-rename.md)
+- [如何在企业门户中迁移订阅？](aog-subscription-management-migrate.md)

@@ -1,5 +1,5 @@
 ---
-title: 如何取消订阅？
+title: 如何在企业门户中取消订阅？
 description: 订阅管理 - 取消
 service: ''
 resource: Subscription Management
@@ -20,11 +20,7 @@ wacn.date: 09/20/2017
 ---
 # 如何取消订阅？
 
-## 如何取消订阅
-
-有两种方式可以取消订阅 :
-
-### 方法一
+## 通过 Azure 账户管理门户取消订阅
 
 1. 使用账户所有者登录到 [Azure 账户管理门户](https://account.windowsazure.cn) > 点击要取消的**订阅名称** :
 
@@ -38,7 +34,7 @@ wacn.date: 09/20/2017
 
     ![03](media/aog-commerce-subscription-management-cancel/03.png)
 
-### 方法二
+## 通过 Azure 门户取消订阅
 
 1. 使用账户所有者登录到 [Azure 门户](https://portal.azure.cn)
 2. 依次点击页面左侧的 **订阅** > 选择要取消的 **订阅名称** ，在概述页面，点击 “**取消订阅**”
@@ -54,6 +50,6 @@ wacn.date: 09/20/2017
 
 ## 相关文档
 
-- [订阅管理 - 创建](aog-subscription-management-create.md)
-- [订阅管理 - 重命名](aog-subscription-management-rename.md)
-- [订阅管理 - 迁移](aog-subscription-management-migrate.md)
+- [如何创建订阅？](aog-subscription-management-create.md)
+- [如何重命名订阅？](aog-subscription-management-rename.md)
+- [如何在企业门户中迁移订阅？](aog-subscription-management-migrate.md)

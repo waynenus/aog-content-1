@@ -20,9 +20,7 @@ wacn.date: 09/20/2017
 ---
 # 如何重命名订阅？
 
-## 如何更改订阅名称
-
-### 方法一
+## 通过 Azure 账户管理门户重命名订阅
 
 1. 登陆到 [Azure 账户管理门户](https://account.windowsazure.cn)
 2. 点击要**更改名称的订阅**
@@ -37,7 +35,7 @@ wacn.date: 09/20/2017
 
     ![03](media/aog-commerce-subscription-management-rename/03.png)
 
-### 方法二
+## 通过 Azure 门户重命名订阅
 
 1. 登陆到 [Azure 门户](https://portal.azure.cn)
 2. 依次点击 “**订阅**” > 选中**要更改名称的订阅** > “**概述**” > “**重命名**”
@@ -50,6 +48,6 @@ wacn.date: 09/20/2017
 
 ## 相关文档
 
-- [订阅管理 - 创建](aog-subscription-management-create.md)
-- [订阅管理 - 取消](aog-subscription-management-cancel.md)
-- [订阅管理 - 迁移](aog-subscription-management-migrate.md)
+- [如何创建订阅？](aog-subscription-management-create.md)
+- [如何取消订阅？](aog-subscription-management-cancel.md)
+- [如何在企业门户中迁移订阅？](aog-subscription-management-migrate.md)

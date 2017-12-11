@@ -71,13 +71,13 @@ wacn.date: 10/24/2017
 
 ## 概述下显示的用量
 
-[账户管理门户](http://account.windowsazure.cn)的概述里显示的用量为近十天内的（例：若当日时间为 8/15，那么显示的就是 8/5 - 8/15 的用量），由于该用量并非实时准确，建议用户通过下载使用量详细信息，并结合每周一系统发送的余额提醒通知邮件来进行一周的费用估算。
+[账户管理门户](http://account.windowsazure.cn)的概述里显示的用量为近十天内的（例：若当日时间为 8/15，那么显示的就是 8/5 - 8/15 的用量），由于该用量并非实时准确，建议用户通过下载使用率详细信息，并结合每周一系统发送的余额提醒通知邮件来进行一周的费用估算。
 
 ![09](media/aog-commerce-subscription-management-billing-portal-guidance/09.png)
 
 ## 下载账单
 
-点击“**概述**”页面右侧的“**下载使用量详细信息**”，或者点击“**账单历史记录**”。
+点击“**概述**”页面右侧的“**下载使用率详细信息**”，或者点击“**账单历史记录**”。
 
 ![10](media/aog-commerce-subscription-management-billing-portal-guidance/10.png)
 
@@ -87,7 +87,32 @@ wacn.date: 10/24/2017
 
 ## 设置服务管理员
 
-在账号创建最初，服务管理员会默认与账号管理员一致，如果需要将职能分派给其他人，账户管理员可以将其服务管理员做出修改。
+在账户创建后，服务管理员会默认与账户管理员一致，若您需要将服务管理员分派给其他人，您可参考下列操作：
+
+1. 创建用户
+
+    1. 登陆[Azure 门户](https://portal.azure.cn)后，点击左侧菜单的 “**Azure Active Directory**”。（若您看不到此选项，请点击 “**更多服务**”，并在搜索框中输入 “**Azure Active Directory**”。)
+
+        ![add-account-01](media/aog-commerce-subscription-management-billing-portal-guidance/add-account-01.png)
+
+    2. 点击 “**用户和组**”。
+
+        ![add-account-02](media/aog-commerce-subscription-management-billing-portal-guidance/add-account-02.png)
+
+        
+    3. 点击 “**所有用户**” 后，继续点击 “**新建用户**”。
+
+        ![add-account-03](media/aog-commerce-subscription-management-billing-portal-guidance/add-account-03.png)
+
+    4. 填写用户信息，点击 “**创建**”。请留意在填入用户名时，用户名的格式不仅需要与您的组织 ID 一致，@后缀也需要一致。
+
+        ![add-account-04](media/aog-commerce-subscription-management-billing-portal-guidance/add-account-04.png)
+
+    5. 您可以在用户列表中看到已新增的用户信息。
+
+        ![add-account-05](media/aog-commerce-subscription-management-billing-portal-guidance/add-account-05.png)
+
+2. 赋予用户服务管理员角色。
 
 在[账户管理门户](http://account.windowsazure.cn)，点击“**编辑订阅详细信息**”。
 
