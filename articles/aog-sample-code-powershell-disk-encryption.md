@@ -79,85 +79,95 @@ wacn.date: 06/21/2017
         Connect-MsolService -AzureEnvironment azurechinacloud
         New-MsolServicePrincipalCredential -AppPrincipalId $aadClientID -Type asymmetric -Value $credValue -Usage verify
 
-    将 PFX 证书文件上传到 Key Vault。  
-    使用基于客户端机密的身份验证可跳过这一步。  
-    $keyVaultSecretName的值可以任意设置。
+将 PFX 证书文件上传到 Key Vault, 机密名变量 $keyVaultSecretName 的值可以任意设置。 
+> [!TIP]
+> 使用基于客户端机密的身份验证可跳过这一步。  
 
-    > [!TIP]
-    > 请将 <yourpassword> 字符串替换为 pfx 证书的安全密码。
+> [!TIP]
+> 请将 <yourpassword> 字符串替换为 pfx 证书的安全密码。
 
-        $certLocalPath = "C:\certificates\examplecert.pfx"
-        $certPassword = "<yourpassword>"
-        $resourceGroupName = "<yourResourcegroup>"
-        $keyVaultName = "<yourKeyVaultName>"
-        $keyVaultSecretName = "<yourAadCertSecretName>"
+    $certLocalPath = "C:\certificates\examplecert.pfx"
+    $certPassword = "<yourpassword>"
+    $resourceGroupName = "<yourResourcegroup>"
+    $keyVaultName = "<yourKeyVaultName>"
+    $keyVaultSecretName = "<yourAadCertSecretName>"
 
-        $fileContentBytes = get-content $certLocalPath -Encoding Byte
-        $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
-        $jsonObject = @"
-        {
-        "data": "$filecontentencoded",
-        "dataType": "pfx",
-        "password": "$certPassword"
-        }
-        "@
-        $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
-        $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
-        $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
-        Set-AzureKeyVaultSecret -VaultName $keyVaultName -Name $keyVaultSecretName -SecretValue $secret
-        Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $resourceGroupName –EnabledForDeployment
+    $fileContentBytes = get-content $certLocalPath -Encoding Byte
+    $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
+    $jsonObject = @"
+    {
+    "data": "$filecontentencoded",
+    "dataType": "pfx",
+    "password": "$certPassword"
+    }
+    "@
+    $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
+    $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
+    $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
+    Set-AzureKeyVaultSecret -VaultName $keyVaultName -Name $keyVaultSecretName -SecretValue $secret
+    Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $resourceGroupName –EnabledForDeployment
 
-    将 Key Vault 中的证书部署到现有 VM。
+将 Key Vault 中的证书部署到现有 VM。
+> [!TIP]
+> 使用基于客户端机密的身份验证可跳过这一步。
 
-    使用基于客户端机密的身份验证可跳过这一步。
+    $resourceGroupName = "<yourResourcegroup>"
+    $keyVaultName = "<yourKeyVaultName>"
+    $keyVaultSecretName = "<yourAadCertSecretName>"
+    $vmName = "<yourVMName>"
+    $certUrl = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -Name $keyVaultSecretName).Id
+    $sourceVaultId = (Get-AzureRmKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName).ResourceId
+    $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName
+    $vm = Add-AzureRmVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore "My" -CertificateUrl $certUrl
+    Update-AzureRmVM -VM $vm -ResourceGroupName $resourceGroupName
 
-        $resourceGroupName = "<yourResourcegroup>"
-        $keyVaultName = "<yourKeyVaultName>"
-        $keyVaultSecretName = "<yourAadCertSecretName>"
-        $vmName = "<yourVMName>"
-        $certUrl = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -Name $keyVaultSecretName).Id
-        $sourceVaultId = (Get-AzureRmKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName).ResourceId
-        $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName
-        $vm = Add-AzureRmVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore "My" -CertificateUrl $certUrl
-        Update-AzureRmVM -VM $vm -ResourceGroupName $resourceGroupName
+为 Azure AD 应用程序设置 Key Vault 访问策略 :
 
-    为 Azure AD 应用程序设置 Key Vault 访问策略 :
+    $keyVaultName = "<yourKeyVaultName>"
+    $AADClientID = $AzureAdApplication.ApplicationId 
+    $RGName = "<yourResourceGroup>"
+    Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $AADClientID -PermissionsToKeys "WrapKey" -PermissionsToSecrets "Set" -ResourceGroupName $RGName
 
-        $keyVaultName = "<yourKeyVaultName>"
-        $AADClientID = $AzureAdApplication.ApplicationId 
-        $RGName = "<yourResourceGroup>"
-        Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $AADClientID -PermissionsToKeys "WrapKey" -PermissionsToSecrets "Set" -ResourceGroupName $RGName
+设置密钥加密密钥（可选）:
 
-    设置密钥加密密钥（可选）:
+    $KEKName = "<yourKEKName>"
+    $KEK = Add-AzureKeyVaultKey -VaultName $VaultName -Name $KEKName -Destination "Software"
+    $KeyEncryptionKeyUrl = $KEK.Key.kid
 
-        $KEKName = "<yourKEKName>"
-        $KEK = Add-AzureKeyVaultKey -VaultName $VaultName -Name $KEKName -Destination "Software"
-        $KeyEncryptionKeyUrl = $KEK.Key.kid
+设置 Key Vault 权限 :
 
-    设置 Key Vault 权限 :
+    $keyVaultName = "<yourKeyVaultName>"
+    $RGName = "<yourResourceGroup>"
+    Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $RGName -EnabledForDiskEncryption
 
-        $keyVaultName = "<yourKeyVaultName>"
-        $RGName = "<yourResourceGroup>"
-        Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $RGName -EnabledForDiskEncryption
+为 Azure VM 开启磁盘加密功能
 
-    为 Azure AD 应用程序设置 Key Vault 访问策略 :
+请根据之前配置的 Azure AD 应用程序和密钥加密密钥的情况选择以下四种方式之一配置 Azure VM 磁盘加密功能。
 
-        $keyVaultName = "<yourKeyVaultName>"
-        $AADClientID = $AzureAdApplication.ApplicationId 
-        $RGName = "<yourResourceGroup>"
-        Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $AADClientID -PermissionsToKeys "WrapKey" -PermissionsToSecrets "Set" -ResourceGroupName $RGName
+1.	使用基于客户端机密的身份验证
 
-    设置密钥加密密钥（可选）:
+        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
 
-        $KEKName = "<yourKEKName>"
-        $KEK = Add-AzureKeyVaultKey -VaultName $VaultName -Name $KEKName -Destination "Software"
-        $KeyEncryptionKeyUrl = $KEK.Key.kid
+2.	使用基于客户端机密的身份验证，并使用密钥加密密钥
 
-    设置 Key Vault 权限 :
+        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $vmName -AadClientID $AADClientID -AadClientSecret $AADClientSecret -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId
 
-        $keyVaultName = "<yourKeyVaultName>"
-        $RGName = "<yourResourceGroup>"
-        Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $RGName -EnabledForDiskEncryption
+3.	使用基于证书的身份验证
+
+        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
+
+4.	使用基于证书的身份验证，并使用密钥加密密钥
+
+        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId
+
+查看当前订阅内的VM 磁盘加密状态
+
+    $osVolEncrypted = {(Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
+
+    $dataVolEncrypted= {(Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
+
+    Get-AzureRmVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
+
 
 ## 脚本链接
 
