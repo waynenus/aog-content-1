@@ -21,15 +21,15 @@ VPN 故障排查过程通常比较复杂，而客户在本地 VPN 设备做抓�
 
 ## 使用 NMAP 工具
 
-由于 Azure 使用 IKE 协议做 IPSec 通信之前的协商，使用的不是 TCP 协议端口，故不能使用简单的 telnet 或是 psping/paping 工具。这里为大家介绍的是 nmap 工具。
+由于 Azure 使用 IKE 协议做 IPSec 通信之前的协商，使用的不是 TCP 协议端口，故不能使用简单的 telnet 或是 psping/paping 工具。这里为大家介绍的是 NMAP 工具。
 
-### 安装 nmap 方法：
+### 安装 NMAP 方法：
 
 - CentOS: `yum install nmap`<br>
 - Ubuntu: `sudo apt-get install nmap`<br>
 - Windows 操作系统: 在[此处](https://nmap.org/download.html)下载并安装。
 
-由于 IKE 协商是基于 UDP 端口 500 或 4500（启用了 NAT-T），请参考如下方法在位于 Azure 上的与 Azure VPN 网关在同一个虚拟网络的虚拟机中使用 nmap 工具测试本地 VPN 设备协商用的公网 IP 的端口，以下以 Linux 虚拟机为例：
+由于 IKE 协商是基于 UDP 端口 500 或 4500（启用了 NAT-T），请参考如下方法在位于 Azure 上的与 Azure VPN 网关在同一个虚拟网络的虚拟机中使用 NMAP 工具测试本地 VPN 设备协商用的公网 IP 的端口，以下以 Linux 虚拟机为例：
 
 先探测此 IP 的 TCP 端口侦听情况：
 
