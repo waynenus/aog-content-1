@@ -23,7 +23,7 @@ VPN 故障排查过程通常比较复杂，而客户在本地 vpn 设备做抓�
 
 由于 Azure 使用 IKE 协议做 IPSec 通信之前的协商，使用的不是 TCP 协议端口，故不能使用简单的 telnet 或是 psping/paping 工具。这里为大家介绍的是 nmap 工具。
 
-Linux 操作系统系统安装 nmap 方法：
+### 安装 nmap 方法：
 
 - CentOS: `yum install nmap`<br>
 - Ubuntu: `sudo apt-get install nmap`<br>
@@ -33,7 +33,7 @@ Linux 操作系统系统安装 nmap 方法：
 
 先探测此 IP 的 TCP 端口侦听情况：
 
-### TCP:
+**TCP:**
 
 ```
 E:~$ sudo nmap -sT 203.xxx.xxx.xxx
@@ -47,7 +47,7 @@ Nmap done: 1 IP address (0 hosts up) scanned in 3.04 seconds
 
 再确认此 IP 的所有 UDP 端口状态：
 
-### UDP:
+**UDP:**
 
 ```
 E:~$ sudo nmap -sU 203.xxx..xxx.xxx
@@ -59,7 +59,7 @@ Nmap done: 1 IP address (0 hosts up) scanned in 3.04 seconds
 
 发现没有探测到这个 IP 的任何 UDP 端口是 UP 状态。因此判断这是 vpn 隧道断开的直接原因。问题的根本原因可以根据此现象做进一步定位。
 
-### 对比正常的情况（举例测试）：
+**对比正常的情况（举例测试）：**
 
 ```
 E :~$ sudo  nmap -sU 139.xxx.xxx.xxx
