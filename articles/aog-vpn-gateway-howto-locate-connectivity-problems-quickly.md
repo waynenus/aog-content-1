@@ -1,6 +1,6 @@
 ---
-title: "如何快速定位本地到 Azure 端 vpn 隧道连通性问题"
-description: "如何快速定位本地到 Azure 端 vpn 隧道连通性问题"
+title: "如何快速定位本地到 Azure 端 VPN 隧道连通性问题"
+description: "如何快速定位本地到 Azure 端 VPN 隧道连通性问题"
 author: Bingyu83
 resourceTags: 'VPN Gateway, Connectivity'
 ms.service: vpn-gateway
@@ -11,11 +11,11 @@ ms.date: 12/20/2017
 wacn.date: 12/20/2017
 ---
 
-# 如何快速定位本地到 Azure 端 vpn 隧道连通性问题
+# 如何快速定位本地到 Azure 端 VPN 隧道连通性问题
 
 VPN 隧道的连通性通常与 VPN 网关配置本身以及网关之间的运营商网络稳定性有关。
 
-VPN 故障排查过程通常比较复杂，而客户在本地 vpn 设备做抓包或是联系 Azure 技术支持再做抓包通常需要较长的时间做准备，而且问题往往在开始抓包之前消失。
+VPN 故障排查过程通常比较复杂，而客户在本地 VPN 设备做抓包或是联系 Azure 技术支持再做抓包通常需要较长的时间做准备，而且问题往往在开始抓包之前消失。
 
 本文主要针对本地和 Azure 端正确配置了 VPN 相关参数，但仍然出现 VPN 隧道连通不稳定的情况，介绍了几种快速及时定位问题的方法，从而为快速排除故障提供了有力的支持。
 
@@ -29,7 +29,7 @@ VPN 故障排查过程通常比较复杂，而客户在本地 vpn 设备做抓�
 - Ubuntu: `sudo apt-get install nmap`<br>
 - Windows 操作系统: 在[此处](https://nmap.org/download.html)下载并安装。
 
-由于 IKE 协商是基于 UDP 端口 500 或 4500（启用了 NAT-T），请参考如下方法在位于 Azure 上的与 Azure VPN 网关在同一个虚拟网络的虚拟机中使用 nmap 工具测试本地 vpn 设备协商用的公网 IP 的端口，以下以 Linux 虚拟机为例：
+由于 IKE 协商是基于 UDP 端口 500 或 4500（启用了 NAT-T），请参考如下方法在位于 Azure 上的与 Azure VPN 网关在同一个虚拟网络的虚拟机中使用 nmap 工具测试本地 VPN 设备协商用的公网 IP 的端口，以下以 Linux 虚拟机为例：
 
 先探测此 IP 的 TCP 端口侦听情况：
 
@@ -57,7 +57,7 @@ Note: Host seems down. If it is really up, but blocking our ping probes, try -Pn
 Nmap done: 1 IP address (0 hosts up) scanned in 3.04 seconds
 ```
 
-发现没有探测到这个 IP 的任何 UDP 端口是 UP 状态。因此判断这是 vpn 隧道断开的直接原因。问题的根本原因可以根据此现象做进一步定位。
+发现没有探测到这个 IP 的任何 UDP 端口是 UP 状态。因此判断这是 VPN 隧道断开的直接原因。问题的根本原因可以根据此现象做进一步定位。
 
 **对比正常的情况（举例测试）：**
 
@@ -80,7 +80,7 @@ Nmap done: 1 IP address (1 host up) scanned in 16.67 seconds
 
 ## 收集 VPN 网关的诊断日志
 
-除了以上基本的端口连通性测试外，客户也可以通过 PowerShell 打开针对 Azure vpn 的诊断日志，具体步骤如下：
+除了以上基本的端口连通性测试外，客户也可以通过 PowerShell 打开针对 Azure VPN 的诊断日志，具体步骤如下：
 
 ```PowerShell
 # VNET Resource Group and Name
