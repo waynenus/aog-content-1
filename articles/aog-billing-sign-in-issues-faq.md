@@ -29,7 +29,7 @@ wacn.date: 12/27/2017
 </ul>
 <span>修改完成后，请刷新当前的 Azure 注册页，检查问题是否已解决。如果刷新没有解决此问题，请退出并重新启动您的浏览器，然后再试一次。</span>
 <li style="font-weight: bold">注册页面出现“抱歉！1 元人民币的试用订阅/标准预付费服务不可用。您没有资格获得此特定 Promo 产品/服务”的提示信息</li>
-<p><span style="font-weight: bold">解决方案：</span><span>若您之前申请过 Azure 试用，但没有完成注册流程。这个提示信息表示您未能在有效期内使用注册激活码，您可点击以下链接重新申请。</span></p><br>
+<p><span style="font-weight: bold">解决方案：</span><span>若您之前申请过 Azure 试用，但没有完成注册流程。这个提示信息表示您未能在有效期内使用注册激活码，您可点击以下链接重新申请。</span></p>
 <a href="https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth">Azure 试用申请表</a><br>
 <a href="https://www.azure.cn/pricing/pia-waiting-list/?form-type=identityauth">Azure 预付费产品购买申请表</a>
 <li style="font-weight: bold">当您登录 Azure 门户或 Azure 账户中心看到”看来您还未创建任何订阅”的提示信息</li>
