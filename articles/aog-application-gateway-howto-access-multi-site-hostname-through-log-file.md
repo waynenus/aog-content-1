@@ -33,7 +33,7 @@ wacn.date: 01/04/2018
 
 配置举例如下（以下两个侦听器对应的规则所关联的后端池是相同的）：
 
-![01](media/aog-application-gateway-howto-access-multi-site-hostname-through-log-file/01.PNG)
+![01](media/aog-application-gateway-howto-access-multi-site-hostname-through-log-file/01.png)
 
 但是此前用户会遇到一个问题，由于是多站点，使用同一个前端 IP，来自客户端的到达不同站点的请求经过 DNS 解析后，均是到达此应用程序网关的前端 IP，用户需要进一步统计到达这个应用程序网关前端 IP 的请求中哪些是访问 `www.a.com` 的，哪些是访问 `www.b.com` 的。
 
