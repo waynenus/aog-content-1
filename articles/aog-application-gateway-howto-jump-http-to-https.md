@@ -34,7 +34,7 @@ Azure 应用程序网关采用的是类似于反向代理服务器的工作方�
 
 由于应用程序网关向后端服务器发起的请求改变了客户端请求的源地址，所以从 TCP 层面来讲，客户端的信息会丢失，但是从 HTTP 层面来讲这个信息并未丢失。这主要是因为应用程序网关会在 HTTP 包头内部添加 X-Forwarded 字段来记录客户端访问的源 IP、源端口、访问协议和请求的目的地址端口。
 
-假设我们成功部署下面的环境，应用程序网关前端开启 80 端口走 HTTP 协议， 443 端口走 HTTPS 协议（同时完成 SSL 卸载），后端只开启 80 端口走 HTTP 协议（目前中国区 Azure 应用程序网关在后端只支持 HTTP 协议）。
+假设我们成功部署下面的环境，应用程序网关前端开启 80 端口走 HTTP 协议， 443 端口走 HTTPS 协议（同时完成 SSL 卸载），后端只开启 80 端口走 HTTP 协议。
 
 ![virtual-network-2](./media/aog-application-gateway-howto-jump-http-to-https/virtual-network-2.png)
 
