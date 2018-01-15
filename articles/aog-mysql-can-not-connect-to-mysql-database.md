@@ -32,9 +32,9 @@ wacn.date: 1/9/2018
 
 ## 解决方案
 
-针对 MySQL 语句执行时间过长，我们可以采取以下方式防止连接被终止：
+### 针对 MySQL 语句执行时间过长，我们可以采取以下方式防止连接被终止：
 
-### 使用实例级 `wait_timeout` 和 `interactive_timeout`, 设置为最大值，优化查询语句，使其在设置时间内完成。 
+#### 使用实例级 `wait_timeout` 和 `interactive_timeout`, 设置为最大值，优化查询语句，使其在设置时间内完成。 
 
 1. 通过 [Azure 门户](https://portal.azure.cn) 修改 MySQL DataBase on Azure 服务器参数，分别将 `wait_timeout` 和 `interactive_timeout` 设置为最大值 240s, 1800s。如图所示：
 
@@ -45,7 +45,7 @@ wacn.date: 1/9/2018
 
 2. 优化 mysql 语句，使其在设置时间内完成。
 
-### 使用会话级别 `wait_timeout` 和 `interactive_timeout`
+#### 使用会话级别 `wait_timeout` 和 `interactive_timeout`
 
 通过 Azure 门户可以设置 `wait_timeout` 和 `interactive_timeout` 的最大值分别为 240s，1800s。如果想要设置更大的值，可以设置会话级别的 `wait_timeout` 和 `interactive_timeout`。在建立交互式或非交互式连接之后，可以使用代码或者命令设置当前会话 MySQL 数据库连接 `wait_timeout` 和 `interactive_timeout` 的值。
 
@@ -60,7 +60,7 @@ set interactive_timeout = 7200;
 show variables like '%timeout%';
 ```
 
-针对 MySQL 客户端闲置时间过长被 Azure 流量管理器终结这种情况，可以通过设置 ”心跳” 的方式，防止被 Azure 流量管理器终结。
+### 针对 MySQL 客户端闲置时间过长被 Azure 流量管理器终结这种情况，可以通过设置 ”心跳” 的方式，防止被 Azure 流量管理器终结。
 
 * Windows 系统
 
@@ -77,7 +77,7 @@ show variables like '%timeout%';
 
     需要修改 4 个操作系统的 keepalive 参数：
 
-    1. `tcp_keepalive_probes` : 在认定连接失效之前，已发送的 TCP keepalive 探测包的个数。
+    1. `tcp_keepalive_probes` : 在认定连接失效之前，已发送的 TCP keepalive 探测包的个数。<br>
         使用该值乘以 `tcp_keepalive_intvl` 表明连接在发送了 keepalive 之后可以保持多长时间无需做出回应。
     2. `tcp_keepalive_time` : 最后一次数据交换到 TCP 发送第一个保活探测包的间隔，即允许的持续空闲时长，也就是每次正常发送心跳的周期。
     3. `tcp_keepalive_intvl` : 发送探测包的间隔周期。
