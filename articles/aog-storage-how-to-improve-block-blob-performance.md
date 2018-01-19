@@ -57,7 +57,8 @@ Console.WriteLine("block size: 16K，block 块数：" + item1.Count() + "，耗�
 
 ![consoleresult](./media/aog-storage-how-to-improve-block-blob-performance/consoleresult.PNG)
 
-> [!Note] 使用以上代码获取的时间是执行请求操作的总时间，包含网络延迟的时间。
+> [!Note]
+> 使用以上代码获取的时间是执行请求操作的总时间，包含网络延迟的时间。
 
 通过 [Azure 门户](https://portal.azure.cn/) [启用存储监视](https://docs.azure.cn/storage/common/storage-monitor-storage-account)，可以在存储日志中获取存储执行请求操作的执行时间（不包括网络延迟时间）。
 
@@ -76,6 +77,3 @@ Console.WriteLine("block size: 16K，block 块数：" + item1.Count() + "，耗�
 1. 在使用 Block Blob 存储日志文件时，为了避免为很小的日志文件创建一个单独的 Block 块，建议可以将日志记录在本地文件中，然后定期读取文件上传到 Blob 中。
 
 2. 在设置每个 Block 块的的尺寸时，网速的好坏也会影响读取的性能，如果网速好的话，建议可以设置较大的值（最大值不超过 100MB），如果网速不好的话，可以减小这个值。
-
-
-    

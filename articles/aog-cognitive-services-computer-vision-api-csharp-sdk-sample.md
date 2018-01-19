@@ -137,7 +137,7 @@ namespace ComputerDemo
 
 ## 更多参考
 
-[计算机视觉 API 1.0 版](https://docs.azure.cn/zh-cn/cognitive-services/computer-vision/home)
-[Computer Vision API](https://dev.cognitive.azure.cn/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa)
-[认知服务计算机视觉 API - Windows](https://github.com/Microsoft/Cognitive-Vision-Windows)
+[计算机视觉 API 1.0 版](https://docs.azure.cn/zh-cn/cognitive-services/computer-vision/home)<br>
+[Computer Vision API](https://dev.cognitive.azure.cn/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa)<br>
+[认知服务计算机视觉 API - Windows](https://github.com/Microsoft/Cognitive-Vision-Windows)<br>
 [中国版认知服务使用指导](https://docs.azure.cn/zh-cn/articles/azure-operations-guide/cognitive-services/aog-cognitive-services-guidance)

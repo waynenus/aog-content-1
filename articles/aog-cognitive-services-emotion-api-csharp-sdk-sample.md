@@ -70,6 +70,6 @@ namespace EmotionDemo
 
 ## 更多参考
 
-[情绪识别 API C# 教程](https://docs.azure.cn/zh-cn/cognitive-services/emotion/tutorials/csharptutorial)
-[Emotion API](https://dev.cognitive.azure.cn/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa)
+[情绪识别 API C# 教程](https://docs.azure.cn/zh-cn/cognitive-services/emotion/tutorials/csharptutorial)<br>
+[Emotion API](https://dev.cognitive.azure.cn/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa)<br>
 [中国版认知服务使用指导](https://docs.azure.cn/zh-cn/articles/azure-operations-guide/cognitive-services/aog-cognitive-services-guidance)
