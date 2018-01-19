@@ -35,8 +35,6 @@ wacn.date: 01/19/2018
 
 ![02](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/02.png)
 
-### 修改模板
-
 将下载的模板文件解压，使用 json 文本编辑器打开 template.json 文件。
 
 template.json 文件主要分为三个部分：**parameter**、**variables** 和 **resources**。
@@ -44,6 +42,8 @@ template.json 文件主要分为三个部分：**parameter**、**variables** 和
 - **parameters** : 部署时需要调用的参数，无需更改。
 - **variables** : 部署时需要用到的变量，无需更改。
 - **resources** : 部署时相关的资源配置，由于本次我们会调用现有的网卡、可用性集等资源，所以此处只需要保留虚拟机和虚拟机扩展的相关配置，其他无关资源都需要删除。
+
+### 修改模板
 
 1. 保留 resources 中的 `"type": "Microsoft.Compute/virtualMachines"` 和 `"type": "Microsoft.Compute/virtualMachines/extensions"` 字段，即当前虚拟机和扩展的配置。
 
@@ -75,15 +75,15 @@ template.json 文件主要分为三个部分：**parameter**、**variables** 和
 
     ![06](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/06.png)
 
-6. 删除虚拟机 `properties` >> `osProfile` 的属性配置。
+6. 删除虚拟机 `properties` >> `osProfile` 的属性配置：
 
     ![07](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/07.png)
 
-7. 修改虚拟机 `osDisk` 和 `dataDisks` 字段中的 `createOption` 属性为 `Attach`。
+7. 修改虚拟机 `osDisk` 和 `dataDisks` 字段中的 `createOption` 属性为 `Attach`：
 
     ![08](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/08.png)
 
-8. 删除虚拟机 `dependsOn` 字段，包括上一行最后的逗号。
+8. 删除虚拟机 `dependsOn` 字段，包括上一行最后的逗号：
 
     ![09](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/09.png)
 
