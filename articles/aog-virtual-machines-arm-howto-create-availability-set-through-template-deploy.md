@@ -13,10 +13,9 @@ wacn.date: 01/19/2018
 
 # 利用模板部署为现有 ARM 虚拟机添加可用性集
 
-众所周知，Azure 平台通过加入[可用性集](https://docs.azure.cn/zh-cn/virtual-machines/windows/manage-availability)的多台虚拟机来保证虚拟机中业务的高可用性。<br>
-但是 Azure 资源管理部署模式的 Azure 虚拟机在创建之后就无法更改可用性集，如果需要更改虚拟机的可用性集，则需要删除虚拟机进行重建。如何调用现有的资源，如何保留各项配置，则是重建过程中的常见问题。
+众所周知，Azure 平台通过加入[可用性集](https://docs.azure.cn/zh-cn/virtual-machines/windows/manage-availability)的多台虚拟机来保证虚拟机中业务的高可用性，但是 Azure 资源管理器模式下的虚拟机在创建之后就无法更改可用性集。如果需要更改虚拟机的可用性集，则需要删除虚拟机进行重建。对于如何调用现有的资源以及如何保留各项配置则是重建过程中的常见问题。
 
-本文提供了一个快捷简便的方法，利用 Azure 的模板部署功能，将现有的虚拟机快速重新创建，添加或更改其可用性集配置。
+本文提供了一个快捷有效的方法，就是利用 Azure 的模板部署功能，将现有的虚拟机快速重建，在此过程中添加或更改其可用性集配置。
 
 > [!IMPORTANT]
 > 使用本文所描述的步骤会使虚拟机中基于扩展的配置丢失，如诊断扩展配置或备份扩展配置，需要重新配置。对于有备份的虚拟机，建议暂时停止虚拟机的备份，在重建虚拟机后重新配置。
@@ -30,9 +29,9 @@ wacn.date: 01/19/2018
 
 ![01](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/01.png)
 
-### 从 Azure 门户获得当前虚拟机的模板
+### 获得当前虚拟机的模板
 
-参考文档 : [从资源组导出模板](https://docs.azure.cn/zh-cn/azure-resource-manager/resource-manager-export-template#export-the-template-from-resource-group)，将模板下载到本地。
+根据文档：[从现有资源导出 Azure Resource Manager 模板](https://docs.azure.cn/zh-cn/azure-resource-manager/resource-manager-export-template#export-the-template-from-resource-group)，将模板下载到本地。
 
 ![02](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/02.png)
 
@@ -40,23 +39,26 @@ wacn.date: 01/19/2018
 
 将下载的模板文件解压，使用 json 文本编辑器打开 template.json 文件。
 
-1. template.json 文件主要分为三个部分：**parameter**、**variables** 和 **resources**。
+template.json 文件主要分为三个部分：**parameter**、**variables** 和 **resources**。
     
-    - parameters : 决定了部署时需要调用的参数，无需更改。
-    - variables : 是部署时需要用到的变量，无需更改。
-    - resources : 字段决定了本次实际部署的资源，由于我们只需要调用现有的网卡、可用性集等资源，无需部署这些资源，所以只需要保留现有虚拟机和虚拟机扩展的相关配置，其他无关资源都需要删除。
+- **parameters** : 部署时需要调用的参数，无需更改。
+- **variables** : 部署时需要用到的变量，无需更改。
+- **resources** : 部署时相关的资源配置，由于本次我们会调用现有的网卡、可用性集等资源，所以此处只需要保留虚拟机和虚拟机扩展的相关配置，其他无关资源都需要删除。
 
-2. 在 resources 字段中找到 `"type": "Microsoft.Compute/virtualMachines"` 和 `"type": "Microsoft.Compute/virtualMachines/extensions"` 字段，即当前虚拟机和扩展的配置。
+1. 保留 resources 中的 `"type": "Microsoft.Compute/virtualMachines"` 和 `"type": "Microsoft.Compute/virtualMachines/extensions"` 字段，即当前虚拟机和扩展的配置。
 
-3. 删除 resources 字段中无关资源的内容，只保留当前虚拟机和虚拟机扩展的相关配置。在删除时请将无关资源的大括号中所有内容都删除，包括大括号本身。
+2. 删除 resources 中无关资源的配置，只保留当前虚拟机和虚拟机扩展的相关配置。
+
+    > [!NOTE]
+    > 在删除时请将无关资源的大括号中所有内容都删除，包括大括号本身。
 
     ![03](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/03.png)
 
-4. 在 parameters 中找到先前创建的可用性集，记下 parameter 名字。
+3. 在 parameters 中找到先前创建的可用性集，记下其名称，在后续步骤中需要用到该值。
 
     ![04](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/04.png)
 
-5. 在虚拟机的 properties 字段中添加 `availabilitySet` 字段: 
+4. 在虚拟机的 `properties` 字段中添加 `availabilitySet` 属性配置: 
     
     > [!NOTE]
     > 此处 parameters 应为可用性集名称，注意结尾大括号后要有逗号。
@@ -69,26 +71,26 @@ wacn.date: 01/19/2018
 
     ![05](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/05.png)
 
-6. 删除 properties 字段下 `storageProfile` 字段中的 `imageReference` 字段。
+5. 删除虚拟机 `properties` >> `storageProfile` >> `imageReference` 的属性配置，如下图所示内容：
 
     ![06](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/06.png)
 
-7. 删除 properties 字段中的 `osProfile` 字段。
+6. 删除虚拟机 `properties` >> `osProfile` 的属性配置。
 
     ![07](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/07.png)
 
-8. 修改 `osDisk` 和 `dataDisks` 字段中的 `createOption` 字段为 `Attach`。
+7. 修改虚拟机 `osDisk` 和 `dataDisks` 字段中的 `createOption` 属性为 `Attach`。
 
     ![08](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/08.png)
 
-9. 删除虚拟机的 `dependsOn` 字段，包括上一行最后的逗号。
+8. 删除虚拟机 `dependsOn` 字段，包括上一行最后的逗号。
 
     ![09](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/09.png)
 
-10. 对修改完的模板进行检查，保证 resources 字段中只包含需要重创的虚拟机和其扩展配置。
+9. 对修改完的模板进行检查，保证 resources 中只包含需要重创的虚拟机及其扩展配置。
 
 > [!NOTE]
-> 请确保以上所修改的模板没有多余的空行，最后几行也没有多余的逗号。
+> 请确保以上所修改的模板没有多余的空行，结尾也没有多余的逗号。
 
 ### 删除当前虚拟机
 
@@ -96,7 +98,7 @@ wacn.date: 01/19/2018
 
 ### 进行模板部署
 
-在 [Azure 门户](https://portal.azure.cn/)左侧点击 “**新建**” 按钮，搜索 “**模板部署**”。
+在 [Azure 门户](https://portal.azure.cn/)中点击左侧 “**新建**” 按钮，搜索 “**模板部署**”。
 
 ![10](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/10.png)
 
@@ -106,8 +108,8 @@ wacn.date: 01/19/2018
 
 ![11](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/11.png)
 
-选择相应的**订阅**和**资源组**。<br>
-点击 “**法律条款**” 选择 “**购买**”，即可进行部署。
+选择相关**订阅**和**资源组**。<br>
+点击 “**法律条款**” >> “**购买**”，而后点击 “**创建**” 进行部署。
 
 ![12](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/12.png)
 
