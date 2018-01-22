@@ -27,8 +27,7 @@ wacn.date: 12/14/2017
 ```PowerShell
 $Resourcegroup = "<yourResourceGroupName>"
 $StorageAccountName = "<yourStorageAccountName>"
-
-$StorageAccountKey = Get-AzureRmStorageAccountKey -ResourceGroupName $Resourcegroup -Name $StorageAccountName
+$StorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $Resourcegroup -AccountName $StorageAccountName).Value[0]
 $StorageContext = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 $container = Get-AzureStorageContainer -Name $logcontainer -Context $StorageContext
 ```
