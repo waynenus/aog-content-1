@@ -62,5 +62,5 @@ Azure AD 提供一组不同的管理角色，用于管理目录和标识相关�
 
 ## 相关资源
 
-- 若要了解有关如何在 Azure 中控制资源访问的详细信息，请参阅[了解 Azure 中的资源访问权限](/documentation/articles/active-directory-understanding-resource-access/)。
-- 有关如何在 Azure AD 中分配角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](/documentation/articles/active-directory-assign-admin-roles/)。
+- 若要了解有关如何在 Azure 中控制资源访问的详细信息，请参阅[了解 Azure 中的资源访问权限](/active-directory/active-directory-understanding-resource-access)。
+- 有关如何在 Azure AD 中分配角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](/active-directory/active-directory-assign-admin-roles)。
