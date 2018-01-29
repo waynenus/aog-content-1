@@ -47,7 +47,7 @@ Get-AzureVM -Servicename 'classicvm8' -Name 'classicvm'| Get-AzureEndpoint
 ### 添加虚拟机终结点
 
 ```PowerShell
-Get-AzureVM -ServiceName "classicvm8" -Name "c" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 | Update-AzureVM
+Get-AzureVM -ServiceName "classicvm8" -Name "classicvm" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 | Update-AzureVM
 ```
 
 该指令在虚拟机上增加了一个终结点，名称 **HttpIn**,协议 **tcp**，公用端口 **80**，私有端口 **8080**。<br>
@@ -56,7 +56,7 @@ Get-AzureVM -ServiceName "classicvm8" -Name "c" | Add-AzureEndpoint -Name "HttpI
 > [!NOTE]
 > 增加终结点的操作不会引起虚拟机重启，也不需要虚拟机重启。
 
-## 通过 PowerShell 脚本批量的c增加终结点
+## 通过 PowerShell 脚本批量地增加终结点
 
 首先在 Excel 输入需要一次性添加的终结点，然后以 csv 文件格式导出。<br>
 关于在 PowerShell 中导入 .csv 文件请阅读[这篇文章](https://technet.microsoft.com/zh-cn/library/ee176874.aspx)。
