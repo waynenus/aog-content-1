@@ -29,15 +29,13 @@
 ## 前提条件
 
 - 有效的 Azure 订阅
-- 已经安装了 [Azure PowerShell 3.1.0](https://github.com/Azure/azure-powershell/releases/tag/v3.1.0-November2016) 模块的 Windows 电脑
+- 已经安装了 [最新 Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview) 模块的 Windows 电脑
 
 ## 操作步骤
 
 ### 查看并更新 Azure 自动化账户的 PowerShell 模块版本
 
-由于 Azure 自动化账户默认使用的 PowerShell 版本过旧，需要更新相应的模块版本。请参阅[如何更新 Azure 自动化服务的 PowerShell 模块](/documentation/articles/aog-automation-powershell-module-update/)，更新 Azure 自动化账户资产里的 `AzureRm.Profile`、`AzureRM.Storage`、`AzureRM.Compute` 模块至 2.2.0 或以上，Azure 模块至 3.1.0 或以上，否则 PowerShell 脚本会报错。
-
-本地电脑上的 AzureRM 子模块默认存放在 `C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ResourceManager\AzureResourceManager`， Azure 模块默认存放在 `C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement`。如果压缩 zip 文件大小超过了 40MB，导致上传至自动化账户时报错，请使用 7zip 压缩工具，在压缩时选择极限压缩，保证压缩文件不要超过 40MB。
+Azure自动化账户默认使用的PowerShell版本为 1.0。如果需要更新相应的模块版本，请参阅[如何更新 Azure 自动化服务的 PowerShell 模块](/documentation/articles/aog-automation-powershell-module-update/)，更新Azure自动化账户的PowerShell模块。
 
 ### 准备验证使用的证书
 
