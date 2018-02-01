@@ -24,4 +24,5 @@ wacn.date: 01/31/2018
 ## 解决方法
 
 以企业管理员身份登录[企业门户](https://ea.azure.cn/)，点击左侧 “**管理**”，在 “**合约**” 标签页下，将“**AO 视图费用**” 设置为 “**启用**” 。此时账户管理员即可看到自己创建的订阅的账单费用。
+
 ![02](media/aog-commerce-subscription-management-qa-ea-portal-download-billing-cannot-display-cost-rate/02.png)
