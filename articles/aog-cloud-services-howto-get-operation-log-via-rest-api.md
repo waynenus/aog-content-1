@@ -30,6 +30,7 @@ Azure 门户提供了一个操作日志（Operation Log）的功能，可以用�
 
         > [!NOTE]
         > 文档中给出的是国际版 Azure 的终结点地址，使用中国区 Azure 需要将 `management.windows.net` 修改为 `management.core.chinacloudapi.cn`。
+        
         ![01](media/aog-cloud-services-howto-get-operation-log-via-rest-api/01.png)
 
     - URI 参数：
@@ -52,15 +53,15 @@ Azure 门户提供了一个操作日志（Operation Log）的功能，可以用�
 
     - `x-ms-version`：2012-03-01 （或更高版本）
     - `Authorization`：调用以下 REST API 来获取
-        - RESTAPI: https://login.chinacloudapi.cn/common/oauth2/token?api-version=1.0 
-        - Method: POST
-        - HEADER: Content-Type: application/x-www-form-urlencoded
-        - POST DATA: 
-            - grant_type: password  # 固定值
-            - resource: https://management.core.chinacloudapi.cn/  # 固定值
-            - username: 订阅登录账户
-            - password: 订阅登录密码
-            - client_id:  1950a258-227b-4e31-a9cf-717495945fc2  # 固定值
+        - `RESTAPI: https://login.chinacloudapi.cn/common/oauth2/token?api-version=1.0` 
+        - `Method: POST`
+        - `HEADER: Content-Type: application/x-www-form-urlencoded`
+        - `POST DATA`: 
+            - `grant_type: password  # 固定值`
+            - `resource: https://management.core.chinacloudapi.cn/  # 固定值`
+            - `username: 订阅登录账户`
+            - `password: 订阅登录密码`
+            - `client_id:  1950a258-227b-4e31-a9cf-717495945fc2  # 固定值`
 
     如下示例：`access_token` 的值即 `Authorization` 值：
     
