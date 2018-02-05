@@ -1,12 +1,12 @@
 ---
 title: '如何解决 HDInsight 群集仪表板登录时的 403 错误'
 description: '本文主要讲述如何解决 HDInsight 群集仪表板登录时的 403 错误'
-author: 
+author: Vavast
 resourceTags: 'HDInsight, Cluster Dashboard, Ambari, 403 ERROR'
 ms.service: hdinsight
 wacn.topic: aog
 ms.topic: article
-ms.author: 
+ms.author: v-tawe
 ms.date: 01/31/2018
 wacn.date: 01/31/2018
 ---
