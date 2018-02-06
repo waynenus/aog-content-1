@@ -13,18 +13,18 @@ wacn.date: 01/19/2018
 
 # 利用模板部署为现有 ARM 虚拟机添加可用性集
 
-众所周知，Azure 平台通过加入[可用性集](https://docs.azure.cn/zh-cn/virtual-machines/windows/manage-availability)的多台虚拟机来保证虚拟机中业务的高可用性，但是 Azure 资源管理器模式下的虚拟机在创建之后就无法更改可用性集。如果需要更改虚拟机的可用性集，则需要删除虚拟机进行重建。对于如何调用现有的资源以及如何保留各项配置则是重建过程中的常见问题。
+众所周知，Azure 平台通过将多台虚拟机加入同一个[可用性集](https://docs.azure.cn/zh-cn/virtual-machines/windows/manage-availability)来保证虚拟机中业务的高可用性。但是 Azure 资源管理器模式下的虚拟机在创建之后就无法更改可用性集。如果需要更改虚拟机的可用性集，则需要删除虚拟机进行重建。对于如何调用现有的资源以及如何保留各项配置则是重建过程中的常见问题。
 
-本文提供了一个快捷有效的方法，就是利用 Azure 的模板部署功能，将现有的虚拟机快速重建，在此过程中添加或更改其可用性集配置。
+本文提供了一个快捷有效的方法，就是利用 Azure 的模板部署功能，将现有的虚拟机快速重建，在此过程中可以为其添加或更改可用性集配置。
 
 > [!IMPORTANT]
-> 使用本文所描述的步骤会使虚拟机中基于扩展的配置丢失，如诊断扩展配置或备份扩展配置，需要重新配置。对于有备份的虚拟机，建议暂时停止虚拟机的备份，在重建虚拟机后重新配置。
+> 使用本文所描述的步骤会导致虚拟机中基于扩展的配置丢失，如诊断扩展配置或备份扩展配置，需要重新配置。对于有备份的虚拟机，建议暂时停止虚拟机的备份，在重建虚拟机后重新配置。
 
 ## 操作步骤
 
 ### 创建虚拟机所需的可用性集
 
-通过 [Azure 门户](https://portal.azure.cn/)创建可用性集，建议与现有虚拟机放在同一个资源组内，并选择与现有虚拟机相同的位置。<br>
+通过 [Azure 门户](https://portal.azure.cn/)创建可用性集，建议与将要更改可用性集配置的虚拟机放在同一个资源组内，并选择与现有虚拟机相同的位置。<br>
 如果虚拟机使用了托管磁盘，在最后一项 “**使用托管的磁盘**” 中选择 “**是(对齐)**”，如果虚拟机未使用托管磁盘，在最后一项中选择 “**否(经典)**”。
 
 ![01](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/01.png)
@@ -41,27 +41,25 @@ template.json 文件主要分为三个部分：**parameter**、**variables** 和
     
 - **parameters** : 部署时需要调用的参数，无需更改。
 - **variables** : 部署时需要用到的变量，无需更改。
-- **resources** : 部署时相关的资源配置，由于本次我们会调用现有的网卡、可用性集等资源，所以此处只需要保留虚拟机和虚拟机扩展的相关配置，其他无关资源都需要删除。
+- **resources** : 部署时相关的资源配置，由于本次我们会调用现有的网卡、可用性集等资源，所以此处只需要保留虚拟机相关的资源和虚拟机扩展的相关配置，其他无关资源都需要删除。
 
 ### 修改模板
 
-1. 保留 resources 中的 `"type": "Microsoft.Compute/virtualMachines"` 和 `"type": "Microsoft.Compute/virtualMachines/extensions"` 字段，即当前虚拟机和扩展的配置。
-
-2. 删除 resources 中无关资源的配置，只保留当前虚拟机和虚拟机扩展的相关配置。
+1. 删除 resources 中availabilitySets配置，保留其他与虚拟机本身相关的资源和扩展配置。
 
     > [!NOTE]
     > 在删除时请将无关资源的大括号中所有内容都删除，包括大括号本身。
 
     ![03](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/03.png)
 
-3. 在 parameters 中找到先前创建的可用性集，记下其名称，在后续步骤中需要用到该值。
+2. 在 parameters 中找到先前创建的可用性集，记下其名称，在后续步骤中需要用到该值。
 
     ![04](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/04.png)
 
-4. 在虚拟机的 `properties` 字段中添加 `availabilitySet` 属性配置: 
+3. 在虚拟机的 `properties` 字段中添加 `availabilitySet` 属性配置: 
     
     > [!NOTE]
-    > 此处 parameters 应为可用性集名称，注意结尾大括号后要有逗号。
+    > 此处 parameters 括号中为可用性集名称，请用第3步中记录的可用性集名称替代availabilitySets__name，注意结尾大括号后要有逗号。
 
     ```json
     "availabilitySet": {
@@ -71,23 +69,23 @@ template.json 文件主要分为三个部分：**parameter**、**variables** 和
 
     ![05](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/05.png)
 
-5. 删除虚拟机 `properties` >> `storageProfile` >> `imageReference` 的属性配置，如下图所示内容：
+4. 删除虚拟机 `properties` >> `storageProfile` >> `imageReference` 的属性配置，如下图所示内容：
 
     ![06](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/06.png)
 
-6. 删除虚拟机 `properties` >> `osProfile` 的属性配置：
+5. 删除虚拟机 `properties` >> `osProfile` 的属性配置：
 
     ![07](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/07.png)
 
-7. 修改虚拟机 `osDisk` 和 `dataDisks` 字段中的 `createOption` 属性为 `Attach`：
+6. 修改虚拟机 `osDisk` 和 `dataDisks` 字段中的 `createOption` 属性为 `Attach`：
 
     ![08](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/08.png)
 
-8. 删除虚拟机 `dependsOn` 字段，包括上一行最后的逗号：
+7. 删除虚拟机 `dependsOn` 字段，包括上一行最后的逗号：
 
     ![09](media/aog-virtual-machines-arm-howto-create-availability-set-through-template-deploy/09.png)
 
-9. 对修改完的模板进行检查，保证 resources 中只包含需要重创的虚拟机及其扩展配置。
+8. 对修改完的模板进行检查，保证 resources 中只包含需要重创的虚拟机及其扩展配置。
 
 > [!NOTE]
 > 请确保以上所修改的模板没有多余的空行，结尾也没有多余的逗号。
