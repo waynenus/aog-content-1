@@ -23,10 +23,10 @@ wacn.date: 01/31/2018
 
 ## 工作原理
 
-可读备份库的原理是基于 Create Slave 功能。简单来说，Azure 在用户启动可读备份库的同时，会增加一台名字是 yourdb-sec 的数据库，并且与用户的数据库处于同步状态。<br>
+可读备份库的原理是基于 Create Slave 功能。简单来说，Azure 在用户启动可读备份库时，后台会创建一台名为 yourdb-sec 的数据库，并且与用户的数据库处于同步状态。<br>
 Yourdb-sec 数据库同样是可读的数据库，访问时需要注意修改链接字符串，以及用户名，都要改成 yourdb-sec。<br>
 Yourdb-sec 所依赖的虚拟机与 yourdb 所依赖的虚拟机处于同一个可用性集中。这意味着两台数据库的虚拟机不共享同一个机架和电源，同时不会因为打补丁等行为造成两台虚拟机同时重启。<br>
-当故障发生时，yourdb-sec 的数据库会主动提升为 yourdb_name 的数据库，从而降低了数据库切换的时间。<br>
+当故障发生时，yourdb-sec 的数据库会被提升成名为 yourdb 的主数据库，从而降低了数据库切换的时间。<br>
 对于用户来说，当故障发生时，切换的动作几乎感知不到，无需修改链接字符串，通常切换时间可以在 60 秒内完成。<br>
 
 ![02](media/aog-mysql-howto-enable-secondary-improve-availability/02.png)
