@@ -21,9 +21,9 @@ wacn.date: 01/31/2018
 
 在 Azure 平台，我们并不推荐在不做一般化操作的前提下，通过直接复制正在运行的虚拟机的 VHD 磁盘的方式创建虚拟机。Azure 平台官方推荐对虚拟机执行一般化操作后，再通过[捕获镜像的方式创建新的虚拟机](/virtual-machines/linux/tutorial-custom-images)。
 
-因为通过复制正在运行的虚拟机的 VHD 磁盘创建出来的新的虚拟机，和原来正在运行的虚拟机所有的配置（包含 HostName）都是一致的。这将导致相同 HostName 的不同虚拟机拥有不同的 IP 地址，Azure 平台 DNS 服务器会将对应 HostName 对应的 IP 更新为最近一次重启的虚拟机内网 IP。当用户的应用配置为使用 HostName 的方式建立网络通信时，一旦有虚拟机的重启或继续用这个复制的 VHD 创建新的虚拟机时，将可能会导致网络通信的混乱或异常。因为 Azure 平台会将 HostName 对应的 IP 地址更新为最晚重启的虚拟机。
+因为通过复制正在运行的虚拟机的 VHD 磁盘创建出新的虚拟机，和原来正在运行的虚拟机所有的配置（包含 HostName）都是一致的。这将导致相同 HostName 的不同虚拟机拥有不同的 IP 地址，Azure 平台 DNS 服务器会将 HostName 对应的 IP 地址更新为最晚重启的虚拟机的内网IP。当用户的应用配置为使用 HostName 的方式建立网络通信时，一旦有虚拟机重启、或继续用这个 VHD 创建新的虚拟机时，Azure 平台可能会根据域名解析到不正确的目标虚拟机，导致业务的网络通信混乱或异常。
 
-新创建的虚拟机中的网卡配置文件同源虚拟机的网卡配置文件是完全一致的，所以新虚拟机网卡配置中的 `DHCP_HOSTNAME` 与源虚拟机一致，示例如下：源虚拟机 **CraneCenos** 和新建的虚拟机 **CranevmfromVHD** 的网卡配置文件均相同：
+新创建的虚拟机中的网卡配置文件同源虚拟机的网卡配置文件是完全一致的，所以新虚拟机网卡配置中的 `DHCP_HOSTNAME` 与源虚拟机也一致，示例如下：源虚拟机 **CraneCenos** 和新建的虚拟机 **CranevmfromVHD** 的网卡配置文件均相同：
 ```
 [crane@CraneCentos ~]$ cat /etc/sysconfig/network-scripts/ifcfg-eth0
 DEVICE=eth0
@@ -35,17 +35,17 @@ PEERDNS=yes
 IPV6INIT=no
 DHCP_HOSTNAME=CraneCentos
 ```
-此时在两台虚拟机（源虚拟机和新建虚拟机）内部运行 `host <HostName>` 命令结果是相同的，HostName 的结果均为新创建虚拟机（**cranevmfromVHD**）的内网 IP，而非源虚拟机的内网 IP。这是因为新虚拟机创建后，Azure 平台的 DNS 会将自己 DNS 中 HostName 记录更新为新创建虚拟机的 IP 地址 **172.10.1.20** ，替代源虚拟机的内网 IP （**172.10.1.4**）:
+此时在两台虚拟机（源虚拟机和新建虚拟机）内部运行 `host <HostName>` 命令结果是相同的，HostName 的结果均为新创建虚拟机（**cranevmfromVHD**）的内网 IP，而非源虚拟机的内网 IP。这是因为新虚拟机创建后，Azure 平台的 DNS 会将自己 DNS 中 HostName 记录更新为新创建虚拟机的 IP 地址 **172.10.1.20** ，来替代源虚拟机的内网 IP 地址 **172.10.1.4**:
 ```
 [crane@CraneCentos ~]$ host CraneCentos
 CraneCentos.0w2jigzwqggenpfyzenup22n0b.ax.internal.chinacloudapp.cn has address 172.10.1.20
 ```
-用 Azure 门户上显示的新建虚拟机的 HostName 则提示无法找到：
+用 Azure 门户上显示的新建虚拟机的 HostName 则会提示无法找到（新虚拟机实际 HostName 为 CraneCentos）：
 ```
 [crane@CraneCentos ~]$ host cranevmfromVHD
 Host cranevmfromVHD not found: 3(NXDOMAIN)
 ```
-我们在实际应用中，如果在同一个 VNET 下是通过 HostName 的方式访问其它虚拟机的，那么在此种情况下就会出现原本通过 HostName 的方式访问到的应该是 **172.10.1.4**，但现在通过 HostName 的方式访问到的则为另外一台 IP 地址为 **172.10.1.20** 的虚拟机，此种情况则是导致该 HostName 解析或 HostName 通信异常的原因。
+在实际应用中，如果同一个 VNET 下想通过 HostName 方式访问其它虚拟机，那么在此种情况下就会出现：通过 HostName 的方式原本访问到的应该是 **172.10.1.4**，但现在通过 HostName 的方式访问到的则为另外一台 IP 地址为 **172.10.1.20** 的虚拟机，此种情况则是导致该 HostName 解析或 HostName 通信异常的原因。
 
 ## 解决方法
 
@@ -65,7 +65,7 @@ Host cranevmfromVHD not found: 3(NXDOMAIN)
 - 以 Linux Ubuntu 操作系统为例:
 
     1. 确保 /etc/waagent.conf 文件中的如下选项为”y”：`Provisioning.MoninorHostName=y`
-    2. 通过命令 `sudo /bin/hostname <HOSTNAME>` 修改新创建虚拟机的 HostName 为 **<HOSTNAME>**。
+    2. 通过命令 `sudo /bin/hostname <HOSTNAME>` 修改新创建虚拟机的 HostName。
     3. 重启 Waagent 服务：`service WaLinuxAgent restart`
     4. 修改虚拟机内部的显示名称：`sysctl kernel.hostname=<HOSTNAME>`
     5. 重启虚拟机。
