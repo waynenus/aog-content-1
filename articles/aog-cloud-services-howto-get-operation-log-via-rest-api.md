@@ -45,7 +45,11 @@ Azure 门户提供了一个操作日志（Operation Log）的功能，可以用�
 
     `https://management.core.chinacloudapi.cn/<subscription-id>/operations?ObjectIdFilter<object-url>&StartTime=<start-of-timeframe>&EndTime=<end-of-timeframe>`
 
-    具体参数字段需要替换为您实际项目中的值，示例请求如下：
+具体参数字段需要替换为您实际项目中的值，针对cloud Service(Paas)对应的ObjectIdFilter的格式为：
+
+ObjectIdFilter=/subscription-id/services/hostedservices/cloud-service-name.
+
+因此获取某个特定的cloud Service(Paas)的示例请求如下：
 
     `https://management.core.chinacloudapi.cn/5bbf0cbb-647d-****-****-26629f109bd7/operations?ObjectIdFilter=/5bbf0cbb-647d-****-****-26629f109bd7/services/hostedservices/kevin1&StartTime=2018-01-01&EndTime=2018-01-31&api-version=2014-01`
 
