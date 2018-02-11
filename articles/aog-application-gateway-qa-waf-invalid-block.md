@@ -42,7 +42,7 @@ Azure 使用国际通用的 OWASP ModSecurity Core Rule Set, 是一套第三方�
 
 具体使用哪种方法进行调优需要您自己决定，比如可以通过第三方安全渗透测试报告，针对对应规则的漏洞的安全等级，来决定是**修改应用**还是**屏蔽规则**。
 
-### 场景范例
+### 场景描述
 
 - 请求触发了可禁用的规则
 
@@ -127,3 +127,19 @@ Azure 使用国际通用的 OWASP ModSecurity Core Rule Set, 是一套第三方�
 
     ![08](media/aog-application-gateway-qa-waf-invalid-block/08.png)
     ![09](media/aog-application-gateway-qa-waf-invalid-block/09.png)
+
+### 建议的解决方案
+
+至此基本可以判断请求触发的 WAF 规则和相关的参数，接下来如文章开始部分建议的，您可以：
+
+- 如果请求触发了可禁用的规则
+
+    此情景可在 [Azure 门户](https://portal.azure.cn/)上启用或禁用对应的规则。
+
+- 如果请求触发了 WAF 的核心参数限制或其他默认规则
+
+    此情景无法在 [Azure 门户](https://portal.azure.cn/)上修改，建议您联系应用开发的团队确认：
+
+    1. 冲突的逻辑是否为实际业务需要，如果不是建议从应用层着手修改。
+    2. 如果的确是业务需要，请将 WAF 调整为 “**检测**” 或不使用 WAF。这种情况下出于安全考虑，我们建议客户自行部署安全策略以保障 Web 应用程序等的安全。
+    
