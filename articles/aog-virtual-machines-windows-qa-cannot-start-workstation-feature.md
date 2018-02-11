@@ -21,9 +21,9 @@ wacn.date: 01/31/2018
 
 ## 问题分析
 
-Workstation 服务的依赖关系定义错误，导致在启动该服务时，系统找不到对应的依赖服务，无法确认其状态。
+Workstation 服务的依赖关系定义错误，导致在启动该服务时，系统找不到对应的依赖服务，无法确认其状态。（在开始菜单-运行栏中输入 `services.msc` 可以查询Workstation 服务的状态）
 
-相关以来关系对比如下：
+相关依赖关系对比如下：
 
 <img src="media/aog-virtual-machines-windows-qa-cannot-start-workstation-feature/02.png">
 <img src="media/aog-virtual-machines-windows-qa-cannot-start-workstation-feature/03.png">
