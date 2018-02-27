@@ -15,7 +15,7 @@ ms.service: virtual-network
 wacn.topic: aog
 ms.topic: article
 ms.author: xiaf
-ms.date: 08/23/2017
+ms.date: 02/27/2018
 wacn.date: 08/23/2017
 ---
 
@@ -31,7 +31,6 @@ wacn.date: 08/23/2017
 2. 如今 Cloud 产业更新快速，因此不排除 Azure 与厂商之间兼容性会存在变化。
 3. 不涉及太多的 Palo Alto 的产品介绍，如果你选择的厂商技术特点与之类似，可以借鉴。
 4. 以下内容涉及到部分 Azure 基本知识，如果对某些服务不了解请查询官方文档。
-5. 以下内容针对的都是新门户服务和环境，无法保证经典门户都能够实现。
 
 ## 环境介绍
 
