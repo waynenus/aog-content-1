@@ -15,7 +15,7 @@ ms.service: active-directory
 wacn.topic: aog
 ms.topic: article
 ms.author: v-tawe
-ms.date: 09/22/2017
+ms.date: 02/27/2018
 wacn.date: 09/22/2017
 ---
 # 单点登录后获取当前用户所在组的 ID
@@ -30,10 +30,10 @@ wacn.date: 09/22/2017
 - [Graph api 各操作和 SDK 介绍](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
 - [groupMembershipClaims 资料介绍](http://www.dushyantgill.com/blog/2014/12/10/authorization-cloud-applications-using-ad-groups/)
 
-## 操纵步骤
+## 操作步骤
 
-1. 登陆 [Azure 经典管理门户](https://manage.windowsazure.cn)，并添加 AAD 应用程序。
-2. 在 AAD 程序的管理清单选项中选择下载清单后缀为 json 文件。
+1. 登陆 [Azure 门户](https://portal.azure.cn)，并添加 AAD 应用程序。
+2. 点击 Manifest 选项，选择下载清单后缀为 json 文件。
 3. 下载后打开 json 文件。
 4. 找到 groupMembershipClaims 节点并添加值。
 
@@ -46,8 +46,7 @@ wacn.date: 09/22/2017
     > 代码的编写只需要把[示例代码](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect)修改为自己的信息即可，节点修改为中国节点。
 
 7. 登陆完成后获取 result 信息中的 id_token 字段中的值。
-8. 该值为 JWT 数据，获取后需要进行转换，也可以通过 
-[JWT Decoder](http://jwt.calebb.net/) 页面中查看 JWT 值。
+8. 该值为 JWT 数据，获取后需要进行转换，也可以通过 [JWT Decoder](http://jwt.calebb.net/) 页面中查看 JWT 值。
 
 ## 结果如下
  
