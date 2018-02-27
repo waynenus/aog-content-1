@@ -37,8 +37,4 @@
 
 	![portal-3](./media/aog-web-apps-qa-portal-change-app-service-plans/portal-3.jpg)
 
-4.	切换之后可以通过[经典管理门户](https://manage.windowsazure.cn)查看该 Web 应用是否已经独立存在于新应用服务计划中。
-
-	![classic](./media/aog-web-apps-qa-portal-change-app-service-plans/classic.jpg)
-
 详细内容请参考：[Azure 应用服务计划深入概述](/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/)
