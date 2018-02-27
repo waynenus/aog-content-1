@@ -37,11 +37,11 @@
 
     1. 进入新注册的 Azure AD 租户，选择**应用注册**选项页，点击**新应用程序注册**按钮。输入一个有效的名称如 'TodoListWebApp_MT'，同时在类型选项中选择 **Web 应用/API** 作为该应用程序的类型。输入**登录 URL**，例如 `https://localhost:44302/`。最后点击创建按钮。
 
-        ![portal-ad-applications-newportal](./media/aog-active-directory-howto-sign-in-local-web-apps/portal-ad-applications-newportal.png)
+        ![portal-ad-application-newportal](./media/aog-active-directory-howto-sign-in-local-web-apps/portal-ad-application-newportal.PNG)
 
     2. 找到刚创建好的应用以及对应的**应用程序ID**，将其复制并保存在安全的位置，稍后将会在 Visual Studio 中配置该值。
 
-        ![portal-ad-application-id-newportal](./media/aog-active-directory-howto-sign-in-local-web-apps/portal-ad-application-id-newportal.png)
+        ![portal-ad-application-id-newportal](./media/aog-active-directory-howto-sign-in-local-web-apps/portal-ad-application-id-newportal.PNG)
 
 3. 为您的 Azure AD 租户创建应用程序密钥。
 
@@ -49,7 +49,7 @@
 
     [AZURE.NOTE]当你保存此页面时，将显示密钥值，将其复制并保存在安全的位置，稍后将会在 Visual Studio 中配置该值，另外此键值不会再次显示，所以创建完成后尽快保存。
 
-    ![portal-ad-keys](./media/aog-active-directory-howto-sign-in-local-web-apps/portal-ad-keys-newportal.png)
+    ![portal-ad-keys](./media/aog-active-directory-howto-sign-in-local-web-apps/portal-ad-keys-newportal.PNG)
 
 4. 在应用程序的**属性**选项页下，将您的应用程序配置为多租户的并点击保存按钮。
 
@@ -61,13 +61,13 @@
 
     2. 在**所需权限**选项卡中点击**添加**，选择 **Microsoft graph** 权限，点击**选择**.
 
-        ![portal-ad-permissions-to-other-applications-2](./media/aog-active-directory-howto-sign-in-local-web-apps/portal-ad-permissions-to-other-applications-newportal.png)
+        ![portal-ad-permissions-to-other-applications-2](./media/aog-active-directory-howto-sign-in-local-web-apps/portal-ad-permissions-to-other-applications-newportal.PNG)
 
     3. 找到刚才添加的 Microsoft Graph 权限，勾选 **Sign in and read user profile** 权限并点击**完成**保存设置。
 
         这将允许你的应用程序接收委托的权限，以便为给定的用户帐户验证和读取用户配置文件数据。
 
-        ![portal-ad-permissions-to-other-applications-3](./media/aog-active-directory-howto-sign-in-local-web-apps/portal-ad-permissions-to-other-applications-2-newportal.png)
+        ![portal-ad-permissions-to-other-applications-3](./media/aog-active-directory-howto-sign-in-local-web-apps/portal-ad-permissions-to-other-applications-2-newportal.PNG)
 
 到目前为止，在 Azure 管理门户上做的配置工作已经全部完成，接下来，你需要通过在 Visual studio 中运行示例应用代码来体验多租户 Sign up 和 Sign in.
 
