@@ -1,7 +1,7 @@
 ---
 title: "如何查看云服务执行的相关操作记录"
 description: "本文介绍如何查看云服务执行的相关操作记录"
-author: JamborYao
+author: hello-azure
 resourceTags: ''
 ms.service: multiple
 wacn.topic: aog
