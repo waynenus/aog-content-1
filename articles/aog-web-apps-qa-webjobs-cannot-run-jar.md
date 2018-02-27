@@ -18,9 +18,8 @@
 
 ## **问题描述**
 
-在[经典管理门户](https://manage.windowsazure.cn/)中将直接压缩的 jar 文件打包为 zip 包，上传到 web 作业时报错。
+在管理门户中将直接压缩的 jar 文件打包为 zip 包，上传到 web 作业时报错。
 
-![web-jobs-error](./media/aog-web-apps-qa-web-job-cannot-run-jar/web-jobs-error.png)
 
 ## **解决方法**
 
