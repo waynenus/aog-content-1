@@ -55,15 +55,15 @@
 
     [AZURE.IMPORTANT]在将某个应用程序设为多租户之前，Azure AD 要求该应用程序的应用 ID URI 全局唯一。应用 ID URI 是在协议消息中标识应用程序的方式之一，就单租户应用而言，应用 ID URI 在该租户中保持唯一便已足够。但是就多租户应用程序而言，该 URI 必须全局唯一，以便 Azure AD 能够在所有租户中找到该应用程序。
 
-    ![portal-ad-application-is-multi-tenant](./media/aog-active-directory-howto-sign-in-local-web-apps/portal-ad-application-is-multi-tenant-newportal.png)
+![portal-ad-application-is-multi-tenant](./media/aog-active-directory-howto-sign-in-local-web-apps/portal-ad-application-is-multi-tenant-newportal.PNG)
 
 5. 为你的应用程序配置权限。
 
-    2. 在**所需权限**选项卡中点击**添加**，选择 **Microsoft graph** 权限，点击**选择**.
+    1. 在**所需权限**选项卡中点击**添加**，选择 **Microsoft graph** 权限，点击**选择**.
 
 ![portal-ad-permissions-to-other-applications-2](./media/aog-active-directory-howto-sign-in-local-web-apps/portal-ad-permissions-to-other-applications-newportal.PNG)
 
-    3. 找到刚才添加的 Microsoft Graph 权限，勾选 **Sign in and read user profile** 权限并点击**完成**保存设置。
+    2. 找到刚才添加的 Microsoft Graph 权限，勾选 **Sign in and read user profile** 权限并点击**完成**保存设置。
 
         这将允许你的应用程序接收委托的权限，以便为给定的用户帐户验证和读取用户配置文件数据。
 
