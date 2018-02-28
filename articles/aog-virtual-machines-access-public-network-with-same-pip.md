@@ -15,17 +15,20 @@ ms.service: virtual-machines
 wacn.topic: aog
 ms.topic: article
 ms.author: v-tawe
-ms.date: 02/27/2018
+ms.date: 01/10/2018
 wacn.date: 02/21/2017
 ---
 
 # ARM 虚拟机使用同一个公共 IP 访问公网的解决方案
 
+> [!IMPORTANT]
+> 文章中涉及经典门户的内容已失效，文章将会在短期内更新，敬请关注。
+
 Azure 目前有两种部署模型：资源管理器 ARM 和经典部署模型 ASM。ASM 的虚拟机默认公用云服务的 VIP 来访问 Internet，ARM 的虚拟机默认使用自己的公共 IP 访问 Internet。因为有的服务器有访问白名单的设置，因此有的客户可能想实现的一个需求就是 ARM 的多个虚拟机也公用一个公共 IP 来访问公网的某个服务器，这样就不需要在对方的白名单上添加多个虚拟机的公共 IP 地址。下面介绍如何实现这个方案。
 
 ![virtual-network](./media/aog-virtual-machines-access-public-network-with-same-pip/virtual-network.jpg)
 
-虚拟网络的 Subnet01 子网中的多台虚拟机将公用 Subnet02 中的虚拟机 ForwardVM 访问 Internet 上的某台服务器。假设 Internet 上的这台服务器的地址是 `42.159.4.113`，这里是以 Azure 门户为例。下面介绍操作步骤 :
+虚拟网络的 Subnet01 子网中的多台虚拟机将公用 Subnet02 中的虚拟机 ForwardVM 访问 Internet 上的某台服务器。假设 Internet 上的这台服务器的地址是 `42.159.4.113`，这里是以 Azure 的经典管理门户为例。下面介绍操作步骤 :
 
 1. 首先借助 Azure 的自定义路由功能，创建一个路由表，将 Subnet01 这个子网访问 Internet 服务器的流量定向到虚拟机 ForwardVM。下面通过 Azure Powershell 来操作。其实也可以在门户上创建。
 
@@ -45,7 +48,7 @@ Azure 目前有两种部署模型：资源管理器 ARM 和经典部署模型 AS
 
     ![subnet01](./media/aog-virtual-machines-access-public-network-with-same-pip/subnet01.jpg)
 
-2. 在虚拟机 ForwardVM 上开启 IP 转发并对 Subnet01 子网中访问 Azure 门户的流量做 SNAT。
+2. 在虚拟机 ForwardVM 上开启 IP 转发并对 Subnet01 子网中访问 Azure 经典管理门户的流量做 SNAT。
 
     1. 在平台层面，开启虚拟机的 IP 转发功能。
         在门户上看到，虚拟机 ForwardVM 的网卡名称为 forwardvm350 : 
@@ -77,7 +80,7 @@ Azure 目前有两种部署模型：资源管理器 ARM 和经典部署模型 AS
 
         ![iptables](./media/aog-virtual-machines-access-public-network-with-same-pip/iptables.jpg)
 
-3. 在 Subnet01 内的一台虚拟机 BackServer1 上进行测试。用 Paping 测试 Azure 门户地址 `42.159.4.113` 的 443 端口，一直可以访问 :
+3. 在 Subnet01 内的一台虚拟机 BackServer1 上进行测试。用 Paping 测试 Azure 经典管理门户地址 `42.159.4.113` 的 443 端口，一直可以访问 :
 
     ![paping](./media/aog-virtual-machines-access-public-network-with-same-pip/paping.jpg)
 
