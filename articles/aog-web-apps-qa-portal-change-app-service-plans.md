@@ -1,23 +1,21 @@
-<properties
-                pageTitle="Azure Web 应用重新配置应用服务计划时无法选择新创建的应用服务计划"
-                description="Azure 应用服务计划由于不在同一区域或同一资源组，出现 Web 应用无法选择新创建的应用服务计划"
-                services="app-service-web"
-                documentationCenter=""
-                authors=""
-                manager=""
-                editor=""
-                tags="Web Apps,App Service Plan,Resource group"/>
-
-<tags
-                ms.service="app-service-web-aog"
-                ms.date="12/23/2016"
-                wacn.date="12/23/2016"/>
+---
+title: 'Azure Web 应用重新配置应用服务计划时无法选择新创建的应用服务计划'
+description: 'Azure 应用服务计划由于不在同一区域或同一资源组，出现 Web 应用无法选择新创建的应用服务计划'
+author: zhangyannan-yuki
+tags: Web Apps,App Service Plan,Resource group
+ms.service: app-service-web
+wacn.topic: aog
+ms.topic: article
+ms.author: v-tawe
+ms.date: 02/27/2018
+wacn.date: 12/23/2016
+---
 
 # Azure Web 应用重新配置应用服务计划时无法选择新创建的应用服务计划
 
 ## 问题描述
 
-创建了 Azure 应用服务计划后，在[ Azure 门户预览](https://portal.azure.cn)上点击 “更改应用服务计划”选项，发现找不到新建的应用服务计划。
+创建了 Azure 应用服务计划后，在[ Azure 门户](https://portal.azure.cn)上点击 “**更改应用服务计划**” 选项，发现找不到新建的应用服务计划。
 
 ## 问题分析
 
@@ -25,16 +23,16 @@
 
 ## 解决方法
 
-1.	通过 Azure 门户预览查看 Web 应用使用应用服务计划所在的资源组信息。
+1. 通过 [Azure 门户](https://portal.azure.cn)查看 Web 应用使用应用服务计划所在的资源组信息。
 
-	![portal-1](./media/aog-web-apps-qa-portal-change-app-service-plans/portal-1.jpg)
+    ![portal-1](./media/aog-web-apps-qa-portal-change-app-service-plans/portal-1.jpg)
 
-2.	在同一个区域和资源组创建新的应用服务计划。
+2. 在同一个区域和资源组创建新的应用服务计划。
 
-	![portal-2](./media/aog-web-apps-qa-portal-change-app-service-plans/portal-2.jpg)
+    ![portal-2](./media/aog-web-apps-qa-portal-change-app-service-plans/portal-2.jpg)
 
-3.	转到需要移动的 Web 应用，在“设置”菜单上，选择“更改应用服务计划”以打开“应用服务计划”选择器。此时可以选取现有的应用服务计划，也可以在此新建一个。
+3. 转到需要移动的 Web 应用，在**设置**菜单上，选择 “**更改应用服务计划**” 以打开 “应用服务计划” 选择器。此时可以选取现有的应用服务计划，也可以在此新建一个。
 
-	![portal-3](./media/aog-web-apps-qa-portal-change-app-service-plans/portal-3.jpg)
+    ![portal-3](./media/aog-web-apps-qa-portal-change-app-service-plans/portal-3.jpg)
 
-详细内容请参考：[Azure 应用服务计划深入概述](/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/)
+详细内容请参考：[Azure 应用服务计划深入概述](/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)。
