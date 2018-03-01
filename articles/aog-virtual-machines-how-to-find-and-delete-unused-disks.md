@@ -41,7 +41,7 @@ wacn.date: 02/09/2018
 
 ```powershell
 # 执行脚本
-. ".\GetAndRemoveDisks.ps1"
+. ".\GetAndRemoveDisks.ps1"//请不要忽略第一个点。
 # 查看订阅下所有未被使用的托管磁盘。
 Get-UnusedDisks
 ```
