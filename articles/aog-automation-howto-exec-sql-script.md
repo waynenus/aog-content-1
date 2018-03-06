@@ -38,18 +38,20 @@ wacn.date: 02/28/2018
 
 6。 编辑 PowerShell 工作流 Runbook，可以使用以下示例代码：(替换相关参数：连接字符串`ConnectionString`以及需要执行的 SQL 语句 `CommandText`)
 
-{
-    InlineScript {
-        $SqlConnection = New-Object System.Data.SqlClient.SqlConnection
-        $SqlConnection.ConnectionString = "Server=tcp:s12.database.chinacloudapi.cn,1433;Initial Catalog=poddb;Persist Security Info=False;User ID=dbuser;Password=*********;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-        $SqlCmd = New-Object System.Data.SqlClient.SqlCommand
-        $SqlCmd.CommandText = "insert into Table_2 values(5,'ee')"
-        $SqlCmd.Connection = $SqlConnection
-        $SqlConnection.Open()
-        $SqlCmd.ExecuteNonQuery()
-        $SqlConnection.Close()
+    ```json
+    {
+        InlineScript {
+            $SqlConnection = New-Object System.Data.SqlClient.SqlConnection
+            $SqlConnection.ConnectionString = "Server=tcp:s12.database.chinacloudapi.cn,1433;Initial Catalog=poddb;Persist Security Info=False;User ID=dbuser;Password=*********;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+            $SqlCmd = New-Object System.Data.SqlClient.SqlCommand
+            $SqlCmd.CommandText = "insert into Table_2 values(5,'ee')"
+            $SqlCmd.Connection = $SqlConnection
+            $SqlConnection.Open()
+            $SqlCmd.ExecuteNonQuery()
+            $SqlConnection.Close()
+        }
     }
-}
+    ```
 
 7. 启动任务测试，等待作业完成。
 

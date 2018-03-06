@@ -49,18 +49,23 @@ Windows Server 2016 搭建 S2S VPN 并支持 BGP 协议的步骤大致分为以�
 2. **安装类型**：“**基于角色**” -> 单击 “**下一步**”
 3. **服务器选择**：从服务器池中选择一台服务器 -> **RRAS-Server** - >单击 “**下一步**”
 4. **服务器角色**：选择 “**远程访问**” -> 单击 “**下一步**”
+
     ![02](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/02.png)
+
 5. **功能**：点击 “**下一步**”
 6. **远程访问**：单击 “**下一步**”
     - **角色服务**：
         - 勾选 “**直接访问和 VPN（RAS）**”，在弹出窗口中单击 “**添加功能**”<br>
         - 勾选 “**路由**”<br>
     - 点击 “**下一步**”
+
     ![03](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/03.png)
+
 7. **Web 服务器角色（IIS）**：单击 “**下一步**”
     - **角色服务**：
         - 接受**默认值**：单击 “**下一步**”
 8. **确认**：单击 “**安装**”
+
     ![04](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/04.png)
 
 #### <a id="section2"></a>配置并启用路由和远程访问
@@ -75,26 +80,43 @@ Windows Server 2016 搭建 S2S VPN 并支持 BGP 协议的步骤大致分为以�
 
 1. **欢迎使用路由和远程访问服务器安装向导**：单击“**下一步**”
 2. **配置**：选择 “**自定义配置**”，单击 “**下一步**”
+
     ![06](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/06.png)
+
 3. 选择服务：**VPN 接入**和**LAN 路由**，单击 “**下一步**”
+
     ![07](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/07.png)
+
 4. 完成路由和远程访问服务器安装向导：单击 “**完成**”
+
     ![08](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/08.png)
 
 #### <a id="section3"></a>S2S VPN 拨号接口设置和连接
 
 1. 右键单击 “**网络接口**”，然后单击 “**新拨号接口**”。
+
     ![09](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/09.png)
+
 2. **接口名称**：输入 “**Azure S2S BGP**”，点击 “**下一步**”
+
     ![10](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/10.png)
+
 3. **连接类型**：选择 “**使用虚拟专用网络（VPN）连接**”，单击 “**下一步**”
+
     ![11](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/11.png)
+
 4. **VPN 类型**：选择 **IKEv2**，单击 “**下一步**”
+
     ![12](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/12.png)
+
 5. **目标地址**：输入 Azure 虚拟网络网关的公共 IP 地址，单击 “**下一步**”
+
     ![13](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/13.png)
+
 6. **协议和安全**：“**路由此接口上的 IP 数据包路由**”，单击 “**下一步**”
+
     ![14](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/14.png)
+
 7. **远程网络的静态路由**：单击 “**添加**”
     - **静态路由**：选择使用 IPv4 的远程网络支持：
         - 目的地：**10.0.0.4**（Azure VPN 网关 BGP peer 地址）
@@ -102,14 +124,21 @@ Windows Server 2016 搭建 S2S VPN 并支持 BGP 协议的步骤大致分为以�
         - 公制：**25**
         - 点击 “**确定**”
     - 点击 “**下一步**”
+
     ![15](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/15.png)
+
 8. **拨出凭据**：键入 Azure 作为用户名，单击 “**下一步**”
 9. 完成向导：单击 “**完成**”
 10. 在新建网络接口 “**Azure S2S BGP**” 右键单击并选择 “**属性**”
+
     ![16](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/16.png)
+
 11. 选择**安全**选项卡，然后在身份验证下选择使用预共享密钥进行身份验证。输入在 Azure VPN 网关站点到站点上设置的预共享密钥，点击 “**确定**”。
+
     ![17](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/17.png)
+
 12.	右键单击“**Azure S2S 网络接口**”，然后单击“**连接**”。连接成功后连接状态变为**已连接状态**。
+
     ![18](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/18.png)
 
 #### <a id="section4"></a>通过 PowerShell 指令配置本地 BGP
