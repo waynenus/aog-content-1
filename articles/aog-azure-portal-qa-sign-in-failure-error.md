@@ -26,7 +26,7 @@ wacn.date: 2/28/2018
 ## 问题分析
 
 目前, 中国区 Azure 由世纪互联运营，与全球其它地区由微软运营的 Azure 服务在物理上和逻辑上都是独立的。<br>
-所以这就导致了中国区 Azure 与境外 Azure 在开发以及使用过程中会有很大区别，相关信息可以参考：[中国区 Azure 应用程序开发说明](/articles/guidance/developerdifferences?toc=%2fguides%2fdeveloper%2ftoc.json)
+所以这就导致了中国区 Azure 与境外 Azure 在开发以及使用过程中会有很大区别，相关信息可以参考：[中国区 Azure 应用程序开发说明](/articles/guidance/developerdifferences?toc=%2fguides%2fdeveloper%2ftoc.json)。
 
 此处，用户无法通过 **Email**、**Phone** 以及 **Skype** 登录也是该原因导致的，目前中国区 Azure 只能通过 **组织 ID** 登录 [Azure 门户](http://portal.azure.cn/)。
 
