@@ -31,7 +31,7 @@ wacn.date: 02/28/2018
 
 但如果以上方法仍然无法解决问题，或者备份扩展在卸载后无法重新安装成功，报错如： `GuestAgentSnapshotTaskStatusError`。
 
-![01](media/aog-backup-howto-uninstall-extention-in-windows-vm-manually/01.png)
+![01](media/aog-backup-howto-uninstall-extension-in-windows-vm-manually/01.png)
 
 在这种情况下，可以尝试从虚拟机内部手动删除 VMSnapshot 的组件：
 
@@ -50,16 +50,16 @@ wacn.date: 02/28/2018
         > [!WARNING]
         > 在删除之前建议请先右键 Export 进行备份。
 
-![02](media/aog-backup-howto-uninstall-extention-in-windows-vm-manually/02.png)
+![02](media/aog-backup-howto-uninstall-extension-in-windows-vm-manually/02.png)
 
 2. 删除相应文件夹
 
     1. 定位到 C:\Packages\Plugins 文件夹
     2. 删除 VMSnapshot 相关文件夹`Microsoft.Azure.RecoveryServices.VMSnapshot`
-        ![03](media/aog-backup-howto-uninstall-extention-in-windows-vm-manually/03.png)
+        ![03](media/aog-backup-howto-uninstall-extension-in-windows-vm-manually/03.png)
 
 3. 在 Azure 门户上重新尝试虚拟机备份并选择 “**现在备份**”。查看 VMsnapshot 是否安装成功。
-    ![04](media/aog-backup-howto-uninstall-extention-in-windows-vm-manually/04.png)
+    ![04](media/aog-backup-howto-uninstall-extension-in-windows-vm-manually/04.png)
 
 > [!IMPORTANT]
 > 该解决方法只适用于符合 “**问题描述**” 中的场景中。
