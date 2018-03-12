@@ -50,7 +50,7 @@ wacn.date: 02/28/2018
     - 找到包含 `Example` 的行, 添加 `#` 号, 进行注释。
     - 找到包含 `#DatabaseOwner clamav` 的行,改为 `DatabaseOwner root`。
     - 找到包含 `#UpdateLogFile /var/log/freshclam.log` 的行,将 `#` 号去除。
-    - 找到包含 `#LogFileMaxSize 2M` 的行,将 `#` 号去除, 并设置相应的大小,如果 20M。
+    - 找到包含 `#LogFileMaxSize 2M` 的行,将 `#` 号去除, 并设置相应的大小,比如 20M。
     - 找到包含 `#LogRotate yes` 的行，将 `#` 号去除。
     - 找到包含 `#LogTime yes` 的行,将 `#` 号去除。
     - 找到包含 `#DatabaseDirectory /var/lib/clamav` 的行,将 `#` 号去除。
