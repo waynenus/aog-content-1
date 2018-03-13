@@ -17,9 +17,9 @@ wacn.date: 02/28/2018
 
 本文主要介绍如何通过 Windows Server 2016 搭建到 Azure 的 S2S VPN 连接并支持 BGP 协议。
 
-在测试环境中本地 VPN 所设置的 AS 号为 65023，Peer 地址为 `10.41.0.5`，本地网段为 `10.41.0.0/24`。
-Azure VPN gateway AS 号为 `65515`，Peer 地址为 `10.0.0.4`，网络空间为 `10.0.0.0/22`。
-
+在测试环境中本地 VPN 所设置的 AS 号为 65023，BGP Peer 地址为 `10.41.0.5`，本地网段为 `10.41.0.0/24`。
+Azure VPN gateway BGP AS 号需要自定义， 如果在创建Azure VPN gateway时不指定BGP AS号，默认使用65515。
+本文本使用 Azure 默认 AS 号`65515`，Peer 地址为 `10.0.0.4`，网络空间为 `10.0.0.0/22`。
 
 ## S2S VPN 搭建并支持 BGP 协议
 
@@ -92,6 +92,8 @@ Windows Server 2016 搭建 S2S VPN 并支持 BGP 协议的步骤大致分为以�
     ![08](media/aog-virtual-machines-windows-howto-build-s2s-vpn-to-support-bgp-protocol/08.png)
 
 #### <a id="section3"></a>S2S VPN 拨号接口设置和连接
+
+服务器需配置有双网卡，一个用于配置公网 IP，一个用于配置内网 IP。
 
 1. 右键单击 “**网络接口**”，然后单击 “**新拨号接口**”。
 
