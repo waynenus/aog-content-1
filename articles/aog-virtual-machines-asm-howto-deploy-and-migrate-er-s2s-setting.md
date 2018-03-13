@@ -15,7 +15,7 @@ wacn.date: 02/28/2018
 
 ## 简介
 
-出于可用性考虑，实际业务中有很多适合 Express Route、S2S VPN 共存的情况：我们可以将 S2S VPN 配置为 Express Route 的安全故障转移路径，也可以把 S2S VPN 连接到不是 ER 进行连接的站点。
+出于可用性考虑，实际业务中有很多适合 Express Route、S2S VPN 共存的情况：我们可以将 S2S VPN 配置为 Express Route 的安全故障转移路径，也可以把 S2S VPN 连接到不经由 ER 连接的站点。
 
 如何在 ASM 环境下配置 S2S VPN 和 ER 共存的详细方法在官方网站已有相关内容，参见：[配置 ExpressRoute 和站点到站点并存连接（经典）](/expressroute/expressroute-howto-coexist-classic)。该文档的介绍基于您已熟悉了解 ASM Vnet 等相关知识，实际操作中仍可能遇到问题。
 
