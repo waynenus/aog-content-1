@@ -80,7 +80,7 @@ wacn.date: 02/28/2018
     PS C:\Windows\system32> Set-AzureVNetConfig -ConfigurationPath c:\NetworkConfig.xml
     ```
 
-    ![01](media/aog-virtual-machines-linux-howto-configure-clamav-to-scan-virus/01.png)
+    ![01](media/aog-virtual-machines-asm-howto-deploy-and-migrate-er-s2s-setting/01.png)
 
 4. 保存该文件。
 
@@ -92,7 +92,7 @@ wacn.date: 02/28/2018
 
     > [!NOTE]
     > - 输出 OperationStatus 下应看到 `Succeeded`（如下图）。如果不是这样，请检查一下 xml 文件是否有格式上的错误。
-    > ![02](media/aog-virtual-machines-linux-howto-configure-clamav-to-scan-virus/02.png)
+    > ![02](media/aog-virtual-machines-asm-howto-deploy-and-migrate-er-s2s-setting/02.png)
     > - 请确保 GatewaySubnet 子网必须是 `/27` 或更短（比如`/26`, `/25`）。
     > - 请确保 Connection type 是 `Dedicated`。
 
@@ -104,7 +104,7 @@ wacn.date: 02/28/2018
 New-AzureVNetGateway -VNetName MyAzureVNET -GatewayType DynamicRouting -GatewaySKU HighPerformance
 ```
 
-![03](media/aog-virtual-machines-linux-howto-configure-clamav-to-scan-virus/03.png)
+![03](media/aog-virtual-machines-asm-howto-deploy-and-migrate-er-s2s-setting/03.png)
 
 > [!NOTE]
 > - 请确保 GatewaySKU 为   `Standard/HighPerformance/UltraPerformance`。
@@ -120,7 +120,7 @@ Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceMan
 > [!NOTE]
 > 官方文档中未注明导入模块，如果您之前没有使用 PowerShell 配置过 ER 环境，请导入上述模块，以免出现以下 `not recognized as the name of a cmdlet` 错误。
 > PS C:\Windows\system32> New-AzureDedicatedCircuitLink -ServiceKey a2af054f-c932-4dcc-baf9-a26612e260f8 -VNetName MyAzureVNET
-> ![04](media/aog-virtual-machines-linux-howto-configure-clamav-to-scan-virus/04.png)
+> ![04](media/aog-virtual-machines-asm-howto-deploy-and-migrate-er-s2s-setting/04.png)
 
 ### 将 ER 网关关联到 ER 线路
 
@@ -130,7 +130,7 @@ Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceMan
 New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
 ```
 
-![05](media/aog-virtual-machines-linux-howto-configure-clamav-to-scan-virus/05.png)
+![05](media/aog-virtual-machines-asm-howto-deploy-and-migrate-er-s2s-setting/05.png)
 
 
 ### 创建配置 S2S VPN 网关
@@ -143,7 +143,7 @@ New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
     > [!NOTE]
     > - 请确保 GatewaySKU 为 `Standard/HighPerformance/UltraPerformance`；
     > - 请确保 GatewayType 为 `DynamicRouting`。
-    > ![06](media/aog-virtual-machines-linux-howto-configure-clamav-to-scan-virus/06.png)
+    > ![06](media/aog-virtual-machines-asm-howto-deploy-and-migrate-er-s2s-setting/06.png)
 
 2. 创建完毕后可以通过 `Get-AzureVirtualNetworkGateway`查看。
 
@@ -157,7 +157,7 @@ New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
     ```powershell
     New-AzureLocalNetworkGateway -GatewayName MyLocalNetwork -IpAddress <MyLocalGatewayIp> -AddressSpace <MyLocalNetworkAddress>
     ```
-    ![07](media/aog-virtual-machines-linux-howto-configure-clamav-to-scan-virus/07.png)
+    ![07](media/aog-virtual-machines-asm-howto-deploy-and-migrate-er-s2s-setting/07.png)
 
 2. MyLocalNetwork 名称请与 netcfg 文件中的名称保持一致。
 3. MyLocalNetworkAdress 有多个地址空间时，可以写成 `$MyLocalNetworkAdress = @(“10.1.2.0/24","10.1.3.0/24","10.2.1.0/24")`。
@@ -177,7 +177,7 @@ New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
     ```powershell
     New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
     ```
-    ![08](media/aog-virtual-machines-linux-howto-configure-clamav-to-scan-virus/08.png)
+    ![08](media/aog-virtual-machines-asm-howto-deploy-and-migrate-er-s2s-setting/08.png)
 
 2. 完成此步骤后，就完成了通过 S2S VPN 连接建立本地网络与 Azure 之间的连接。
 
@@ -185,7 +185,7 @@ New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
 > 客户建立 S2S VPN 时 可以复用已有的 LocalNetworkSite，把它连接到新的 AzureVnetGateway，这不会影响现有的连接。
 > 经过测试，ASM 和 ARM 这样操作都是可行的。
 > 附上 ASM 模式下，在 on-prem 本地 ping 两个 Azure Vnet 的结果：没有丢包。
-> ![09](media/aog-virtual-machines-linux-howto-configure-clamav-to-scan-virus/09.png)
+> ![09](media/aog-virtual-machines-asm-howto-deploy-and-migrate-er-s2s-setting/09.png)
 
 
 ## 测试迁移 Vnet、网关和相关的部署
@@ -210,7 +210,7 @@ Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
 Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-![10](media/aog-virtual-machines-linux-howto-configure-clamav-to-scan-virus/10.png)
+![10](media/aog-virtual-machines-asm-howto-deploy-and-migrate-er-s2s-setting/10.png)
 
 > [!NOTE]
 > 迁移过程中可以通过该命令终止迁移`Move-AzureVirtualNetwork -Abort $vnetName`。
