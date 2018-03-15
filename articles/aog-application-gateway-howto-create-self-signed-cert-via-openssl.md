@@ -16,7 +16,7 @@ wacn.date: 02/28/2018
 ## 需求分析
 
 当用户使用的不是企业证书解决方案，或者由于某种原因不想通过 CA 购买证书，如用于测试等场景，则需要创建自签名证书。<br>
-可以通过 Linux 的 OpenSSL 命令行工具生成自签名证书，实现加密解密， 甚至还可以当做 CA 来用，创建以及吊销证书。使用 OpenSSL 生成的自签名证书经测试验证， 既可适用于 Azure 点对站点 VPN 连接， 同时也可用与 HTTPS 应用服务器之间的 TLS 通信。
+可以通过 Linux 的 OpenSSL 命令行工具生成自签名证书，实现加密解密， 甚至还可以当做 CA 来用，创建以及吊销证书。使用 OpenSSL 生成的自签名证书经测试验证， 既可适用于 Azure 点对站点 VPN 连接， 同时也可用于与 HTTPS 应用服务器之间的 TLS 通信。
 
 本文主要指导 P2S VPN 场景以及与 HTTPS 服务器连接场景下，如何使用 OpenSSL 创建自签名证书以及注意事项。
 
@@ -25,7 +25,7 @@ wacn.date: 02/28/2018
 - 自签名证书
 - 自建 CA 签名的证书
 
-自签名的证书无法被吊销，CA 签名的证书可以被吊销，能不能吊销证书的区别在于如果私钥不小心被被恶意获取，如果证书不能被吊销那么黑客很有可能伪装成受信任的客户端与用户进行通信。<br>
+自签名的证书无法被吊销，CA 签名的证书可以被吊销，能不能吊销证书的区别在于如果私钥不小心被恶意获取，如果证书不能被吊销那么黑客很有可能伪装成受信任的客户端与用户进行通信。<br>
 如果你的规划需要创建多个客户端证书，那么使用自建 CA 签名证书的方法比较合适，只要给所有的客户端都安装了 CA 根证书，那么以该 CA 根证书签名过的客户端证书都是信任的，不需要重复的安装客户端证书。<br>
 请注意由于是自建 CA 证书，在使用这个临时证书的时候，会在客户端浏览器报一个错误，签名证书授权未知或不可（signing certificate authority is unknown and not trusted.），但只要配置正确，继续操作并不会影响正常通信。 自签名证书的 Issuer 和 Subject 是一样的。<br>
 下面就分别阐述不同的应用场景下，如何使用 OpenSSL 生成这两种自签名证书。
@@ -52,7 +52,7 @@ wacn.date: 02/28/2018
 	openssl req -new -key client.key -out client.csr
 	```
 
-	生成 CSR 的过程中，会提示输入一些信息，其中一个提示是 Common Name (e.g. YOUR name)，这个非常重要，这一项会填入 FQDN(Fully Qualified Domain Name)完全合格域名/全称域名，如果您使用 SSL 加密保护网络服务器和客户端之间的数据流，举例被保护的网站是 `https://test.chinacloudsites.cn`，那么此处 Common Name 应输入 `test.chinacloudsites.cn`
+	生成 CSR 的过程中，会提示输入一些信息，其中一个提示是 Common Name (e.g. YOUR name)，这个非常重要，这一项应填入 FQDN(Fully Qualified Domain Name)完全合格域名/全称域名，如果您使用 SSL 加密保护网络服务器和客户端之间的数据流，举例被保护的网站是 `https://test.chinacloudsites.cn`，那么此处 Common Name 应输入 `test.chinacloudsites.cn`
 
 	![01](media/aog-application-gateway-howto-create-self-signed-cert-via-openssl/01.png)
 
@@ -70,11 +70,11 @@ wacn.date: 02/28/2018
 
 #### 创建自签 CA 证书
 
-使用自签 CA 证书，主要分为两个部分： 创建[CA 根证书](#setcion1)及[签发客户端证书](#setcion2)。
+创建自签 CA 证书，主要分为两个部分： 创建[CA 根证书](#setcion1)及[签发客户端证书](#setcion2)。
 
 ##### <a id="setcion1"></a>创建 CA 根证书
 
-使用 OpenSSL 可以创建自己的 CA，给需要验证的用户或服务器颁发证书，这就需要创建一个 CA 根证书，在创建 CA 根证书之前，请好如下准备工作：修改好 CA 的配置文件、序列号、索引等等。
+使用 OpenSSL 可以创建自己的 CA，给需要验证的用户或服务器颁发证书，这就需要创建一个 CA 根证书，在创建 CA 根证书之前，请做好如下准备工作：修改好 CA 的配置文件、序列号、索引等等。
 
 1. 创建 CA 目录
 
