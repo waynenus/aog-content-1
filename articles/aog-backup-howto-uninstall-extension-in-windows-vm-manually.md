@@ -44,21 +44,25 @@ wacn.date: 02/28/2018
 通过以下步骤手动卸载 VMSnapshot 扩展：
 
 1. 从 Azure 门户上删除 Vmsnapshot 扩展后，清除注册表键值。
+    
     1. 登录到该虚拟机
     2. 打开注册表编辑器 `regedit.exe`。 定位到注册表键值：`HKLM\Software\Microsoft\Windows Azure\HandlerState`
     3. 如果在列表中存在 Snapshot 相关的键值如：`Microsoft.Azure.RecoveryServices.VMSnapshot_xxxxx`，请右键删除。
+
         > [!WARNING]
         > 在删除之前建议请先右键 Export 进行备份。
 
-![02](media/aog-backup-howto-uninstall-extension-in-windows-vm-manually/02.png)
+    ![02](media/aog-backup-howto-uninstall-extension-in-windows-vm-manually/02.png)
 
 2. 删除相应文件夹
 
     1. 定位到 C:\Packages\Plugins 文件夹
     2. 删除 VMSnapshot 相关文件夹`Microsoft.Azure.RecoveryServices.VMSnapshot`
+
         ![03](media/aog-backup-howto-uninstall-extension-in-windows-vm-manually/03.png)
 
 3. 在 Azure 门户上重新尝试虚拟机备份并选择 “**现在备份**”。查看 VMsnapshot 是否安装成功。
+
     ![04](media/aog-backup-howto-uninstall-extension-in-windows-vm-manually/04.png)
 
 > [!IMPORTANT]
