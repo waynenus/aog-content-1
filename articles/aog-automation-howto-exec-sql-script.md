@@ -36,7 +36,7 @@ wacn.date: 02/28/2018
 
     ![05](media/aog-automation-howto-exec-sql-script/05.png)
 
-6。 编辑 PowerShell 工作流 Runbook，可以使用以下示例代码：(替换相关参数：连接字符串`ConnectionString`以及需要执行的 SQL 语句 `CommandText`)
+6. 编辑 PowerShell 工作流 Runbook，可以使用以下示例代码：(替换相关参数：连接字符串`ConnectionString`以及需要执行的 SQL 语句 `CommandText`)
 
     ```json
     {
