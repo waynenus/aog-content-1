@@ -40,7 +40,8 @@ Get-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $gw
 Set-AzureRmApplicationGateway -ApplicationGateway $gw
 ```
 
-按照以上 Azure PowerShell 命令步骤，我们配置应用程序网关仅使用我们指定的加密算法，我们可以验证策略是否生效，即应用程序网关是否接受基于如上配置的加密算法的 HTTPS 的请求，本文推荐使用 nmap 或 openssl 软件工具(以下例子中，部署在应用程序网关的网站主机名为 `webtest.chinacloudapp.cn`，建议使用公网 DNS 注册域名并添加 A 记录和 CNAME)：
+按照以上 Azure PowerShell 命令步骤，在应用程序网关上创建自定义SSL策略，本文推荐使用 nmap 或 openssl 工具验证应用网关是否已经支持该自定义加密算法
+(以下例子中，部署在应用程序网关的网站主机名为 `webtest.chinacloudapp.cn`，建议使用公网 DNS 注册域名并添加 A 记录和 CNAME)：
 
 ```
 nmap:
