@@ -15,7 +15,7 @@ wacn.date: 02/28/2018
 
 ## 现象描述
 
-多网卡虚拟机默认会使用主网卡跟外界进行通信，其他的辅网卡默认是不会被用来跟外界通信，可以使用本文介绍的方法修改虚拟机（CentosMultiNic-VM）的配置文件，从而实现其他的子网的虚拟机（TestVM）可以借助多网卡虚拟机的辅助网卡 eth2 访问公，默认是通过主网卡 eth1 访问公网。
+多网卡虚拟机默认会使用主网卡跟外界进行通信，其他的辅网卡默认是不会被用来跟外界通信，可以使用本文介绍的方法修改虚拟机（CentosMultiNic-VM）的配置文件，从而实现其他的子网的虚拟机（TestVM）可以借助多网卡虚拟机的辅助网卡 eth2 访问公网，默认是通过主网卡 eth1 访问公网。
 
 拓扑如下：
 
@@ -27,8 +27,7 @@ wacn.date: 02/28/2018
 
     ![02](media/aog-virtual-machines-linux-howto-manage-multi-nic-traffic-flow/02.png)
 
-    关于虚拟机支持的网卡数量的相关链接：[Azure 中 Windows 虚拟机的大小](/virtual-machines/virtual-machines-windows-sizes)。
-
+    
 2. 创建虚拟网络 172.22.5.0/26，并且划分子网如下图所示：
 
     ![03](media/aog-virtual-machines-linux-howto-manage-multi-nic-traffic-flow/03.png)
@@ -68,7 +67,7 @@ wacn.date: 02/28/2018
 
         ![08](media/aog-virtual-machines-linux-howto-manage-multi-nic-traffic-flow/08.png)
 
-        删除系统自带的默认路由，并且添加默认路由指定下一条为 eth2，当删除系统自带的默认路由以后可能会导致系统无法 SSH，建议可以在虚拟网络新建一台 jump server 做跳板机进行配置。
+        删除系统自带的默认路由，并且添加默认路由指定下一跳为 eth2，当删除系统自带的默认路由以后，可能会导致系统无法通过 SSH登录，建议可以在虚拟网络VNET中新建一台 jump server 做跳板机进行配置。
 
         ![09](media/aog-virtual-machines-linux-howto-manage-multi-nic-traffic-flow/09.png)
 
@@ -99,9 +98,9 @@ wacn.date: 02/28/2018
 
     ![14](media/aog-virtual-machines-linux-howto-manage-multi-nic-traffic-flow/14.png)
 
-    这是因为在虚拟机内部修改了系统的默认路由导致的，可以策略路由来解决该问题：
+    这是因为在虚拟机内部修改了系统的默认路由导致的，可以通过配置策略路由来解决该问题：
 
-    1. 在系统路由表的配置文件添加自定义的路由表：
+    1. 在系统路由表的配置文件添加自定义路由表：
 
         ![15](media/aog-virtual-machines-linux-howto-manage-multi-nic-traffic-flow/15.png)
 
@@ -113,7 +112,8 @@ wacn.date: 02/28/2018
 
     ![17](media/aog-virtual-machines-linux-howto-manage-multi-nic-traffic-flow/17.png)
 
-综上所示：可以在 linux 系统内调整默认路由以及使用策略路由来实现，主网卡可以 SSH，使用辅网卡做访问互联网的接口。
+综上所述：可以在 linux 系统内添加多网卡和调整默认路由，使其他的虚拟机可以通过多网卡虚拟机的辅助网卡访问公网， 来控制虚拟机的流量走向
+         以及通过使用策略路由，仍然可以实现SSH登录主网卡。
 
 由于上述配置在虚拟机重启以后就会消失，如果想要永久生效的话，可以写入到**/etc/rc.local** 里。
 
