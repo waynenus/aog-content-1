@@ -18,6 +18,8 @@ wacn.date: 02/28/2018
 我们知道应用程序网关可以实现 SSL 卸载，以避免 Web 服务器出现开销较高的 SSL 解密任务 [ARM 模式下应用网关实现 SSL 卸载](/application-gateway/application-gateway-ssl-arm)，但是对于某些场景来说，用户有一些安全和合规上的规定或者后端服务器的特性，要求到达后端服务器上的数据都要经过加密。对于这种需求，应用程序网关会在网关上终止前端 SSL 会话解密用户流量，然后应用所配置的 SSL 规则，发起到后端服务器的新 SSL 连接，并先使用后端服务器的公钥证书重新加密数据，把请求传输到后端 Web 服务器上实现端到端的 SSL 传输。
 
 本文主要指导完成通过 PowerShell 创建后端池为 Web 应用的应用程序网关，实现端到端的 SSL 通信，以及在部署过程中怎么避免 Web 应用域名的暴露。
+对于端到端SSL通信请见[端到端 SSL](/application-gateway/application-gateway-end-to-end-ssl-powershell)
+如何在应用程序网关后配置Web应用请假[应用程序网关配置 Web 应用](/application-gateway/application-gateway-web-app-powershell)
 
 > [!IMPORTANT]
 > 本文所提及的端到端 SSL 只适用于 Resource Manager 模式。
@@ -68,7 +70,7 @@ $probeconfig = New-AzureRmApplicationGatewayProbeConfig -name webappprobe -Proto
 ```
 
 > [!IMPORTANT]
-> 由于 Web 应用是是比较特殊的后端池，它的 probe 需要通过“PwerShell”中的 `PickHostNameFromBackendHttpSettings` 命令去创建，通过此命令从后端主机名中获得主机标头，如果手动在 Azure 门户上指定后端 Web 应用的主机名， 很有可能 probe 建立不成功
+> 由于 Web 应用是是比较特殊的后端池，它的 probe 需要通过“PowerShell”中的 `PickHostNameFromBackendHttpSettings` 命令去创建，通过此命令从后端主机名中获得主机标头，如果手动在 Azure 门户上指定后端 Web 应用的主机名， 很有可能 probe 建立不成功
 
 创建成功的 Probe 示例如下：
 
@@ -103,7 +105,7 @@ $password = ConvertTo-SecureString "Test123" -AsPlainText -Force
 $cert = New-AzureRmApplicationGatewaySSLCertificate -Name sslcert -CertificateFile C:\Users\xxx\ca.pfx -Password $password
 ```
 
-上传 Base 64 编码格式的.pfx 证书，负责解密来自应用程序网关前端的 SSL 请求，应用程序网关前端和后端的证书可以不同
+上传 Base 64 编码格式的.pfx 证书，负责解密来自应用程序网关前端的 SSL 请求，应用程序网关前端（Client与AppGW之间的HTTPS证书，配置在本地和应用程序网关的HTTP Listener上）和后端（AppGW和Web应用之间的HTTPS证书，配置在应用程序网关的HTTP Settings和后端Web应用上）可以不同。
 
 
 ### 创建 HTTPS 监听
@@ -173,12 +175,14 @@ $appgw = New-AzureRmApplicationGateway -Name appgateway -SSLCertificates $cert -
 - 后端 Web 应用不可用
 - Web 应用不在应用网关白名单中
 
-请确认上传到应用程序网关中 鉴权证书为后端 Web 应用所使用证书的公钥
-确认后端 Web 应用 HTTPS 是否使用了主机标头和 SNI 的形式，导致应用程序网关在检索后端公钥时出现问题，这时需要在后端 Web 应用上设置默认 SSL 绑定，具体请参考[端到端 SSL](/application-gateway/application-gateway-end-to-end-ssl-powershell)， [自定义 SSL 证书绑定到 Azure Web 应用](/app-service/app-service-web-tutorial-custom-SSL)。
+请确认上传到应用程序网关中的鉴权证书为后端 Web 应用所使用证书的公钥。
+确认后端 Web 应用 HTTPS 是否使用了主机标头和 SNI 的形式，导致应用程序网关在检索后端公钥时出现问题。如果是这种情况，需要在后端 Web 应用上设置默认 SSL 绑定，具体请参考[端到端 SSL](/application-gateway/application-gateway-end-to-end-ssl-powershell)， [自定义 SSL 证书绑定到 Azure Web 应用](/app-service/app-service-web-tutorial-custom-SSL)。
 
 ## 访问自定义域
 
-客户端浏览器访问自定义域 `https://<your.custom.domain>`, 观察是否可以成功打开页面，具体输出取决于用户实际应用程序配置。注意需要在客户端安装客户端证书，并把根证书加到可信任的证书列表中才可成功访问 Web 应用。本文测试中观察到通过应用程序网关访问 Web 应用，返回用户自定义域名：
+客户端浏览器访问自定义域 `https://<your.custom.domain>`, 观察是否可以成功打开页面，具体输出取决于用户实际应用程序配置。注意需要在客户端安装客户端证书，并把根证书加到可信任的证书列表中才可成功访问 Web 应用。
+
+本文测试中观察到通过应用程序网关访问 Web 应用，返回用户自定义域名：
 
 ![03](media/aog-application-gateway-howto-create-web-apps-backend-pool-via-powershell/03.png)
 
