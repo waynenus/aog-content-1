@@ -67,7 +67,7 @@ wacn.date: 02/28/2018
 
         ![08](media/aog-virtual-machines-linux-howto-manage-multi-nic-traffic-flow/08.png)
 
-        删除系统自带的默认路由，并且添加默认路由指定下一跳为 eth2，当删除系统自带的默认路由以后，可能会导致系统无法通过 SSH登录，建议可以在虚拟网络VNET中新建一台 jump server 做跳板机进行配置。
+        删除系统自带的默认路由，并且添加默认路由指定下一条为 eth2，当删除系统自带的默认路由以后，可能会导致系统无法通过 SSH登录，建议可以在虚拟网络VNET中新建一台 jump server 做跳板机进行配置。
 
         ![09](media/aog-virtual-machines-linux-howto-manage-multi-nic-traffic-flow/09.png)
 
