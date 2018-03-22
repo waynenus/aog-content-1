@@ -25,8 +25,8 @@ wacn.date: 02/28/2018
 
 ## 开始之前
 
-目前 Azure 应用程序网关支持 Web 应用的后端池类型，如用户想实现通过路径重定向到后端 Web 应用。如 Web 应用 A 只处理 txt 文本信息，Web 应用 B 可以处理 image 图像信息，当用户访问 Web 应用 A 的图像时，可以重定向到 Web 应用 B 上相应的目录获得图像信息。
-//建议强调一下是 web app，然后是不同的后端池
+目前 Azure 应用程序网关支持 Web 应用的后端池类型，如用户想实现通过路径重定向到后端 Web 应用。例如在后端池中有 2 个 Web 应用，Web 应用 A 只处理 txt 文本信息，Web 应用 B 可以处理 image 图像信息，当用户访问 Web 应用 A 的图像时，可以重定向到 Web 应用 B 上相应的目录获得图像信息。
+
 ![01](media/aog-application-gateway-howto-redirect-to-web-apps/01.png)
 
 本文主要针对用户的这种需求，介绍如果通过应用程序网关实现基于路径重定向到后端 Web 应用。
@@ -82,8 +82,8 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
     ![03](media/aog-application-gateway-howto-redirect-to-web-apps/03.png)
 
 2. 本地浏览器打开 url
-//建议这里输入完整的url，而且与文章开头的URL域名一直。
-   通过本地浏览器访问 `apptest.cn/image/test.txt`,经过应用程序网关跳转至 lindatest.cn 的 image 目录下， 得到以下内容，表明基于路径的重定向成功：
+
+   通过本地浏览器访问 `http://apptest.cn/image/test.txt`,经过应用程序网关跳转至 lindatest.cn 的 image 目录下， 得到以下内容，表明基于路径的重定向成功：
 
     ![04](media/aog-application-gateway-howto-redirect-to-web-apps/04.png)
 
