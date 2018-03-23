@@ -16,7 +16,7 @@ wacn.date: 02/28/2018
 出于某些安全或兼容性的考虑，使用者需要指定应用程序网关使用特定的 HTTPS 的加密算法。
 有关如何具体配置应用程序网关的加密策略算法，请参考： [在应用程序网关上配置 SSL 策略版本和密码套件](/application-gateway/application-gateway-configure-ssl-policy-powershell)
 
-# 操作步骤
+## 操作步骤
 
 使用以下 PowerShell 命令进行操作：
 
