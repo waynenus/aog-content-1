@@ -75,7 +75,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 ## 验证步骤
 
-当配置完成并生效之后， 可以通过集中方法验证配置是否成功以及是否可以成功完成重定向：
+当配置完成并生效之后， 可以通过几种方法验证配置是否成功以及是否成功完成重定向：
 
 1. 从 Azure 门户 或者 PowerShell 中观察
 
@@ -93,7 +93,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
     ![05](media/aog-application-gateway-howto-redirect-to-web-apps/05.png)
 
-    观察重定向的具体过程，请求的域名和 url 以及 HTTP 状态码等。可以观察到，客户端访问域名 `apptest.cn` 的 `/image/` 路径下的 `beauty.png` 文件时，首先返回重定向状态码 `301`，通知客户端将对此请求做永久重定向，重定向到后端 Web 应用 `lindatest.chinaclousites.cn` 去处理，并返回 `200OK`。
+    观察重定向的具体过程，请求的域名和 url 以及 HTTP 状态码可以观察到，客户端访问域名 `apptest.cn` 的 `/image/` 路径下的 `beauty.png` 文件时，首先返回重定向状态码 `301`，通知客户端将对此请求做永久重定向，重定向到后端 Web 应用 `lindatest.chinaclousites.cn` 去处理，并返回 `200OK`。
 
 > [!IMPORTANT] 
 > 在本文中 Web 应用 A 与 Web 应用 B 均为同一应用程序网关的后端池，对于 Web 应用 A 正常的访问，应用程序网关对应一个监听，对于 Web 应用 A 图像的访问， 应用程序网关对应另一个监听，这两个监听由于监听在同一个 Host, 同一个前端 IP， 这时不能使用同样的监听端口， 如示例中 `8080` 端口监听来自 Web 应用 A 的文本信息， 具体如何设置，需要考虑用户实际需求。
