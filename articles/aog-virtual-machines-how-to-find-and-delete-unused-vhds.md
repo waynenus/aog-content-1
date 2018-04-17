@@ -8,7 +8,7 @@ wacn.topic: aog
 ms.topic: article
 ms.author: v-zhilv
 ms.date: 2/1/2018
-wacn.date: 2/1/2018
+wacn.date: 4/17/2018
 ---
 
 # 如何查找并删除未被使用的非托管磁盘源 .vhd 文件
@@ -32,8 +32,12 @@ wacn.date: 2/1/2018
 
 非托管磁盘源 .vhd 文件以页 Blob 的方式存储在存储账户中，通过查看页 Blob 的名称来判断是否是源 .vhd 文件，通过检查属性 LeaseState 来判断源文件是否被租用，然后进行删除。
 
-> [!NOTE] 
+> [!NOTE]
 > 默认情况下，创建新的 VM 时，系统磁盘会存储在存储账户中的 vhds 容器中，为了方便管理源 .vhd 文件,建议将所有的源 .vhd 文件都放在 vhds 容器中。本文中所有的源 .vhd 文件都放在 vhds 容器中，并且在本文使用的脚本中，默认设置容器名称为 vhds 。
+
+## Powershell 配置环境
+
+本文中 PowerShellGet 使用的是 1.0.0.1 版本，Azure RM PowerShell Module 使用的是 4.4.1 版本。
 
 ## <a id="getUnusedVHDs"></a> 查看当前订阅下未被使用的源 .vhd 文件
 
@@ -48,6 +52,7 @@ wacn.date: 2/1/2018
 # 查看订阅下所有未被使用的托管磁盘。
 Get-UnusedVHDs
 ```
+
 ![GetUnusedVHDs.PNG](./media/aog-virtual-machines-how-to-find-and-delete-unused-vhds/GetUnusedVHDs.PNG)
 
 也可以使用以下代码查看指定资源组、存储账户以及容器名称中未被使用的源 .vhd 文件。
@@ -58,11 +63,10 @@ Get-UnusedVHDs -ResourceGroupName "<资源组名称>" -AccountName "<存储账�
 
 ![GetUnusedVHDs2.PNG](./media/aog-virtual-machines-how-to-find-and-delete-unused-vhds/GetUnusedVHDs2.PNG)
 
-
 ## <a id="keepReservedVhds"></a> 保留所需的源 .vhd 文件，删除其他的源 .vhd 文件
 
-> [!NOTE]
-> 使用该脚本删除源 .vhd 文件时，会将被 Lock 的源 .vhd 文件解锁并删除，所以在删除前再次检查是否需要删除，如果需要保留源 .vhd 文件，请使用下列的代码指定保留源 .vhd 文件。
+> [!WARNING]
+> 使用该脚本删除源 .vhd 文件时，会将被 Lock 的源 .vhd 文件解锁并删除，被 Lock 的源 .vhd 文件中可能存在一些关键资源，所以在删除前再次检查是否需要删除，如果需要保留源 .vhd 文件，请使用下列的代码指定保留源 .vhd 文件，或者请修改 [PowerShell Function 脚本](#detailsScript) 中检查源文件是否被租用以及解锁相关的代码，保留所有被 Lock 的源 .vhd 文件。有关 Azure 资源锁定的详细信息，请参阅 [Azure 锁定资源](https://docs.azure.cn/azure-resource-manager/resource-group-lock-resources)。
 > 输入的 .vhd 文件名称需要 **保留 .vhd 后缀**。
 
 ```powershell
@@ -108,7 +112,7 @@ Function Get-UnusedVHDs()
 {
     #ResourceGroupName:资源组名称；AccountName：存储账户名称；Container：Blob容器名称
     Param($ResourceGroupName, $AccountName, $Container);
-    $storages = New-Object System.Collections.ArrayList; 
+    $storages = New-Object System.Collections.ArrayList;
     if(($ResourceGroupName -ne $Null) -and ($AccountName -ne $Null))
     {
         $storages = Get-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -AccountName $AccountName -WarningAction Ignore;
@@ -159,10 +163,10 @@ Function Get-UnusedVHDs()
 # 删除未使用的源 .vhd 文件
 Function Remove-UnusedVHDs()
 {
-    # ResourceGroupName:资源组名称; AccountName: 存储账户名称; Container: Blob 容器名称; 
+    # ResourceGroupName:资源组名称; AccountName: 存储账户名称; Container: Blob 容器名称;
     # VhdNames: 要删除的源 .vhd 文件; ReservedVhds：需要保留的源 .vhd 文件
     Param($ResourceGroupName, $AccountName, $Container, [String[]]$VhdNames, [String[]]$ReservedVhds);
-    $storages = New-Object System.Collections.ArrayList; 
+    $storages = New-Object System.Collections.ArrayList;
     if(($ResourceGroupName -ne $Null) -and ($AccountName -ne $Null))
     {
         $storages = Get-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -AccountName $AccountName -WarningAction Ignore;
@@ -196,7 +200,7 @@ Function Remove-UnusedVHDs()
                         Write-Host "Successfully break lease on blob: " $blob.Name " URL: " $url;
                     }
                     Remove-AzureStorageBlob -Context $storage.Context -Container $Container -Blob $vhd -Force;
-                    Write-Host "Already delete blob: " $vhd;  
+                    Write-Host "Already delete blob: " $vhd;
                 }
             }
         }
@@ -227,9 +231,9 @@ Function Remove-UnusedVHDs()
                                     $blob.ICloudBlob.BreakLease();
                                     Write-Host "Successfully break lease on blob: " $blob.Name " URL: " $url;
                                 }
-                                
+
                                 Remove-AzureStorageBlob -Context $storage.Context -Container $Container -Blob $blob.Name -Force;
-                                Write-Host "Already delete blob: " $blob.Name " URL: " $url;                            
+                                Write-Host "Already delete blob: " $blob.Name " URL: " $url;
                             }
                         }
                     }

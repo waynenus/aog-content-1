@@ -8,7 +8,7 @@ wacn.topic: aog
 ms.topic: article
 ms.author: v-zhilv
 ms.date: 01/12/2018
-wacn.date: 02/09/2018
+wacn.date: 04/17/2018
 ---
 
 # 如何查找并删除未被使用的托管磁盘
@@ -30,9 +30,14 @@ wacn.date: 02/09/2018
 > [!IMPORTANT]
 > 如果从资源组或存储账户中删除托管磁盘，Microsoft 则无法为用户恢复数据。为防止重要数据丢失，请将重要数据在本地备份。
 
-## 实现思路:
+## 实现思路
 
 通过检查托管磁盘的所有者来判断该磁盘是否正在被使用。
+
+## Powershell 配置环境
+
+本文中 PowerShellGet 使用的是 1.0.0.1 版本，Azure RM PowerShell Module 使用的是 4.4.1 版本。
+如果您使用的 Azure RM PowerShell Module 是 5.7.0 版本，请将 [PowerShell Function 脚本](#detailsscript) 中 disk 的 “OwnerId” 属性替换为 “ManagedBy” 。
 
 ## <a id="getUnusedDisks"></a>获取未被使用的托管磁盘
 
@@ -49,7 +54,6 @@ Get-UnusedDisks
 执行以上方法，获取当前订阅下所有未被使用的托管磁盘, 如下所示：
 
 ![getmanageddisks.PNG](./media/aog-virtual-machines-how-to-find-and-delete-unused-disks/getmanageddisks.PNG)
-
 
 ## <a id="removeSpecifiedDisks"></a>删除指定的托管磁盘
 
@@ -69,11 +73,12 @@ Remove-UnusedDisks -ResourceGroupName "<资源组名称>" -DiskNames $disknames
 ## <a id="reservedisks"></a>保留指定的磁盘，删除指定资源组中其他未被使用的托管磁盘
 
 > [!WARNING]
-> 使用该脚本删除磁盘时，会将被 Lock 的磁盘解锁并删除，所以在删除前再次检查是否需要删除，如果需要保留磁盘，请使用下列的代码指定保留磁盘。
+> 使用该脚本删除磁盘时，会将被 Lock 的磁盘解锁并删除，被 Lock 的磁盘中可能存在一些关键资源，所以在删除前再次检查是否需要删除，如果需要保留磁盘，请使用下列的代码指定保留磁盘。
+> 或者请修改 [PowerShell Function 脚本](#detailsscript) 中检查磁盘是否被锁定以及解锁相关的代码，保留所有被 Lock 的磁盘。有关 Azure 资源锁定的详细信息，请参阅 [Azure 锁定资源](https://docs.azure.cn/azure-resource-manager/resource-group-lock-resources)
 
 ```powershell
 $reservedDiskName = @("磁盘名称","磁盘名称")
-Remove-UnusedDisks -ResourceGroupName "<资源组名称>" -ReservedDiskNames $reservedDiskName 
+Remove-UnusedDisks -ResourceGroupName "<资源组名称>" -ReservedDiskNames $reservedDiskName
 ```
 
 ![reserveddisks.PNG](./media/aog-virtual-machines-how-to-find-and-delete-unused-disks/reserveddisks.PNG)
@@ -169,6 +174,6 @@ Function Remove-UnusedDisks()
                 }
             }
         }
-    }    
+    }
 }
 ```
