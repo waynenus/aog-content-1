@@ -67,4 +67,4 @@ $sslpolicy = Get-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $AppGW
 
 ## 解决建议：
 
-由于用户的随机性和大量性，即使可以手动添加浏览器的密码套件，但并不是一种好的解决办法，建议在应用程序网关上添加一组或多组 Firefox 可以支持的 RSA_SHA256 密码套件，例如： ”TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256“ ，并把 Web 应用根证书添加到 Firefox 的 certificate manager 的可信任证书列表中， 通过本地应用程序网关测试后验证使用 Firefox 可以成功访问 Web 应用。
+由于用户的随机性和大量性，即使可以手动添加浏览器的密码套件，但并不是一种好的解决办法，建议在应用程序网关上添加一组或多组 Firefox 可以支持的 RSA_SHA256 密码套件，例如： ”TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256“ ，并把 Web 应用根证书添加到 Firefox 的 certificate manager 的可信任证书列表中， 通过本地客户端浏览器访问部署在应用程序网关后端站点的HTTPS URL测试后，验证使用 Firefox 可以成功访问 Web 应用。
