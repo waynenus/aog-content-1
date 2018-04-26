@@ -55,9 +55,10 @@ wacn.date: 3/31/2018
     ![04](media/aog-virtual-machines-windows-howto-disk-striping-with-storage-spaces-via-powershell/04.png)
 
 8. 创建新的分区。
-   首先初始化磁盘，并将磁盘上线。
-   然后为磁盘创建分区。你可能需要使用Get-Disk命令获取磁盘的DiskNumber；或者直接在磁盘管理界面查看。参数AssignDriveLetter会为该分区分配一个盘符，并显示在命令输出中。
-   最后格式化磁盘，DriveLetter为上面命令的输出。您可以用命令格式化，或者在跳出的对话框中点击格式化磁盘。
+
+   首先初始化磁盘，并将磁盘上线。<br>
+   然后为磁盘创建分区。你可能需要使用 `Get-Disk` 命令获取磁盘的 `DiskNumber`；或者直接在磁盘管理界面查看。参数 `AssignDriveLetter` 会为该分区分配一个盘符，并显示在命令输出中。<br>
+   最后格式化磁盘，DriveLetter 为上面命令的输出。您可以用命令格式化，或者在跳出的对话框中点击格式化磁盘。
 
     ```powershell
     Initialize-Disk -VirtualDisk (Get-VirtualDisk -FriendlyName <Friendlyname>)
