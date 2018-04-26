@@ -62,7 +62,7 @@ wacn.date: 3/31/2018
     ```powershell
     Initialize-Disk -VirtualDisk (Get-VirtualDisk -FriendlyName <Friendlyname>)
     New-Partition -DiskNumber <number> -UseMaximumSize -AssignDriveLetter
-    Format-Volume -DriveLetter E
+    Format-Volume -DriveLetter <driveLetter>
     ```
 
     ![05](media/aog-virtual-machines-windows-howto-disk-striping-with-storage-spaces-via-powershell/05.png)
