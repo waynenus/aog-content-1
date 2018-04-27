@@ -28,7 +28,7 @@ wacn.date: 3/31/2018
 
 ## 详细步骤
 
-1. 使用 Azure AD 全局管理员登录 Office 365 门户 https://portal.partner.microsoftonline.cn。
+1. 使用 Azure AD 全局管理员登录 [Office 365 门户](https://portal.partner.microsoftonline.cn)。
 
 2. 在左侧菜单中选择 “管理员” 按钮。
 
