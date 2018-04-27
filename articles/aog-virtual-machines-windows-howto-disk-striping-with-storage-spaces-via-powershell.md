@@ -26,7 +26,7 @@ wacn.date: 3/31/2018
 5. 运行以下 PowerShell 来添加磁盘：
 
     ```powershell
-    $subsystem = (get-storagesubsystem | select friendlyname)
+    $subname = (Get-StorageSubSystem).FriendlyName
     $PhysicalDisks = (Get-PhysicalDisk -CanPool $True)
     New-StoragePool -FriendlyName <YourFriendlyName> -StorageSubsystemFriendlyName $subname -PhysicalDisks $PhysicalDisks
     ```
@@ -40,7 +40,7 @@ wacn.date: 3/31/2018
 7. 创建新的虚拟磁盘。
 
     ```powershell
-    New-VirtualDisk -FriendlyName <String> -StoragePoolFriendlyName <YourpoolName> -NumberOfColumes <number, allign with disk number> -UseMaximumSize -ResiliencySettingName Simple
+    New-VirtualDisk -FriendlyName <String> -StoragePoolFriendlyName <YourpoolName> -NumberOfColumns <number, allign with disk number> -UseMaximumSize -ResiliencySettingName Simple
     ```
 
     ![03](media/aog-virtual-machines-windows-howto-disk-striping-with-storage-spaces-via-powershell/03.png)
@@ -50,16 +50,20 @@ wacn.date: 3/31/2018
     >- 使用 Simple 的弹性布局
     >- 列数和磁盘数量相等
 
-    在虚拟磁盘可以看到我们创建好的磁盘：
+    在虚拟磁盘可以看到我们创建好的磁盘，或者您可以使用Get-Disk查看：
 
     ![04](media/aog-virtual-machines-windows-howto-disk-striping-with-storage-spaces-via-powershell/04.png)
 
-8. 创建新的分区。您可以用命令格式化，或者在跳出的对话框中点击格式化磁盘。
+8. 创建新的分区。
+
+   首先初始化磁盘，并将磁盘上线。<br>
+   然后为磁盘创建分区。你可能需要使用 `Get-Disk` 命令获取磁盘的 `DiskNumber`；或者直接在磁盘管理界面查看。参数 `AssignDriveLetter` 会为该分区分配一个盘符，并显示在命令输出中。<br>
+   最后格式化磁盘，DriveLetter 为上面命令的输出。您可以用命令格式化，或者在跳出的对话框中点击格式化磁盘。
 
     ```powershell
     Initialize-Disk -VirtualDisk (Get-VirtualDisk -FriendlyName <Friendlyname>)
     New-Partition -DiskNumber <number> -UseMaximumSize -AssignDriveLetter
-    Format-Volume -DriveLetter E
+    Format-Volume -DriveLetter <driveLetter>
     ```
 
     ![05](media/aog-virtual-machines-windows-howto-disk-striping-with-storage-spaces-via-powershell/05.png)
