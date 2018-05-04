@@ -53,6 +53,4 @@ echo "10" > /proc/sys/net/ipv4/tcp_keepalive_probes
 echo "3" > /proc/sys/net/ipv4/tcp_retries2
 ```
 
-`tcp_keepalive_time` 和 `tcp_keepalive_intvl` 值的单位是秒。若要使得修改的值在系统重启后仍然生效，需要将这两个参数添加到 `/etc/sysctl.conf` 中.
-
-![](./media/aog-application-gateway-using-firefox-access-application-gateway/google-package.png)
+`tcp_keepalive_time` 和 `tcp_keepalive_intvl` 值的单位是秒。若要使得修改的值在系统重启后仍然生效，需要将这两个参数添加到 `/etc/sysctl.conf` 中。

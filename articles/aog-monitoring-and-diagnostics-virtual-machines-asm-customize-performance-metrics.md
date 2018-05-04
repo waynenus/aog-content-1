@@ -37,7 +37,7 @@ wacn.date: 08/31/2017
         <annotation displayName="Disk free space (percentage)" locale="en-us"/>
       </PerformanceCounterConfiguration> 
 ```
-> [!TIPS]
+> [!TIP]
 > counterSpecifier：监控的指标名称。  
 > 该名称在 Windows 系统中必须是存在的，示例中的= `"\LogicalDisk(_Total)\% Free Space` 在资管管理器中对应的条目为对 Logical Disk 中所有的磁盘 (_Total) 的可用空间百分比 (% Free Space) 的平均值。  
 > 与此类似，若只想知道单个逻辑磁盘的，如 C 盘，则可以替换为 `\LogicalDisk(C:)\% Free Space`。

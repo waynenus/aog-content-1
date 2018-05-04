@@ -60,7 +60,7 @@ Select-AzureRmSubscription -SubscriptionId $mysubscription
 
 这两个策略表示若资源已有标记，则判断是否有 Env 和 Bill 标记；若没有，则添加标记并赋值。
 
-> [!TIPS]
+> [!TIP]
 > 请根据实际情况定义 Name, Description, Policy 文件所在的路径和文件名。
 
 ```PowerShell
