@@ -35,7 +35,7 @@ Hivedump 目录下的所有文件结构会放在 ocrdump.log 中。
 
 下图是 dump 出来的表结构示例。
 
-![01](media\aog-hdinsight-qa-hive-read-column-error\01.png)
+![01](media/aog-hdinsight-qa-hive-read-column-error/01.png)
 
 通过这种方法可以确认 ocr 文件中 column 的数据类型。
 
