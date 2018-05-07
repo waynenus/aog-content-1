@@ -23,12 +23,13 @@ wacn.date: 3/31/2018
 
     ![01](media/aog-app-service-web-howto-write-webjobs-console-message-into-storage/01.png)
 
-2. 关联存储账号如下，设置Console.SetOut()，Publish 发布到本地：
+2. 关联存储账号如下，设置 Console.SetOut()，Publish 发布到本地：
 
     ![02](media/aog-app-service-web-howto-write-webjobs-console-message-into-storage/02.png)
     
-    其中，StorageWriter实现代码如下所示：
+    其中，StorageWriter 实现代码如下所示：
     
+        ```csharp
         class StorageWriter : TextWriter
         {
             private CloudAppendBlob appBlob = null;
@@ -67,6 +68,7 @@ wacn.date: 3/31/2018
                 Task.Run(async () => { await WriteLineCustom(input); }).GetAwaiter().GetResult();
             }
          }
+         ```
 
 3. 创建 cmd 文件，内容是 `dotnet.exe xxxxx.dll` 并压缩上传到 Web 作业中。
 
