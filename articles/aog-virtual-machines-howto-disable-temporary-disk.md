@@ -33,20 +33,20 @@ wacn.date: 4/24/2018
 1. 以管理员身份登录 Windows 虚拟机.
 2. 点击搜索 “**advanced system settings**” -> 选择 “**Advanced**” -> “**Performance**” -> “**Settings**”：
 
-    ![01](media/aog-virtual-machines-linux-ubuntu-qa-solve-chinese-charset-error/01.png)
+    ![01](media/aog-virtual-machines-howto-disable-temporary-disk/01.png)
 
 3. 在性能选项页面,  选择 “**Advanced**” -> “**Virtual memory**” -> “**Change**”。
 
-    ![02](media/aog-virtual-machines-linux-ubuntu-qa-solve-chinese-charset-error/02.png)
+    ![02](media/aog-virtual-machines-howto-disable-temporary-disk/02.png)
 
 4. 在虚拟内存页面, 选择临时盘 -> 选择 “**No Paging file**” -> 点击 “**Set**” 按钮 -> “**OK**” 按钮。
-    ![03](media/aog-virtual-machines-linux-ubuntu-qa-solve-chinese-charset-error/03.png)
+    ![03](media/aog-virtual-machines-howto-disable-temporary-disk/03.png)
 
 5. 重启虚拟机。
 6. 再次以管理员身份登录 Windows 虚拟机。
 7. 点击开始 -> 运行 -> `diskmgmt.msc`, 打开磁盘管理。
 8. 选择 “**Temporary Storage**”, 右键点击 “**offline**”。
 
-    ![04](media/aog-virtual-machines-linux-ubuntu-qa-solve-chinese-charset-error/04.png)
+    ![04](media/aog-virtual-machines-howto-disable-temporary-disk/04.png)
 
 9. 再次重启虚拟机,打开 “**我的电脑**” 就看不到该临时磁盘了。
