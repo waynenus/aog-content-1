@@ -24,12 +24,16 @@ wacn.date: 4/24/2018
 3. 如果在应用程序网关以及后端 Web 服务器的访问日志中看到部分 URL 访问中 `timetaken` 数值相对于请求内容大小异常大（例如请求内容只有几十 K，但是响应时间多达 5 秒以上）说明后端服务器响应慢。
 4. 如果应用程序网关记录了 Http Response Code 502 而后端 Web 服务器的访问日志中记录返回 HTTP Code 200，仔细留意时间戳，发现后端服务器的 Http Response Code 200 响应的时间比应用程序网关记录此 URL 访问的 Http Response Code 502 晚了 1 秒或是更长的时间。
 
-以上分析过程可以判断出，此问题与后端 Web 服务器响应慢有关。
+以上分析过程可以判断出，此问题与后端 Web 服务器响应慢有关。<br>
 这包含两种可能：
+
 1. Web 服务器工作异常。
-如果是基于 IIS 的 Web 服务器，可以通过开启 failed request tracing (FRT) 功能来跟踪某个响应慢或异常的请求，具体可以参考另外一篇文章：[如何排查应用程序网关返回 HTTP Code 502 或客户端得到应用程序网关响应慢的问题(二)](aog-application-gateway-qa-web-server-backend-error.md)
+
+  如果是基于 IIS 的 Web 服务器，可以通过开启 failed request tracing (FRT) 功能来跟踪某个响应慢或异常的请求，具体可以参考另外一篇文章：[如何排查应用程序网关返回 HTTP Code 502 或客户端得到应用程序网关响应慢的问题(二)](aog-application-gateway-qa-web-server-backend-error.md)
+
 2. Web 服务器工作正常，但应用逻辑运算需要时间比较长。
-由于应用程序网关在默认的 HTTP settings 中超时时间为 30 秒，30 秒后，如果后端 Web 服务器没有响应此请求，应用程序网关会认为此请求会话超时，并返回给前端客户端 HTTP Code 502。
+
+  由于应用程序网关在默认的 HTTP settings 中超时时间为 30 秒，30 秒后，如果后端 Web 服务器没有响应此请求，应用程序网关会认为此请求会话超时，并返回给前端客户端 HTTP Code 502。
 
 HTTP settings 超时时间配置如下图：
 
