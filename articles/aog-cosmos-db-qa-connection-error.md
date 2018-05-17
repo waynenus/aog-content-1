@@ -24,7 +24,7 @@ by: com.mongodb.MongoSocketReadException: Prematurely reached end of stream
 
 ## 问题分析
 
-该类型的问题是由于在连接 Cosmos DB 时会连接 Azure Gateway。 Gateway 会在 session 超过 4 分钟没有任何操作时终结该连接。
+出现这种类型的问题的原因是当连接 Cosmos DB 时会连接 Azure Gateway。 Gateway 会在 session 超过 4 分钟没有任何操作时终结该连接。
 
 ## 解决方法
 
