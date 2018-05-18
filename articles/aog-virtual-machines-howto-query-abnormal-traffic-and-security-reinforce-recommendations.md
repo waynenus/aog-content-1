@@ -111,3 +111,4 @@ wacn.date: 5/8/2018
 
     在环境允许的情况下, 时刻保持 Windows 虚拟机的安全更新至最新。
     更新 Linux 虚拟机的内核版本至最新。
+5.在虚拟网络中增加NVA（network virtual appliance）,如防火墙，WAF等，拓扑中逻辑部署在应用服务器前面过滤请求流量。
