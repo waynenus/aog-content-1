@@ -26,5 +26,5 @@ wacn.date: 4/30/2018
 
 目前（截止到本文撰写完成时）针对这种场景，网络传输的双方是本地网络和 Azure 的虚拟网络，这是我们所说的 Azure 专用对等互联（Azure private peering），ExpressRoute 的 MSEE 路由设备**不识别**专用对等互连中传输的网络包中的 DSCP 标记。
 
-即带有 DSCP 标记的网络包到达 Azure MSEE 后，DSCP 标记会被被重置为 0，即 Best effort。
-因此本地网络到 Azure 虚拟网络的流量在ExpressRoute 的 MSEE 路由设备不支持QOS。
+即带有 DSCP 标记的网络包到达 Azure MSEE 后，DSCP 标记会被被重置为 0，即 Best effort。<br>
+因此本地网络到 Azure 虚拟网络的流量在 ExpressRoute 的 MSEE 路由设备不支持 QOS。
