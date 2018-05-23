@@ -26,7 +26,8 @@ wacn.date: 5/8/2018
   - [业务端口](#section2-1)
   - [Vnet 网络安全最佳实践](#section2-2)
   - [ACL/NSG](#section2-3)
-  - [其他提供安全性的功能](#section2-4)
+  - [WAF](#section2-4)
+  - [其他提供安全性的功能](#section2-5)
 - [安全加固建议 – VM 层面](#section3)
   - [RDP/SSH](#section3-1)
   - [Jumpbox](#section3-2)
@@ -76,6 +77,8 @@ wacn.date: 5/8/2018
 
     WAF 基于 [OWASP 核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)，对后端服务进行集中保护，避免其受到常见的攻击和漏洞伤害（比如 SQL 注入攻击、跨站点脚本攻击等）。
 
+5. <a id="section2-5"></a>在虚拟网络中增加NVA（network virtual appliance）,如防火墙，WAF等，拓扑中逻辑部署在应用服务器之前以过滤请求流量。
+
 ## <a id="section3"></a>安全加固建议 – VM 层面
 
 - <a id="section3-1"></a>RDP/SSH
@@ -111,4 +114,3 @@ wacn.date: 5/8/2018
 
     在环境允许的情况下, 时刻保持 Windows 虚拟机的安全更新至最新。
     更新 Linux 虚拟机的内核版本至最新。
-5.在虚拟网络中增加NVA（network virtual appliance）,如防火墙，WAF等，拓扑中逻辑部署在应用服务器前面过滤请求流量。
