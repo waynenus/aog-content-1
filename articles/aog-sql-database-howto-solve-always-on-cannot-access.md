@@ -13,12 +13,12 @@ wacn.date: 4/30/2018
 
 # 如何解决 Azure  Always On listener 无法访问的问题
 
-本文旨在解决 Always On 无法从 secondary replica 通过 listener 连接集群，或时而能时而不能访问的常见问题。
+本文旨在解决 Always On 无法从 secondary replica 通过 listener 连接集群，时而出现不能访问的常见问题。
 
 ## Always On 介绍
 
 Always on 是 SQL Server on VM 的架构下最常见的高可用方案。<br>
-其基本原理为创建一个至少为 2 台 VM 所组成的 Windows cluster 集群，每台 VM 上安装一台 SQL Server Instance。由其中的一台 SQL instance 作为主节点（primary replica）提供对外读写访问，同时通过日志传输的形式提交到另外一台节点（secondary replica）进行数据同步。<br>
+其基本原理为创建一个至少为 2 台 VM 所组成的 Windows 集群，每台 VM 上安装一台 SQL Server Instance。由其中的一台 SQL instance 作为主节点（primary replica）提供对外读写访问，同时通过日志传输的形式提交到另外一台节点（secondary replica）进行数据同步。<br>
 Secondary replica 可以提供只读功能，用于做读写分离或高可用(强烈建议依旧保持备份的习惯)。
 
 > [!NOTE]
@@ -27,9 +27,9 @@ Secondary replica 可以提供只读功能，用于做读写分离或高可用(�
 
 ![01](media/aog-sql-database-howto-solve-always-on-cannot-access/01.png)
 
-在 Azure 中搭建 Always On 的过程并不复杂，但是经常有客户会遇到搭建 Always On 之后无法使用 App 链接的自动故障转移功能。
+在 Azure 中搭建 Always On 的过程并不复杂，但是经常有客户会遇到搭建 Always On 之后无法使用 App 连接的自动故障转移功能。
 
-Always on 的自动故障转移功能基于 Always on Listener。Listener 会被注册为一个 windows cluster 中的 resource，类似于 VIP 概念;在集群发生故障转移时 listener 会被漂移到新 primary 的 VM 中。对于客户端来说，只需要访问 Listner 的 IP 地址就可以保证永远链接到当前的 primary 数据库上。
+Always on 的自动故障转移功能基于 Always on Listener。Listener 会被注册为一个 windows cluster 中的 resource，类似于 VIP 概念;在集群发生故障转移时 listener 会被漂移到新 primary 的 VM 中。对于客户端来说，只需要访问 Listner 的 IP 地址就可以保证永远连接到当前的 primary 数据库上。
 
 在传统的 IDC 环境中，Always On 会自动将 Listener 所属的虚拟 IP 地址与网卡物理地址注册到路由表中，所以无论任何节点都可以通过 Listener 找到 primary 所在的服务器地址并建立链接。
 
@@ -41,7 +41,7 @@ Always on 的自动故障转移功能基于 Always on Listener。Listener 会被
 
 在配置好了 listener 之后可能会遇到以下几个常见问题：
 
-1. 在 primary 节点上可以通过 listener IP 访问集群，但在 secondary 上无法访问 listener IP，只能通过提供 primary 服务器名或 IP 的方式来进行链接。
+1. 在 primary 节点上可以通过 listener IP 访问集群，但在 secondary 上无法访问 listener IP，只能通过提供 primary 服务器名或 IP 的方式来进行连接。
 2. 在 secondary 上有时候可以访问 listener IP 有时候就不行，随机出现。
 
 如果遇到上述问题，我们可以通过以下几个步骤进行排错：
