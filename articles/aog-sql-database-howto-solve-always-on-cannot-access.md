@@ -18,7 +18,7 @@ wacn.date: 4/30/2018
 ## Always On 介绍
 
 Always on 是 SQL Server on VM 的架构下最常见的高可用方案。<br>
-其基本原理为创建一个至少为 2 台 VM 所组成的 Windows集群，每台 VM 上安装一台 SQL Server Instance。由其中的一台 SQL instance 作为主节点（primary replica）提供对外读写访问，同时通过日志传输的形式提交到另外一台节点（secondary replica）进行数据同步。<br>
+其基本原理为创建一个至少为 2 台 VM 所组成的 Windows 集群，每台 VM 上安装一台 SQL Server Instance。由其中的一台 SQL instance 作为主节点（primary replica）提供对外读写访问，同时通过日志传输的形式提交到另外一台节点（secondary replica）进行数据同步。<br>
 Secondary replica 可以提供只读功能，用于做读写分离或高可用(强烈建议依旧保持备份的习惯)。
 
 > [!NOTE]
