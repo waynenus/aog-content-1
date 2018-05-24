@@ -15,7 +15,7 @@ wacn.date: 4/30/2018
 
 ## 问题描述
 
-目前使用 HDInsight 环境的客户越来越多，同时 Hive 依然是最流行的User Interactive Interface。客户有时在使用 HDInsight 集成的 Ambari 中的 Hive View 进行查询时，会报出 `OCR does not support type conversion` 的错误。
+目前使用 HDInsight 环境的客户越来越多，同时 Hive 依然是最流行的 User Interactive Interface。客户有时在使用 HDInsight 集成的 Ambari 中的 Hive View 进行查询时，会报出 `OCR does not support type conversion` 的错误。
 
 ## 问题分析
 
