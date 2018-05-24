@@ -32,13 +32,13 @@ by: com.mongodb.MongoSocketReadException: Prematurely reached end of stream
 
 1. 在创建 Mongo Client 的时候使用以下参数方式创建，该操作可以启用 **Socket Keep Alive** 功能，使不活动的连接依然发送心跳包给 Gateway。
 
-```csharp
-MongoClientOptions.Builder b = new MongoClientOptions.Builder().socketKeepAlive(true).heartbeatFrequency(1000).maxConnectionIdleTime(18000);
-MongoClientURI uri = new MongoClientURI("mongodb://xxxxx:FPe52YbXxqmL09FDrEkPXK3nUDQkZ8ukx5znnwQ5F4nHLhuasuPPYxSQcvhLdmVn5uJdvuG4abvDCnLMjRQ2Lg==@xxxxx.documents.azure.cn:10255/?ssl=true&replicaSet=globaldb",b);
-```
+    ```csharp
+    MongoClientOptions.Builder b = new MongoClientOptions.Builder().socketKeepAlive(true).heartbeatFrequency(1000).maxConnectionIdleTime(18000);
+    MongoClientURI uri = new MongoClientURI("mongodb://xxxxx:FPe52YbXxqmL09FDrEkPXK3nUDQkZ8ukx5znnwQ5F4nHLhuasuPPYxSQcvhLdmVn5uJdvuG4abvDCnLMjRQ2Lg==@xxxxx.documents.azure.cn:10255/?ssl=true&replicaSet=globaldb",b);
+    ```
 
 2. 在创建 Mongo Client 时，URI 添加 `maxConnectionIdleTime`，在 idle 超过 4 分钟前提前关闭 connection。当重新活动时，创建新的 Client。 这种方式可以用于不方面进行代码变更的项目。
 
-```
-mongodb://xxxxx:FPe52YbXxqmL09FDrEkPXK3nUDQkZ8ukx5znnwQ5F4nHLhuasuPPYxSQcvhLdmVn5uJdvuG4abvDCnLMjRQ2Lg==@xxxxx.documents.azure.cn:10255/?ssl=true& replicaSet=globaldb& maxConnectionIdleTime=18000
-```
+    ```
+    mongodb://xxxxx:FPe52YbXxqmL09FDrEkPXK3nUDQkZ8ukx5znnwQ5F4nHLhuasuPPYxSQcvhLdmVn5uJdvuG4abvDCnLMjRQ2Lg==@xxxxx.documents.azure.cn:10255/?ssl=true& replicaSet=globaldb& maxConnectionIdleTime=18000
+    ```
