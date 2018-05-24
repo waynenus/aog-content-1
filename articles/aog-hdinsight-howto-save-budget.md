@@ -35,7 +35,7 @@ HDInsight 属于一种 PaaS 服务，与其他 PaaS 服务如 SQL DB 或 MySQL �
 输入用户所需要的配置内容即可。
 此处请务必配置好需要的存储，因为 HDInsight 在删除时不会删除存储上的内容，也是本文的根基所在。
 
-Container 的名字是 HDInsight 存放数据的根目录，最好是人工命名。
+Container 的名字是 HDInsight 存放数据的根目录，最好是手动命名。
 
 ![03](media/aog-hdinsight-howto-save-budget/03.png)
 
