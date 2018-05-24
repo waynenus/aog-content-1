@@ -15,13 +15,13 @@ wacn.date: 4/30/2018
 
 ## 问题描述
 
-由于目前 HDInsight 的环境使用的客户越来越多，同时 Hive 依然作为最流行 User Interactive Interface，在使用 HDInsight 集成的 Ambari 中的 Hive View 进行查询时会报出 `OCR does not support type conversion` 的错误。
+目前使用 HDInsight 环境的客户越来越多，同时 Hive 依然是最流行的 User Interactive Interface。客户有时在使用 HDInsight 集成的 Ambari 中的 Hive View 进行查询时，会报出 `OCR does not support type conversion` 的错误。
 
 ## 问题分析
 
 该问题是由于 Hive Table 中 Column 的数据类型与数据文件中的当前列不匹配，同时无法进行转换而报错。
 
-常见于用户需要按需使用 HDInsight，所以会对集群进行创建、计算或删除。然而，在二次创建时，没有对 Hive 的 metadata 进行保存，或者因为开发，运维脚本不同步的原因导致开发人员进行了修改，但运维人员使用的为历史脚本。
+该问题常见于用户需要按需使用 HDInsight，所以会对集群进行创建、计算或删除。然而，在二次创建集群时没有对之前 Hive 的 metadata 进行保存，或者因为开发，运维脚本不同步的原因导致开发人员进行了修改，但运维人员使用的为历史脚本。
 
 ## 解决方法
 
