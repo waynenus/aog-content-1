@@ -7,7 +7,7 @@ ms.service: billing
 wacn.topic: aog
 ms.topic: article
 ms.author: v-tawe
-ms.date: 3/31/2018
+ms.date: 5/28/2018
 wacn.date: 3/31/2018
 ---
 
@@ -18,8 +18,7 @@ wacn.date: 3/31/2018
 - [问题三：一台虚拟机通过公网 IP 访问另一台虚拟机时，数据传输如何计费？](#section3)
 - [问题四：哪些服务会产生标准数据流量？](#section4)
 - [问题五：S2SVPN 流量如何计费？](#section5)
-- [问题五：Virtual Network 如何计费？](#section6)
-
+- [问题六：Virtual Network 如何计费？](#section6)
 
 ## <a id="section1"></a>问题一：Windows Azure 能提供的流量带宽是多少？数据传输 Data Transfer 是如何收费的？
 
@@ -44,9 +43,10 @@ wacn.date: 3/31/2018
 ## <a id="section5"></a>问题五：S2S VPN 流量如何计费？
 
 只要通过 Internet 的都要按照正常的数据流量的费用来收，所以没有特别写出来。
+
 1. S2S 的 VPN 只要发生流量，就会单独计费。
 2. 计费标准是和 P2S 一样，按照数据传输的费率来收。
 
-## <a id="section6"></a>问题五：Virtual Network 如何计费？
+## <a id="section6"></a>问题六：Virtual Network 如何计费？
 
 Virtual Network 本身不计费，只有当您在 Virtual Network 中搭建 VPN 网关时才会产生网关和数据传输的费用。账单中 Virtual Network 的费用其实是网关的费用。
