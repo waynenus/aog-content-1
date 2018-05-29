@@ -15,8 +15,6 @@ wacn.date: 2/7/2018
 
 虚拟网络中的虚拟机有时会遇到可以远程连接，但是无法在虚拟机中访问外网的问题。本文主要提供一些常见的故障排除方法来帮助你解决此问题。
 
-如果本文未解决你的 Azure 问题，请访问 [MSDN 上的 Azure 论坛](https://social.msdn.microsoft.com/Forums/home?forum=windowsazurezhchs)， 你可以在这个论坛上发布你的问题。 此外，还可以通过在 [Azure 支持](https://www.azure.cn/support/contact/)站点上选择联系方式来发出 Azure 支持请求。
-
 ## 症状
 
 虚拟网络中的虚拟机可以通过远程连接访问，但是无法访问外部网络。
