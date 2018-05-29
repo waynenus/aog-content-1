@@ -68,6 +68,6 @@ wacn.date: 2/7/2018
 
 同样如果在虚拟网络中使用自定义 DNS 服务器，也可以尝试使用一些公共 DNS 服务器，例如： "8.8.8.8" (由 Google 提供，全球通用 DNS )，或者选择 "**默认值**" 使用由 Azure 提供的默认 DNS 服务器（ IP 地址为 "168.63.129.16" ）。
 
-如果使用 Azure 默认 DNS 服务器或者公共 DNS 服务器后虚拟机可以访问外网，说明问题与之前使用的 DNS 服务器 IP 地址有关，请修改为有效的 IP 地址或者使用 Azure 默认 DNS 服务器。
+如果使用 Azure 默认 DNS 服务器或者其他公共 DNS 服务器后虚拟机可以访问外网，说明问题与之前使用的 DNS 服务器 IP 地址有关，请修改为有效的 IP 地址或者使用 Azure 默认 DNS 服务器。
 
 如果本文未解决你的 Azure 问题，请访问 [MSDN 上的 Azure 论坛](https://social.msdn.microsoft.com/Forums/home?forum=windowsazurezhchs)， 你可以在这个论坛上发布你的问题。 此外，还可以通过在 [Azure 支持](https://www.azure.cn/support/contact/)站点上选择联系方式来发出 Azure 支持请求。
