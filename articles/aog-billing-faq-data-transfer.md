@@ -1,7 +1,7 @@
 ---
 title: "Azure 计费常见问题 - 数据传输"
 description: "Azure 计费常见问题 - 数据传输"
-author: v-DavidTang
+author: SusanYang11
 resourceTags: 'Azure Billing, Data Transfer, Virtual Network, FAQ'
 ms.service: billing
 wacn.topic: aog
@@ -12,13 +12,6 @@ wacn.date: 3/31/2018
 ---
 
 # Azure 计费常见问题 - 数据传输
-
-- [问题一：Windows Azure 能提供的流量带宽是多少？数据传输 Data Transfer 是如何收费的？](#section1)
-- [问题二：Azure 上两台虚拟机之间通过公网 IP（VIP）通信如何收费？](#section2)
-- [问题三：一台虚拟机通过公网 IP 访问另一台虚拟机时，数据传输如何计费？](#section3)
-- [问题四：哪些服务会产生标准数据流量？](#section4)
-- [问题五：S2SVPN 流量如何计费？](#section5)
-- [问题六：Virtual Network 如何计费？](#section6)
 
 ## <a id="section1"></a>问题一：Windows Azure 能提供的流量带宽是多少？数据传输 Data Transfer 是如何收费的？
 

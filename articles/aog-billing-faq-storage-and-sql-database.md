@@ -1,7 +1,7 @@
 ---
 title: "Azure 计费常见问题 - 存储与 SQL 数据库"
 description: "Azure 计费常见问题 - 存储与 SQL 数据库"
-author: v-DavidTang
+author: SusanYang11
 resourceTags: 'Azure Billing, Storage, SQL Database, FAQ'
 ms.service: billing
 wacn.topic: aog
@@ -12,9 +12,6 @@ wacn.date: 3/31/2018
 ---
 
 # Azure 计费常见问题 - 存储与 SQL 数据库
-
-- [问题一：关于存储-网页快照的一些计费逻辑？](#section1)
-- [问题二：SQL 数据库的计费？](#section2)
 
 ## <a id="section1"></a>问题一：关于存储-网页快照的一些计费逻辑？
 

@@ -13,12 +13,6 @@ wacn.date: 02/28/2018
 
 # Azure 计费常见问题
 
-- [问题一：带 SQL Server 的虚拟机如何计费？](#section1)
-- [问题二：Web 应用如何计费？](#section2)
-- [问题三：媒体服务的实时频道如何计费？](#section3)
-- [问题四：媒体服务的流式处理单元如何计费？](#section4)
-- [问题五：备份服务如何计费？](#section5)
-
 ## <a id="section1"></a>问题一：带 SQL Server 的虚拟机如何计费？
 
 1. 使用 Azure 提供的 SQL Server 镜像创建的虚拟机，按照 SQL server 的费用 + 虚拟机的费用计的（目前官网上的 SQL Server 的价格包含 VM 的价格）；使用自己制作的 SQL Server 镜像创建的虚拟机，按照 Windows 或 Linux 虚拟机计费。
