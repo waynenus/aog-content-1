@@ -2,8 +2,8 @@
 title: "使用 Netcat 测试虚拟机 TCP/UDP 端口连通性"
 description: "使用 Netcat 测试虚拟机 Tcp/UDP 端口连通性"
 author: Dillion132
-resourceTags: 'virtual network'
-ms.service: Virtual Network
+resourceTags: 'virtual network, TCP/UDP, Netcat'
+ms.service: virtual-network
 wacn.topic: aog
 ms.topic: article
 ms.author: v-zhilv
@@ -16,7 +16,6 @@ wacn.date: 05/23/2018
 Netcat 是一个用于 TCP/UDP 连接和监听的工具，主要用于网络传输和调试。本文主要介绍如何使用 Netcat 测试 Windows/Linux 虚拟机 TCP/UDP 端口的连通性。主要包含以下内容：
 
 - [Linux OS 环境下，使用 Netcat 命令分别测试 TCP/UDP 端口连通性](#linuxos)
-
 - [Windows OS 环境下，使用 Netcat 命令分别测试 TCP/UDP 端口连通性](#windowsos)
 
 ## 前提条件
@@ -66,7 +65,7 @@ Netcat 是一个用于 TCP/UDP 连接和监听的工具，主要用于网络传�
 
     在客户端输入如上命令后，可以在客户端输入任意字符，我们可以看到，客户端输入的字符均会在服务器端打印出来。测试结果如下：
 
-    客户端(本示例客户端使用的是 Linux 虚拟机，如果客户端机器是 windows 系统，使用 cmd 命令提示符进入到 nc.exe 所在目录，然后执行如上命令)：
+    客户端(本示例客户端使用的是 Linux 虚拟机，如果客户端机器是 Windows 系统，使用 `cmd` 命令提示符进入到 nc.exe 所在目录，然后执行如上命令)：
 
     ![linux-tcp-client.PNG](./media/aog-virtual-network-using-netcat-check-the-connectivity/linux-tcp-client.PNG)
 
@@ -125,9 +124,9 @@ Netcat 是一个用于 TCP/UDP 连接和监听的工具，主要用于网络传�
     > 注意网络安全组规则的优先级，确保入站规则有效，并处于 “**允许**” 状态。
     > 对于 Windows 虚拟机，从 Azure 门户添加完入站端口规则之后，需要远程连接到虚拟机，在防火墙中添加相对应的 TCP 入站规则。
 
-2. 远程连接到 Azure Windows 虚拟机，使用 cmd 命令导航至 nc.exe 所在目录，执行以下命令，实现 TCP 方式监听服务器端 5000 端口。
+2. 远程连接到 Azure Windows 虚拟机，使用 `cmd` 命令导航至 nc.exe 所在目录，执行以下命令，实现 TCP 方式监听服务器端 5000 端口。
 
-    ```
+    ```bash
     nc -l -p <端口号> -v
     ```
 
@@ -162,7 +161,7 @@ Netcat 是一个用于 TCP/UDP 连接和监听的工具，主要用于网络传�
     > 注意网络安全组规则的优先级，确保入站规则有效，并处于 “**允许**” 状态。
     > 对于 Windows 虚拟机，从 Azure 门户添加完入站端口规则之后，需要远程连接到虚拟机，在防火墙中添加相对应的 UDP 入站规则。
 
-2. 远程连接到 Azure Windows 虚拟机，使用 cmd 命令导航至 nc.exe 所在目录，执行以下命令，实现 UDP 方式监听服务器 5001 端口。
+2. 远程连接到 Azure Windows 虚拟机，使用 `cmd` 命令导航至 nc.exe 所在目录，执行以下命令，实现 UDP 方式监听服务器 5001 端口。
 
     ```bash
     nc -lu -p <端口号> -v

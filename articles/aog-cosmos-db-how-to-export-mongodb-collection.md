@@ -2,12 +2,12 @@
 title: "Azure Cosmos DB Mongo API 如何导出 MongoDB 数据"
 description: "Azure Cosmos DB Mongo API 如何导出 MongoDB 数据"
 author: Dillion132
-resourceTags: 'cosmos db'
-ms.service: Cosmos DB
+resourceTags: 'Cosmos DB, Mongo API, Studio 3T'
+ms.service: cosmos-db
 wacn.topic: aog
 ms.topic: article
 ms.author: v-zhilv
-ms.date: 05/11/2018
+ms.date: 05/31/2018
 wacn.date: 05/11/2018
 ---
 
@@ -24,14 +24,13 @@ wacn.date: 05/11/2018
 本文主要使用以下方法导出 MongDB 数据：
 
 - [使用 mongoexport 导出 MongDB 数据](#mongoexport)
-
 - [使用 studio 3T 导出 MongDB 数据](#studio3t_export)
 
 ## 先决条件
 
-- 增加吞吐量：数据迁移的持续时间取决于为集合设置的吞吐量。 请确保对于较大的数据迁移增加吞吐量。 完成迁移后，减少吞吐量以节约成本。 有关在 [Azure 门户](https://portal.azure.cn) 中增加吞吐量的详细信息，请参阅 [Azure Cosmos DB 中的性能级别和定价层](https://docs.azure.cn/cosmos-db/performance-levels)。
+1. 增加吞吐量：数据迁移的持续时间取决于为集合设置的吞吐量。 请确保对于较大的数据迁移增加吞吐量。 完成迁移后，减少吞吐量以节约成本。 有关在 [Azure 门户](https://portal.azure.cn) 中增加吞吐量的详细信息，请参阅 [Azure Cosmos DB 中的性能级别和定价层](https://docs.azure.cn/cosmos-db/performance-levels)。
 
-- 启用 SSL：Azure Cosmos DB 具有严格的安全要求和标准。 请确保在与帐户进行交互时启用 SSL。
+2. 启用 SSL：Azure Cosmos DB 具有严格的安全要求和标准。 请确保在与帐户进行交互时启用 SSL。
 
 ## 获取连接字符串信息（主机、端口、用户名、密码、数据库名称、集合名称）
 
@@ -39,13 +38,13 @@ wacn.date: 05/11/2018
 
 2. 在边栏选项卡中点击 “Data Explorer”， 查看数据库名称以及集合名称。
 
-    ![getmongodbname.PNG](./media/aog-cosmosdb-how-to-export-mongodb-collection/getmongodbname.PNG)
+    ![getmongodbname.PNG](media/aog-cosmos-db-how-to-export-mongodb-collection/getmongodbname.PNG)
 
 3. 在边栏选项卡中点击 “Connection String”， 查看主机、端口、用户名以及密码信息。
 
-    ![getconnetinfo.PNG](./media/aog-cosmosdb-how-to-export-mongodb-collection/getconnetinfo.PNG)
+    ![getconnetinfo.PNG](media/aog-cosmos-db-how-to-export-mongodb-collection/getconnetinfo.PNG)
 
-## <a id="mongoexport" ></a>使用 mongoexport 导出 MongDB 数据到本地 
+## <a id="mongoexport" ></a>使用 mongoexport 导出 MongDB 数据到本地
 
 ### 前提条件
 
@@ -53,17 +52,17 @@ wacn.date: 05/11/2018
 
 2. 具有 MongoDB 帐户的 Azure Cosmos DB 连接字符串信息。
 
-打开 “cmd” 命令行程序，导航到 mongoexport.exe 所在目录，使用以下模板将数据从 MongoDB API 集合导出到本地。
+### 操作步骤
 
-模板：
+打开 `cmd`”` 命令行程序，导航到 mongoexport.exe 所在目录，使用以下模板将数据从 MongoDB API 集合导出到本地。
 
-```
+```bash
 mongoexport.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates --type json --out D:\sampleouput.json
 ```
 
-![mongoexport1.PNG](./media/aog-cosmosdb-how-to-export-mongodb-collection/mongoexport1.PNG)
+![mongoexport1.PNG](media/aog-cosmos-db-how-to-export-mongodb-collection/mongoexport1.PNG)
 
-## <a id="studio3t_export"></a>使用 Studio 3T 导出 MongDB 数据到本地 
+## <a id="studio3t_export"></a>使用 Studio 3T 导出 MongDB 数据到本地
 
 ### 前提条件
 
@@ -71,28 +70,28 @@ mongoexport.exe --host <your_hostname>:10255 -u <your_username> -p <your_passwor
 
 2. 具有 MongoDB 帐户的 Azure Cosmos DB 连接字符串信息。
 
-### 具体步骤如下
+### 操作步骤
 
-1. 在 Studio 3T 中建立 Azure Cosmos DB 连接，具体步骤请参阅 [Azure Cosmos DB：配合使用 Studio 3T 与 MongoDB API 帐户](https://docs.azure.cn/cosmos-db/mongodb-mongochef)
+1. 在 Studio 3T 中建立 Azure Cosmos DB 连接，具体步骤请参阅 [Azure Cosmos DB：配合使用 Studio 3T 与 MongoDB API 帐户](https://docs.azure.cn/cosmos-db/mongodb-mongochef)。
 
-2. 建立连接后，在 Studio 3T 中选中数据库或集合，点击 “export” 按钮，选择导出文件格式以及目标文件夹，最后点击 ”Start Export“ 导出数据到本地。
+2. 建立连接后，在 Studio 3T 中选中数据库或集合，点击 “**Export**” 按钮：
 
-步骤截图如下：
+    ![studioexport.PNG](media/aog-cosmos-db-how-to-export-mongodb-collection/studioexport.PNG)
 
-![studioexport.PNG](./media/aog-cosmosdb-how-to-export-mongodb-collection/studioexport.PNG)
+3. 选择导出文件格式：
 
-选择导出文件格式：
+    ![exportformat.PNG](media/aog-cosmos-db-how-to-export-mongodb-collection/exportformat.PNG)
 
-![exportformat.PNG](./media/aog-cosmosdb-how-to-export-mongodb-collection/exportformat.PNG)
+    ![jsonoptions.PNG](media/aog-cosmos-db-how-to-export-mongodb-collection/jsonoptions.PNG)
 
-![jsonoptions.PNG](./media/aog-cosmosdb-how-to-export-mongodb-collection/jsonoptions.PNG)
+4. 选择导出目标文件夹：
 
-选择目标文件夹：
+    ![forder.PNG](media/aog-cosmos-db-how-to-export-mongodb-collection/forder.PNG)
 
-![forder.PNG](./media/aog-cosmosdb-how-to-export-mongodb-collection/forder.PNG)
+5. 点击 “**Start Export**” 导出数据到本地。
 
-![startexport.PNG](./media/aog-cosmosdb-how-to-export-mongodb-collection/startexport.PNG)
+    ![startexport.PNG](media/aog-cosmos-db-how-to-export-mongodb-collection/startexport.PNG)
 
-查看导出结果，或在目标文件夹中查看文件：
+6. 查看导出结果，或在目标文件夹中查看文件：
 
-![checkoutput.PNG](./media/aog-cosmosdb-how-to-export-mongodb-collection/checkoutput.PNG)
+    ![checkoutput.PNG](media/aog-cosmos-db-how-to-export-mongodb-collection/checkoutput.PNG)

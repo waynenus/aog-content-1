@@ -36,9 +36,9 @@ Azure 是不提供跨账号直接迁移资源的，如果想要跨账号迁移 R
 
 4. 执行以下命令，将 AOF 文件内容导入到 Azure Redis，确保 Azure Redis 6379 端口打开，如果数据量很大的话，建议在 Azure 的 Linux 虚拟机内进行操作。
 
-```azurecli
-redis-cli -h kevincache.redis.cache.chinacloudapi.cn –a youaccesskey  -p 6379 --pipe < appendonly.aof
-```
+    ```azurecli
+    redis-cli -h kevincache.redis.cache.chinacloudapi.cn –a youaccesskey  -p 6379 --pipe < appendonly.aof
+    ```
 
 ## 参考文档
 
