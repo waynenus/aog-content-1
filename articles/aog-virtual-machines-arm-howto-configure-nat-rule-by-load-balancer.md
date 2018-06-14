@@ -44,11 +44,11 @@ wacn.date: 4/30/2018
 
     ![05](media/aog-virtual-machines-arm-howto-configure-nat-rule-by-load-balancer/05.png)
 
-7. 选择 “**后端池**”，点击 “**添加**” 按钮，在弹出的菜单中配置如下，并点击 “**更新**” 按钮。
+7. 选择 “**后端池**”，点击 “**添加**” 按钮，在弹出的菜单中配置如下，并点击 “**确定**” 按钮。
 
     ![06](media/aog-virtual-machines-arm-howto-configure-nat-rule-by-load-balancer/06.png)
 
-8. 选择 “**入站 NAT 规则**”，点击 “**添加**” 按钮，在弹出的菜单中配置如下，并点击 “**确认**”按钮。
+8. 选择 “**入站 NAT 规则**”，点击 “**添加**” 按钮，在弹出的菜单中配置如下，并点击 “**确定**”按钮。
 
     > [!NOTE]
     > 如果虚拟机是 Windows 系统，请将目标端口改为 RDP 的 3389 端口。
