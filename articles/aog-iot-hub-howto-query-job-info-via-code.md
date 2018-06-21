@@ -1,7 +1,7 @@
 ---
 title: "如何通过代码查询 IoT Hub 的作业信息"
 description: "如何通过代码查询 IoT Hub 的作业信息"
-author: v-DavidTang
+author: chenzheng1988
 resourceTags: 'IoT Hub, Job'
 ms.service: iot-hub
 wacn.topic: aog

@@ -1,7 +1,7 @@
 ---
 title: ".Net 接收 IotHub 消息的两种方式"
 description: "本文讲述.Net 接收 IotHub 消息的两种方式"
-author: v-DavidTang
+author: chenzheng1988
 resourceTags: 'IoT Hub, .NET'
 ms.service: iot-hub
 wacn.topic: aog
