@@ -70,6 +70,6 @@ wacn.date: 07/19/2018
 
     ![add-02](media/aog-power-bi-embedded-qa-creation-issue/add-02.png)
 
-10. 创建成功后尽情使用 Power BI Embedded。
+10. 创建成功后请尽情使用 Power BI Embedded 吧。
 
     ![add-03](media/aog-power-bi-embedded-qa-creation-issue/add-03.png)
