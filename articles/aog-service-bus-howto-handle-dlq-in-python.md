@@ -1,6 +1,6 @@
 ---
-title: "Python 处理 Service bus 中的死信队列"
-description: "Python 处理 Service bus 中的死信队列"
+title: "如何使用 Python 处理 Service bus 中的死信队列"
+description: "如何使用 Python 处理 Service bus 中的死信队列"
 author: taroyutao
 resourceTags: 'Service Bus, Python, DLQ'
 ms.service: service-bus
@@ -11,7 +11,7 @@ ms.date: 06/07/2018
 wacn.date: 06/07/2018
 ---
 
-# Python 处理 Service bus 中的死信队列
+# 如何使用 Python 处理 Service bus 中的死信队列
 
 ## 简介
 
