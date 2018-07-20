@@ -1,7 +1,7 @@
 ---
 title: "如何解决无法创建 Power BI Embedded 的问题"
 description: "如何解决无法创建 Power BI Embedded 的问题"
-author: v-DavidTang
+author: ShixiaoHU
 resourceTags: 'Power BI Pro'
 ms.service: storage
 wacn.topic: aog
