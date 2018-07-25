@@ -19,9 +19,19 @@ wacn.date: 7/2/2018
 
 ![warning.PNG](./media/aog-azure-functions-scripthost-initialization-failed-error/warning.PNG)
 
-尝试将 Azure Function SDK 版本从 1.0.6 版本更新到最新版 1.0.14 版本后，警告消失，但是函数应用现在无法运行，并报 “ScriptHost initialization failed” 错误，详细信息如下图所示：
+尝试将 Azure Function SDK 版本从 1.0.6 版本更新到最新版 1.0.14 版本后，警告消失。
 
 ![check-sdk.PNG](./media/aog-azure-functions-scripthost-initialization-failed-error/check-sdk.PNG)
+
+但是函数应用却无法运行，并报 “**ScriptHost initialization failed**” 错误，详细错误信息如下：
+
+```
+[7/2/2018 5:30:26 AM] ScriptHost initialization failed
+[7/2/2018 5:30:26 AM] System.Private.CoreLib: Could not load file or assembly 'Microsoft.AspNetCore.Mvc.Abstractions, Version=2.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60'. Could not find or load a specific file. (Exception from HRESULT: 0x80131621). System.Private.CoreLib: Could not load file or assembly 'Microsoft.AspNetCore.Mvc.Abstractions, Version=2.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60'.
+Listening on http://localhost:7071/
+Hit CTRL-C to exit...
+Object reference not set to an instance of an object.
+```
 
 ![error.PNG](./media/aog-azure-functions-scripthost-initialization-failed-error/error.PNG)
 

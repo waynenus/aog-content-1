@@ -7,7 +7,7 @@ ms.service: storage
 wacn.topic: aog
 ms.topic: article
 ms.author: v-tawe
-ms.date: 07/19/2018
+ms.date: 07/20/2018
 wacn.date: 07/19/2018
 ---
 
@@ -15,7 +15,7 @@ wacn.date: 07/19/2018
 
 ## 问题描述
 
-用户在 [Azure 门户](https://portal.azure.cn)上创建 Power BI Embedded 的时候出现 “遇到身份验证问题”，同时当前页面一直处于加载状态下，无法进行下一步操作。
+用户在 [Azure 门户](https://portal.azure.cn)上创建 Power BI Embedded 的时候出现 “**遇到身份验证问题**”，同时当前页面一直处于加载状态下，无法进行下一步操作。
 
 ![add-01](media/aog-power-bi-embedded-qa-creation-issue/add-01.png)
 
@@ -27,8 +27,8 @@ wacn.date: 07/19/2018
 
 ### 前提条件
 
-1. 如果.您已经有了 Power BI 的许可证，可以直接登录 [Power BI 的管理界面](https://app.powerbi.cn) 使用 Power BI，可以跳过以下步骤直接参见[步骤 8](#step8)。
-2. 如果.您暂时还没有 Power BI 的许可证，请确保.您拥有 Office 365 全局管理员或账单管理员的权限。具体操作步骤参见下文。
+1. 如果您已经有了 Power BI 的许可证，可以直接登录 [Power BI 的管理界面](https://app.powerbi.cn) 使用 Power BI，可以跳过以下步骤直接参见[步骤 8](#step8)。
+2. 如果您暂时还没有 Power BI 的许可证，请确保您拥有 Office 365 全局管理员或账单管理员的权限。具体操作步骤参见下文。
 
 ### 操作步骤
 
@@ -70,6 +70,6 @@ wacn.date: 07/19/2018
 
     ![add-02](media/aog-power-bi-embedded-qa-creation-issue/add-02.png)
 
-10. 创建成功后请尽情使用 Power BI Embedded 吧。
+10. 创建成功后您就可以尽情使用 Power BI Embedded。
 
     ![add-03](media/aog-power-bi-embedded-qa-creation-issue/add-03.png)
