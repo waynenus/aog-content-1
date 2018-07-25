@@ -15,7 +15,13 @@ wacn.date: 6/27/2018
 
 ## 问题描述
 
-用户在 Azure Functions V2 (.net core) 应用中添加 Azure Active Directtory 引用并获取 Azure 密钥保管库中的机密，在本地 Visual Studio 2017 中运行应用时遇到 “Unable to load one or more of the requested types” 错误，详细信息如下：
+用户在 Azure Functions V2 (.net core) 应用中添加 Azure Active Directtory 引用并获取 Azure 密钥保管库中的机密，在本地 Visual Studio 2017 中运行应用时遇到 “**Unable to load one or more of the requested types**” 错误，详细信息如下：
+
+```
+The following 1 functions are in error:
+Function1: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+
+```
 
 ![error.PNG](./media/aog-azure-functions-unable-to-load-one-or-more-of-the-requested-types/error.PNG)
 

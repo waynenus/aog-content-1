@@ -17,7 +17,7 @@ wacn.date: 6/21/2018
 
 用户使用一元试用订阅，在中国北部区域内，使用 Windows Server 2016 Datacenter 创建虚拟机规模集(包含 2 个 Standard_A0 虚拟机)时，遇到 OSProvisioningTimedOut 预配失败错误，详细错误信息如下：
 
-![error.PNG](./media/aog-virtual-machine-scale-set-howto-solve-the-osprovisioningtimedout-error/error.PNG)
+![error.PNG](./media/aog-virtual-machine-scale-sets-howto-solve-the-osprovisioningtimedout-error/error.PNG)
 
 尝试使用 PowerShell 在中国北部创建同样规模的虚拟机规模集时，同样遇到预配失败错误，详细信息如下：
 
@@ -30,7 +30,7 @@ ErrorMessage: OS Provisioning for VM 'myvmss_4' did not finish in the allotted t
 provisioning successfully. Please check provisioning state later.
 ```
 
-![powershell-error.PNG](./media/aog-virtual-machine-scale-set-howto-solve-the-osprovisioningtimedout-error/powershell-error.PNG)
+![powershell-error.PNG](./media/aog-virtual-machine-scale-sets-howto-solve-the-osprovisioningtimedout-error/powershell-error.PNG)
 
 ## 问题分析
 
@@ -55,7 +55,7 @@ provisioning successfully. Please check provisioning state later.
 1. 登录到 [Azure 门户](https://portal.azure.cn) 。
 2. 在左侧导航窗格中，依次点击 “所有服务“ 、”订阅“，选中当前使用的订阅，在订阅页左侧导航窗中点击 ”使用情况 + 配额“，在筛选条件中选择所在区域以及 ”全部显示“ ，查看区域内 vCPU 总数以及所用虚拟机的 vCPUs 配额。
 
-    ![quota.PNG](./media/aog-virtual-machine-scale-set-howto-solve-the-osprovisioningtimedout-error/quota.PNG)
+    ![quota.PNG](./media/aog-virtual-machine-scale-sets-howto-solve-the-osprovisioningtimedout-error/quota.PNG)
 
     从截图中可以看出，一元试用账户中， 中国北部可用的区域 vCPU 总数和标准 A0-A7 系列 vCPU 的配额都为 4 vCPU 。可以创建包含两台 Standard_A0 (1 vCPU，0.75 GB 内存) 虚拟机实例的虚拟机规模集。
 
@@ -68,9 +68,9 @@ provisioning successfully. Please check provisioning state later.
 1. 登录到 [Azure 门户](https://portal.azure.cn) 。
 2. 在左侧导航窗格中，依次点击 “创建资源“ 、”Virtual machine scale set“， 点击实例大小后边的选项，查看当前实例大小是否在所在区域内可用。
 
-    ![vmss.PNG](./media/aog-virtual-machine-scale-set-howto-solve-the-osprovisioningtimedout-error/vmss.PNG)
+    ![vmss.PNG](./media/aog-virtual-machine-scale-sets-howto-solve-the-osprovisioningtimedout-error/vmss.PNG)
 
-    ![vmss-vmsize.PNG](./media/aog-virtual-machine-scale-set-howto-solve-the-osprovisioningtimedout-error/vmss-vmsize.PNG)
+    ![vmss-vmsize.PNG](./media/aog-virtual-machine-scale-sets-howto-solve-the-osprovisioningtimedout-error/vmss-vmsize.PNG)
 
 ### <a id="checkos"></a>检查虚拟机规模集实例的大小是否满足操作系统的需求。
 
