@@ -23,9 +23,7 @@ Azure Active Directory (AD) Graph API 通过 OData REST API 终结点提供对 A
 
 ![01](media/aog-active-directory-qa-delete-permission-denied/01.png)
 
-发现可以创建、读取以及更新用户和组的信息，但是在进行删除用户或组的操作时却出现权限不足(403)的情况：
-
-`Insufficient privileges to complete the operation.`
+发现可以创建、读取以及更新用户和组的信息，但是在进行删除用户或组的操作时却出现权限不足(403)的情况：`Insufficient privileges to complete the operation.`
 
 ## 问题分析
 
@@ -40,8 +38,8 @@ Azure Active Directory (AD) Graph API 通过 OData REST API 终结点提供对 A
 
 目前有两种方法可以解决 Graph API 删除用户或组权限不足的情况：
 
-- [方法一：将应用程序添加至全局管理员/公司管理员角色，此方法步骤比较繁琐但是对您的应用程序类型没有限制。](#section1)
-- 方法二：[为 Microsoft Graph 添加：Access directory as the signed-in user（即：Directory.AccessAsUser.All） 权限，此方法步骤比较简单，可以直接在 Azure 门户上进行操作，但是只适用于应用程序类型为本机的应用程序。](#section2)
+- 方法一：[将应用程序添加至全局管理员/公司管理员角色(此方法步骤比较繁琐但是对您的应用程序类型没有限制)](#section1)
+- 方法二：[为 Microsoft Graph 添加：Access directory as the signed-in user（即：Directory.AccessAsUser.All） 权限(此方法步骤比较简单，可以直接在 Azure 门户上进行操作，但是只适用于应用程序类型为本机的应用程序)](#section2)
 
 ### <a id="section1"></a>方法一：将应用程序添加至全局管理员/公司管理员角色
 
@@ -84,9 +82,9 @@ Azure Active Directory (AD) Graph API 通过 OData REST API 终结点提供对 A
 
 1. 使用全局管理员身份的用户登录 [Azure 门户](https://portal.azure.cn)。
 
-2. 选择您的应用程序：Azure Active Directory -> 应用注册 -> <您的应用程序>。
+2. 选择您的应用程序：**Azure Active Directory** -> **应用注册** -> <您的应用程序>。
 
-3. 为您的应用程序添加 Access directory as the signed in user 权限：
+3. 为您的应用程序添加 `Access directory as the signed in user` 权限：
 
     ![02](media/aog-active-directory-qa-delete-permission-denied/02.png)
 

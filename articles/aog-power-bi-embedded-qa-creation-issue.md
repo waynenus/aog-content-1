@@ -7,7 +7,7 @@ ms.service: storage
 wacn.topic: aog
 ms.topic: article
 ms.author: v-tawe
-ms.date: 07/20/2018
+ms.date: 07/25/2018
 wacn.date: 07/19/2018
 ---
 
@@ -15,7 +15,11 @@ wacn.date: 07/19/2018
 
 ## 问题描述
 
-用户在 [Azure 门户](https://portal.azure.cn)上创建 Power BI Embedded 的时候出现 “**遇到身份验证问题**”，同时当前页面一直处于加载状态下，无法进行下一步操作。
+用户在 [Azure 门户](https://portal.azure.cn)上创建 Power BI Embedded 的时候出现 “**请登录 Power BI**” 提示，同时无法进行下一步操作。提示信息如下：
+
+> 你目前是以 xxxx@xxxxxx.partner.onmschina.cn 身份登录，但 Power BI 无法识别它。必须使用注册的 Power BI 帐户登录，才能创建 Power BI Embedded 资源。若要继续操作，要么注册 Power BI 帐户并关闭此边栏选项卡，要么注销并使用组织租户下注册的 Power BI 帐户登录。<br>
+> [免费登录 Power BI](https://go.microsoft.com/fwlink/?linkid=873495)<br>
+> [注销并以其他用户身份登录](https://portal.azure.cn/#menu/account)
 
 ![add-01](media/aog-power-bi-embedded-qa-creation-issue/add-01.png)
 
