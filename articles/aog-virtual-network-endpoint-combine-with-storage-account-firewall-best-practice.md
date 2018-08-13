@@ -15,7 +15,8 @@ wacn.date: 07/18/2018
 
 ## 场景描述
 
-存储账号的防火墙规则如果选择了 **selected networks**，就会按照白名单机制。<br> 不在白名单中的地址将无法访问存储账号， 例如如果没有在虚拟网络中添加受信任的虚拟网络以及子网，即没有在 Firewall 中添加任何 IP 地址段，存储账号将拒绝所有访问。
+存储账号的防火墙规则如果选择了 **selected networks**，就会按照白名单机制，不在白名单中的地址将无法访问存储账号。<br>
+例如如果没有在虚拟网络中添加受信任的虚拟网络以及子网，即没有在 Firewall 中添加任何 IP 地址段，存储账号将拒绝所有访问。
 
 ![01](media/aog-virtual-network-endpoint-combine-with-storage-account-firewall-best-practice/01.png)
 
