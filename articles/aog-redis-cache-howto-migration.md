@@ -25,12 +25,12 @@ Azure 提供了跨资源组和跨订阅迁移资源的功能，借助该功能�
 
 Azure 是不提供跨账号直接迁移资源的，如果想要跨账号迁移 Redis，只能通过迁移 Redis 数据的形式来迁移。也就是说，可以借助 Azure Redis 的导入导出功能，将数据导出并保存，之后在新的账户中创建新的 Redis，在将之前导出的数据导入到新的 Redis 中。但需要注意，导入导出功能只有高级版的 Redis 才支持，基础版和标准版均不支持此操作。如果想要在基础版和标准版来实现迁移数据的过程，可以借助以下手动方法来迁移数据。
 
-1. 将原有的 Redis Server 升级至高级版，之后导出数据，然后在将原 Redis Server 删除。
+1. 将原有的 Redis Server 升级至高级版，之后在管理界面使用导出功能导出数据，导出的数据存储在选择的存储账户中，导出成功后，就可以将原 Redis Server 删除。
 
     > [!NOTE]
     > Redis Server 升级至高级版后是无法再降级到标准版的。
 
-2. 导出的数据文件，实际是 RDB 文件，你可以将此 RDB 文件重命名为 Redis 的备份文件名称，之后放置本地 Redis Server 根目录下，并还原至本地 Redis Server (Version 3.2 +)。
+2. 在存储账户中找到导出的数据文件，这个文件实际是 Redis 的 RDB 备份文件，你可以将此 RDB 文件重命名为 Redis 的备份文件名称，之后放置本地 Redis Server 根目录下，并还原至本地 Redis Server (Version 3.2 +)。
 
 3. 在本地 Redis Server 使用 `BGREWRITEAOF` 命令，将数据导出为 AOF 格式文件。
 
