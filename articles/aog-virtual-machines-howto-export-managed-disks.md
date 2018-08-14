@@ -47,7 +47,10 @@ wacn.date: 08/24/2017
 
 ### PowerShell
 
-以下 PowerShell 脚本先对指定的托管磁盘创建快照，再将快照导出成 VHD 文件，保存在指定的存储账户中。需要使用 2.6.0 以上版本的 AzureRM.Compute 模块。
+以下 PowerShell 脚本先对指定的托管磁盘创建快照，再将快照导出成 VHD 文件，保存在指定的存储账户中。
+
+> [!NOTE]
+> 请使用 6.5.0 以上版本的 AzureRM Module 以及 2.6.0 以上版本的 AzureRM.Compute Module。
 
 ```PowerShell
 #提供订阅 ID
@@ -89,8 +92,6 @@ $destinationContext = New-AzureStorageContext –StorageAccountName $StorageAcco
 #将快照的基础 VHD 复制到存储账户
 Start-AzureStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer $StorageContainerName -DestContext $destinationContext -DestBlob $DestinationVHDFileName 
 ```
-> [!NOTE]
-> 请使用6.5.0以上版本的AzureRM Module。
 
 ### Azure CLI
 
