@@ -47,7 +47,10 @@ wacn.date: 08/24/2017
 
 ### PowerShell
 
-以下 PowerShell 脚本先对指定的托管磁盘创建快照，再将快照导出成 VHD 文件，保存在指定的存储账户中。需要使用 2.6.0 以上版本的 AzureRM.Compute 模块。
+以下 PowerShell 脚本先对指定的托管磁盘创建快照，再将快照导出成 VHD 文件，保存在指定的存储账户中。
+
+> [!NOTE]
+> 请使用 6.5.0 以上版本的 AzureRM Module 以及 2.6.0 以上版本的 AzureRM.Compute Module。
 
 ```PowerShell
 #提供订阅 ID
@@ -94,37 +97,37 @@ Start-AzureStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer $StorageCo
 
 以下 Azure CLI 脚本仅对指定快照生成 SAS Uri，并将快照导出成 VHD 文件至指定存储账户。
 
-此脚本可在 bash 会话中运行，关于更多信息，请参考[在 Windows 上使用 Azure CLI](https://docs.azure.cn/zh-cn/virtual-machines/windows/cli-options) 。
+此脚本可在 bash 会话中运行，关于更多信息，请参考[在 Linux 上使用 Azure CLI](https://docs.azure.cn/zh-cn/virtual-machines/linux/quick-create-cli) 。
 
 ```bash
 #Provide the subscription Id where snapshot is created
-$subscriptionId=mySubscriptionId
+subscriptionId=mySubscriptionId
 
 #Provide the name of your resource group where snapshot is created
-$resourceGroupName=myResourceGroupName
+resourceGroupName=myResourceGroupName
 
 #Provide the snapshot name 
-$snapshotName=mySnapshotName
+snapshotName=mySnapshotName
 
 #Provide Shared Access Signature (SAS) expiry duration in seconds e.g. 3600.
 #Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
-$sasExpiryDuration=3600
+sasExpiryDuration=3600
 
 #Provide storage account name where you want to copy the snapshot. 
-$storageAccountName=mystorageaccountname
+storageAccountName=mystorageaccountname
 
 #Name of the storage container where the downloaded snapshot will be stored
-$storageContainerName=mystoragecontainername
+storageContainerName=mystoragecontainername
 
 #Provide the key of the storage account where you want to copy snapshot. 
-$storageAccountKey=mystorageaccountkey
+storageAccountKey=mystorageaccountkey
 
 #Provide the name of the VHD file to which snapshot will be copied.
-$destinationVHDFileName=myvhdfilename
+destinationVHDFileName=myvhdfilename
 
 az account set --subscription $subscriptionId
 
-$sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
+sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
 
 az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
 ```
