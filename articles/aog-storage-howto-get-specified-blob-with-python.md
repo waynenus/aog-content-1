@@ -1,19 +1,21 @@
-<properties
-    pageTitle="Python 操作存储获取指定目录 Blob 文件的实现"
-    description="如何使用 Python 操作存储获取指定目录 Blob 文件"
-    service=""
-    resource=""
-    authors="Chen Rui"
-    displayOrder=""
-    selfHelpType=""
-    supportTopicIds=""
-    productPesIds=""
-    resourceTags="Storage Blob, Python"
-    cloudEnvironments="MoonCake" />
-<tags
-    ms.service="storage-aog"
-    ms.date=""
-    wacn.date="05/25/2017" />
+---
+title: Python 操作存储获取指定目录 Blob 文件的实现
+description: 如何使用 Python 操作存储获取指定目录 Blob 文件
+resource: storage-blob
+author: hello-azure
+displayOrder: ''
+selfHelpType: ''
+supportTopicIds: ''
+productPesIds: ''
+resourceTags: Storage Blob, Python
+
+ms.service: storage
+wacn.topic: aog
+ms.topic: article
+ms.author: v-tawe
+ms.date: 05/25/2017
+wacn.date: 05/25/2017
+---
 
 # Python 操作存储获取指定目录 Blob 文件的实现
 
@@ -21,7 +23,7 @@
 
 在容器下面的 Blob 文件是按一定的虚拟目录结构存储的，那么如何通过 BlockBlobService 的 list_blobs 法来访问指定目录下的文件。如下这个容器中的文件，由一定层次的目录组成：
 
-![portal](./media/aog-storage-howto-get-specified-blob-with-python/portal.png)
+![portal](./media/aog-storage-howto-get-specified-blob-with-python/portal.PNG)
 
 ## 实现原理
 

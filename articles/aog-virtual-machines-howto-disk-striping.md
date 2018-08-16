@@ -1,17 +1,20 @@
-<properties
-                pageTitle="如何在 Azure 虚拟机里配置条带化"
-                description="在 Windows Server 2012 R2 Datacenter 中配置条带化"
-                services="virtual-machines"
-                documentationCenter=""
-                authors=""
-                manager=""
-                editor=""
-                tags="虚拟机,Windows Server 2012 R2 Datacenter,条带化,striping"/>
+---
+title: 如何在 Azure 虚拟机里配置条带化
+description: 在 Windows Server 2012 R2 Datacenter 中配置条带化
+services: virtual-machines
+documentationCenter: ''
+author: chpaadmin
+manager: ''
+editor: ''
+tags: 虚拟机,Windows Server 2012 R2 Datacenter,条带化,striping
 
-<tags
-                ms.service="virtual-machines-aog"
-                ms.date="12/15/2016"
-                wacn.date="12/15/2016"/>
+ms.service: virtual-machines
+wacn.topic: aog
+ms.topic: article
+ms.author: chpa
+ms.date: 12/15/2016
+wacn.date: 12/15/2016
+---
 
 # 如何在 Azure 虚拟机里配置条带化
 
@@ -23,12 +26,13 @@
 
 条带化技术就是一种自动的将 I/O 的负载均衡到多个物理磁盘上的技术，条带化技术就是将一块连续的数据分成很多小部分并把他们分别存储到不同磁盘上去。这就能使多个进程同时访问数据的多个不同部分而不会造成磁盘冲突，而且在需要对这种数据进行顺序访问的时候可以获得最大程度上的 I/O 并行能力，从而获得非常好的性能。由于条带化在 I/O 性能问题上的优越表现，以致于在应用系统所在的计算环境中的多个层次或平台都涉及到了条带化的技术，如操作系统和存储系统这两个层次中都可能使用条带化技术。
 
->[AZURE.NOTE]<p>1.本案例基于 Windows Server 2012 R2 Datacenter。<p>2.请不要将临时盘( D 盘)用作条带化。  
+>[!NOTE]
+><p>1.本案例基于 Windows Server 2012 R2 Datacenter。<p>2.请不要将临时盘( D 盘)用作条带化。  
 
 **操作步骤：**  
 
-1. 通过 Azure 门户管理新建 Windows 虚拟机。
-2. 创建完毕后, 附加空白磁盘,本范例新增两块 1GB 大小的空白磁盘。 
+1. 通过 [Azure 门户](https://portal.azure.cn) 新建 Windows 虚拟机。
+2. 创建完毕后, 附加空白磁盘,本范例新增两块 1023GB 大小的空白磁盘。 
 
     ![blank-disk](./media/aog-virtual-machines-howto-disk-striping/blank-disk.png)
 
@@ -68,4 +72,3 @@
 13. 打开我的电脑, 确认 F 盘是否可读写。
 
     ![disk-f](./media/aog-virtual-machines-howto-disk-striping/disk-f.png)
-
