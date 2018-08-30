@@ -42,34 +42,44 @@ wacn.date: 06/30/2018
 
     ![03](media/aog-virtual-machines-howto-remove-invisible-network-adapters/03.png)
 
-    ```bash
+    在下载的压缩文件属性中点击 **Unblock** 并 **应用**，然后解压该文件。
+
+    ![01-added](media/aog-virtual-machines-howto-remove-invisible-network-adapters/01-added.png)
+
+    然后在 PowerShell 中以管理员身份运行下列命令：
+
+    ```PowerShell
     Set-Location C:\DeviceManagement\Release\
     Import-Module .\DeviceManagement.psd1 -verbose
     ```
+
+    结果如下：
 
     ![04](media/aog-virtual-machines-howto-remove-invisible-network-adapters/04.png)
 
 3. 使用 `Get-Device` 命令列出隐藏的网络适配器。
 
-    ```bash
+    ```PowerShell
     Get-Device -ControlOptions DIGCF_ALLCLASSES | Sort-Object -Property Name | Where-Object {($_.IsPresent -eq $false) -and ($_.Name -like “Microsoft Hyper-V Network Adapter*”) } | ft Name, DriverVersion, DriverProvider, IsPresent, HasProblem, InstanceId -AutoSize
     ```
 
 4. 获取隐藏的网络适配器。
 
-    ```bash
+    ```PowerShell
     $hiddenHypVNics = Get-Device -ControlOptions DIGCF_ALLCLASSES | Sort-Object -Property Name | Where-Object {($_.IsPresent -eq $false) -and ($_.Name -like “Microsoft Hyper-V Network Adapter*”) }
     ```
 
-5. 在 Powershell 中设定路径到 devcon.exe 下, 并使用以下循环语句来删除隐藏网络设备.
+5. 在 Powershell 中设定路径到 devcon.exe 下。
 
     ![05](media/aog-virtual-machines-howto-remove-invisible-network-adapters/05.png)
 
+6. 使用以下循环语句来删除隐藏网络设备：
+
     ```bash
     Set-Location "C:\Program Files (x86)\Windows Kits\10\Tools\x64"
-    ForEach ($hiddenNic In $hiddenHypVNics) { $deviceid = “@“ + hiddenNic.Instance; .\devcon.exe /r remove $deviceid }
+    ForEach ($hiddenNic In $hiddenHypVNics) { Update the $deviceid = “@" + $hiddenNic.InstanceId; .\devcon.exe /r remove $deviceid }
     ```
 
-6. 最终隐藏网络设备删除完毕。
+7. 最终隐藏网络设备删除完毕。
 
     ![06](media/aog-virtual-machines-howto-remove-invisible-network-adapters/06.png)
