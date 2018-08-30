@@ -11,9 +11,9 @@ ms.date: 08/28/2018
 wacn.date: 08/28/2018
 ---
 
-# 挂载 ASM 虚机 OS 盘为数据磁盘
+# 挂载 ASM Linux 虚机 OS 盘为数据磁盘
 
-本文以 CentOS 为例，说明如何挂载 ASM 虚机 OS 盘为其他虚机的数据磁盘。
+本文以 CentOS 为例，说明如何挂载 ASM Linux 虚机 OS 盘为其他虚机的数据磁盘。
 
 1. 删除 VM，保留磁盘。
 
