@@ -62,7 +62,7 @@ Azure 提供的 CentOS 镜像也是同样的更新规则。当 CentOS 最新小�
 ![07](media/aog-virtual-machines-linux-centos-howto-upgrade-to-specified-minor-version/07.png)
 
 保存文件，回到命令行。<br>
-执行 `yum clean all` 清楚 Yum 在本机的缓存。<br>
+执行 `yum clean all` 清除 Yum 在本机的缓存。<br>
 若不执行该步骤，即使仓库更新过，但 Yum 可能使用缓存信息，而不会重新同步，导致更新的内核版本有误。<br>
 执行 `yum repolist` 查看，会发现仓库信息已经更新过。
 
@@ -72,6 +72,6 @@ Azure 提供的 CentOS 镜像也是同样的更新规则。当 CentOS 最新小�
 
 ![09](media/aog-virtual-machines-linux-centos-howto-upgrade-to-specified-minor-version/09.png)
 
-重启系统后，系统默认会切换会更新后的内核版本。
+重启系统后，系统默认会切换成更新后的内核版本。
 
 ![10](media/aog-virtual-machines-linux-centos-howto-upgrade-to-specified-minor-version/10.png)
