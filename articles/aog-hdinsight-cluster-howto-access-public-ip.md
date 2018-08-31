@@ -19,8 +19,9 @@ wacn.date: 08/30/2018
 
 ## 环境准备
 
-`eden.azurehdinsight` 为 **不在** 虚拟网络中的 HDI 集群
-`libaotest.azurehdinsight` 为 **在** 虚拟网络中的 HDI 集群
+`eden.azurehdinsight` 为 **不在** 虚拟网络中的 HDI 集群;
+
+`libaotest.azurehdinsight` 为 **在** 虚拟网络中的 HDI 集群;
 
 ## 获取方法
 
@@ -28,7 +29,7 @@ wacn.date: 08/30/2018
 
     ![01](media/aog-hdinsight-cluster-howto-access-public-ip/01.png)
 
-    其中 `ping XXX.azurehdinsight.cn` 得到的是 gatway 的 Public IP 地址，`ping XXX-ssh.azurehdinsight.cn` 得到的是 headnode 的 Public IP 地址。
+    其中 `ping XXX.azurehdinsight.cn` 得到的是 gateway 的 Public IP 地址，`ping XXX-ssh.azurehdinsight.cn` 得到的是 headnode 的 Public IP 地址。
 
 2. 如果我们在创建集群的时候选择了虚拟网络这时候我们可以通过两种方式得到：
 
@@ -36,7 +37,7 @@ wacn.date: 08/30/2018
 
         ![02](media/aog-hdinsight-cluster-howto-access-public-ip/02.png)
 
-        其中 `ping XXX.azurehdinsight.cn` 得到的是 gatway 的 Public IP 地址，`ping XXX-ssh.azurehdinsight.cn` 得到的是 headnode 的 Public IP 地址。
+        其中 `ping XXX.azurehdinsight.cn` 得到的是 gateway 的 Public IP 地址，`ping XXX-ssh.azurehdinsight.cn` 得到的是 headnode 的 Public IP 地址。
 
     2. 如果我们创建集群的时候选择了虚拟网络，相对应的会创建一个负载均衡器，那么您就可以在 [Azure 门户](https://portal.azure.cn) 上找到负载均衡器，然后找到相对应的 Public IP：
 
