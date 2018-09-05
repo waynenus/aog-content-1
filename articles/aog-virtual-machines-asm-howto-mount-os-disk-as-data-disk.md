@@ -1,6 +1,6 @@
 ---
-title: '挂载 ASM 虚机 OS 盘为数据磁盘'
-description: '挂载 ASM 虚机 OS 盘为数据磁盘'
+title: '如何将 Linux 经典虚拟机的 OS 盘挂载为数据磁盘'
+description: '如何将 Linux 经典虚拟机的 OS 盘挂载为数据磁盘'
 author: StellaZhou64 
 resourceTags: 'Virtual Machines, ASM, OS Disk, Data Disk'
 ms.service: virtual-machines
@@ -11,9 +11,9 @@ ms.date: 08/28/2018
 wacn.date: 08/28/2018
 ---
 
-# 挂载 ASM Linux 虚机 OS 盘为数据磁盘
+# 如何将 Linux 经典虚拟机的 OS 盘挂载为数据磁盘
 
-本文以 CentOS 为例，说明如何挂载 ASM Linux 虚机 OS 盘为其他虚机的数据磁盘。
+本文以 CentOS 为例，说明如何将 Linux 经典虚拟机的 OS 盘挂载为数据磁盘。
 
 1. 删除 VM，保留磁盘。
 
@@ -30,7 +30,7 @@ wacn.date: 08/28/2018
 
     ![02](media/aog-virtual-machines-asm-howto-mount-os-disk-as-data-disk/02.png)
 
-3. Putty 登陆 VM（新）。首先使用 `dmesg` 来查找磁盘（用于发现新磁盘的方法可能各不相同）。以下示例使用 `dmesg` 来筛选 SCSI 磁盘：
+3. Putty 登录 VM（新）。首先使用 `dmesg` 来查找磁盘（用于发现新磁盘的方法可能各不相同）。以下示例使用 `dmesg` 来筛选 SCSI 磁盘：
 
     ![03](media/aog-virtual-machines-asm-howto-mount-os-disk-as-data-disk/03.png)
 
@@ -40,11 +40,11 @@ wacn.date: 08/28/2018
 
     ![04](media/aog-virtual-machines-asm-howto-mount-os-disk-as-data-disk/04.png)
 
-5. 进入 `/datadrive` 查看原虚机 OS 盘内容。
+5. 进入 `/datadrive` 查看原虚拟机 OS 盘内容。
 
     ![05](media/aog-virtual-machines-asm-howto-mount-os-disk-as-data-disk/05.png)
 
-6. 若要重新使用 OS 盘创建虚机，首先 `umount disk`。
+6. 若要重新使用 OS 盘创建虚拟机，首先 `umount disk`。
 
     ![06](media/aog-virtual-machines-asm-howto-mount-os-disk-as-data-disk/06.png)
 
