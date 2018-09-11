@@ -79,7 +79,7 @@ wacn.date: 08/30/2018
 
         ![12](media/aog-analysis-services-howto-asynchronous-refresh/12.png)
 
-        然后对 dbo,Products 表删除记录，运行 RestApiSample 等待刷新成功，便可在 Power BI Desktop 上看到刷新后的结果了：
+        然后对 dbo.Products 表删除记录，运行 RestApiSample 等待刷新成功，便可在 Power BI Desktop 上看到刷新后的结果了：
 
         ![13](media/aog-analysis-services-howto-asynchronous-refresh/13.png)
 
