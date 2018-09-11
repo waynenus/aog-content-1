@@ -13,6 +13,8 @@ wacn.date: 08/28/2018
 
 # 如何理解 Windows 虚拟机的网络指标
 
+## 网络指标说明
+
 Azure 虚拟机具有两种类型的指标，主机级指标，及来宾 OS 级指标。<br>
 默认情况下，基于 Resource Manager 的虚拟机发出基本（主机级）指标。此外，[为虚拟机安装诊断扩展并启用来宾级别监视](https://docs.azure.cn/zh-cn/virtual-machines/windows/tutorial-monitoring)时，Azure 诊断扩展也会发出来宾 OS 性能计数器（通常称为“来宾 OS 指标”）。<br>
 通俗说来，主机级指标来自物理主机，而来宾 OS 级指标是 VM 中的代理收集的。可以在为 Windows 虚拟机配置的诊断存储账户中找到名为 WADPerformanceCountersTable 的表，并在表中查看到代理收集的全部诊断信息。

@@ -13,8 +13,6 @@ wacn.date: 08/28/2018
 
 # Linux 操作系统下使用 StrongSwan 搭建到 Azure 的 点到站点 VPN
 
-## 前言
-
 在 Linux 操作系统下，可以使用开源的 StrongSwan 搭建到 Azure 的点到站点 VPN。<br>
 在众多的 Linux 开源操作系统版本中，我们仅选择 Ubuntu、Suse 及 Centos 的某些版本为示例，向您展示 StrongSwan 配置 Azure Point to Site VPN 的操作过程。<br>
 本文的示例仅供参考，需要向您说明的是，鉴于 Linux 拥有众多的开源版本，每个版本的安装操作命令可能不尽相同，关于如何有针对性的在不同版本的 Linux 操作系统下搭建 StrongSwan，已经超出了 Azure 的技术支持范畴，如您的 Linux 版本不在本文档的示例范围，请您自行咨询 Linux 开源社区或相关论坛。
