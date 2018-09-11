@@ -65,7 +65,7 @@ Azure 虚拟机具有两种类型的指标，主机级指标，及来宾 OS 级�
 
 ### 为 Windows 虚拟机添加网络指标并创建警报规则
 
-为了更好的监控 Windows 虚拟机流量情况，建议手动添加网络指标并配置[警报规则](https://docs.azure.cn/zh-cn/monitoring-and-diagnostics/monitoring-overview-alerts)：（目前此功能只在ChinaEast和ChinaNorth有效）
+为了更好的监控 Windows 虚拟机流量情况，建议手动添加网络指标并配置[警报规则](https://docs.azure.cn/zh-cn/monitoring-and-diagnostics/monitoring-overview-alerts)：（目前此功能只在中国东部和中国北部有效）
 
 1. 添加来宾 OS 级指标
 
