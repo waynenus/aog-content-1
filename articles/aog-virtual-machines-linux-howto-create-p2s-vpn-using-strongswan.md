@@ -25,43 +25,43 @@ wacn.date: 08/28/2018
 
         **Ubuntu 18.0** 之后的系统可参考文档：[安装 - Linux(strongSwan)](https://docs.azure.cn/zh-cn/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installlinux) 进行安装。
 
-        **Ubuntu 17.0** 以及之前的版本请参考以下步骤安装:
+        **Ubuntu 17.0** 以及之前的版本请参考以下步骤安装（以 Ubuntu 16.04 为例）:
 
         ```shell
         apt-get install strongswan-ikev2 strongswan-plugin-eap-tls libstrongswan-standard-plugins –y
         ```
 
-    - Suse Sp3
+    - Suse 
 
-        Suse Linux 请参考以下步骤安装（以 Suse Sp3 为例）:
+        Suse Linux 请参考以下步骤安装（以 Suse 12 SP3 为例）:
 
         ```shell
         sudo zypper install openssl strongswan iputils
         ```
 
-    - Centos 7.4
+    - Centos 
 
-        Centos6 系列或 7 系列版本的可以参考以下步骤安装：
+        Centos6 系列或 7 系列版本的可以参考以下步骤安装（以 CentOS 7.4 为例）：
 
         ```shell
         yum install -y epel-release
         yum install -y strongswan
         ```
 
-2. 生成 CA 证书:
+2. 生成自签名 CA 证书:
 
     ```shell
     ipsec pki --gen --outform pem > caKey.pem
     ipsec pki --self --in caKey.pem --dn "CN=Azure VPN CA" --ca --outform pem > caCert.pem
     ```
 
-3. 查看 CA 证书并上传证书到 Azure:
+3. 查看 CA 证书并将公钥证书上传到 Azure P2S VPN:
 
     ```shell
     openssl x509 -in caCert.pem -outform der | base64 -w0 ; echo
     ```
 
-4. 生成用户证书:
+4. 使用 CA 证书生成客户端证书:
 
     ```shell
     export PASSWORD="password"
@@ -134,7 +134,7 @@ wacn.date: 08/28/2018
         leftid=%vpnsuer1 # use the DNS alternative name prefixed with the %
         right=azuregateway-9eb6b731-8052-47bf-94a5-1d27ded1e795-22825c716e49.chinacloudapp.cn # Azure VPN gateway address
         rightid=%azuregateway-9eb6b731-8052-47bf-94a5-1d27ded1e795-22825c716e49.chinacloudapp.cn # Azure VPN gateway address, prefixed with %
-        rightsubnet=172.21.0.0/16 #Azure address space
+        rightsubnet=172.21.0.0/16 #Azure VNET address space
         leftsourceip=%config
         auto=add
     ```
