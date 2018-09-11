@@ -23,7 +23,6 @@ wacn.date: 09/04/2018
 
 如果仅在 Subnet 处启用服务终结点，没有在 SQL 或存储侧配置子网相关设置，那么，即使将 Client 虚拟机的公网 IP 添加到防火墙白名单中，虚拟机将仍然无法放问 SQL 和存储。这是由于配置服务终结点时，有效路由已经发生了变化。
 
-
 ![Service_endpoint](media/aog-virtual-network-endpoint-instruction/Service_endpoint.png)
 
 完成上述配置后。可以在虚拟机上访问数据库。如果访问的是 SQL Server Paas，可以使用下面的命令查询连接的客户端 IP 地址：
