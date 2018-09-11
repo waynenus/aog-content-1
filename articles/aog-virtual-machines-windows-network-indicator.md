@@ -1,7 +1,7 @@
 ---
 title: "如何理解 Windows 虚拟机的网络指标"
 description: "如何理解 Windows 虚拟机的网络指标"
-author: v-DavidTang
+author: Queena-Zhou
 resourceTags: "Virtual Machines, Windows, Network Indicators"
 ms.service: virtual-machines
 wacn.topic: aog
