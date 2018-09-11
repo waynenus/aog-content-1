@@ -55,13 +55,13 @@ wacn.date: 08/28/2018
     ipsec pki --self --in caKey.pem --dn "CN=Azure VPN CA" --ca --outform pem > caCert.pem
     ```
 
-3. 查看 CA 证书并将公钥上传证书到 Azure P2S VPN:
+3. 查看 CA 证书并将公钥证书上传到 Azure P2S VPN:
 
     ```shell
     openssl x509 -in caCert.pem -outform der | base64 -w0 ; echo
     ```
 
-4. 使用CA证书生成客户端证书:
+4. 使用 CA 证书生成客户端证书:
 
     ```shell
     export PASSWORD="password"
