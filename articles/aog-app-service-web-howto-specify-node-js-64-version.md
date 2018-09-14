@@ -42,6 +42,9 @@ wacn.date: 09/03/2018
     之后就可以在 **高级工具** -> **kudu** 页面查看到 NodeJS 所使用的 Node 的版本。
 
     ![02](media/aog-app-service-web-howto-specify-node-js-64-version/02.png)
+    
+以上配置也可以通过 iisnode.yml 实现，请参考文档：[YAML configuration support in iisnode](https://tomasz.janczuk.org/2012/05/yaml-configuration-support-in-iisnode.html)。
+
 
 ## 参考文档
 
