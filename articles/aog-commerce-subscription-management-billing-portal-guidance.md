@@ -1,21 +1,14 @@
 ---
-title: 如何使用账单门户网站？
-description: 帐单门户的功能及使用
-service: ''
-resource: Subscription Management
+title: '如何使用账单门户网站？'
+description: '帐单门户的功能及使用'
 author: Jeanxu2
-displayOrder: ''
-selfHelpType: ''
-supportTopicIds: ''
-productPesIds: ''
 resourceTags: 'Subscription Management, Billing Portal, EA Portal, Account Portal'
 cloudEnvironments: MoonCake
-
 ms.service: multiple
 wacn.topic: aog
 ms.topic: article
 ms.author: v-tawe
-ms.date: 10/24/2017
+ms.date: 09/21/2018
 wacn.date: 10/24/2017
 ---
 
@@ -38,23 +31,23 @@ wacn.date: 10/24/2017
 2. 通过 Azure 门户登录
 
     1. 登录 [Azure 门户](https://portal.azure.cn)
-    
+
     2. 点击左侧的“**订阅**”，在出现的新的页面再次点击“**订阅**”。
 
         ![03](media/aog-commerce-subscription-management-billing-portal-guidance/03.png)
         ![04](media/aog-commerce-subscription-management-billing-portal-guidance/04.png)
 
     3. 在“**概述**”里点击“**管理**”，会直接链接到账单门户。
-        
+
         ![05](media/aog-commerce-subscription-management-billing-portal-guidance/05.png)
 
 ## 查看订阅的剩余信用额度以及到期日
 
-因为标准预付费首次及随后的每次付款金额应至少为人民币 1,000 元。Azure 服务使用额度有效期为 12 个月。当您订阅账户的剩余使用额度为 0、或者信用额度过期后，您的订阅将被停用。当您的订阅处在停用状态，将无法备份数据；激活已停用的订阅后，相关服务需要重新配置。订阅暂停 90 天后，数据将永久删除。
+因为标准预付费首次及随后的每次付款金额应至少为人民币 1,000 元。Azure 服务使用额度有效期为 12 个月。当您订阅账户的剩余使用额度为 0、或者信用额度过期后，相应订阅将被停用。除了您存储账户中的数据外，其余所有的服务资源（包括临时存储中的数据，IP地址，VPN网关，应用程序网关等）将被永久释放且无法恢复。如果您此时充值重新激活订阅，所有服务资源都需要重新配置。订阅被停用90天后，您所有的数据（包括存储账号下的数据）都将被永久释放且无法恢复。
 
 您可以购买额外的 Azure 服务使用额度，额外使用额度从购买日起 12 个月有效。
 
-而 1 元试用的 1,500 元 Azure 服务使用额度用完或一个月结束（以先到者为准），订阅将被停用，您的客户资料将被永久删除，除非在停用 15 天内充值重新激活订阅，订阅激活后需要重新配置相关服务。
+而 1 元试用的 1,500 元 Azure 服务使用额度用完或一个月结束（以先到者为准），订阅将被停用，除了您存储账户中的数据外，其余所有的服务资源（包括临时存储中的数据，IP地址，VPN网关，应用程序网关等）将被永久释放且无法恢复，除非在被停用 15 天内充值重新激活订阅。订阅激活后所有服务资源都需要重新配置。订阅被停用15天后，您所有的数据（包括存储账号下的数据）都将被永久释放且无法恢复。
 
 这就意味着订阅的剩余信用额度以及到期日尤为重要。
 
@@ -99,7 +92,6 @@ wacn.date: 10/24/2017
 
         ![add-account-02](media/aog-commerce-subscription-management-billing-portal-guidance/add-account-02.png)
 
-        
     3. 点击 “**所有用户**” 后，继续点击 “**新建用户**”。
 
         ![add-account-03](media/aog-commerce-subscription-management-billing-portal-guidance/add-account-03.png)
