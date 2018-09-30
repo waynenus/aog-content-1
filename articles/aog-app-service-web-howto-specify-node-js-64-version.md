@@ -1,12 +1,12 @@
 ---
 title: '如何为 Azure Web 应用自定义 NodeJS 64 位版本'
 description: '如何为 Azure Web 应用自定义 NodeJS 64 位版本'
-author: zhangyannan-yuki
+author: hylinux
 resourceTags: 'App Service Web, Node JS'
 ms.service: app-service-web
 wacn.topic: aog
 ms.topic: article
-ms.author: v-tawe
+ms.author: hongwei.guo
 ms.date: 08/31/2018
 wacn.date: 09/03/2018
 ---

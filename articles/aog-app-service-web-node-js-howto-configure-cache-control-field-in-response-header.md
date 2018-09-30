@@ -1,12 +1,12 @@
 ---
 title: 'Node JS 搭建的 Azure Web 应用如何修改响应 Header 的 Cache-Control 字段'
 description: 'Node JS 搭建的 Azure Web 应用如何修改响应 Header 的 Cache-Control 字段'
-author: zhangyannan-yuki
+author: hylinux
 resourceTags: 'App Service Web, Node JS, Cache-Control'
 ms.service: app-service-web
 wacn.topic: aog
 ms.topic: article
-ms.author: v-tawe
+ms.author: hongwei.guo
 ms.date: 08/31/2018
 wacn.date: 09/03/2018
 ---
