@@ -1,12 +1,12 @@
 ---
 title: '如何为 Azure Web 应用的 Web Jobs 自定义 NodeJS 64 位版本'
 description: '如何为 Azure Web 应用的 Web Jobs 自定义 NodeJS 64 位版本'
-author: hylinux
+author: zhangyannan-yuki
 resourceTags: 'App Service Web, Node JS, Cache-Control'
 ms.service: app-service-web
 wacn.topic: aog
 ms.topic: article
-ms.author: hongwei.guo
+ms.author: v-tawe
 ms.date: 08/31/2018
 wacn.date: 09/03/2018
 ---
