@@ -15,11 +15,11 @@ wacn.date: 09/30/2018
 
 ## 问题描述
 
-如果客户在 Azure 上分别创建了 Route-Based 和 Policy-Based，并且想要打通这两个虚拟网络的访问，由于这是两种不同类型的 VPNGateway 以及采用不同版本的 IKE 协议去协商，所以 Azure 的 Route-Based 跟 Policy-Based 的 VPNGateway 是无法直接打通（关于两者的区别可以参考：[VPN 类型](https://docs.azure.cn/zh-cn/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#vpntype)。），我们可以尝试在中间找一台 VPN 设备或者 Linux 虚拟机安装第三方 VPN 软件来帮助我们打通两个虚拟网络，本文主要讨论如何使用 Linux 虚拟机安装 OpenSwan 来打通这两个虚拟网络。
+如果客户在 Azure 上分别创建了 Route-Based 和 Policy-Based VPN gateway，并且想要打通这两个虚拟网络下资源的互相访问，由于这是两种不同类型的 VPN Gateway， 且采用的是不同版本的 IKE 协议去协商，所以 Azure 的 Route-Based 跟 Policy-Based 的 VPNGateway 是无法直接打通。（关于两者的区别可以参考：[VPN 类型](https://docs.azure.cn/zh-cn/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#vpntype)。但我们可以尝试找一台 VPN 设备或者 Linux 虚拟机安装第三方 VPN 软件来帮助打通两个虚拟网络，本文主要讨论如何使用 Linux 虚拟机安装 OpenSwan 来打通这两个虚拟网络。
 
 ## 目的
 
-如何实现 Subversion 跟 VM2 通过内网 IP 实现互访
+如何实现虚拟网络1下的虚机 Subversion（172.22.5.4)跟虚拟网络2下的虚机 VM（192.168.1.4） 通过内网 IP 实现互访
 
 ## 拓扑
 
@@ -27,32 +27,31 @@ wacn.date: 09/30/2018
 
 ## 前期准备
 
-1. 创建一个 Route-Based 的虚拟网络网关 Gateway1 以及虚拟网络 172.22.5.0/24，并新建一台虚拟机名称 Subversion(172.22.5.4)
-2. 创建一个 Policy-Based 的虚拟网络网关 Gateway2 以及虚拟网络 192.168.1.0/24，并新建一台虚拟机名称 VM2（192.168.1.4）
-3. 新建一个虚拟网络 10.1.1.0/24 ，并且在该虚拟网络中添加两台虚拟机：OpenSwan 以及 VM1 (10.1.1.5)
+1. 创建一个 Route-Based 的虚拟网络网关 Gateway1 ，所在虚拟网络 172.22.5.0/24，并新建一台虚拟机名称 Subversion(172.22.5.4)
+2. 创建一个 Policy-Based 的虚拟网络网关 Gateway2 ，所在虚拟网络 192.168.1.0/24，并新建一台虚拟机名称 VM（192.168.1.4）
+3. 新建一个虚拟网络 10.1.1.0/24 ，并且在该虚拟网络中添加两台虚拟机：OpenSwan 以及 VM (10.1.1.6)
 
 ## 配置
 
 1. 创建本地网络网关
 
-    1. 为 Route-Based VPNGateway 创建本地网络网关 openswan4route-based：
+    1. 为 Route-Based VPN Gateway 创建本地网络网关 openswan4route-based：
 
         ![02](media/aog-virtual-network-howto-connect-routebased-vpn-and-policybased-vpn/02.png)
 
-    2. 为 Policy-Based VPNGateway 创建本地网络网关 openswan4policy-based：
+    2. 为 Policy-Based VPN Gateway 创建本地网络网关 openswan4policy-based：
 
         ![03](media/aog-virtual-network-howto-connect-routebased-vpn-and-policybased-vpn/03.png)
 
-2. 配置 Route-Based VPNGateway：
+2. 配置 Route-Based VPN Gateway：
 
     ![04](media/aog-virtual-network-howto-connect-routebased-vpn-and-policybased-vpn/04.png)
 
     ![05](media/aog-virtual-network-howto-connect-routebased-vpn-and-policybased-vpn/05.png)
 
-3. 配置 Policy-Based VPNGateway：
+3. 配置 Policy-Based VPN Gateway：
 
     ![06](media/aog-virtual-network-howto-connect-routebased-vpn-and-policybased-vpn/06.png)
-
     ![07](media/aog-virtual-network-howto-connect-routebased-vpn-and-policybased-vpn/07.png)
 
 4. 安装配置 OpenSwan：
@@ -78,7 +77,7 @@ wacn.date: 09/30/2018
 
         ![09](media/aog-virtual-network-howto-connect-routebased-vpn-and-policybased-vpn/09.png)
 
-        关于 OpenSwan 的配置文件各参数的含义可以参考 `man ipsec.conf`。
+        以上是OpenSwan对接两个Azure VPN 时相应的IPsec协商参数，更多关于 OpenSwan 的配置文件各参数的含义可以参考 `man ipsec.conf`。
 
         配置预共享密钥：
 
@@ -88,7 +87,7 @@ wacn.date: 09/30/2018
 
         ![11](media/aog-virtual-network-howto-connect-routebased-vpn-and-policybased-vpn/11.png)
 
-5. 在 Azure 门户里面针对 OpenSwan 的 NSG Inbound 规则放行 udp500,4500。
+5. 在 Azure 门户里面， 在OpenSwan这台设备所关联的NSG上，开通Inbound规则放行 udp 500,4500端口。
 
     ![12](media/aog-virtual-network-howto-connect-routebased-vpn-and-policybased-vpn/12.png)
 
@@ -104,4 +103,4 @@ wacn.date: 09/30/2018
 
 可以看到两边测试均没有丢包并且延迟抖动也都正常。
 
-如果后续想要 VM1 跟 VM2 和 Subversion 互相访问，可以在 VM1 的子网上挂 UDR 实现。
+如果后续想要 VM（192.168.1.4） 跟 VM（10.1.1.6）和 Subversion 之间实现互相访问，可以在 VM（10.1.1.6）所在的子网上关联 UDR 实现。
