@@ -1,7 +1,7 @@
 ---
 title: 'Azure Web 应用的 js/css 文件过大导致访问慢的解决办法'
 description: 'Azure Web 应用的 js/css 文件过大导致访问慢的解决办法'
-author: v-DavidTang
+author: 123Jun123
 resourceTags: 'App Service Web, JS, CSS, DotNet'
 ms.service: app-service-web
 wacn.topic: aog
