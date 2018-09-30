@@ -1,7 +1,7 @@
 ---
 title: '如何为 Azure Web 应用的 Web Jobs 自定义 NodeJS 64 位版本'
 description: '如何为 Azure Web 应用的 Web Jobs 自定义 NodeJS 64 位版本'
-author: may_smiling
+author: maysmiling
 resourceTags: 'App Service Web, Node JS, Cache-Control'
 ms.service: app-service-web
 wacn.topic: aog
