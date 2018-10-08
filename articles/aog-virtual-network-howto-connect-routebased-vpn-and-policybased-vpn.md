@@ -1,7 +1,7 @@
 ---
 title: '使用 OpenSwan 打通 Azure RouteBased VPN 和 PolicyBased VPN'
 description: '使用 OpenSwan 打通 Azure RouteBased VPN 和 PolicyBased VPN'
-author: v-DavidTang
+author: ShawnBian
 resourceTags: 'Virtual Network, RouteBased VPN, PolicyBased VPN'
 ms.service: virtual-network
 wacn.topic: aog
