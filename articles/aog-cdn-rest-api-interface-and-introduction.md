@@ -22,9 +22,7 @@ wacn.date: 09/22/2017
 
 有些客户在尝试使用 REST 接口访问 CDN 服务会遇到了一些问题，导致调用失败。比如，在请求时不清楚 Authorization 的构建、或者在构建 Authorization 时出现各种异常，这篇文章将对这些问题进行解答。
 
-目前 CDN 提供的 API 接口地址参考：
-
-https://docs.azure.cn/zh-cn/cdn/cdn-api 
+目前 CDN 提供的 API 接口地址参考：https://docs.azure.cn/zh-cn/cdn/cdn-api 
 
 本节我们重点介绍以下 3 个 CDN REST 接口的使用，其他接口的使用方法类似。
 
