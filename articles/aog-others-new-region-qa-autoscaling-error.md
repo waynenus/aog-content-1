@@ -27,16 +27,16 @@ wacn.date: 09/07/2018
 
 如下示例为在中国东部 2 的 VMSS 关联在中国东部的 autoscaling。取决于您的资源类型，autoscaling 规则和 profile 可能需要调整。
 
-1. 用 Azure Powershell 创建 autoscale，并关联到 VMSS。灰色高亮部分请替换为用户环境信息；Location 选择 ChinaNorth or ChinaEast。
+1. 用 Azure Powershell 创建 autoscale，并关联到 VMSS。括号内的部分请替换为用户环境信息；Location 选择 ChinaNorth or ChinaEast。
 
     ```powershell
-    $Rule1 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId "/subscriptions/9b65639b-59c0-4d6c-b9a5-411192b24e9b/resourceGroups/testvmss01/providers/Microsoft.Compute/virtualMachineScaleSets/testvmss01" -Operator GreaterThan -MetricStatistic Average -Threshold 10 -TimeGrain 00:01:00 -ScaleActionCooldown 00:05:00 -ScaleActionDirection Increase -ScaleActionScaleType ChangeCount -ScaleActionValue "1" 
+    $Rule1 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId "{/subscriptions/9b65639b-59c0-4d6c-b9a5-411192b24e9b/resourceGroups/testvmss01/providers/Microsoft.Compute/virtualMachineScaleSets/testvmss01}" -Operator GreaterThan -MetricStatistic Average -Threshold 10 -TimeGrain 00:01:00 -ScaleActionCooldown 00:05:00 -ScaleActionDirection Increase -ScaleActionScaleType ChangeCount -ScaleActionValue "1" 
 
-    $Rule2 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId "/subscriptions/9b65639b-59c0-4d6c-b9a5-411192b24e9b/resourceGroups/testvmss01/providers/Microsoft.Compute/virtualMachineScaleSets/testvmss01" -Operator GreaterThan -MetricStatistic Average -Threshold 10 -TimeGrain 00:01:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionScaleType ChangeCount -ScaleActionValue "2"
+    $Rule2 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId "{/subscriptions/9b65639b-59c0-4d6c-b9a5-411192b24e9b/resourceGroups/testvmss01/providers/Microsoft.Compute/virtualMachineScaleSets/testvmss01}" -Operator GreaterThan -MetricStatistic Average -Threshold 10 -TimeGrain 00:01:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionScaleType ChangeCount -ScaleActionValue "2"
 
-    $Profile1 = New-AzureRmAutoscaleProfile -DefaultCapacity "1" -MaximumCapacity "10" -MinimumCapacity "1" -Rule $Rule1, $Rule2 -Name "FirstRule"
+    $Profile1 = New-AzureRmAutoscaleProfile -DefaultCapacity "1" -MaximumCapacity "10" -MinimumCapacity "1" -Rule $Rule1, $Rule2 -Name "{FirstRule}"
 
-    Add-AzureRmAutoscaleSetting -Location "ChinaNorth" -Name "vmssautoscale" -ResourceGroupName "testvmss01" -TargetResourceId "/subscriptions/9b65639b-59c0-4d6c-b9a5-411192b24e9b/resourceGroups/testvmss01/providers/Microsoft.Compute/virtualMachineScaleSets/testvmss01" -AutoscaleProfile $Profile1
+    Add-AzureRmAutoscaleSetting -Location "ChinaNorth" -Name "{vmssautoscale}" -ResourceGroupName "{testvmss01}" -TargetResourceId "{/subscriptions/9b65639b-59c0-4d6c-b9a5-411192b24e9b/resourceGroups/testvmss01/providers/Microsoft.Compute/virtualMachineScaleSets/testvmss01}" -AutoscaleProfile $Profile1
     ```
 
 2. 后期对 autoscale 的更新可以通过 Azure 门户来更改。
