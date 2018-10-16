@@ -19,19 +19,19 @@ wacn.date: 09/28/2018
 
 ## 解决方法
 
-1. 添加 DRPC_SERVER 到相应节点，本例给出的是添加到worker节点: 
+1. 添加 DRPC_SERVER 到相应节点，本例给出的是添加到 worker 节点: 
 
     ```shell
     curl -H "X-Requested-By:ambari" --user 'admin:<password>' -i -X POST -d '{"host_components":[{"HostRoles":{"component_name":"DRPC_SERVER"}}]}' https://libaotest.azurehdinsight.cn/api/v1/clusters/libaotest/hosts?Hosts/host_name=wn1-libaot.2k0ulblfyotunodfqoimluatsh.ax.internal.chinacloudapp.cn
     ```
 
-2. 在节点安装 DRPC_SERVER，本例给出的是在worker节点安装: 
+2. 在节点安装 DRPC_SERVER，本例给出的是在 worker 节点安装: 
 
     ```shell
     curl -H "X-Requested-By:ambari" --user 'admin:<password>' -i -X PUT -d '{"RequestInfo":{"context":"Install DRPC_SERVER","operation_level":{"level":"HOST_COMPONENT","cluster_name":"libaotest","host_name":"wn1-libaot.2k0ulblfyotunodfqoimluatsh.ax.internal.chinacloudapp.cn","service_name":"STORM"}},"Body":{"HostRoles":{"state":"INSTALLED"}}}' https://libaotest.azurehdinsight.cn/api/v1/clusters/libaotest/hosts/wn1-libaot.2k0ulblfyotunodfqoimluatsh.ax.internal.chinacloudapp.cn/host_components/DRPC_SERVER
     ```
 
-3. 在节点启动 DRPC_SERVER，本例给出的是在worker节点启动: 
+3. 在节点启动 DRPC_SERVER，本例给出的是在 worker 节点启动: 
 
     ```shell
     curl -H "X-Requested-By:ambari" --user 'admin:<password>' -i -X PUT -d '{"RequestInfo":{"context":"Install DRPC_SERVER","operation_level":{"level":"HOST_COMPONENT","cluster_name":"libaotest","host_name":"wn1-libaot.2k0ulblfyotunodfqoimluatsh.ax.internal.chinacloudapp.cn","service_name":"STORM"}},"Body":{"HostRoles":{"state":"STARTED"}}}' https://libaotest.azurehdinsight.cn/api/v1/clusters/libaotest/hosts/wn1-libaot.2k0ulblfyotunodfqoimluatsh.ax.internal.chinacloudapp.cn/host_components/DRPC_SERVER
