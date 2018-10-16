@@ -15,7 +15,7 @@ wacn.date: 09/28/2018
 
 ## 问题描述
 
-对于 HDInsight Storm 集群，创建成功后默认情况下只有一个 DRPC Server 是开启的，在 Storm 集群的头结点上，有的客户希望在集群上可以有多个 DRPC Server 从而分担一个 DRPC Server 的压力。
+对于 HDInsight Storm 集群，创建成功后默认情况下只有一个 DRPC Server 是开启的，在 Storm 集群的头节点上，有的客户希望在集群上可以有多个 DRPC Server 从而分担一个 DRPC Server 的压力。
 
 ## 解决方法
 
