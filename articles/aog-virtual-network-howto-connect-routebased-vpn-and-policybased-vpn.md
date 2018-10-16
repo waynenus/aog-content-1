@@ -77,7 +77,7 @@ wacn.date: 09/30/2018
 
         ![09](media/aog-virtual-network-howto-connect-routebased-vpn-and-policybased-vpn/09.png)
 
-        以上是OpenSwan对接两个Azure VPN 时相应的IPsec协商参数，更多关于 OpenSwan 的配置文件各参数的含义可以参考 `man ipsec.conf`。
+        以上是 OpenSwan 对接两个 Azure VPN 时相应的IPsec协商参数，更多关于 OpenSwan 的配置文件各参数的含义可以参考 `man ipsec.conf`。
 
         配置预共享密钥：
 
@@ -87,7 +87,7 @@ wacn.date: 09/30/2018
 
         ![11](media/aog-virtual-network-howto-connect-routebased-vpn-and-policybased-vpn/11.png)
 
-5. 在 Azure 门户里面， 在OpenSwan这台设备所关联的NSG上，开通Inbound规则放行 udp 500,4500端口。
+5. 在 Azure 门户里面， 在 OpenSwan 这台设备所关联的 NSG 上，开通 Inbound 规则放行 udp 500,4500 端口。
 
     ![12](media/aog-virtual-network-howto-connect-routebased-vpn-and-policybased-vpn/12.png)
 
