@@ -61,13 +61,13 @@ wacn.date: 09/07/2018
 7. 请运行以下脚本查看是否有注册项残留：
 
     ```powershell
-    get "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName} /providers/Microsoft.RecoveryServices/vaults/{vaultName}/registeredIdentities/iaasvmcontainerv2;{ResourceGroupName};{vmname}?api-version=2016-06-01"
+    get "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/registeredIdentities/iaasvmcontainerv2;{ResourceGroupName};{vmname}?api-version=2016-06-01"
     ```
 
     如果该命令有返回值，证明该注册项仍然存在，请用以下命令进行删除：
 
     ```powershell
-    Delete "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName} /providers/Microsoft.RecoveryServices/vaults/{vaultName}/registeredIdentities/iaasvmcontainerv2;{ResourceGroupName};{vmname}?api-version=2016-06-01"
+    Delete "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/registeredIdentities/iaasvmcontainerv2;{ResourceGroupName};{vmname}?api-version=2016-06-01"
     ```
 
 8. 删除成功后再次尝试删除保管库。
