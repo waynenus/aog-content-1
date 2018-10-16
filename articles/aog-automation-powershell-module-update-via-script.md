@@ -345,7 +345,7 @@ wacn.date: 09/30/2018
 
 3. 可以修改 Parameter 中的输入参数为自动化账号的实际资源组和账号名，否则需要在运行 Runbook 时提供对应参数。如果输入 NewModuleName，在更新完其他模块后，脚本会尝试从 PowerShell Gallery 中查找输入的模块信息并自动下载。
 4. 如果在更新过程中遇到报错，请参考文档[如何手动更新 Azure 自动化服务的 PowerShell 模块](https://docs.azure.cn/zh-cn/articles/azure-operations-guide/automation/aog-automation-powershell-module-update)，手动更新 AzureRm.Profile 和 AzureRm.Automation 模块，再重新运行脚本。
-5. 如果在更新后遇到模块与脚本的兼容性问题，也请参考步骤 4 中的文档，手动更新或倒回有兼容行问题的 PowerShell 模块。
+5. 如果在更新后遇到模块与脚本的兼容性问题，也请参考步骤 4 中的文档，手动更新或倒回有兼容性问题的 PowerShell 模块。
 
 ## 参考文档
 
