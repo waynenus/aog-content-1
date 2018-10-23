@@ -1,7 +1,7 @@
 ---
 title: 'Azure Web 应用的 js/css 文件过大导致访问慢的解决办法'
 description: 'Azure Web 应用的 js/css 文件过大导致访问慢的解决办法'
-author: 123Jun123
+author: 123Jun321
 resourceTags: 'App Service Web, JS, CSS, DotNet'
 ms.service: app-service-web
 wacn.topic: aog
@@ -19,7 +19,12 @@ wacn.date: 09/28/2018
 
 ## 问题分析
 
-在 IIS 中开启对经常访问的文件压缩的配置。
+当 js/css 文件过大时，网站访问加载的时间就会变长，那么就有可能出现网站访问变慢的情况。<br>
+加入解决方案的配置可以帮助 iis 判断哪些网站是经常访问的，如果符合标准的话，那么 iis 会在发送内容之前将内容进行压缩，然后发送压缩的数据，浏览器接收到以后会自动进行解压，这样就达到了提高页面浏览的的效果。
+
+## 解决方法
+
+在 IIS 中开启对经常访问的文件压缩的配置:
 
 ```xml
 <serverRuntime enabled="true"  frequentHitThreshold="1"  frequentHitTimePeriod="00:00:20" />
@@ -31,7 +36,7 @@ wacn.date: 09/28/2018
 
 参考链接：[IHttpUrlInfo::IsFrequentlyHit](https://msdn.microsoft.com/zh-cn/library/ms692441.aspx?f=255&MSPPError=-2147217396)。
 
-## 解决方法
+具体操作步骤如下：
 
 在 [Azure 门户](https://portal.azure.cn)中修改：
 
