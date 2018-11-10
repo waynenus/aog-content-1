@@ -15,7 +15,7 @@ wacn.date: 10/15/2018
 
 ## 问题描述
 
-在对本地域中用户、同步规则等作出修改后，在将更改应用至 Azure Active Directory(以下简称 AAD) 之前，我们可以[导出所有更改信息，验证更改是否正确](https://docs.microsoft.com/zh-cn/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering#apply-and-verify-changes)。但在导出后的文件只能查看到待删除用户的 GUID，无法获得用户的 `display name`, `UPN` 等信息，以验证待删除用户是否正确。
+在对本地域中用户、同步规则等作出修改后，在将更改应用至 Azure Active Directory(以下简称 AAD) 之前，我们可以[导出所有更改信息，验证更改是否正确](https://docs.azure.cn/zh-cn/active-directory/connect/active-directory-aadconnectsync-configure-filtering#%E5%BA%94%E7%94%A8%E5%B9%B6%E9%AA%8C%E8%AF%81%E6%9B%B4%E6%94%B9-a-nameapply-and-verify-changesa)。但在导出后的文件只能查看到待删除用户的 GUID，无法获得用户的 `display name`, `UPN` 等信息，以验证待删除用户是否正确。
 
 ![01](media/aog-active-directory-howto-verify-deleting-user-info/01.png)
 
