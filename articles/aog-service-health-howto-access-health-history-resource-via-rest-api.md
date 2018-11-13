@@ -60,7 +60,7 @@ $VMresources = Get-AzureRmResource | Where-Object { $_.'ResourceType' -eq "Micro
 foreach ($resource in $VMresources){
 
     #get resource health
-    $uri = $resource.ResourceId + "/providers/Microsoft.ResourceHealth/availabilityStatuses/?api-version=2015-01-01"
+    $uri = $resource.ResourceId + "/providers/Microsoft.ResourceHealth/availabilityStatuses/?api-version=2017-07-01"
     $result = ARMClient GET $uri
 
     $resultJSON = $result | ConvertFrom-Json
