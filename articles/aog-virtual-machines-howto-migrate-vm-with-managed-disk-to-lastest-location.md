@@ -15,7 +15,7 @@ wacn.date: 10/15/2018
 
 ## 问题描述
 
-随着中国东部 2 和中国北部 2 数据中心的正式商用，不少用户计划将中国东部或中国北部的虚拟机迁移至新区以获取更多资源。但由于新区暂不支持 ASR（Azure Site Recovery），并且托管磁盘不能直接拷贝至新区，我们建议用户将其转换为非托管磁盘后再进行迁移。
+随着中国东部 2 和中国北部 2 数据中心的正式商用，不少用户计划将中国东部或中国北部的虚拟机迁移至新区以获取更多资源。除了可以使用 ASR（Azure Site Recovery）进行资源迁移，用户也可以通过以下方式对托管磁盘虚拟机进行迁移。
 
 ## 解决方法
 
@@ -182,5 +182,6 @@ New-AzureRmVM -ResourceGroupName $NewResourceGroupName -Location $newlocation -V
 ```
 
 > [!NOTE]
-> 1. 虚机迁移后 IP 地址会发生变更。
-> 2. 本脚本通过创建快照的方式为托管磁盘拷贝成非托管磁盘，是为了在原虚机不停机的条件下进行迁移工作。为了更好的保证数据一致性和完整性，我们仍旧建议用户可以先停机再进行拷贝。
+> 1. 请在运行以上命令前将Powershell AzureRM模块更新至最新版（https://docs.microsoft.com/zh-cn/powershell/azure/install-azurerm-ps?view=azurermps-6.12.0#update-the-azure-powershell-module）
+> 2. 虚机迁移后 IP 地址会发生变更。
+> 3. 本脚本通过创建快照的方式为托管磁盘拷贝成非托管磁盘，是为了在原虚机不停机的条件下进行迁移工作。为了更好的保证数据一致性和完整性，我们仍旧建议用户可以先停机再进行拷贝。
