@@ -61,12 +61,15 @@ PowerShell 下载完整慢查询日志的方法，以下是详细步骤：
     Set-AzureRmResource -ResourceType "Microsoft.MySql/servers/slowlogs" -ResourceName mysqlcancy/mysql-slow.log.20170421 -ApiVersion 2015-09-01 -ResourceGroupName rgcnc -PropertyObject @{copyDestinationContainerUri=$container.CloudBlobContainer.Uri.AbsoluteUri;CopyDestinationSasToken="$sasToken"} -UsePatchSemantics
     ```
 
-    注：ResourceName 为步骤 2 中执行命令后结果中显示的 ResourceName。
+    > [!NOTE]
+    > ResourceName 为步骤 2 中执行命令后结果中显示的 ResourceName。
 
     执行命令后弹出提示框，点击 Yes：
+
     ![05](media/aog-mysql-howto-download-slow-query-log-on-powershell/05.jpg "05")
 
     执行成功，powershell 显示如下：
+
     ![06](media/aog-mysql-howto-download-slow-query-log-on-powershell/06.jpg "06")
 
 5. 验证：使用 Azure storage Explorer 登录 storage account 后，发现日志已保存到了容器中，如下所示：
