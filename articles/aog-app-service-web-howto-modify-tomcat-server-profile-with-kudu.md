@@ -45,5 +45,10 @@ wacn.date: 11/6/2018
 4. 点击文件名边的编辑按钮，查看及修改文件内容：
 
     ![start-to-modify](media/aog-app-service-web-howto-modify-tomcat-server-profile-with-kudu/start-to-modify.png "start-to-modify")
+    
+    > [!NOTE]
+    > 系统提供的 Tomcat 版本可以查看配置文件但是不能修改。对配置文件的修改仅限于自定义版本的 Tomcat。
+    
+    [如何为 Web 应用配置自定义 Tomcat 环境](aog-app-service-web-howto-configure-custom-tomcat-environment.md)
 
 5. 保存并重启 Web 应用。
