@@ -1,6 +1,6 @@
 ---
-title: "EventProcessorHost类使用注意事项一二"
-description: "EventProcessorHost类使用注意事项一二"
+title: "EventProcessorHost 类使用注意事项一二"
+description: "EventProcessorHost 类使用注意事项一二"
 author: Chen Zheng
 resourceTags: 'event hubs, EventProcessorHost'
 ms.service: event-hubs
@@ -11,11 +11,11 @@ ms.date: 11/7/2018
 wacn.date: 11/7/2018
 ---
 
-# EventProcessorHost类使用注意事项一二
+# EventProcessorHost 类使用注意事项一二
 
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件，事件中心针对百万级别的数据提供低延迟、可无缝集成的分布式流处理平台，并在 Azure 的内部和外部提供数据和分析服务用于构建完整的大数据管道。
 
-EventProcessorHost是微软开发用于接收Event Hub数据的重要技术，当用户使用.net技术做Event Hub的开发工作，我们强烈推荐用户使用EventProcessorHost类处理来自事件中心的数据。EventProcessorHost为Event Hub事件处理实现提供了安全的线程，多进程，安全的运行时环境，还提供了检查点（checkpointing）和分（partition lease）管理。我们就用户关于EventProcessorHost类经常咨询的相关问题做以下解释：
+EventProcessorHost 是微软开发用于接收 Event Hub 数据的重要技术，当用户使用 .net 技术做 Event Hub 的开发工作，我们强烈推荐用户使用 EventProcessorHost 类处理来自事件中心的数据。EventProcessorHost 为 Event Hub 事件处理实现提供了安全的线程，多进程，安全的运行时环境，还提供了检查点（checkpointing）和分（partition lease）管理。我们就用户关于 EventProcessorHost 类经常咨询的相关问题做以下解释：
 
 1. 如何定义 EventProcessorHost 的 Instance 数量：
 
