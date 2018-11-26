@@ -1,12 +1,12 @@
 ---
 title: "如何在 Service Fabric 配置 Docker Daemon 启动参数"
 description: "如何在 Service Fabric 配置 Docker Daemon 启动参数"
-author: Chen Zheng
+author: chenzheng1988
 resourceTags: 'Service Fabric, Docker Daemon'
 ms.service: service-fabric
 wacn.topic: aog
 ms.topic: article
-ms.author: Chen Zheng
+ms.author: v-tawe
 ms.date: 11/8/2018
 wacn.date: 11/8/2018
 ---
@@ -33,7 +33,10 @@ wacn.date: 11/8/2018
 
 然后保存，重新部署。
 
+> [!NOTE]
+> 使用 Service Fabric 运行时的 6.2 版本及更高版本，您可以使用自定义参数启动 Docker Daemon。
+
 ## 其他资源
 
-- [ServiceFabric 启动daemon程序](https://docs.azure.cn/zh-cn/service-fabric/service-fabric-get-started-containers-linux#start-the-docker-daemon-with-custom-arguments)
-- [Docker参数](https://docs.docker.com/engine/reference/commandline/dockerd/)
+- [Service Fabric 启动 Daemon 程序](https://docs.azure.cn/zh-cn/service-fabric/service-fabric-get-started-containers-linux#start-the-docker-daemon-with-custom-arguments)
+- [Docker 参数](https://docs.docker.com/engine/reference/commandline/dockerd/)

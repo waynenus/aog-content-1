@@ -1,12 +1,12 @@
 ---
 title: "EventProcessorHost 类使用注意事项一二"
 description: "EventProcessorHost 类使用注意事项一二"
-author: Chen Zheng
+author: chenzheng1988
 resourceTags: 'event hubs, EventProcessorHost'
 ms.service: event-hubs
 wacn.topic: aog
 ms.topic: article
-ms.author: Chen Zheng
+ms.author: v-tawe
 ms.date: 11/7/2018
 wacn.date: 11/7/2018
 ---

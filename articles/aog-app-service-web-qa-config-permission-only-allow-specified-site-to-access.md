@@ -1,6 +1,6 @@
 ---
-title: "如何使 Azure Web 应用只允许从指定的网站进行访问"
-description: "如何使 Azure Web 应用只允许从指定的网站进行访问"
+title: "如何使用重写规则限制 Azure Web 应用的网站访问"
+description: "如何使用重写规则限制 Azure Web 应用的网站访问"
 author: Chris-ywt
 resourceTags: 'App Service Web, Acess Premission'
 ms.service: app-service-web
@@ -11,11 +11,11 @@ ms.date: 11/8/2018
 wacn.date: 11/8/2018
 ---
 
-# 如何使 Azure Web 应用只允许从指定的网站进行访问
+# 如何使用重写规则限制Azure Web 应用的网站访问
 
 ## 问题描述
 
-当 Azure Web 应用中有两个网站 A 和 B，现在要令 B 网站只允许 A 网站进行访问，不容许其他的网站访问，改如何进行配置？
+当 Azure Web 应用中有两个网站 A 和 B，现在要令 B 网站只允许 A 网站进行访问，不容许其他的网站访问，该如何进行配置？
 
 ## 问题分析
 

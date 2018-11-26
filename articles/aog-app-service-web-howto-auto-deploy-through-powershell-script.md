@@ -1,6 +1,6 @@
 ---
-title: "Web 应用如何使用 PowerShell 脚本进行自动化部署"
-description: "Web 应用如何使用 PowerShell 脚本进行自动化部署"
+title: "Web 应用如何使用 PowerShell 脚本进行部署"
+description: "Web 应用如何使用 PowerShell 脚本进行部署"
 author: zhangyannan-yuki
 resourceTags: 'App Service Web, PowerShell, .Net, Java'
 ms.service: app-service-web
@@ -11,7 +11,7 @@ ms.date: 11/9/2018
 wacn.date: 11/9/2018
 ---
 
-# Web 应用如何使用 PowerShell 脚本进行自动化部署
+# Web 应用如何使用 PowerShell 脚本进行部署
 
 如果想要自动创建网站并进行自动部署，解决方案如下：
 

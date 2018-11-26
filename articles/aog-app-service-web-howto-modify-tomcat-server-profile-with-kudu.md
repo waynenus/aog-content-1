@@ -1,12 +1,12 @@
 ---
 title: "如何通过 kudu 查看/修改 Java Tomcat 服务端的配置文件"
 description: "通过 kudu 查看/修改 Java Tomcat 服务端的配置文件"
-author: Bu Lu
+author: abulu
 resourceTags: 'App Service Web, Kudu, tomcat'
 ms.service: app-service-web
 wacn.topic: aog
 ms.topic: article
-ms.author: Bu Lu
+ms.author: v-tawe
 ms.date: 11/6/2018
 wacn.date: 11/6/2018
 ---
