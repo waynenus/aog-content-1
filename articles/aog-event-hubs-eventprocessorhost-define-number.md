@@ -19,11 +19,11 @@ EventProcessorHost 是微软开发用于接收 Event Hub 数据的重要技术�
 
 1. 如何定义 EventProcessorHost 的 Instance 数量：
 
-    用户需要基于分区数量，消息数量、机器处理的能力等自行评估定义 EPH 数量，运行的 EventProcessorHost Instance 会自动分配去取分区的数据实现自动负载。建议把不同的 EventProcessorHost Instance 分配在不同的机器上，这样可以保证当某台机器性能出现异常时，对应的分区数据可以被其他机器中的EventProcessorHost Instance 获取，从而保证应用正常运行，EventProcessorHost Instance 尽量 <= 分区数这样可以减少不必要的资源浪费。
+    用户需要基于分区数量，消息数量、机器处理的能力等自行评估定义 EPH 数量，运行的 EventProcessorHost Instance 会自动分配去取分区的数据实现自动负载。建议把不同的 EventProcessorHost Instance 分配在不同的机器上，这样可以保证当某台机器性能出现异常时，对应的分区数据可以被其他机器中的 EventProcessorHost Instance 获取，从而保证应用正常运行，EventProcessorHost Instance 尽量 <= 分区数这样可以减少不必要的资源浪费。
 
 2. 接收端出现丢数据现象：
 
-    用户有时候在大量数据接收时可能会遇到某些 exception（例如某些数据格式异常，无法被event hub正常处理），eventhub 会跳过异常，继续接收下一条数据，从而保证接收数据不间断。如果对于数据要求敏感必须全收到，建议使用 service bus 产品，因为 service bus 的 Peeklock 模式可以实现精确接收。如果您想使用 eventhub 精确地接收，可以通过在接收数据时加入自定义retry机制。接收数据实现 retry 参考地址：[App-vNext/Polly](https://github.com/App-vNext/Polly)。
+    用户有时候在大量数据接收时可能会遇到某些 exception（例如某些数据格式异常，无法被 event hub 正常处理），eventhub 会跳过异常，继续接收下一条数据，从而保证接收数据不间断。如果对于数据要求敏感必须全收到，建议使用 service bus 产品，因为 service bus 的 Peeklock 模式可以实现精确接收。如果您想使用 eventhub 精确地接收，可以通过在接收数据时加入自定义 retry 机制。接收数据实现 retry 参考地址：[App-vNext/Polly](https://github.com/App-vNext/Polly)。
 
     ```csharp
     public async Task ProcessEventsAsync(PartitionContext context, IEnumerable messages)

@@ -182,6 +182,6 @@ New-AzureRmVM -ResourceGroupName $NewResourceGroupName -Location $newlocation -V
 ```
 
 > [!NOTE]
-> 1. 请在运行以上命令前将Powershell AzureRM模块更新至最新版（https://docs.microsoft.com/zh-cn/powershell/azure/install-azurerm-ps?view=azurermps-6.12.0#update-the-azure-powershell-module）
+> 1. 请在运行以上命令前将 Powershell AzureRM 模块更新至最新版（https://docs.microsoft.com/zh-cn/powershell/azure/install-azurerm-ps?view=azurermps-6.12.0#update-the-azure-powershell-module）
 > 2. 虚机迁移后 IP 地址会发生变更。
 > 3. 本脚本通过创建快照的方式为托管磁盘拷贝成非托管磁盘，是为了在原虚机不停机的条件下进行迁移工作。为了更好的保证数据一致性和完整性，我们仍旧建议用户可以先停机再进行拷贝。

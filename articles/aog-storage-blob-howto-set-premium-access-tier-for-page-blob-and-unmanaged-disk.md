@@ -43,7 +43,7 @@ Set-AzureStorageBlobContent -File "E:\\test.txt" -Container "test" -Metadata $Me
     `https://testdisks411.blob.core.chinacloudapi.cn/vhds/test-20181101-155338.vhd?sp=rcw&st=2018-10-31T07:54:45Z&se=2018-11-01T15:54:45Z&spr=https&sv=2017-07-29&sig=fRwXUXJwrur%2BwnW85Qw5WIrgzpE8zzng0Tc54owf09M%3D&sr=b&comp=tier`
     
     
-3. 之后，在本地安装 PostMan ，再选择 PUT 请求方式，输入上一步组合的 URL（通过使用2组合的URL来做请求可以免去要在header中添加认证参数），并且在请求 Header 中加入 `x-ms-access-tier` ,  并填写想要设置的值例如 `p15` 。之后发送请求，返回状态 `status` 为 `200`，即表示修改成功。
+3. 之后，在本地安装 PostMan ，再选择 PUT 请求方式，输入上一步组合的 URL（通过使用 2 组合的 URL 来做请求可以免去要在 header 中添加认证参数），并且在请求 Header 中加入 `x-ms-access-tier` ,  并填写想要设置的值例如 `p15` 。之后发送请求，返回状态 `status` 为 `200`，即表示修改成功。
 
     ![set-header](media/aog-storage-blob-howto-set-premium-access-tier-for-page-blob-and-unmanaged-disk/set-header.png "set-header")
 

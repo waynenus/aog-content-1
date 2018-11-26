@@ -45,7 +45,7 @@ blockBlob.Properties.ContentType = "property test";
 blockBlob.SetProperties();
 ```
 
-### SDK参考
+### SDK 参考
 
 - [azure-storage-java](https://github.com/Azure/azure-storage-java)
 - [azure-storage-net](https://github.com/Azure/azure-storage-net)
