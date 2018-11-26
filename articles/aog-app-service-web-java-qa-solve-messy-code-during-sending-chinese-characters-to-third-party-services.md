@@ -41,5 +41,5 @@ wacn.date: 11/9/2018
 ```
 
 ## 参考文档
-如何设置Java默认字符编码 Setting the default Java character encoding?
-http://stackoverflow.com/questions/361975/setting-the-default-java-character-encoding
+
+[如何设置 Java 默认字符编码 Setting the default Java character encoding?](http://stackoverflow.com/questions/361975/setting-the-default-java-character-encoding)
