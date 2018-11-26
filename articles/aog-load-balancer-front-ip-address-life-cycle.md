@@ -43,6 +43,8 @@ wacn.date: 11/9/2018
 
 ![03](media/aog-load-balancer-front-ip-address-life-cycle/03.png "03")
 
+同时有些客户会想使用负载均衡的前端公共 IP 作为后端 VM 的出站源 IP， 这个时候需要配置负载均衡规则或者 NAT 规则，才能将前端公共 IP 与后端池关联起来，具体请参考 [Azure 中的出站连接](https://docs.microsoft.com/zh-cn/azure/load-balancer/load-balancer-outbound-connections#combinations)。
+
 ### 内部负载均衡器
 
 对于内部负载均衡器来说，添加前端私有动态 IP 地址时，选择对于子网后，可以观察到，一旦添加，IP 地址立即生成，即使没有任何负载均衡规则或是 NAT 规则。
