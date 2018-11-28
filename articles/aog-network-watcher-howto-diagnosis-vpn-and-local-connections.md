@@ -86,30 +86,32 @@ Error: Authentication failed. Check shared key. Check crypto. Check lifetimes.
      based on log : Peer failed with Windows error 13801(ERROR_IPSEC_IKE_AUTH_FAIL)
 ```
 
+更多报错介绍您可以参考这里：使用 Azure 网络观察程序进行故障排除（https://docs.azure.cn/zh-cn/network-watcher/network-watcher-diagnose-on-premises-connectivity#troubleshooting-using-azure-network-watcher）
+
 **Scrubbed-wfpdiag.txt** 日志文件包含 wfp 日志。该日志包含对数据包丢弃操作和 IKE/AuthIP 故障的日志记录。
 
-以下示例显示 Scrubbed-wfpdiag.txt 文件的内容，可以通过 Scrubbed-wfpdiag.txt 获取有关错误的详细信息，在本例中，该文件指出 ERROR_IPSEC_IKE_AUTH_FAIL 导致连接无法正常工作。以下示例只是完整日志的一个片段，因为日志可能很长（具体取决于问题）。
+以下示例显示 Scrubbed-wfpdiag.txt 文件的内容，可以通过 Scrubbed-wfpdiag.txt 获取有关错误的详细信息，在本例中，该文件指出 ERROR_IPSEC_IKE_AUTH_FAIL 导致连接无法正常工作。以下示例只是完整日志的一个片段，因为日志可能很长（具体取决于问题）。日志中隐去了部分个人信息，以xxx代替。
 
 ```Scrubbed-wfpdiag.txt
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|Deleted ICookie from the high priority thread pool list
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|IKE diagnostic event:
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|Event Header:
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Timestamp: 1601-01-01T00:00:00.000Z
-[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Flags: 0x00000106
+[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Flags: 0x00000xxx
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|    Local address field set
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|    Remote address field set
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|    IP version field set
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  IP version: IPv4
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  IP protocol: 0
-[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Local address: 139.219.13.206
-[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Remote address: 42.159.81.255
+[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Local address: 139.xxx.xxx.xxx
+[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Remote address: 42.xxx.xxx.xxx
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Local Port: 0
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Remote Port: 0
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Application ID:
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  User SID: <invalid>
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|Failure type: IKE/Authip Main Mode Failure
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|Type specific info:
-[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Failure error code:0x000035e9
+[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Failure error code:0x0000xxxx
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|    IKE authentication credentials are unacceptable
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Failure point: Remote
@@ -120,14 +122,14 @@ Error: Authentication failed. Check shared key. Check crypto. Check lifetimes.
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  MM auth method: Certificate
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Cert hash:
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|0000000000000000000000000000000000000000
-[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  MM ID: 0x0000000000007b4f
-[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  MM Filter ID: 0x0000000000012485
+[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  MM ID: 0x00000000000xxxx
+[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  MM Filter ID: 0x00000000000xxxx
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Local Principal Name: 
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Remote Principal Name: 
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Local Principal Group SIDs:
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|  Remote Principal Group SIDs:
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|
-[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|Cleaning up mmSa: 00000050B75BB6E0. Error 13801(ERROR_IPSEC_IKE_AUTH_FAIL)
-[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|QM done. Cleaning up qmSa 00000050B75C40F0.  Error 13801(ERROR_IPSEC_IKE_AUTH_FAIL)
+[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|Cleaning up mmSa: xxxx. Error 13801(ERROR_IPSEC_IKE_AUTH_FAIL)
+[0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|QM done. Cleaning up qmSa xxx.  Error 13801(ERROR_IPSEC_IKE_AUTH_FAIL)
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|Completing Acquire for ipsec context 20665
 ```
