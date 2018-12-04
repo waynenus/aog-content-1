@@ -25,9 +25,9 @@ wacn.date: 11/20/2018
 
 2. 新的 Azure Database for MySQL，wait timeout 值没有小于 4 分钟的规定了。
 
-3. 新的 Azure Database for MySQ，可供您配置的参数更多了。
+3. 新的 Azure Database for MySQL，可供您配置的参数更多了。
 
-4. 新的 Azure Database for MySQL，您可以使用命令行工具创建数据库，User 等，旧的 Azure 上的 MySQL 数据库服务是不行的。
+4. 新的 Azure Database for MySQL，您可以使用命令行工具创建数据库、User 等，旧的 Azure 上的 MySQL 数据库服务是不行的。
 
 对于基于老模式 MySQL 存储大小上限也是 2T。
 
