@@ -90,9 +90,12 @@ Error: Authentication failed. Check shared key. Check crypto. Check lifetimes.
 
 **Scrubbed-wfpdiag.txt** 日志文件包含 wfp 日志。该日志包含对数据包丢弃操作和 IKE/AuthIP 故障的日志记录。
 
-以下示例显示 Scrubbed-wfpdiag.txt 文件的内容，可以通过 Scrubbed-wfpdiag.txt 获取有关错误的详细信息，在本例中，该文件指出 ERROR_IPSEC_IKE_AUTH_FAIL 导致连接无法正常工作。以下示例只是完整日志的一个片段，因为日志可能很长（具体取决于问题）。日志中隐去了部分个人信息，以xxx代替。
+以下示例显示 Scrubbed-wfpdiag.txt 文件的内容，可以通过 Scrubbed-wfpdiag.txt 获取有关错误的详细信息，在本例中，该文件指出 ERROR_IPSEC_IKE_AUTH_FAIL 导致连接无法正常工作。以下示例只是完整日志的一个片段，因为日志可能很长（具体取决于问题）。
 
-```Scrubbed-wfpdiag.txt
+> [!NOTE]
+> 日志中隐去了部分个人信息，以xxx代替。
+
+```
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|Deleted ICookie from the high priority thread pool list
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|IKE diagnostic event:
 [0]0380.1968::09/25/2018-07:25:26.512 [ikeext] 31567|42.159.81.255|Event Header:
