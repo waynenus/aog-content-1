@@ -13,7 +13,7 @@ wacn.date: 11/20/2018
 
 # 通过 SSIS 导入 MySQL 数据到 SQL Server
 
-1. 安装并配置32-bit的 ODBC 驱动：
+1. 安装并配置 32 位的 ODBC 驱动：
 
     ![01](media/aog-mysql-howto-import-mysql-data-to-sql-server-via-ssis/01.jpg "01")
 
