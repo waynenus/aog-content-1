@@ -86,7 +86,7 @@ Error: Authentication failed. Check shared key. Check crypto. Check lifetimes.
      based on log : Peer failed with Windows error 13801(ERROR_IPSEC_IKE_AUTH_FAIL)
 ```
 
-更多报错介绍您可以参考这里：使用 Azure 网络观察程序进行故障排除（https://docs.azure.cn/zh-cn/network-watcher/network-watcher-diagnose-on-premises-connectivity#troubleshooting-using-azure-network-watcher）
+更多报错介绍您可以参考这里：[使用 Azure 网络观察程序进行故障排除](https://docs.azure.cn/zh-cn/network-watcher/network-watcher-diagnose-on-premises-connectivity#troubleshooting-using-azure-network-watcher)。
 
 **Scrubbed-wfpdiag.txt** 日志文件包含 wfp 日志。该日志包含对数据包丢弃操作和 IKE/AuthIP 故障的日志记录。
 
