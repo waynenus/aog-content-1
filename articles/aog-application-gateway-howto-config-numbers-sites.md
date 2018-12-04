@@ -22,7 +22,7 @@ wacn.date: 11/14/2018
 4. 添加多站点侦听器
 5. 配置重定向规则
 
-以下是基于已创建的应用程序网关如何配置多站点Http流量重定向Https的步骤：
+以下是基于已创建的应用程序网关如何配置多站点 Http 流量重定向 Https 的步骤：
 
 ## 添加后端池
 
@@ -92,7 +92,7 @@ Site2_https_rule 配置如下：
 
 ![12](media/aog-application-gateway-howto-config-numbers-sites/12.png "12")
 
-此时需要删除默认侦听器listener01，在门户上直接删除即可。
+此时需要删除默认侦听器 listener01，在门户上直接删除即可。
 
 ## 再次添加 HTTP 侦听器
 
