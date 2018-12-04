@@ -19,7 +19,7 @@ wacn.date: 11/20/2018
 
 ![02](media/aog-mysql-howto-create-mysql-by-template-on-az/02.png "02")
 
-首先使用 `az login` 命令登陆 Azure 门户账号，可以先执行 `az cloud set --name AzureChinaCloud`设置登陆环境为中国区 Azure。
+首先使用 `az login` 命令登陆 Azure 门户账号，可以先执行 `az cloud set --name AzureChinaCloud` 设置登陆环境为中国区 Azure。
 
 ![03](media/aog-mysql-howto-create-mysql-by-template-on-az/03.jpg "03")
 
