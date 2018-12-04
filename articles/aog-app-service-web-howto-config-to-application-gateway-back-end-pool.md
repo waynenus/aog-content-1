@@ -17,11 +17,11 @@ wacn.date: 11/19/2018
 
 ## 创建 Azure Web 后端池
 
-1. 单击 “所有资源”，选择之前创建好的AppGW。
+1. 单击 “所有资源”，选择之前创建好的 AppGW。
 
-2. 单击AppGW，选择“后端池”，“添加”。
+2. 单击 AppGW，选择“后端池”，“添加”。
 
-3. 创建名称为WebappPool的后端池，并使用添加目标 “类型” 为 App Service，选择 Azure Web 应用 “WebappP2Stest”。针对 App Service 类型后端池，Http 设置和运行状况探测注意需要进行相应的设置。
+3. 创建名称为 WebappPool 的后端池，并使用添加目标 “类型” 为 App Service，选择 Azure Web 应用 “WebappP2Stest”。针对 App Service 类型后端池，Http 设置和运行状况探测注意需要进行相应的设置。
 
     ![01](media/aog-app-service-web-howto-config-to-application-gateway-back-end-pool/01.png "01")
 
@@ -59,6 +59,6 @@ wacn.date: 11/19/2018
 
 ## 测试应用程序网关
 
-查看应用程序网关的 DNS 域名, 复制该 DNS 域名，并将其粘贴到浏览器的地址栏,测试可以正常访问
+查看应用程序网关的 DNS 域名, 复制该 DNS 域名，并将其粘贴到浏览器的地址栏，测试可以正常访问
 
 ![06](media/aog-app-service-web-howto-config-to-application-gateway-back-end-pool/06.png "06")
