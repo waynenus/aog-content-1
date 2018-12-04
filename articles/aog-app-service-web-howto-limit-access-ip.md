@@ -1,6 +1,6 @@
 ---
-title: "应用程序网关和后端 Azure Web 限制访问 IP"
-description: "应用程序网关和后端 Azure Web 限制访问 IP"
+title: "应用程序网关和后端 Azure Web 应用限制访问 IP"
+description: "应用程序网关和后端 Azure Web 应用限制访问 IP"
 author: blackhu269
 resourceTags: 'App Service Web, Application Gateway'
 ms.service: app-service-web
@@ -11,11 +11,11 @@ ms.date: 11/19/2018
 wacn.date: 11/19/2018
 ---
 
-# 应用程序网关和后端 Azure Web 限制访问 IP
+# 应用程序网关和后端 Azure Web 应用限制访问 IP
 
 本文介绍如何通过设置应用程序网关和后端 Azure Web 应用限制访问 IP。
 
-## Azure App 应用静态 IP 限制
+## Azure Web 应用静态 IP 限制
 
 通过 IP 限制，可定义允许访问应用的 IP 地址的允许/拒绝列表（按优先级排序）。此允许列表可能包含 IPv4 和 IPv6 地址。如果存在一个或多个条目，则在列表末尾会存在一个隐式的“拒绝所有”。
 
