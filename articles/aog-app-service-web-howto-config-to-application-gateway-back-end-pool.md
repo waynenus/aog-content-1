@@ -13,19 +13,19 @@ wacn.date: 11/19/2018
 
 # 使用门户将 Azure Web 应用配置为应用程序网关后端池成员
 
-本文介绍如何通过门户将 Azure Web 应用或其他多租户服务配置为应用程序网关后端池成员。
+本文介绍如何通过 Azure 门户将 Azure Web 应用或其他多租户服务配置为应用程序网关后端池成员。
 
 ## 创建 Azure Web 后端池
 
-1. 单击 “所有资源”，选择之前创建好的 AppGW。
+1. 单击 “所有资源”，选择之前创建好的应用程序网关。
 
-2. 单击 AppGW，选择“后端池”，“添加”。
+2. 单击 “应用程序网关”，选择 “后端池” => “添加”。
 
-3. 创建名称为 WebappPool 的后端池，并使用添加目标 “类型” 为 App Service，选择 Azure Web 应用 “WebappP2Stest”。针对 App Service 类型后端池，Http 设置和运行状况探测注意需要进行相应的设置。
+3. 创建名称为 `<WebappPool>` 的后端池，并使用添加目标类型为 “App Services”，选择 Azure Web 应用 “WebappP2Stest”。针对 App Services 类型后端池，Http 设置和运行状况探测注意需要进行相应的设置。
 
     ![01](media/aog-app-service-web-howto-config-to-application-gateway-back-end-pool/01.png "01")
 
-    如果 Azure Web 应用和应用程序网关在不同的订阅中，则选择目标类型 “IP 地址或者 FQDN”。
+    如果 Azure Web 应用和应用程序网关在不同的订阅中，则选择目标类型 “IP address or FQDN”。
 
     ![02](media/aog-app-service-web-howto-config-to-application-gateway-back-end-pool/02.png "02")
 
@@ -46,11 +46,11 @@ wacn.date: 11/19/2018
 
 ## 创建路由规则
 
-1. 依次单击 “规则”、“基本”。
-2. 输入 WebappBasicRule 作为名称。
-3. 对于侦听器，选择 WebappListener。
-4. 对于后端池，选择 webapppool。
-5. 对应 HTTP 设置，选择 webappHttpsetting。
+1. 依次单击 “规则” => “基本”。
+2. 输入 `<WebappBasicRule>` 作为名称。
+3. 对于侦听器，选择 “WebappListener”。
+4. 对于后端池，选择 “webapppool”。
+5. 对应 HTTP 设置，选择 “webappHttpsetting”。
 
     ![05](media/aog-app-service-web-howto-config-to-application-gateway-back-end-pool/05.png "05")
 

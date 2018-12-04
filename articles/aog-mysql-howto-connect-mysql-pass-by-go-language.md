@@ -2,8 +2,8 @@
 title: "Go 语言连接 MySQL PaaS"
 description: "Go 语言连接 MySQL PaaS"
 author: xingbing0909
-resourceTags: 'Mysql, Go Language'
-ms.service: Mysql
+resourceTags: 'MySQL Database on Azure, Go Language'
+ms.service: mysql
 wacn.topic: aog
 ms.topic: article
 ms.author: v-tawe
@@ -11,11 +11,11 @@ ms.date: 11/20/2018
 wacn.date: 11/20/2018
 ---
 
-# Go 语言连接 MySQL PaaS
+# Go 语言连接 MySQL Database on Azure
 
 Go 语言工具下载链接点击[这里](https://golang.org/dl/)。
 
-根据自己的需要选择合适的操作系统下载，例如我下载的是 go1.8.3.windows-amd64.msi。
+根据自己的需要选择合适的操作系统下载，例如我下载的是 "go1.8.3.windows-amd64.msi"。
 
 ![01](media/aog-mysql-howto-connect-mysql-pass-by-go-language/01.png "01")
 
@@ -29,7 +29,7 @@ Go 语言工具下载链接点击[这里](https://golang.org/dl/)。
 
 ![04](media/aog-mysql-howto-connect-mysql-pass-by-go-language/04.png "04")
 
-下面是 go 语言连接 MySQL PaaS 的脚本和方法：
+下面是 go 语言连接 MySQL Database on Azure 的脚本和方法：
 
 ```go
 package main

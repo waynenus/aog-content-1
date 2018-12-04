@@ -3,7 +3,7 @@ title: "通过 SSIS 导入 MySQL 数据到 SQL Server"
 description: "通过 SSIS 导入 MySQL 数据到 SQL Server"
 author: xingbing0909
 resourceTags: 'Mysql, SQL Server, SSIS'
-ms.service: Mysql
+ms.service: mysql
 wacn.topic: aog
 ms.topic: article
 ms.author: v-tawe

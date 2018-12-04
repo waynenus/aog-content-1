@@ -2,7 +2,7 @@
 title: "如何使用 Azure 门户配置 HTTP 流量重定向 HTTPS 的多站点应用程序网关"
 description: "如何使用 Azure 门户配置 HTTP 流量重定向 HTTPS 的多站点应用程序网关"
 author: YaoYuejian
-resourceTags: 'Application Gateway , Https , Sites'
+resourceTags: 'Application Gateway, Https, Sites'
 ms.service: application-gateway
 wacn.topic: aog
 ms.topic: article
@@ -74,11 +74,11 @@ Site2 配置如下：
 
 ## 配置规则（对应 HTTPS 的流量）
 
-在 “**设置**” - “**规则**” 中添加 Site1_https_rule 配置如下：
+在 “**设置**” - “**规则**” 中添加 `Site1_https_rule` 配置如下：
 
 ![09](media/aog-application-gateway-howto-config-numbers-sites/09.png "09")
 
-Site2_https_rule 配置如下：
+`Site2_https_rule` 配置如下：
 
 ![10](media/aog-application-gateway-howto-config-numbers-sites/10.png "10")
 

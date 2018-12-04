@@ -2,8 +2,8 @@
 title: "使用 az 命令通过模板在 Linux 上创建 MySQL Database on Azure"
 description: "使用 az 命令通过模板在 Linux 上创建 MySQL Database on Azure"
 author: xingbing0909
-resourceTags: 'Mysql, az, template'
-ms.service: Mysql
+resourceTags: 'MySQL Database on Azure, az, template'
+ms.service: mysql
 wacn.topic: aog
 ms.topic: article
 ms.author: v-tawe

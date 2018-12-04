@@ -2,8 +2,8 @@
 title: "Azure Database for MySQL 与 Azure 上的 MySQL 数据库的比较"
 description: "Azure Database for MySQL 与 Azure 上的 MySQL 数据库的比较"
 author: xingbing0909
-resourceTags: 'Mysql, Azure Database for MySQL, MySQL Database on Azure'
-ms.service: Mysql
+resourceTags: 'Azure Database for MySQL, MySQL Database on Azure'
+ms.service: mysql
 wacn.topic: aog
 ms.topic: article
 ms.author: v-tawe

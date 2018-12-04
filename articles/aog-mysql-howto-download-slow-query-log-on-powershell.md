@@ -2,8 +2,8 @@
 title: "使用 PowerShell 命令下载慢查询日志"
 description: "使用 PowerShell 命令下载慢查询日志"
 author: xingbing0909
-resourceTags: 'Mysql, MySQL Database on Azure, Slow Query Log'
-ms.service: Mysql
+resourceTags: 'MySQL Database on Azure, Slow Query Log'
+ms.service: mysql
 wacn.topic: aog
 ms.topic: article
 ms.author: v-tawe
