@@ -1,6 +1,6 @@
 ---
-title: "Go 语言连接 MySQL PaaS"
-description: "Go 语言连接 MySQL PaaS"
+title: "Go 语言连接 MySQL Database on Azure"
+description: "Go 语言连接 MySQL Database on Azure"
 author: xingbing0909
 resourceTags: 'MySQL Database on Azure, Go Language'
 ms.service: mysql
@@ -13,7 +13,9 @@ wacn.date: 11/20/2018
 
 # Go 语言连接 MySQL Database on Azure
 
-1. Go 语言工具下载链接点击[这里](https://golang.org/dl/)。
+## 下载 Go 语言工具
+
+Go 语言工具下载链接点击[这里](https://golang.org/dl/)。
 
 根据自己的需要选择合适的操作系统下载，例如我下载的是 "go1.8.3.windows-amd64.msi"。
 
@@ -21,7 +23,7 @@ wacn.date: 11/20/2018
 
 下载后安装即可。
 
-2. 配置环境变量：
+## 配置环境变量
 
 ![02](media/aog-mysql-howto-connect-mysql-pass-by-go-language/02.png "02")
 
@@ -29,7 +31,9 @@ wacn.date: 11/20/2018
 
 ![04](media/aog-mysql-howto-connect-mysql-pass-by-go-language/04.png "04")
 
-下面是 go 语言连接 MySQL Database on Azure 的脚本和方法：
+## 连接 MySQL Database on Azure
+
+以下是 go 语言连接 MySQL Database on Azure 的脚本和方法：
 
 ```go
 package main
@@ -41,22 +45,23 @@ _"github.com/go-sql-driver/mysql"
 )
 
 func main() {
-   fmt.Println("Hello, World!")
-   db,err := sql.Open("mysql","poddb%yongji:1qaz!QAZQAZ! @tcp(poddb.mysqldb.chinacloudapi.cn:3306)/zhdb")
-   db.Exec("insert into user values(70,'aaaa','bbbb')")
-
-   if err != nil{
-          fmt.Println("0000000")
+    fmt.Println("Hello, World!")
+    db,err := sql.Open("mysql","poddb%yongji:1qaz!QAZQAZ! @tcp(poddb.mysqldb.chinacloudapi.cn:3306)/zhdb")
+    db.Exec("insert into user values(70,'aaaa','bbbb')")
+    if err != nil{
+            fmt.Println("0000000")
     }else{
-           fmt.Println("success")
+            fmt.Println("success")
     }
 }
 ```
 
-4. 运行 go 文件：
+运行 go 文件
 
 ![05](media/aog-mysql-howto-connect-mysql-pass-by-go-language/05.jpg "05")
 
-5. 通过 workbench 连接到 MySQL PaaS，验证数据已经插入成功：
+## 验证结果
+
+通过 workbench 连接到 MySQL PaaS，验证数据已经插入成功：
 
 ![06](media/aog-mysql-howto-connect-mysql-pass-by-go-language/06.jpg "06")
