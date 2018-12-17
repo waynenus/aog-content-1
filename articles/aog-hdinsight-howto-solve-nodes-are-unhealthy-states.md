@@ -29,7 +29,7 @@ wacn.date: 12/6/2018
 
 ## 解决方法
 
-1. 首先要先 kill 掉所有的任务，因为当前客户的所有 node 节点已经是 unhealthy 状态了，可以采用如下办法 kill 所有的任务：
+1. 首先要先 kill 掉所有的任务，因为当前客户的所有节点已经是 unhealthy 状态了，可以采用如下办法 kill 所有的任务：
 
     ```shell
     for app in `yarn application -list | awk '$6 == "ACCEPTED" { print $1 }'`; do yarn application -kill "$app";  done
@@ -44,5 +44,5 @@ wacn.date: 12/6/2018
 2. 将 RDD 的存储级别改成 `MEMORY_ONLY_SER`, 这样会节省内存空间，内存存不下的数据会重新计算。
 3. 优化代码逻辑，读尽量少的数据。
 4. 放缓批处理的速度（客户采用的是 crontab 定时任务）。
-5. 如果业务数据量确实大，任务多，可以增加计算节点。
+5. 如果业务数据量确实大，任务多，可以采用缩放方式增加计算节点。
 6. 多观察 Ambari 的监控数据，做到提早预防。
