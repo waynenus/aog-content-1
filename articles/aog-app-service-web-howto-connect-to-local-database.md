@@ -1,6 +1,6 @@
 ---
-title: "Web 应用程序连接本地数据库的解决方案"
-description: "Web 应用程序连接本地数据库的解决方案"
+title: "Web 应用程序通过 ER 连接本地资源的解决方案"
+description: "Web 应用程序通过 ER 连接本地资源的解决方案"
 author: He Shaobo
 resourceTags: 'App Service Web, Express Route'
 ms.service: app-service-web
@@ -11,7 +11,7 @@ ms.date: 12/7/2018
 wacn.date: 12/7/2018
 ---
 
-# Web 应用程序连接本地数据库的解决方案
+# Web 应用程序通过 ER 连接本地资源的解决方案
 
 ## 实验目的
 
@@ -24,7 +24,7 @@ wacn.date: 12/7/2018
 ## 前期准备
 
 * 本地 IDC 中的 SMTP,DB 等服务正常运行。图中以 SMTP 服务为例， 侦听 25 端口。
-* 本地 IDC 与 Azure 虚拟网络之间并完成 peer 的互通
+* 本地 IDC 与 Azure 虚拟网络之间建立 ER 专线，并完成 peer 的互通
 * 在与本地 Express Route 互通的 Azure 虚拟网络中部署一台混合连接管理器（HCM）服务器。图中为虚拟机：192.168.6.4。
 
 ## 详细步骤
