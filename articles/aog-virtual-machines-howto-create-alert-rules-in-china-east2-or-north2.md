@@ -25,7 +25,7 @@ wacn.date: 12/6/2018
 
     ```powershell
     # 创建发送邮件规则，请将参数替换为您的邮件地址
-    $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail email@example.com
+    $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail <email@example.com>
     # 创建警报规则，请根据实际情况调整参数
     Add-AzureRmMetricAlertRule -Name CPUnorth2mail -Location "China East" -ResourceGroup "test-east" -TargetResourceId "/subscriptions/19a55c58-8bxxxxxxx0c99/resourceGroups/Lab/providers/Microsoft.Compute/virtualMachines/test" -MetricName "\Processor Information(_Total)\% Privileged Time" -Operator GreaterThan -Threshold 0.4 -WindowSize 00:05:00 -TimeAggregationOperator Average -Action $actionEmail
     ```
