@@ -21,7 +21,7 @@ wacn.date: 12/5/2018
 
 1. 在配额页面找到该应用服务计划下的占用存储空间比较大的应用，
 
-    ![00](media/aog-app-service-web-howto-detect-file-storage-in-sandbox-environment/00-chcek-quotas.png "chcek quotas")
+    ![00](media/aog-app-service-web-howto-detect-file-storage-in-sandbox-environment/00-check-quotas.png "check quotas")
 
 2. 在应用程序服务中选择该应用，然后进入 Kudu 界面：
 
