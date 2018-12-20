@@ -1,12 +1,12 @@
 ---
 title: "如何解决集群的 Node 节点都处在 Unhealthy 状态"
 description: "如何解决集群的 Node 节点都处在 Unhealthy 状态"
-author: Li Bao
+author: baolijn
 resourceTags: 'Hdinsight, Node'
 ms.service: hdinsight
 wacn.topic: aog
 ms.topic: article
-ms.author: Li Bao
+ms.author: v-ciwu
 ms.date: 12/6/2018
 wacn.date: 12/6/2018
 ---

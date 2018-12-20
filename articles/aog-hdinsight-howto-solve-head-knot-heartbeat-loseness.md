@@ -1,12 +1,12 @@
 ---
 title: "如何解决头节点一直处于心跳丢失的状态"
 description: "如何解决头节点一直处于心跳丢失的状态"
-author: Li Bao
+author: baolijn
 resourceTags: 'Hdinsight, Head Knot'
 ms.service: hdinsight
 wacn.topic: aog
 ms.topic: article
-ms.author: Li Bao
+ms.author: v-ciwu
 ms.date: 12/6/2018
 wacn.date: 12/6/2018
 ---

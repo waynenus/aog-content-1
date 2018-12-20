@@ -1,12 +1,12 @@
 ---
 title: "Web 应用程序通过 ER 连接本地资源的解决方案"
 description: "Web 应用程序通过 ER 连接本地资源的解决方案"
-author: He Shaobo
+author: HeShaobo1
 resourceTags: 'App Service Web, Express Route'
 ms.service: app-service-web
 wacn.topic: aog
 ms.topic: article
-ms.author: He Shaobo
+ms.author: v-ciwu
 ms.date: 12/7/2018
 wacn.date: 12/7/2018
 ---

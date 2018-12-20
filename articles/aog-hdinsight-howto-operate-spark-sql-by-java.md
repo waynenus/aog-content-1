@@ -1,12 +1,12 @@
 ---
 title: "如何用 Java 操作 Spark SQL"
 description: "如何用 Java 操作 Spark SQL"
-author: Li Bao
+author: baolijn
 resourceTags: 'Hdinsight, Spark SQL'
 ms.service: hdinsight
 wacn.topic: aog
 ms.topic: article
-ms.author: Li Bao
+ms.author: v-ciwu
 ms.date: 12/6/2018
 wacn.date: 12/6/2018
 ---
