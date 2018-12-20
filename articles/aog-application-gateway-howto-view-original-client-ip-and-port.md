@@ -13,8 +13,6 @@ wacn.date: 12/4/2018
 
 # 如何在后端池 server 查看经过应用程序网关的请求的原始客户端 IP 和端口
 
-## 操作步骤
-
 具体操作步骤如下：
 
 1. 使用 Wireshark 抓包。
@@ -25,7 +23,7 @@ wacn.date: 12/4/2018
 
 3. 使用以下 TCP Stream 得到以下结果：
 
-    ```json
+    ```
     GET /test.html HTTP/1.1
     Connection: Keep-Alive
     Host: testwebapp1
@@ -44,7 +42,7 @@ wacn.date: 12/4/2018
     X-Forwarded-Proto: https
     ```
 
-    ```json
+    ```
     HTTP/1.1 200 OK
     Content-Type: text/html
     Last-Modified: Tue, 06 Nov 2018 06:01:59 GMT
@@ -67,6 +65,4 @@ wacn.date: 12/4/2018
     </html>
     ```
 
-## 结论
-
-由于应用程序网关会作为 http 层的代理，在接收到客户端的请求后，作为代理重新对后端的请求，此时后端池中的 server 看到的网络层的来源 IP 应该时应用程序网关的 IP 地址，但是我们仍然可以在应用程序网关向后端发起的请求里，从 header 中 `X-Forwarded-For:`可以看到原始客户端访问 IP ，和端口。
+由于应用程序网关会作为 Http 层的代理，在接收到客户端的请求后，作为代理重新对后端的请求，此时后端池中的 server 看到的网络层的来源 IP 应该时应用程序网关的 IP 地址，但是我们仍然可以在应用程序网关向后端发起的请求里，从 header 中 `X-Forwarded-For:`可以看到原始客户端访问 IP，和端口。

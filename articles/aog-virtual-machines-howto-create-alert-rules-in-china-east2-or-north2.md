@@ -36,30 +36,30 @@ wacn.date: 12/6/2018
 
 ## 更多信息
 
-* [Get-AzureRmAlertRule](https://docs.microsoft.com/azure/monitoring-and-diagnostics/alert-metric-classic#with-powershell)
-* [性能指标](https://docs.azure.cn/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines)
+* [关于 Get-AzureRmAlertRule 更多指导](https://docs.microsoft.com/azure/monitoring-and-diagnostics/alert-metric-classic#with-powershell)
+* [关于性能指标](https://docs.azure.cn/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines)
 
-|Azure metric|
-|----|
-|\Processor(_Total)\% Processor Time|
-|\Processor Information(_Total)\% Privileged Time|
-|\Processor(_Total)\% User Time|
-|\Processor Information(_Total)\Processor Frequency|
-|\Memory\% Committed Bytes In Use|
-|\Memory\Available Bytes|
-|(memoryInMB - \Memory\Available Bytes)/memoryInMB|
-|\Memory\Committed Bytes|
-|\Memory\Commit Limit|
-|\Memory\Commit Limit - \Memory\Committed Bytes|
-|\Memory\Cache Faults/sec|
-|\Memory\Page Faults/sec|
-|\Memory\Page Reads/sec|
-|\Memory\Pages/sec|
-|\Memory\Pages/sec - \Memory\Page Reads/sec|
-|\Memory\Pool Paged Bytes|
-|\Memory\Pool Nonpaged Bytes|
-|\Memory\Transition Faults/sec|
-|\PhysicalDisk(_Total)\Disk Transfers/sec|
-|\PhysicalDisk(_Total)\Disk Reads/sec|
-|\PhysicalDisk(_Total)\Disk Writes/sec|
-|\LogicalDisk(_Total)\Free Megabytes|
+    |Azure metric|
+    |----|
+    |\Processor(_Total)\% Processor Time|
+    |\Processor Information(_Total)\% Privileged Time|
+    |\Processor(_Total)\% User Time|
+    |\Processor Information(_Total)\Processor Frequency|
+    |\Memory\% Committed Bytes In Use|
+    |\Memory\Available Bytes|
+    |(memoryInMB - \Memory\Available Bytes)/memoryInMB|
+    |\Memory\Committed Bytes|
+    |\Memory\Commit Limit|
+    |\Memory\Commit Limit - \Memory\Committed Bytes|
+    |\Memory\Cache Faults/sec|
+    |\Memory\Page Faults/sec|
+    |\Memory\Page Reads/sec|
+    |\Memory\Pages/sec|
+    |\Memory\Pages/sec - \Memory\Page Reads/sec|
+    |\Memory\Pool Paged Bytes|
+    |\Memory\Pool Nonpaged Bytes|
+    |\Memory\Transition Faults/sec|
+    |\PhysicalDisk(_Total)\Disk Transfers/sec|
+    |\PhysicalDisk(_Total)\Disk Reads/sec|
+    |\PhysicalDisk(_Total)\Disk Writes/sec|
+    |\LogicalDisk(_Total)\Free Megabytes|

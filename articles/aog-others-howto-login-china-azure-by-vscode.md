@@ -13,7 +13,7 @@ wacn.date: 12/5/2018
 
 # Visual Studio Code 如何登录中国区 Azure
 
-## 解决方案
+具体操作步骤如下：
 
 1. 首先打开 VS Code，点击设置按钮，选择 **Settings**
 
