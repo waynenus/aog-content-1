@@ -2,7 +2,7 @@
 title: "如何禁掉 FTPS 或者强制使用 FTPS"
 description: "如何禁掉 FTPS 或者强制使用 FTPS"
 author: zhangyannan-yuki
-resourceTags: `App Service Web, FTPS`
+resourceTags: 'App Service Web, FTPS'
 ms.service: app-service-web
 wacn.topic: aog
 ms.topic: article
