@@ -1,12 +1,12 @@
 ---
 title: "Linux 密码安全策略设置"
 description: "Linux 密码安全策略设置"
-author: Bob Sun
+author: bobsun0917
 resourceTags: 'Virtual Machines, Linux, Password Security'
 ms.service: virtual-machines
 wacn.topic: aog
 ms.topic: article
-ms.author: Bob Sun
+ms.author: v-bobsun
 ms.date: 12/17/2018
 wacn.date: 12/17/2018
 ---
