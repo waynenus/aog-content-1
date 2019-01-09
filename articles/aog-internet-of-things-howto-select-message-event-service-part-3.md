@@ -13,7 +13,7 @@ wacn.date: 12/17/2018
 
 # Azure 消息 & 事件服务的选择 – 下篇
 
-在[上篇](aog-others-choice-of-message-event-service-part-1.md)和[中篇](aog-others-choice-of-message-event-service-part-2.md)我们分别对了消息/事件服务中五种类型服务做了介绍和对比，它们包括 Storage queue、Service bus queue、Service bus topic、Event Hub 和 IOT。这篇文章我们继续对剩下的三种服务做介绍，其中 Service bus Relay 和 Notification Hub 相比较之前的五种消息服务，有比较大的区别，应用场景和功能也有比价突出的特点，而 Event Gird 则又是 Azure 平台最新推出的一种 Serverless 服务，接下来我们就这三种服务分别做介绍。
+在[上篇](aog-internet-of-things-howto-select-message-event-service-part-1.md)和[中篇](aog-internet-of-things-howto-select-message-event-service-part-2.md)我们分别对了消息/事件服务中五种类型服务做了介绍和对比，它们包括 Storage queue、Service bus queue、Service bus topic、Event Hub 和 IOT。这篇文章我们继续对剩下的三种服务做介绍，其中 Service bus Relay 和 Notification Hub 相比较之前的五种消息服务，有比较大的区别，应用场景和功能也有比价突出的特点，而 Event Gird 则又是 Azure 平台最新推出的一种 Serverless 服务，接下来我们就这三种服务分别做介绍。
 
 1. Service bus Relay
 
@@ -37,7 +37,7 @@ wacn.date: 12/17/2018
 
         下图显示了运行在组织外的客户端如何通过 Service bus Relay 与组织内的应用程序进行交互：
 
-        ![01](media/aog-others-choice-of-message-event-service-part-3/01.png "01")
+        ![01](media/aog-internet-of-things-howto-select-message-event-service-part-3/01.png "01")
 
         Azure Relay 提供两种用于连接应用程序和客户端的方式：
 
@@ -68,7 +68,7 @@ wacn.date: 12/17/2018
 
         下图展示了三种服务是如何进行消息传递：
 
-        ![02](media/aog-others-choice-of-message-event-service-part-3/02.png "02")
+        ![02](media/aog-internet-of-things-howto-select-message-event-service-part-3/02.png "02")
 
     4. 适用场景
 
@@ -102,7 +102,7 @@ wacn.date: 12/17/2018
 
         下图显示了通过 Notification Hub 推送通知的过程：
 
-        ![03](media/aog-others-choice-of-message-event-service-part-3/03.png "03")
+        ![03](media/aog-internet-of-things-howto-select-message-event-service-part-3/03.png "03")
 
     3. 适用场景
 
@@ -132,7 +132,7 @@ wacn.date: 12/17/2018
 
         下图显示了 Event Grid 如何连接 Source 和 Handlers:
 
-        ![04](media/aog-others-choice-of-message-event-service-part-3/04.png "04")
+        ![04](media/aog-internet-of-things-howto-select-message-event-service-part-3/04.png "04")
 
     3. 与 Service bus topic 的区别
 
@@ -162,5 +162,5 @@ wacn.date: 12/17/2018
 
 ## 了解更多
 
-* [Azure 消息 & 事件服务的选择 – 上篇](aog-others-choice-of-message-event-service-part-1.md)
-* [Azure 消息 & 事件服务的选择 – 中篇](aog-others-choice-of-message-event-service-part-2.md)
+* [Azure 消息 & 事件服务的选择 – 上篇](aog-internet-of-things-howto-select-message-event-service-part-1.md)
+* [Azure 消息 & 事件服务的选择 – 中篇](aog-internet-of-things-howto-select-message-event-service-part-2.md)

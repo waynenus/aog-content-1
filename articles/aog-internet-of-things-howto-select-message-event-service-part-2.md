@@ -13,7 +13,7 @@ wacn.date: 12/25/2018
 
 # Azure 消息 & 事件服务的选择 – 中篇
 
-在[上篇](aog-others-choice-of-message-event-service-part-1.md)中我们分别对了消息服务中三种类型服务做了介绍和对比，它们包括 Storage queue、Service bus queue、Service bus topic。这篇文章我们继续对事件服务中的 Event Hub 和 IOT Hub 分别做介绍。
+在[上篇](aog-internet-of-things-howto-select-message-event-service-part-1.md)中我们分别对了消息服务中三种类型服务做了介绍和对比，它们包括 Storage queue、Service bus queue、Service bus topic。这篇文章我们继续对事件服务中的 Event Hub 和 IOT Hub 分别做介绍。
 
 1. Event Hub
 
@@ -41,7 +41,7 @@ wacn.date: 12/25/2018
 
         下面这张图表让我们能更直观的对 Event Hub 中 Partition，Consumer Group 有个了解：
 
-        ![01](media/aog-others-choice-of-message-event-service-part-2/01.png "01")
+        ![01](media/aog-internet-of-things-howto-select-message-event-service-part-2/01.png "01")
 
     3. 与 Service bus queue 的区别
 
@@ -81,7 +81,7 @@ wacn.date: 12/25/2018
 
         下图是 IOT Hub 架构和功能的概述：
 
-        ![02](media/aog-others-choice-of-message-event-service-part-2/02.png "02")
+        ![02](media/aog-internet-of-things-howto-select-message-event-service-part-2/02.png "02")
 
     3. 与 Event Hub 的区别
 
@@ -103,9 +103,9 @@ wacn.date: 12/25/2018
 
         更多关于 IOT Hub 的一些限制说明可以参考[官方链接](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-quotas-throttling)。
 
-在[上篇](aog-others-choice-of-message-event-service-part-1.md)和中篇我们分别对了消息/事件服务中五个服务做了介绍和对比，在[下篇](aog-others-choice-of-message-event-service-part-3.md)中我们继续对剩下的三种服务做介绍，其中 Service bus Relay 和 Notification Hub 相比较之前的五种服务有比较大区别，而 Event Gird 则又是 Azure 平台最新推出的一种 Serverless 服务，如果您对这个话题感兴趣可以在下篇中继续了解详细内容。
+在[上篇](aog-internet-of-things-howto-select-message-event-service-part-1.md)和中篇我们分别对了消息/事件服务中五个服务做了介绍和对比，在[下篇](aog-internet-of-things-howto-select-message-event-service-part-3.md)中我们继续对剩下的三种服务做介绍，其中 Service bus Relay 和 Notification Hub 相比较之前的五种服务有比较大区别，而 Event Gird 则又是 Azure 平台最新推出的一种 Serverless 服务，如果您对这个话题感兴趣可以在下篇中继续了解详细内容。
 
 ## 了解更多
 
-* [Azure 消息 & 事件服务的选择 – 上篇](aog-others-choice-of-message-event-service-part-1.md)
-* [Azure 消息 & 事件服务的选择 – 下篇](aog-others-choice-of-message-event-service-part-3.md)
+* [Azure 消息 & 事件服务的选择 – 上篇](aog-internet-of-things-howto-select-message-event-service-part-1.md)
+* [Azure 消息 & 事件服务的选择 – 下篇](aog-internet-of-things-howto-select-message-event-service-part-3.md)
