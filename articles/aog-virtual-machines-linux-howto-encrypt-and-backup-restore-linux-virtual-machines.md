@@ -8,7 +8,7 @@ wacn.topic: aog
 ms.topic: article
 ms.author: wei.sun
 ms.date: 12/31/2018
-wacn.date: 12/31/2019
+wacn.date: 12/31/2018
 ---
 
 # 有关 Linux 虚拟机的加密和备份还原操作的实施参考
