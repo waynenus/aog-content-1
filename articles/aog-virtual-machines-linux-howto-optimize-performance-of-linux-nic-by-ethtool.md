@@ -40,6 +40,7 @@ wacn.date: 12/31/2018
     RX Jumbo:             0
     TX:                   192
     ```
+备注：Pre-set maximums表示网卡预设的最大Buffer size, Current hardware settings表示当前网卡的实际Buffer size；调整当前buffer size时不能超过预设的最大Buffer size。
 
 2. 调整 RX/TX 参数：
 
