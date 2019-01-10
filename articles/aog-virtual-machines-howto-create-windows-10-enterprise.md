@@ -56,27 +56,27 @@ wacn.date: 12/25/2018
 
     * 采用从 VHD 创建托管镜像方式，可以创建托管磁盘虚拟机，参考[通过上传的 VHD 创建托管映像](https://docs.azure.cn/zh-cn/virtual-machines/windows/upload-generalized-managed#create-a-managed-image-from-the-uploaded-vhd)。
 
-    * 使用以下命令在 PowerShell ISE 中可以创建非托管磁盘虚拟机，斜体参数为自定义参数；
+    * 使用以下命令在 PowerShell ISE 中可以创建非托管磁盘虚拟机，请根据实际情况替换<>参数；
 
     ```powershell
-    $rgName = "2012"
-    $subnetName = "SubNet2"
+    $rgName = "<2012>"
+    $subnetName = "<SubNet2>"
     $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-    $location = "China east2"
-    $vnetName = "vnet2"
+    $location = "<China east2>"
+    $vnetName = "<vnet2>"
     $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
-    $ipName = "IP2"
+    $ipName = "<IP2>"
     $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location -AllocationMethod Dynamic
-    $nicName = "Nic2"
+    $nicName = "<Nic2>"
     $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
     $cred = Get-Credential
-    $imageURI = "https://cet.blob.core.chinacloudapi.cn/vhd/vm.vhd"
-    $storageAccName = "cet"
-    $vmName = "win10e"
-    $vmSize = "Standard_A2"
-    $computerName = "win10e"
-    $osDiskName = "OsDisk"
-    $skuName = "Standard_GRS"
+    $imageURI = "<https://cet.blob.core.chinacloudapi.cn/vhd/vm.vhd>"
+    $storageAccName = "<cet>"
+    $vmName = "<win10e>"
+    $vmSize = "<Standard_A2>"
+    $computerName = "<win10e>"
+    $osDiskName = "<OsDisk>"
+    $skuName = "<Standard_GRS>"
     $storageAcc = Get-AzureRmStorageAccount -ResourceGroupName $rgName -AccountName $storageAccName
     $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
     $vm = Set-AzureRmVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName -Credential $cred
